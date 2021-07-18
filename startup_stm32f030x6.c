@@ -2,6 +2,7 @@
 #include "system_stm32f0xx.h"
 #include "stm32f0xx.h"
 #include "stm32f0xx_hal_def.h"
+#include "main.h"
 
 extern uint32_t _sidata;
 extern uint32_t _sdata;
@@ -39,6 +40,11 @@ void Default_Handler(void)
     while (1);
 }
 
+void TIM16_Handler(void)
+{
+    HAL_TIM_IRQHandler(&htim16);
+}
+
 __weak void NMI_Handler(void)                          {Default_Handler();}
 __weak void HardFault_Handler(void)                    {Default_Handler();}
 __weak void SVC_Handler(void)                          {Default_Handler();}
@@ -59,7 +65,7 @@ __weak void TIM1_BRK_UP_TRG_COM_IRQHandler(void)       {Default_Handler();}
 __weak void TIM1_CC_IRQHandler(void)                   {Default_Handler();}               
 __weak void TIM3_IRQHandler(void)                      {Default_Handler();}                  
 __weak void TIM14_IRQHandler(void)                     {Default_Handler();}               
-__weak void TIM16_IRQHandler(void)                     {Default_Handler();}               
+__weak void TIM16_IRQHandler(void)                     {TIM16_Handler();}               
 __weak void TIM17_IRQHandler(void)                     {Default_Handler();}               
 __weak void I2C1_IRQHandler(void)                      {Default_Handler();}             
 __weak void SPI1_IRQHandler(void)                      {Default_Handler();}               

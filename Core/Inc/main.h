@@ -30,6 +30,7 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f0xx_hal.h"
 #include "vardef.h"
+#include "Os.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -52,7 +53,8 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
-
+extern ADC_HandleTypeDef hadc;
+extern TIM_HandleTypeDef htim16;
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
