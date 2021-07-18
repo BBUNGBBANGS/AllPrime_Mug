@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cczHekof.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -28,18 +28,20 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cczHekof.s 			page 1
   26              		.file 1 "Core/Src/Os.c"
    1:Core/Src/Os.c **** #include "Os.h"
    2:Core/Src/Os.c **** #include "led.h"
-   3:Core/Src/Os.c **** Os_Counter_t Os_Counter;
+   3:Core/Src/Os.c **** #include "switch.h"
    4:Core/Src/Os.c **** 
-   5:Core/Src/Os.c **** void Os_Init_Task(void)
-   6:Core/Src/Os.c **** {
-  27              		.loc 1 6 1 view -0
+   5:Core/Src/Os.c **** Os_Counter_t Os_Counter;
+   6:Core/Src/Os.c **** 
+   7:Core/Src/Os.c **** void Os_Init_Task(void)
+   8:Core/Src/Os.c **** {
+  27              		.loc 1 8 1 view -0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
   31              		@ link register save eliminated.
-   7:Core/Src/Os.c **** 
-   8:Core/Src/Os.c **** }
-  32              		.loc 1 8 1 view .LVU1
+   9:Core/Src/Os.c **** 
+  10:Core/Src/Os.c **** }
+  32              		.loc 1 10 1 view .LVU1
   33              		@ sp needed
   34 0000 7047     		bx	lr
   35              		.cfi_endproc
@@ -53,20 +55,20 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cczHekof.s 			page 1
   44              		.fpu softvfp
   46              	Os_1ms_Task:
   47              	.LFB41:
-   9:Core/Src/Os.c **** 
-  10:Core/Src/Os.c **** void Os_1ms_Task(void)
-  11:Core/Src/Os.c **** {
-  48              		.loc 1 11 1 view -0
+  11:Core/Src/Os.c **** 
+  12:Core/Src/Os.c **** void Os_1ms_Task(void)
+  13:Core/Src/Os.c **** {
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s 			page 2
+
+
+  48              		.loc 1 13 1 view -0
   49              		.cfi_startproc
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cczHekof.s 			page 2
-
-
   50              		@ args = 0, pretend = 0, frame = 0
   51              		@ frame_needed = 0, uses_anonymous_args = 0
   52              		@ link register save eliminated.
-  12:Core/Src/Os.c **** 
-  13:Core/Src/Os.c **** }
-  53              		.loc 1 13 1 view .LVU3
+  14:Core/Src/Os.c **** 
+  15:Core/Src/Os.c **** }
+  53              		.loc 1 15 1 view .LVU3
   54              		@ sp needed
   55 0000 7047     		bx	lr
   56              		.cfi_endproc
@@ -80,17 +82,17 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cczHekof.s 			page 1
   65              		.fpu softvfp
   67              	Os_5ms_Task:
   68              	.LFB42:
-  14:Core/Src/Os.c **** 
-  15:Core/Src/Os.c **** void Os_5ms_Task(void)
-  16:Core/Src/Os.c **** {
-  69              		.loc 1 16 1 view -0
+  16:Core/Src/Os.c **** 
+  17:Core/Src/Os.c **** void Os_5ms_Task(void)
+  18:Core/Src/Os.c **** {
+  69              		.loc 1 18 1 view -0
   70              		.cfi_startproc
   71              		@ args = 0, pretend = 0, frame = 0
   72              		@ frame_needed = 0, uses_anonymous_args = 0
   73              		@ link register save eliminated.
-  17:Core/Src/Os.c **** 
-  18:Core/Src/Os.c **** }
-  74              		.loc 1 18 1 view .LVU5
+  19:Core/Src/Os.c **** 
+  20:Core/Src/Os.c **** }
+  74              		.loc 1 20 1 view .LVU5
   75              		@ sp needed
   76 0000 7047     		bx	lr
   77              		.cfi_endproc
@@ -104,278 +106,300 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cczHekof.s 			page 1
   86              		.fpu softvfp
   88              	Os_10ms_Task:
   89              	.LFB43:
-  19:Core/Src/Os.c **** 
-  20:Core/Src/Os.c **** void Os_10ms_Task(void)
-  21:Core/Src/Os.c **** {
-  90              		.loc 1 21 1 view -0
+  21:Core/Src/Os.c **** 
+  22:Core/Src/Os.c **** void Os_10ms_Task(void)
+  23:Core/Src/Os.c **** {
+  90              		.loc 1 23 1 view -0
   91              		.cfi_startproc
   92              		@ args = 0, pretend = 0, frame = 0
   93              		@ frame_needed = 0, uses_anonymous_args = 0
-  94              		@ link register save eliminated.
-  22:Core/Src/Os.c **** 
-  23:Core/Src/Os.c **** }
-  95              		.loc 1 23 1 view .LVU7
-  96              		@ sp needed
-  97 0000 7047     		bx	lr
-  98              		.cfi_endproc
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cczHekof.s 			page 3
+  94 0000 10B5     		push	{r4, lr}
+  95              	.LCFI0:
+  96              		.cfi_def_cfa_offset 8
+  97              		.cfi_offset 4, -8
+  98              		.cfi_offset 14, -4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s 			page 3
 
 
-  99              	.LFE43:
- 101              		.section	.text.Os_100ms_Task,"ax",%progbits
- 102              		.align	1
- 103              		.global	Os_100ms_Task
- 104              		.syntax unified
- 105              		.code	16
- 106              		.thumb_func
- 107              		.fpu softvfp
- 109              	Os_100ms_Task:
- 110              	.LFB44:
-  24:Core/Src/Os.c **** 
-  25:Core/Src/Os.c **** void Os_100ms_Task(void)
-  26:Core/Src/Os.c **** {
- 111              		.loc 1 26 1 view -0
- 112              		.cfi_startproc
- 113              		@ args = 0, pretend = 0, frame = 0
- 114              		@ frame_needed = 0, uses_anonymous_args = 0
- 115 0000 10B5     		push	{r4, lr}
- 116              	.LCFI0:
- 117              		.cfi_def_cfa_offset 8
- 118              		.cfi_offset 4, -8
- 119              		.cfi_offset 14, -4
-  27:Core/Src/Os.c **** 	LED_Control();
- 120              		.loc 1 27 2 view .LVU9
- 121 0002 FFF7FEFF 		bl	LED_Control
- 122              	.LVL0:
-  28:Core/Src/Os.c **** }
- 123              		.loc 1 28 1 is_stmt 0 view .LVU10
- 124              		@ sp needed
- 125 0006 10BD     		pop	{r4, pc}
- 126              		.cfi_endproc
- 127              	.LFE44:
- 129              		.section	.text.Os_1000ms_Task,"ax",%progbits
- 130              		.align	1
- 131              		.global	Os_1000ms_Task
- 132              		.syntax unified
- 133              		.code	16
- 134              		.thumb_func
- 135              		.fpu softvfp
- 137              	Os_1000ms_Task:
- 138              	.LFB45:
-  29:Core/Src/Os.c **** 
-  30:Core/Src/Os.c **** void Os_1000ms_Task(void)
-  31:Core/Src/Os.c **** {
- 139              		.loc 1 31 1 is_stmt 1 view -0
- 140              		.cfi_startproc
- 141              		@ args = 0, pretend = 0, frame = 0
- 142              		@ frame_needed = 0, uses_anonymous_args = 0
- 143              		@ link register save eliminated.
-  32:Core/Src/Os.c **** 
-  33:Core/Src/Os.c **** }
- 144              		.loc 1 33 1 view .LVU12
- 145              		@ sp needed
- 146 0000 7047     		bx	lr
- 147              		.cfi_endproc
- 148              	.LFE45:
- 150              		.global	__aeabi_uidivmod
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cczHekof.s 			page 4
+  24:Core/Src/Os.c **** 	Switch_Control();
+  99              		.loc 1 24 2 view .LVU7
+ 100 0002 FFF7FEFF 		bl	Switch_Control
+ 101              	.LVL0:
+  25:Core/Src/Os.c **** }
+ 102              		.loc 1 25 1 is_stmt 0 view .LVU8
+ 103              		@ sp needed
+ 104 0006 10BD     		pop	{r4, pc}
+ 105              		.cfi_endproc
+ 106              	.LFE43:
+ 108              		.section	.text.Os_100ms_Task,"ax",%progbits
+ 109              		.align	1
+ 110              		.global	Os_100ms_Task
+ 111              		.syntax unified
+ 112              		.code	16
+ 113              		.thumb_func
+ 114              		.fpu softvfp
+ 116              	Os_100ms_Task:
+ 117              	.LFB44:
+  26:Core/Src/Os.c **** 
+  27:Core/Src/Os.c **** void Os_100ms_Task(void)
+  28:Core/Src/Os.c **** {
+ 118              		.loc 1 28 1 is_stmt 1 view -0
+ 119              		.cfi_startproc
+ 120              		@ args = 0, pretend = 0, frame = 0
+ 121              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122 0000 10B5     		push	{r4, lr}
+ 123              	.LCFI1:
+ 124              		.cfi_def_cfa_offset 8
+ 125              		.cfi_offset 4, -8
+ 126              		.cfi_offset 14, -4
+  29:Core/Src/Os.c **** 	LED_Control();
+ 127              		.loc 1 29 2 view .LVU10
+ 128 0002 FFF7FEFF 		bl	LED_Control
+ 129              	.LVL1:
+  30:Core/Src/Os.c **** }
+ 130              		.loc 1 30 1 is_stmt 0 view .LVU11
+ 131              		@ sp needed
+ 132 0006 10BD     		pop	{r4, pc}
+ 133              		.cfi_endproc
+ 134              	.LFE44:
+ 136              		.section	.text.Os_1000ms_Task,"ax",%progbits
+ 137              		.align	1
+ 138              		.global	Os_1000ms_Task
+ 139              		.syntax unified
+ 140              		.code	16
+ 141              		.thumb_func
+ 142              		.fpu softvfp
+ 144              	Os_1000ms_Task:
+ 145              	.LFB45:
+  31:Core/Src/Os.c **** 
+  32:Core/Src/Os.c **** void Os_1000ms_Task(void)
+  33:Core/Src/Os.c **** {
+ 146              		.loc 1 33 1 is_stmt 1 view -0
+ 147              		.cfi_startproc
+ 148              		@ args = 0, pretend = 0, frame = 0
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s 			page 4
 
 
- 151              		.section	.text.Os_Handler,"ax",%progbits
- 152              		.align	1
- 153              		.global	Os_Handler
- 154              		.syntax unified
- 155              		.code	16
- 156              		.thumb_func
- 157              		.fpu softvfp
- 159              	Os_Handler:
- 160              	.LFB46:
+ 150              		@ link register save eliminated.
   34:Core/Src/Os.c **** 
-  35:Core/Src/Os.c **** void Os_Handler(void)
-  36:Core/Src/Os.c **** {
- 161              		.loc 1 36 1 view -0
- 162              		.cfi_startproc
- 163              		@ args = 0, pretend = 0, frame = 0
- 164              		@ frame_needed = 0, uses_anonymous_args = 0
- 165 0000 10B5     		push	{r4, lr}
- 166              	.LCFI1:
- 167              		.cfi_def_cfa_offset 8
- 168              		.cfi_offset 4, -8
- 169              		.cfi_offset 14, -4
-  37:Core/Src/Os.c **** 	if(Os_Counter.Os_1ms_Counter % 1 == 0)
- 170              		.loc 1 37 2 view .LVU14
-  38:Core/Src/Os.c **** 	{
-  39:Core/Src/Os.c **** 		(void)Os_1ms_Task();
- 171              		.loc 1 39 3 view .LVU15
-  40:Core/Src/Os.c **** 		Os_Counter.Os_1ms_Counter++;
- 172              		.loc 1 40 3 view .LVU16
- 173              		.loc 1 40 13 is_stmt 0 view .LVU17
- 174 0002 194B     		ldr	r3, .L13
- 175              		.loc 1 40 28 view .LVU18
- 176 0004 1A68     		ldr	r2, [r3]
- 177 0006 541C     		adds	r4, r2, #1
- 178 0008 1C60     		str	r4, [r3]
-  41:Core/Src/Os.c **** 	}
-  42:Core/Src/Os.c **** 	if(Os_Counter.Os_1ms_Counter % 5 == 0)
- 179              		.loc 1 42 2 is_stmt 1 view .LVU19
- 180              		.loc 1 42 31 is_stmt 0 view .LVU20
- 181 000a 0521     		movs	r1, #5
- 182 000c 2000     		movs	r0, r4
- 183 000e FFF7FEFF 		bl	__aeabi_uidivmod
- 184              	.LVL1:
- 185              		.loc 1 42 4 view .LVU21
- 186 0012 0029     		cmp	r1, #0
- 187 0014 03D1     		bne	.L8
-  43:Core/Src/Os.c **** 	{
-  44:Core/Src/Os.c **** 		(void)Os_5ms_Task();
- 188              		.loc 1 44 3 is_stmt 1 view .LVU22
-  45:Core/Src/Os.c **** 		Os_Counter.Os_5ms_Counter++;
- 189              		.loc 1 45 3 view .LVU23
- 190              		.loc 1 45 13 is_stmt 0 view .LVU24
- 191 0016 144A     		ldr	r2, .L13
- 192              		.loc 1 45 28 view .LVU25
- 193 0018 5368     		ldr	r3, [r2, #4]
- 194 001a 0133     		adds	r3, r3, #1
- 195 001c 5360     		str	r3, [r2, #4]
- 196              	.L8:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cczHekof.s 			page 5
+  35:Core/Src/Os.c **** }
+ 151              		.loc 1 35 1 view .LVU13
+ 152              		@ sp needed
+ 153 0000 7047     		bx	lr
+ 154              		.cfi_endproc
+ 155              	.LFE45:
+ 157              		.global	__aeabi_uidivmod
+ 158              		.section	.text.Os_Handler,"ax",%progbits
+ 159              		.align	1
+ 160              		.global	Os_Handler
+ 161              		.syntax unified
+ 162              		.code	16
+ 163              		.thumb_func
+ 164              		.fpu softvfp
+ 166              	Os_Handler:
+ 167              	.LFB46:
+  36:Core/Src/Os.c **** 
+  37:Core/Src/Os.c **** void Os_Handler(void)
+  38:Core/Src/Os.c **** {
+ 168              		.loc 1 38 1 view -0
+ 169              		.cfi_startproc
+ 170              		@ args = 0, pretend = 0, frame = 0
+ 171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 172 0000 10B5     		push	{r4, lr}
+ 173              	.LCFI2:
+ 174              		.cfi_def_cfa_offset 8
+ 175              		.cfi_offset 4, -8
+ 176              		.cfi_offset 14, -4
+  39:Core/Src/Os.c **** 	if(Os_Counter.Os_1ms_Counter % 1 == 0)
+ 177              		.loc 1 39 2 view .LVU15
+  40:Core/Src/Os.c **** 	{
+  41:Core/Src/Os.c **** 		(void)Os_1ms_Task();
+ 178              		.loc 1 41 3 view .LVU16
+  42:Core/Src/Os.c **** 		Os_Counter.Os_1ms_Counter++;
+ 179              		.loc 1 42 3 view .LVU17
+ 180              		.loc 1 42 13 is_stmt 0 view .LVU18
+ 181 0002 1B4B     		ldr	r3, .L14
+ 182              		.loc 1 42 28 view .LVU19
+ 183 0004 1A68     		ldr	r2, [r3]
+ 184 0006 541C     		adds	r4, r2, #1
+ 185 0008 1C60     		str	r4, [r3]
+  43:Core/Src/Os.c **** 	}
+  44:Core/Src/Os.c **** 	if(Os_Counter.Os_1ms_Counter % 5 == 0)
+ 186              		.loc 1 44 2 is_stmt 1 view .LVU20
+ 187              		.loc 1 44 31 is_stmt 0 view .LVU21
+ 188 000a 0521     		movs	r1, #5
+ 189 000c 2000     		movs	r0, r4
+ 190 000e FFF7FEFF 		bl	__aeabi_uidivmod
+ 191              	.LVL2:
+ 192              		.loc 1 44 4 view .LVU22
+ 193 0012 0029     		cmp	r1, #0
+ 194 0014 03D1     		bne	.L8
+  45:Core/Src/Os.c **** 	{
+  46:Core/Src/Os.c **** 		(void)Os_5ms_Task();
+ 195              		.loc 1 46 3 is_stmt 1 view .LVU23
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s 			page 5
 
 
-  46:Core/Src/Os.c **** 	}
-  47:Core/Src/Os.c **** 	if(Os_Counter.Os_1ms_Counter % 10 == 0)
- 197              		.loc 1 47 2 is_stmt 1 view .LVU26
- 198              		.loc 1 47 31 is_stmt 0 view .LVU27
- 199 001e 0A21     		movs	r1, #10
- 200 0020 2000     		movs	r0, r4
- 201 0022 FFF7FEFF 		bl	__aeabi_uidivmod
- 202              	.LVL2:
- 203              		.loc 1 47 4 view .LVU28
- 204 0026 0029     		cmp	r1, #0
- 205 0028 03D1     		bne	.L9
-  48:Core/Src/Os.c **** 	{
-  49:Core/Src/Os.c **** 		(void)Os_10ms_Task();
- 206              		.loc 1 49 3 is_stmt 1 view .LVU29
-  50:Core/Src/Os.c **** 		Os_Counter.Os_10ms_Counter++;
- 207              		.loc 1 50 3 view .LVU30
- 208              		.loc 1 50 13 is_stmt 0 view .LVU31
- 209 002a 0F4A     		ldr	r2, .L13
- 210              		.loc 1 50 29 view .LVU32
- 211 002c 9368     		ldr	r3, [r2, #8]
- 212 002e 0133     		adds	r3, r3, #1
- 213 0030 9360     		str	r3, [r2, #8]
- 214              	.L9:
-  51:Core/Src/Os.c **** 	}
-  52:Core/Src/Os.c **** 	if(Os_Counter.Os_1ms_Counter % 100 == 0)
- 215              		.loc 1 52 2 is_stmt 1 view .LVU33
- 216              		.loc 1 52 31 is_stmt 0 view .LVU34
- 217 0032 6421     		movs	r1, #100
- 218 0034 2000     		movs	r0, r4
- 219 0036 FFF7FEFF 		bl	__aeabi_uidivmod
- 220              	.LVL3:
- 221              		.loc 1 52 4 view .LVU35
- 222 003a 0029     		cmp	r1, #0
- 223 003c 0CD0     		beq	.L12
- 224              	.L10:
-  53:Core/Src/Os.c **** 	{
-  54:Core/Src/Os.c **** 		(void)Os_100ms_Task();
-  55:Core/Src/Os.c **** 		Os_Counter.Os_100ms_Counter++;
-  56:Core/Src/Os.c **** 	}
-  57:Core/Src/Os.c **** 	if(Os_Counter.Os_1ms_Counter % 1000 == 0)
- 225              		.loc 1 57 2 is_stmt 1 view .LVU36
- 226              		.loc 1 57 15 is_stmt 0 view .LVU37
- 227 003e 0A4B     		ldr	r3, .L13
- 228 0040 1868     		ldr	r0, [r3]
- 229              		.loc 1 57 31 view .LVU38
- 230 0042 FA21     		movs	r1, #250
- 231 0044 8900     		lsls	r1, r1, #2
- 232 0046 FFF7FEFF 		bl	__aeabi_uidivmod
- 233              	.LVL4:
- 234              		.loc 1 57 4 view .LVU39
- 235 004a 0029     		cmp	r1, #0
- 236 004c 03D1     		bne	.L7
-  58:Core/Src/Os.c **** 	{
-  59:Core/Src/Os.c **** 		(void)Os_1000ms_Task();
- 237              		.loc 1 59 3 is_stmt 1 view .LVU40
-  60:Core/Src/Os.c **** 		Os_Counter.Os_1000ms_Counter++;
- 238              		.loc 1 60 3 view .LVU41
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cczHekof.s 			page 6
+  47:Core/Src/Os.c **** 		Os_Counter.Os_5ms_Counter++;
+ 196              		.loc 1 47 3 view .LVU24
+ 197              		.loc 1 47 13 is_stmt 0 view .LVU25
+ 198 0016 164A     		ldr	r2, .L14
+ 199              		.loc 1 47 28 view .LVU26
+ 200 0018 5368     		ldr	r3, [r2, #4]
+ 201 001a 0133     		adds	r3, r3, #1
+ 202 001c 5360     		str	r3, [r2, #4]
+ 203              	.L8:
+  48:Core/Src/Os.c **** 	}
+  49:Core/Src/Os.c **** 	if(Os_Counter.Os_1ms_Counter % 10 == 0)
+ 204              		.loc 1 49 2 is_stmt 1 view .LVU27
+ 205              		.loc 1 49 31 is_stmt 0 view .LVU28
+ 206 001e 0A21     		movs	r1, #10
+ 207 0020 2000     		movs	r0, r4
+ 208 0022 FFF7FEFF 		bl	__aeabi_uidivmod
+ 209              	.LVL3:
+ 210              		.loc 1 49 4 view .LVU29
+ 211 0026 0029     		cmp	r1, #0
+ 212 0028 13D0     		beq	.L12
+ 213              	.L9:
+  50:Core/Src/Os.c **** 	{
+  51:Core/Src/Os.c **** 		(void)Os_10ms_Task();
+  52:Core/Src/Os.c **** 		Os_Counter.Os_10ms_Counter++;
+  53:Core/Src/Os.c **** 	}
+  54:Core/Src/Os.c **** 	if(Os_Counter.Os_1ms_Counter % 100 == 0)
+ 214              		.loc 1 54 2 is_stmt 1 view .LVU30
+ 215              		.loc 1 54 15 is_stmt 0 view .LVU31
+ 216 002a 114B     		ldr	r3, .L14
+ 217 002c 1868     		ldr	r0, [r3]
+ 218              		.loc 1 54 31 view .LVU32
+ 219 002e 6421     		movs	r1, #100
+ 220 0030 FFF7FEFF 		bl	__aeabi_uidivmod
+ 221              	.LVL4:
+ 222              		.loc 1 54 4 view .LVU33
+ 223 0034 0029     		cmp	r1, #0
+ 224 0036 13D0     		beq	.L13
+ 225              	.L10:
+  55:Core/Src/Os.c **** 	{
+  56:Core/Src/Os.c **** 		(void)Os_100ms_Task();
+  57:Core/Src/Os.c **** 		Os_Counter.Os_100ms_Counter++;
+  58:Core/Src/Os.c **** 	}
+  59:Core/Src/Os.c **** 	if(Os_Counter.Os_1ms_Counter % 1000 == 0)
+ 226              		.loc 1 59 2 is_stmt 1 view .LVU34
+ 227              		.loc 1 59 15 is_stmt 0 view .LVU35
+ 228 0038 0D4B     		ldr	r3, .L14
+ 229 003a 1868     		ldr	r0, [r3]
+ 230              		.loc 1 59 31 view .LVU36
+ 231 003c FA21     		movs	r1, #250
+ 232 003e 8900     		lsls	r1, r1, #2
+ 233 0040 FFF7FEFF 		bl	__aeabi_uidivmod
+ 234              	.LVL5:
+ 235              		.loc 1 59 4 view .LVU37
+ 236 0044 0029     		cmp	r1, #0
+ 237 0046 03D1     		bne	.L7
+  60:Core/Src/Os.c **** 	{
+  61:Core/Src/Os.c **** 		(void)Os_1000ms_Task();
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s 			page 6
 
 
- 239              		.loc 1 60 13 is_stmt 0 view .LVU42
- 240 004e 064A     		ldr	r2, .L13
- 241              		.loc 1 60 31 view .LVU43
- 242 0050 1369     		ldr	r3, [r2, #16]
- 243 0052 0133     		adds	r3, r3, #1
- 244 0054 1361     		str	r3, [r2, #16]
-  61:Core/Src/Os.c **** 	}
-  62:Core/Src/Os.c **** 
-  63:Core/Src/Os.c ****     return;
- 245              		.loc 1 63 5 is_stmt 1 view .LVU44
- 246              	.L7:
-  64:Core/Src/Os.c **** }...
- 247              		.loc 1 64 1 is_stmt 0 view .LVU45
- 248              		@ sp needed
- 249 0056 10BD     		pop	{r4, pc}
- 250              	.L12:
-  54:Core/Src/Os.c **** 		(void)Os_100ms_Task();
- 251              		.loc 1 54 3 is_stmt 1 view .LVU46
- 252 0058 FFF7FEFF 		bl	Os_100ms_Task
- 253              	.LVL5:
-  55:Core/Src/Os.c **** 		Os_Counter.Os_100ms_Counter++;
- 254              		.loc 1 55 3 view .LVU47
-  55:Core/Src/Os.c **** 		Os_Counter.Os_100ms_Counter++;
- 255              		.loc 1 55 13 is_stmt 0 view .LVU48
- 256 005c 024A     		ldr	r2, .L13
-  55:Core/Src/Os.c **** 		Os_Counter.Os_100ms_Counter++;
- 257              		.loc 1 55 30 view .LVU49
- 258 005e D368     		ldr	r3, [r2, #12]
- 259 0060 0133     		adds	r3, r3, #1
- 260 0062 D360     		str	r3, [r2, #12]
- 261 0064 EBE7     		b	.L10
- 262              	.L14:
- 263 0066 C046     		.align	2
- 264              	.L13:
- 265 0068 00000000 		.word	.LANCHOR0
- 266              		.cfi_endproc
- 267              	.LFE46:
- 269              		.global	Os_Counter
- 270              		.section	.bss.Os_Counter,"aw",%nobits
- 271              		.align	2
- 272              		.set	.LANCHOR0,. + 0
- 275              	Os_Counter:
- 276 0000 00000000 		.space	20
- 276      00000000 
- 276      00000000 
- 276      00000000 
- 276      00000000 
- 277              		.text
- 278              	.Letext0:
- 279              		.file 2 "Core/Inc/Os.h"
- 280              		.file 3 "Core/Inc/vardef.h"
- 281              		.file 4 "Core/Inc/led.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cczHekof.s 			page 7
+ 238              		.loc 1 61 3 is_stmt 1 view .LVU38
+  62:Core/Src/Os.c **** 		Os_Counter.Os_1000ms_Counter++;
+ 239              		.loc 1 62 3 view .LVU39
+ 240              		.loc 1 62 13 is_stmt 0 view .LVU40
+ 241 0048 094A     		ldr	r2, .L14
+ 242              		.loc 1 62 31 view .LVU41
+ 243 004a 1369     		ldr	r3, [r2, #16]
+ 244 004c 0133     		adds	r3, r3, #1
+ 245 004e 1361     		str	r3, [r2, #16]
+  63:Core/Src/Os.c **** 	}
+  64:Core/Src/Os.c **** 
+  65:Core/Src/Os.c ****     return;
+ 246              		.loc 1 65 5 is_stmt 1 view .LVU42
+ 247              	.L7:
+  66:Core/Src/Os.c **** }...
+ 248              		.loc 1 66 1 is_stmt 0 view .LVU43
+ 249              		@ sp needed
+ 250 0050 10BD     		pop	{r4, pc}
+ 251              	.L12:
+  51:Core/Src/Os.c **** 		(void)Os_10ms_Task();
+ 252              		.loc 1 51 3 is_stmt 1 view .LVU44
+ 253 0052 FFF7FEFF 		bl	Os_10ms_Task
+ 254              	.LVL6:
+  52:Core/Src/Os.c **** 		Os_Counter.Os_10ms_Counter++;
+ 255              		.loc 1 52 3 view .LVU45
+  52:Core/Src/Os.c **** 		Os_Counter.Os_10ms_Counter++;
+ 256              		.loc 1 52 13 is_stmt 0 view .LVU46
+ 257 0056 064A     		ldr	r2, .L14
+  52:Core/Src/Os.c **** 		Os_Counter.Os_10ms_Counter++;
+ 258              		.loc 1 52 29 view .LVU47
+ 259 0058 9368     		ldr	r3, [r2, #8]
+ 260 005a 0133     		adds	r3, r3, #1
+ 261 005c 9360     		str	r3, [r2, #8]
+ 262 005e E4E7     		b	.L9
+ 263              	.L13:
+  56:Core/Src/Os.c **** 		(void)Os_100ms_Task();
+ 264              		.loc 1 56 3 is_stmt 1 view .LVU48
+ 265 0060 FFF7FEFF 		bl	Os_100ms_Task
+ 266              	.LVL7:
+  57:Core/Src/Os.c **** 		Os_Counter.Os_100ms_Counter++;
+ 267              		.loc 1 57 3 view .LVU49
+  57:Core/Src/Os.c **** 		Os_Counter.Os_100ms_Counter++;
+ 268              		.loc 1 57 13 is_stmt 0 view .LVU50
+ 269 0064 024A     		ldr	r2, .L14
+  57:Core/Src/Os.c **** 		Os_Counter.Os_100ms_Counter++;
+ 270              		.loc 1 57 30 view .LVU51
+ 271 0066 D368     		ldr	r3, [r2, #12]
+ 272 0068 0133     		adds	r3, r3, #1
+ 273 006a D360     		str	r3, [r2, #12]
+ 274 006c E4E7     		b	.L10
+ 275              	.L15:
+ 276 006e C046     		.align	2
+ 277              	.L14:
+ 278 0070 00000000 		.word	.LANCHOR0
+ 279              		.cfi_endproc
+ 280              	.LFE46:
+ 282              		.global	Os_Counter
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s 			page 7
+
+
+ 283              		.section	.bss.Os_Counter,"aw",%nobits
+ 284              		.align	2
+ 285              		.set	.LANCHOR0,. + 0
+ 288              	Os_Counter:
+ 289 0000 00000000 		.space	20
+ 289      00000000 
+ 289      00000000 
+ 289      00000000 
+ 289      00000000 
+ 290              		.text
+ 291              	.Letext0:
+ 292              		.file 2 "Core/Inc/Os.h"
+ 293              		.file 3 "Core/Inc/vardef.h"
+ 294              		.file 4 "Core/Inc/led.h"
+ 295              		.file 5 "Core/Inc/switch.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Os.c
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:16     .text.Os_Init_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:24     .text.Os_Init_Task:00000000 Os_Init_Task
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:39     .text.Os_1ms_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:46     .text.Os_1ms_Task:00000000 Os_1ms_Task
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:60     .text.Os_5ms_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:67     .text.Os_5ms_Task:00000000 Os_5ms_Task
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:81     .text.Os_10ms_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:88     .text.Os_10ms_Task:00000000 Os_10ms_Task
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:102    .text.Os_100ms_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:109    .text.Os_100ms_Task:00000000 Os_100ms_Task
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:130    .text.Os_1000ms_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:137    .text.Os_1000ms_Task:00000000 Os_1000ms_Task
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:152    .text.Os_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:159    .text.Os_Handler:00000000 Os_Handler
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:265    .text.Os_Handler:00000068 $d
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:275    .bss.Os_Counter:00000000 Os_Counter
-C:\Users\jisu8\AppData\Local\Temp\cczHekof.s:271    .bss.Os_Counter:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:16     .text.Os_Init_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:24     .text.Os_Init_Task:00000000 Os_Init_Task
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:39     .text.Os_1ms_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:46     .text.Os_1ms_Task:00000000 Os_1ms_Task
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:60     .text.Os_5ms_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:67     .text.Os_5ms_Task:00000000 Os_5ms_Task
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:81     .text.Os_10ms_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:88     .text.Os_10ms_Task:00000000 Os_10ms_Task
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:109    .text.Os_100ms_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:116    .text.Os_100ms_Task:00000000 Os_100ms_Task
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:137    .text.Os_1000ms_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:144    .text.Os_1000ms_Task:00000000 Os_1000ms_Task
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:159    .text.Os_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:166    .text.Os_Handler:00000000 Os_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:278    .text.Os_Handler:00000070 $d
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:288    .bss.Os_Counter:00000000 Os_Counter
+C:\Users\jisu8\AppData\Local\Temp\ccYoYlTh.s:284    .bss.Os_Counter:00000000 $d
 
 UNDEFINED SYMBOLS
+Switch_Control
 LED_Control
 __aeabi_uidivmod
