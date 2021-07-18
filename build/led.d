@@ -1,5 +1,5 @@
-build/Os.o: Core/Src/Os.c Core/Inc/Os.h Core/Inc/vardef.h Core/Inc/led.h \
- Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h \
+build/led.o: Core/Src/led.c Core/Inc/led.h Core/Inc/main.h \
+ Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h \
  Core/Inc/stm32f0xx_hal_conf.h \
  Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h \
  Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h \
@@ -25,9 +25,8 @@ build/Os.o: Core/Src/Os.c Core/Inc/Os.h Core/Inc/vardef.h Core/Inc/led.h \
  Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h \
  Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
- Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h
-Core/Inc/Os.h:
-Core/Inc/vardef.h:
+ Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
+ Core/Inc/vardef.h
 Core/Inc/led.h:
 Core/Inc/main.h:
 Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
@@ -59,3 +58,4 @@ Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h:
 Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h:
 Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
 Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
+Core/Inc/vardef.h:

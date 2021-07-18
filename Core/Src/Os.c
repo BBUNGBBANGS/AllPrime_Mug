@@ -1,4 +1,6 @@
 #include "Os.h"
+#include "led.h"
+Os_Counter_t Os_Counter;
 
 void Os_Init_Task(void)
 {
@@ -22,14 +24,14 @@ void Os_10ms_Task(void)
 
 void Os_100ms_Task(void)
 {
-
+	LED_Control();
 }
 
 void Os_1000ms_Task(void)
 {
 
 }
-Os_Counter_t Os_Counter;
+
 void Os_Handler(void)
 {
 	if(Os_Counter.Os_1ms_Counter % 1 == 0)
