@@ -56,11 +56,12 @@ Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c \
-Core/Src/system_stm32f0xx.c  
+Core/Src/system_stm32f0xx.c \
+startup_stm32f030x6.c
 
 # ASM sources
 ASM_SOURCES =  \
-startup_stm32f030x6.s
+#startup_stm32f030x6.s
 
 
 #######################################

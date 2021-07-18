@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
   31:Core/Src/main.c **** /* USER CODE END PTD */
   32:Core/Src/main.c **** 
   33:Core/Src/main.c **** /* Private define ------------------------------------------------------------*/
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 2
 
 
   34:Core/Src/main.c **** /* USER CODE BEGIN PD */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
   88:Core/Src/main.c ****   /* Initialize all configured peripherals */
   89:Core/Src/main.c ****   MX_GPIO_Init();
   90:Core/Src/main.c ****   MX_ADC_Init();
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 3
 
 
   91:Core/Src/main.c ****   /* USER CODE BEGIN 2 */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  145:Core/Src/main.c **** /**
  146:Core/Src/main.c ****   * @brief ADC Initialization Function
  147:Core/Src/main.c ****   * @param None
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 4
 
 
  148:Core/Src/main.c ****   * @retval None
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  202:Core/Src/main.c **** static void MX_GPIO_Init(void)
  203:Core/Src/main.c **** {
   26              		.loc 1 203 1 view -0
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 5
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 5
 
 
   27              		.cfi_startproc
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
   76              		.loc 1 208 3 view .LVU11
   77 0028 5969     		ldr	r1, [r3, #20]
   78 002a 8020     		movs	r0, #128
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 6
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 6
 
 
   79 002c 8002     		lsls	r0, r0, #10
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  217:Core/Src/main.c ****   /*Configure GPIO pin Output Level */
  218:Core/Src/main.c ****   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12|GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_RESET);
  125              		.loc 1 218 3 view .LVU23
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 7
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 7
 
 
  126 006c 364B     		ldr	r3, .L2+8
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  166              		.loc 1 232 3 is_stmt 1 view .LVU41
  167 009a 03A9     		add	r1, sp, #12
  168 009c 3800     		movs	r0, r7
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 8
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 8
 
 
  169 009e FFF7FEFF 		bl	HAL_GPIO_Init
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  207 00c6 3800     		movs	r0, r7
  208 00c8 FFF7FEFF 		bl	HAL_GPIO_Init
  209              	.LVL7:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 9
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 9
 
 
  249:Core/Src/main.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  247              		.loc 1 265 3 view .LVU78
  248              		.loc 1 265 23 is_stmt 0 view .LVU79
  249 00f2 C023     		movs	r3, #192
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 10
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 10
 
 
  250 00f4 1B01     		lsls	r3, r3, #4
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  289              		.loc 1 280 3 view .LVU98
  290              		.loc 1 280 23 is_stmt 0 view .LVU99
  291 011e 8023     		movs	r3, #128
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 11
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 11
 
 
  292 0120 1B02     		lsls	r3, r3, #8
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  289:Core/Src/main.c **** /* USER CODE BEGIN 4 */
  290:Core/Src/main.c **** 
  291:Core/Src/main.c **** /* USER CODE END 4 */
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 12
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 12
 
 
  292:Core/Src/main.c **** 
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
   35:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __has_builtin
   36:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
   37:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 13
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 13
 
 
   38:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
   92:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
   93:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   94:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 14
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 14
 
 
   95:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  356              	@ 0 "" 2
  357              		.thumb
  358              		.syntax unified
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 15
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 15
 
 
  359              	.L5:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  404 0016 4360     		str	r3, [r0, #4]
  166:Core/Src/main.c ****   hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
  405              		.loc 1 166 3 is_stmt 1 view .LVU124
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 16
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 16
 
 
  166:Core/Src/main.c ****   hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  176:Core/Src/main.c ****   hadc.Init.Overrun = ADC_OVR_DATA_PRESERVED;
  440              		.loc 1 176 35 is_stmt 0 view .LVU145
  441 0034 9E39     		subs	r1, r1, #158
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 17
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 17
 
 
  442 0036 FF39     		subs	r1, r1, #255
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  481              	.L9:
  180:Core/Src/main.c ****   }
  482              		.loc 1 180 5 is_stmt 1 view .LVU161
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 18
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 18
 
 
  483 0064 FFF7FEFF 		bl	Error_Handler
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  533              	.LVL19:
  118:Core/Src/main.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
  534              		.loc 1 118 3 is_stmt 1 view .LVU168
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 19
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 19
 
 
  118:Core/Src/main.c ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  570              		.loc 1 133 3 is_stmt 1 view .LVU187
  133:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1;
  571              		.loc 1 133 31 is_stmt 0 view .LVU188
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 20
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 20
 
 
  572 003c 0723     		movs	r3, #7
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  615              		.fpu softvfp
  617              	main:
  618              	.LFB40:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 21
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 21
 
 
   67:Core/Src/main.c ****   /* USER CODE BEGIN 1 */
@@ -1258,31 +1258,31 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 1
  664              		.file 8 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h"
  665              		.file 9 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h"
  666              		.file 10 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 22
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 22
 
 
  667              		.file 11 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h"
  668              		.file 12 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h"
  669              		.file 13 "<built-in>"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s 			page 23
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:16     .text.MX_GPIO_Init:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:23     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:322    .text.MX_GPIO_Init:00000140 $d
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:331    .text.Error_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:338    .text.Error_Handler:00000000 Error_Handler
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:370    .text.MX_ADC_Init:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:376    .text.MX_ADC_Init:00000000 MX_ADC_Init
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:492    .text.MX_ADC_Init:0000006c $d
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:498    .text.SystemClock_Config:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:505    .text.SystemClock_Config:00000000 SystemClock_Config
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:610    .text.main:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:617    .text.main:00000000 main
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:655    .bss.hadc:00000000 hadc
-C:\Users\jisu8\AppData\Local\Temp\ccNHoo1c.s:651    .bss.hadc:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:16     .text.MX_GPIO_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:23     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:322    .text.MX_GPIO_Init:00000140 $d
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:331    .text.Error_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:338    .text.Error_Handler:00000000 Error_Handler
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:370    .text.MX_ADC_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:376    .text.MX_ADC_Init:00000000 MX_ADC_Init
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:492    .text.MX_ADC_Init:0000006c $d
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:498    .text.SystemClock_Config:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:505    .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:610    .text.main:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:617    .text.main:00000000 main
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:655    .bss.hadc:00000000 hadc
+C:\Users\jisu8\AppData\Local\Temp\cc7yt3Pm.s:651    .bss.hadc:00000000 $d
 
 UNDEFINED SYMBOLS
 memset
