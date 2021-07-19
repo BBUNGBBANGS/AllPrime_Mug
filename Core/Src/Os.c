@@ -1,6 +1,9 @@
-#include "Os.h"
+#include "os.h"
 #include "led.h"
 #include "switch.h"
+#include "oled.h"
+#include "ssd1306.h"
+#include "fonts.h"
 
 Os_Counter_t Os_Counter;
 

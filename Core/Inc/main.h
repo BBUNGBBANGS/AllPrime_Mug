@@ -53,6 +53,7 @@ extern "C" {
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 extern ADC_HandleTypeDef hadc;
+extern I2C_HandleTypeDef hi2c1;
 extern TIM_HandleTypeDef htim16;
 /* USER CODE BEGIN EFP */
 

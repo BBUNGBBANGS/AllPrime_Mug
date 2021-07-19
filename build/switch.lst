@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s 			page 1
   48              		.loc 1 8 5 is_stmt 1 view .LVU4
   49              		.loc 1 8 22 is_stmt 0 view .LVU5
   50 0014 8021     		movs	r1, #128
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s 			page 2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s 			page 2
 
 
   51 0016 0901     		lsls	r1, r1, #4
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s 			page 1
  103              		.set	.LANCHOR1,. + 0
  106              	switch_status2:
  107 0000 00       		.space	1
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s 			page 3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s 			page 3
 
 
  108              		.section	.bss.switch_status3,"aw",%nobits
@@ -136,22 +136,22 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s 			page 1
  124              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h"
  125              		.file 5 "Core/Inc/vardef.h"
  126              		.file 6 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s 			page 4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 switch.c
-C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s:16     .text.Switch_Control:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s:24     .text.Switch_Control:00000000 Switch_Control
-C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s:85     .text.Switch_Control:00000040 $d
-C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s:118    .bss.switch_status4:00000000 switch_status4
-C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s:112    .bss.switch_status3:00000000 switch_status3
-C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s:106    .bss.switch_status2:00000000 switch_status2
-C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s:100    .bss.switch_status1:00000000 switch_status1
-C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s:101    .bss.switch_status1:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s:107    .bss.switch_status2:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s:113    .bss.switch_status3:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccmlFHJx.s:119    .bss.switch_status4:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s:16     .text.Switch_Control:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s:24     .text.Switch_Control:00000000 Switch_Control
+C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s:85     .text.Switch_Control:00000040 $d
+C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s:118    .bss.switch_status4:00000000 switch_status4
+C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s:112    .bss.switch_status3:00000000 switch_status3
+C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s:106    .bss.switch_status2:00000000 switch_status2
+C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s:100    .bss.switch_status1:00000000 switch_status1
+C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s:101    .bss.switch_status1:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s:107    .bss.switch_status2:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s:113    .bss.switch_status3:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccgfHigz.s:119    .bss.switch_status4:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_ReadPin

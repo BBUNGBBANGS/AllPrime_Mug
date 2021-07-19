@@ -1,0 +1,355 @@
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 0
+  10              		.eabi_attribute 18, 4
+  11              		.file	"oled.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.OLED_Write_Command,"ax",%progbits
+  16              		.align	1
+  17              		.arch armv6s-m
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	OLED_Write_Command:
+  24              	.LVL0:
+  25              	.LFB41:
+  26              		.file 1 "Core/Src/oled.c"
+   1:Core/Src/oled.c **** #include "oled.h"
+   2:Core/Src/oled.c **** 
+   3:Core/Src/oled.c **** const uint8 OLED_InitSeq[23] = {0xAE,0xD5,0x80,0xA8,0x1F,0xD3,0x40,0x8D,0x10,0x20,0x00,0xA1,0xC8,0x
+   4:Core/Src/oled.c **** const uint8 OLED_FullRange[7] = {0x00,0x21,0x00,0x7F,0x22,0x00,0x07};
+   5:Core/Src/oled.c **** const uint8 OLED_A[5] = {0x40,0x7E,0x12,0x12,0x7E}; 
+   6:Core/Src/oled.c **** 
+   7:Core/Src/oled.c **** uint8 OLED_I2C_STAT;
+   8:Core/Src/oled.c **** 
+   9:Core/Src/oled.c **** static void OLED_Write_Command(uint8 cmd);
+  10:Core/Src/oled.c **** static void OLED_Write_Data(uint8 data);
+  11:Core/Src/oled.c **** static void OLED_Write_CharacterArray(uint8 Character,uint8 length);
+  12:Core/Src/oled.c **** static void OLED_Write_DataArray(uint8 *data,uint8 length);
+  13:Core/Src/oled.c **** 
+  14:Core/Src/oled.c **** void OLED_Init(void)
+  15:Core/Src/oled.c **** {
+  16:Core/Src/oled.c **** 	OLED_Write_Command(0xAE); //display off
+  17:Core/Src/oled.c **** 	OLED_Write_Command(0x20); //Set Memory Addressing Mode   
+  18:Core/Src/oled.c **** 	OLED_Write_Command(0x10); //00,Horizontal Addressing Mode;01,Vertical Addressing Mode;10,Page Addr
+  19:Core/Src/oled.c **** 	OLED_Write_Command(0xB0); //Set Page Start Address for Page Addressing Mode,0-7
+  20:Core/Src/oled.c **** 	OLED_Write_Command(0xC8); //Set COM Output Scan Direction
+  21:Core/Src/oled.c **** 	OLED_Write_Command(0x00); //---set low column address
+  22:Core/Src/oled.c **** 	OLED_Write_Command(0x10); //---set high column address
+  23:Core/Src/oled.c **** 	OLED_Write_Command(0x40); //--set start line address
+  24:Core/Src/oled.c **** 	OLED_Write_Command(0x81); //--set contrast control register
+  25:Core/Src/oled.c **** 	OLED_Write_Command(0xFF);
+  26:Core/Src/oled.c **** 	OLED_Write_Command(0xA1); //--set segment re-map 0 to 127
+  27:Core/Src/oled.c **** 	OLED_Write_Command(0xA6); //--set normal display
+  28:Core/Src/oled.c **** 	OLED_Write_Command(0xA8); //--set multiplex ratio(1 to 64)
+  29:Core/Src/oled.c **** 	OLED_Write_Command(0x3F); //
+  30:Core/Src/oled.c **** 	OLED_Write_Command(0xA4); //0xa4,Output follows RAM content;0xa5,Output ignores RAM content
+  31:Core/Src/oled.c **** 	OLED_Write_Command(0xD3); //-set display offset
+  32:Core/Src/oled.c **** 	OLED_Write_Command(0x00); //-not offset
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s 			page 2
+
+
+  33:Core/Src/oled.c **** 	OLED_Write_Command(0xD5); //--set display clock divide ratio/oscillator frequency
+  34:Core/Src/oled.c **** 	OLED_Write_Command(0xF0); //--set divide ratio
+  35:Core/Src/oled.c **** 	OLED_Write_Command(0xD9); //--set pre-charge period
+  36:Core/Src/oled.c **** 	OLED_Write_Command(0x22); //
+  37:Core/Src/oled.c **** 	OLED_Write_Command(0xDA); //--set com pins hardware configuration
+  38:Core/Src/oled.c **** 	OLED_Write_Command(0x12);
+  39:Core/Src/oled.c **** 	OLED_Write_Command(0xDB); //--set vcomh
+  40:Core/Src/oled.c **** 	OLED_Write_Command(0x20); //0x20,0.77xVcc
+  41:Core/Src/oled.c **** 	OLED_Write_Command(0x8D); //--set DC-DC enable
+  42:Core/Src/oled.c **** 	OLED_Write_Command(0x14); //
+  43:Core/Src/oled.c **** 	OLED_Write_Command(0xAF); //--turn on SSD1306 panel
+  44:Core/Src/oled.c **** }
+  45:Core/Src/oled.c **** void OLED_Write_Command(uint8 cmd)
+  46:Core/Src/oled.c **** {
+  27              		.loc 1 46 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		.loc 1 46 1 is_stmt 0 view .LVU1
+  32 0000 00B5     		push	{lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 14, -4
+  36 0002 85B0     		sub	sp, sp, #20
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 24
+  39 0004 0F22     		movs	r2, #15
+  40 0006 6A44     		add	r2, r2, sp
+  41 0008 1070     		strb	r0, [r2]
+  47:Core/Src/oled.c ****     OLED_I2C_STAT = HAL_I2C_Master_Transmit(&hi2c1,OLED_ADDRESS,&cmd,1,10);
+  42              		.loc 1 47 5 is_stmt 1 view .LVU2
+  43              		.loc 1 47 21 is_stmt 0 view .LVU3
+  44 000a 0A23     		movs	r3, #10
+  45 000c 0093     		str	r3, [sp]
+  46 000e 093B     		subs	r3, r3, #9
+  47 0010 7821     		movs	r1, #120
+  48 0012 0348     		ldr	r0, .L2
+  49              	.LVL1:
+  50              		.loc 1 47 21 view .LVU4
+  51 0014 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+  52              	.LVL2:
+  53              		.loc 1 47 19 view .LVU5
+  54 0018 024B     		ldr	r3, .L2+4
+  55 001a 1870     		strb	r0, [r3]
+  48:Core/Src/oled.c **** }
+  56              		.loc 1 48 1 view .LVU6
+  57 001c 05B0     		add	sp, sp, #20
+  58              		@ sp needed
+  59 001e 00BD     		pop	{pc}
+  60              	.L3:
+  61              		.align	2
+  62              	.L2:
+  63 0020 00000000 		.word	hi2c1
+  64 0024 00000000 		.word	.LANCHOR0
+  65              		.cfi_endproc
+  66              	.LFE41:
+  68              		.section	.text.OLED_Init,"ax",%progbits
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s 			page 3
+
+
+  69              		.align	1
+  70              		.global	OLED_Init
+  71              		.syntax unified
+  72              		.code	16
+  73              		.thumb_func
+  74              		.fpu softvfp
+  76              	OLED_Init:
+  77              	.LFB40:
+  15:Core/Src/oled.c **** 	OLED_Write_Command(0xAE); //display off
+  78              		.loc 1 15 1 is_stmt 1 view -0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82 0000 10B5     		push	{r4, lr}
+  83              	.LCFI2:
+  84              		.cfi_def_cfa_offset 8
+  85              		.cfi_offset 4, -8
+  86              		.cfi_offset 14, -4
+  16:Core/Src/oled.c **** 	OLED_Write_Command(0x20); //Set Memory Addressing Mode   
+  87              		.loc 1 16 2 view .LVU8
+  88 0002 AE20     		movs	r0, #174
+  89 0004 FFF7FEFF 		bl	OLED_Write_Command
+  90              	.LVL3:
+  17:Core/Src/oled.c **** 	OLED_Write_Command(0x10); //00,Horizontal Addressing Mode;01,Vertical Addressing Mode;10,Page Addr
+  91              		.loc 1 17 2 view .LVU9
+  92 0008 2020     		movs	r0, #32
+  93 000a FFF7FEFF 		bl	OLED_Write_Command
+  94              	.LVL4:
+  18:Core/Src/oled.c **** 	OLED_Write_Command(0xB0); //Set Page Start Address for Page Addressing Mode,0-7
+  95              		.loc 1 18 2 view .LVU10
+  96 000e 1020     		movs	r0, #16
+  97 0010 FFF7FEFF 		bl	OLED_Write_Command
+  98              	.LVL5:
+  19:Core/Src/oled.c **** 	OLED_Write_Command(0xC8); //Set COM Output Scan Direction
+  99              		.loc 1 19 2 view .LVU11
+ 100 0014 B020     		movs	r0, #176
+ 101 0016 FFF7FEFF 		bl	OLED_Write_Command
+ 102              	.LVL6:
+  20:Core/Src/oled.c **** 	OLED_Write_Command(0x00); //---set low column address
+ 103              		.loc 1 20 2 view .LVU12
+ 104 001a C820     		movs	r0, #200
+ 105 001c FFF7FEFF 		bl	OLED_Write_Command
+ 106              	.LVL7:
+  21:Core/Src/oled.c **** 	OLED_Write_Command(0x10); //---set high column address
+ 107              		.loc 1 21 2 view .LVU13
+ 108 0020 0020     		movs	r0, #0
+ 109 0022 FFF7FEFF 		bl	OLED_Write_Command
+ 110              	.LVL8:
+  22:Core/Src/oled.c **** 	OLED_Write_Command(0x40); //--set start line address
+ 111              		.loc 1 22 2 view .LVU14
+ 112 0026 1020     		movs	r0, #16
+ 113 0028 FFF7FEFF 		bl	OLED_Write_Command
+ 114              	.LVL9:
+  23:Core/Src/oled.c **** 	OLED_Write_Command(0x81); //--set contrast control register
+ 115              		.loc 1 23 2 view .LVU15
+ 116 002c 4020     		movs	r0, #64
+ 117 002e FFF7FEFF 		bl	OLED_Write_Command
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s 			page 4
+
+
+ 118              	.LVL10:
+  24:Core/Src/oled.c **** 	OLED_Write_Command(0xFF);
+ 119              		.loc 1 24 2 view .LVU16
+ 120 0032 8120     		movs	r0, #129
+ 121 0034 FFF7FEFF 		bl	OLED_Write_Command
+ 122              	.LVL11:
+  25:Core/Src/oled.c **** 	OLED_Write_Command(0xA1); //--set segment re-map 0 to 127
+ 123              		.loc 1 25 2 view .LVU17
+ 124 0038 FF20     		movs	r0, #255
+ 125 003a FFF7FEFF 		bl	OLED_Write_Command
+ 126              	.LVL12:
+  26:Core/Src/oled.c **** 	OLED_Write_Command(0xA6); //--set normal display
+ 127              		.loc 1 26 2 view .LVU18
+ 128 003e A120     		movs	r0, #161
+ 129 0040 FFF7FEFF 		bl	OLED_Write_Command
+ 130              	.LVL13:
+  27:Core/Src/oled.c **** 	OLED_Write_Command(0xA8); //--set multiplex ratio(1 to 64)
+ 131              		.loc 1 27 2 view .LVU19
+ 132 0044 A620     		movs	r0, #166
+ 133 0046 FFF7FEFF 		bl	OLED_Write_Command
+ 134              	.LVL14:
+  28:Core/Src/oled.c **** 	OLED_Write_Command(0x3F); //
+ 135              		.loc 1 28 2 view .LVU20
+ 136 004a A820     		movs	r0, #168
+ 137 004c FFF7FEFF 		bl	OLED_Write_Command
+ 138              	.LVL15:
+  29:Core/Src/oled.c **** 	OLED_Write_Command(0xA4); //0xa4,Output follows RAM content;0xa5,Output ignores RAM content
+ 139              		.loc 1 29 2 view .LVU21
+ 140 0050 3F20     		movs	r0, #63
+ 141 0052 FFF7FEFF 		bl	OLED_Write_Command
+ 142              	.LVL16:
+  30:Core/Src/oled.c **** 	OLED_Write_Command(0xD3); //-set display offset
+ 143              		.loc 1 30 2 view .LVU22
+ 144 0056 A420     		movs	r0, #164
+ 145 0058 FFF7FEFF 		bl	OLED_Write_Command
+ 146              	.LVL17:
+  31:Core/Src/oled.c **** 	OLED_Write_Command(0x00); //-not offset
+ 147              		.loc 1 31 2 view .LVU23
+ 148 005c D320     		movs	r0, #211
+ 149 005e FFF7FEFF 		bl	OLED_Write_Command
+ 150              	.LVL18:
+  32:Core/Src/oled.c **** 	OLED_Write_Command(0xD5); //--set display clock divide ratio/oscillator frequency
+ 151              		.loc 1 32 2 view .LVU24
+ 152 0062 0020     		movs	r0, #0
+ 153 0064 FFF7FEFF 		bl	OLED_Write_Command
+ 154              	.LVL19:
+  33:Core/Src/oled.c **** 	OLED_Write_Command(0xF0); //--set divide ratio
+ 155              		.loc 1 33 2 view .LVU25
+ 156 0068 D520     		movs	r0, #213
+ 157 006a FFF7FEFF 		bl	OLED_Write_Command
+ 158              	.LVL20:
+  34:Core/Src/oled.c **** 	OLED_Write_Command(0xD9); //--set pre-charge period
+ 159              		.loc 1 34 2 view .LVU26
+ 160 006e F020     		movs	r0, #240
+ 161 0070 FFF7FEFF 		bl	OLED_Write_Command
+ 162              	.LVL21:
+  35:Core/Src/oled.c **** 	OLED_Write_Command(0x22); //
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s 			page 5
+
+
+ 163              		.loc 1 35 2 view .LVU27
+ 164 0074 D920     		movs	r0, #217
+ 165 0076 FFF7FEFF 		bl	OLED_Write_Command
+ 166              	.LVL22:
+  36:Core/Src/oled.c **** 	OLED_Write_Command(0xDA); //--set com pins hardware configuration
+ 167              		.loc 1 36 2 view .LVU28
+ 168 007a 2220     		movs	r0, #34
+ 169 007c FFF7FEFF 		bl	OLED_Write_Command
+ 170              	.LVL23:
+  37:Core/Src/oled.c **** 	OLED_Write_Command(0x12);
+ 171              		.loc 1 37 2 view .LVU29
+ 172 0080 DA20     		movs	r0, #218
+ 173 0082 FFF7FEFF 		bl	OLED_Write_Command
+ 174              	.LVL24:
+  38:Core/Src/oled.c **** 	OLED_Write_Command(0xDB); //--set vcomh
+ 175              		.loc 1 38 2 view .LVU30
+ 176 0086 1220     		movs	r0, #18
+ 177 0088 FFF7FEFF 		bl	OLED_Write_Command
+ 178              	.LVL25:
+  39:Core/Src/oled.c **** 	OLED_Write_Command(0x20); //0x20,0.77xVcc
+ 179              		.loc 1 39 2 view .LVU31
+ 180 008c DB20     		movs	r0, #219
+ 181 008e FFF7FEFF 		bl	OLED_Write_Command
+ 182              	.LVL26:
+  40:Core/Src/oled.c **** 	OLED_Write_Command(0x8D); //--set DC-DC enable
+ 183              		.loc 1 40 2 view .LVU32
+ 184 0092 2020     		movs	r0, #32
+ 185 0094 FFF7FEFF 		bl	OLED_Write_Command
+ 186              	.LVL27:
+  41:Core/Src/oled.c **** 	OLED_Write_Command(0x14); //
+ 187              		.loc 1 41 2 view .LVU33
+ 188 0098 8D20     		movs	r0, #141
+ 189 009a FFF7FEFF 		bl	OLED_Write_Command
+ 190              	.LVL28:
+  42:Core/Src/oled.c **** 	OLED_Write_Command(0xAF); //--turn on SSD1306 panel
+ 191              		.loc 1 42 2 view .LVU34
+ 192 009e 1420     		movs	r0, #20
+ 193 00a0 FFF7FEFF 		bl	OLED_Write_Command
+ 194              	.LVL29:
+  43:Core/Src/oled.c **** }
+ 195              		.loc 1 43 2 view .LVU35
+ 196 00a4 AF20     		movs	r0, #175
+ 197 00a6 FFF7FEFF 		bl	OLED_Write_Command
+ 198              	.LVL30:
+  44:Core/Src/oled.c **** void OLED_Write_Command(uint8 cmd)
+ 199              		.loc 1 44 1 is_stmt 0 view .LVU36
+ 200              		@ sp needed
+ 201 00aa 10BD     		pop	{r4, pc}
+ 202              		.cfi_endproc
+ 203              	.LFE40:
+ 205              		.global	OLED_I2C_STAT
+ 206              		.global	OLED_A
+ 207              		.global	OLED_FullRange
+ 208              		.global	OLED_InitSeq
+ 209              		.section	.bss.OLED_I2C_STAT,"aw",%nobits
+ 210              		.set	.LANCHOR0,. + 0
+ 213              	OLED_I2C_STAT:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s 			page 6
+
+
+ 214 0000 00       		.space	1
+ 215              		.section	.rodata.OLED_A,"a"
+ 216              		.align	2
+ 219              	OLED_A:
+ 220 0000 407E1212 		.ascii	"@~\022\022~"
+ 220      7E
+ 221              		.section	.rodata.OLED_FullRange,"a"
+ 222              		.align	2
+ 225              	OLED_FullRange:
+ 226 0000 0021007F 		.ascii	"\000!\000\177\"\000\007"
+ 226      220007
+ 227              		.section	.rodata.OLED_InitSeq,"a"
+ 228              		.align	2
+ 231              	OLED_InitSeq:
+ 232 0000 AED580A8 		.ascii	"\256\325\200\250\037\323@\215\020 \000\241\310\332\002"
+ 232      1FD3408D 
+ 232      102000A1 
+ 232      C8DA02
+ 233 000f 818FD922 		.ascii	"\201\217\331\"\333@\244\246"
+ 233      DB40A4A6 
+ 234              		.text
+ 235              	.Letext0:
+ 236              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\machine\\_default_ty
+ 237              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 238              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h"
+ 239              		.file 5 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h"
+ 240              		.file 6 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h"
+ 241              		.file 7 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h"
+ 242              		.file 8 "Core/Inc/vardef.h"
+ 243              		.file 9 "Core/Inc/main.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 oled.c
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:16     .text.OLED_Write_Command:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:23     .text.OLED_Write_Command:00000000 OLED_Write_Command
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:63     .text.OLED_Write_Command:00000020 $d
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:69     .text.OLED_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:76     .text.OLED_Init:00000000 OLED_Init
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:213    .bss.OLED_I2C_STAT:00000000 OLED_I2C_STAT
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:219    .rodata.OLED_A:00000000 OLED_A
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:225    .rodata.OLED_FullRange:00000000 OLED_FullRange
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:231    .rodata.OLED_InitSeq:00000000 OLED_InitSeq
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:214    .bss.OLED_I2C_STAT:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:216    .rodata.OLED_A:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:222    .rodata.OLED_FullRange:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\cc4AT3BH.s:228    .rodata.OLED_InitSeq:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_I2C_Master_Transmit
+hi2c1

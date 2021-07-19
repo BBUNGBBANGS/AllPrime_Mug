@@ -39,9 +39,12 @@ C_SOURCES =  \
 Core/Src/main.c \
 Core/Src/stm32f0xx_it.c \
 Core/Src/stm32f0xx_hal_msp.c \
-Core/Src/Os.c \
+Core/Src/os.c \
 Core/Src/led.c \
 Core/Src/switch.c \
+Core/Src/oled.c \
+Core/Src/ssd1306.c \
+Core/Src/ssd1306_fonts.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc_ex.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c \

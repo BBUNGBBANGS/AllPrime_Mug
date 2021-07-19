@@ -1,5 +1,5 @@
-build/Os.o: Core/Src/Os.c Core/Inc/os.h Core/Inc/vardef.h Core/Inc/led.h \
- Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h \
+build/fonts.o: Core/Src/fonts.c Core/Inc/fonts.h \
+ Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h \
  Core/Inc/stm32f0xx_hal_conf.h \
  Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h \
  Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h \
@@ -25,13 +25,8 @@ build/Os.o: Core/Src/Os.c Core/Inc/os.h Core/Inc/vardef.h Core/Inc/led.h \
  Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h \
  Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
- Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
- Core/Inc/switch.h Core/Inc/oled.h Core/Inc/ssd1306.h \
- Core/Inc/ssd1306_fonts.h Core/Inc/fonts.h
-Core/Inc/os.h:
-Core/Inc/vardef.h:
-Core/Inc/led.h:
-Core/Inc/main.h:
+ Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h
+Core/Inc/fonts.h:
 Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
 Core/Inc/stm32f0xx_hal_conf.h:
 Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h:
@@ -61,8 +56,3 @@ Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h:
 Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h:
 Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
 Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
-Core/Inc/switch.h:
-Core/Inc/oled.h:
-Core/Inc/ssd1306.h:
-Core/Inc/ssd1306_fonts.h:
-Core/Inc/fonts.h:
