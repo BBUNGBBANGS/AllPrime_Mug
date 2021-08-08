@@ -1,6 +1,7 @@
 #include "switch.h"
 
 uint8 switch_status1,switch_status2,switch_status3,switch_status4;
+uint8 cup_in;
 
 void Switch_Control(void)
 {
@@ -8,6 +9,8 @@ void Switch_Control(void)
     switch_status2 = HAL_GPIO_ReadPin(SWITCH_GROUP_2,SWITCH_PIN_2);
     switch_status3 = HAL_GPIO_ReadPin(SWITCH_GROUP_3,SWITCH_PIN_3);
     switch_status4 = HAL_GPIO_ReadPin(SWITCH_GROUP_4,SWITCH_PIN_4);
+    cup_in = HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_3);
+    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
 
     return;
 }

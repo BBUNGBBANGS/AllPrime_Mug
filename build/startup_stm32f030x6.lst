@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -31,19 +31,20 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
    3:startup_stm32f030x6.c **** #include "stm32f0xx.h"
    4:startup_stm32f030x6.c **** #include "stm32f0xx_hal_def.h"
    5:startup_stm32f030x6.c **** #include "main.h"
-   6:startup_stm32f030x6.c **** 
-   7:startup_stm32f030x6.c **** extern uint32_t _sidata;
-   8:startup_stm32f030x6.c **** extern uint32_t _sdata;
-   9:startup_stm32f030x6.c **** extern uint32_t _edata;
-  10:startup_stm32f030x6.c **** extern uint32_t _sbss;
-  11:startup_stm32f030x6.c **** extern uint32_t _ebss;
-  12:startup_stm32f030x6.c **** extern uint32_t _estack;
-  13:startup_stm32f030x6.c **** 
-  14:startup_stm32f030x6.c **** extern void __libc_init_array();
-  15:startup_stm32f030x6.c **** 
-  16:startup_stm32f030x6.c **** void Reset_Handler()
-  17:startup_stm32f030x6.c **** {
-  27              		.loc 1 17 1 view -0
+   6:startup_stm32f030x6.c **** #include "os.h"
+   7:startup_stm32f030x6.c **** 
+   8:startup_stm32f030x6.c **** extern uint32_t _sidata;
+   9:startup_stm32f030x6.c **** extern uint32_t _sdata;
+  10:startup_stm32f030x6.c **** extern uint32_t _edata;
+  11:startup_stm32f030x6.c **** extern uint32_t _sbss;
+  12:startup_stm32f030x6.c **** extern uint32_t _ebss;
+  13:startup_stm32f030x6.c **** extern uint32_t _estack;
+  14:startup_stm32f030x6.c **** 
+  15:startup_stm32f030x6.c **** extern void __libc_init_array();
+  16:startup_stm32f030x6.c **** 
+  17:startup_stm32f030x6.c **** void Reset_Handler()
+  18:startup_stm32f030x6.c **** {
+  27              		.loc 1 18 1 view -0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -52,88 +53,88 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
   33              		.cfi_def_cfa_offset 8
   34              		.cfi_offset 4, -8
   35              		.cfi_offset 14, -4
-  18:startup_stm32f030x6.c ****     uint32_t *dataInit = &_sidata;
-  36              		.loc 1 18 5 view .LVU1
+  19:startup_stm32f030x6.c ****     uint32_t *dataInit = &_sidata;
+  36              		.loc 1 19 5 view .LVU1
   37              	.LVL0:
-  19:startup_stm32f030x6.c ****     uint32_t *data = &_sdata;
-  38              		.loc 1 19 5 view .LVU2
-  20:startup_stm32f030x6.c ****     while(data < &_edata)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 2
+  20:startup_stm32f030x6.c ****     uint32_t *data = &_sdata;
+  38              		.loc 1 20 5 view .LVU2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 2
 
 
-  39              		.loc 1 20 5 view .LVU3
-  19:startup_stm32f030x6.c ****     uint32_t *data = &_sdata;
-  40              		.loc 1 19 15 is_stmt 0 view .LVU4
+  21:startup_stm32f030x6.c ****     while(data < &_edata)
+  39              		.loc 1 21 5 view .LVU3
+  20:startup_stm32f030x6.c ****     uint32_t *data = &_sdata;
+  40              		.loc 1 20 15 is_stmt 0 view .LVU4
   41 0002 0B4B     		ldr	r3, .L7
-  18:startup_stm32f030x6.c ****     uint32_t *dataInit = &_sidata;
-  42              		.loc 1 18 15 view .LVU5
+  19:startup_stm32f030x6.c ****     uint32_t *dataInit = &_sidata;
+  42              		.loc 1 19 15 view .LVU5
   43 0004 0B4A     		ldr	r2, .L7+4
-  44              		.loc 1 20 10 view .LVU6
+  44              		.loc 1 21 10 view .LVU6
   45 0006 01E0     		b	.L2
   46              	.LVL1:
   47              	.L3:
-  21:startup_stm32f030x6.c ****     {
-  22:startup_stm32f030x6.c ****         *data++ = *dataInit++;
-  48              		.loc 1 22 9 is_stmt 1 view .LVU7
-  49              		.loc 1 22 19 is_stmt 0 view .LVU8
+  22:startup_stm32f030x6.c ****     {
+  23:startup_stm32f030x6.c ****         *data++ = *dataInit++;
+  48              		.loc 1 23 9 is_stmt 1 view .LVU7
+  49              		.loc 1 23 19 is_stmt 0 view .LVU8
   50 0008 02CA     		ldmia	r2!, {r1}
   51              	.LVL2:
-  52              		.loc 1 22 17 view .LVU9
+  52              		.loc 1 23 17 view .LVU9
   53 000a 02C3     		stmia	r3!, {r1}
   54              	.LVL3:
   55              	.L2:
-  20:startup_stm32f030x6.c ****     while(data < &_edata)
-  56              		.loc 1 20 10 is_stmt 1 view .LVU10
+  21:startup_stm32f030x6.c ****     while(data < &_edata)
+  56              		.loc 1 21 10 is_stmt 1 view .LVU10
   57 000c 0A49     		ldr	r1, .L7+8
   58 000e 8B42     		cmp	r3, r1
   59 0010 FAD3     		bcc	.L3
-  23:startup_stm32f030x6.c ****     }
-  24:startup_stm32f030x6.c **** 
-  25:startup_stm32f030x6.c ****     uint32_t *bss = &_sbss;
-  60              		.loc 1 25 15 is_stmt 0 view .LVU11
+  24:startup_stm32f030x6.c ****     }
+  25:startup_stm32f030x6.c **** 
+  26:startup_stm32f030x6.c ****     uint32_t *bss = &_sbss;
+  60              		.loc 1 26 15 is_stmt 0 view .LVU11
   61 0012 0A4B     		ldr	r3, .L7+12
   62              	.LVL4:
-  63              		.loc 1 25 15 view .LVU12
+  63              		.loc 1 26 15 view .LVU12
   64 0014 01E0     		b	.L4
   65              	.LVL5:
   66              	.L5:
-  26:startup_stm32f030x6.c ****     while(bss < &_ebss)
-  27:startup_stm32f030x6.c ****     {
-  28:startup_stm32f030x6.c ****         *bss++ = 0;
-  67              		.loc 1 28 9 is_stmt 1 view .LVU13
-  68              		.loc 1 28 16 is_stmt 0 view .LVU14
+  27:startup_stm32f030x6.c ****     while(bss < &_ebss)
+  28:startup_stm32f030x6.c ****     {
+  29:startup_stm32f030x6.c ****         *bss++ = 0;
+  67              		.loc 1 29 9 is_stmt 1 view .LVU13
+  68              		.loc 1 29 16 is_stmt 0 view .LVU14
   69 0016 0022     		movs	r2, #0
   70 0018 04C3     		stmia	r3!, {r2}
   71              	.LVL6:
   72              	.L4:
-  26:startup_stm32f030x6.c ****     while(bss < &_ebss)
-  73              		.loc 1 26 10 is_stmt 1 view .LVU15
+  27:startup_stm32f030x6.c ****     while(bss < &_ebss)
+  73              		.loc 1 27 10 is_stmt 1 view .LVU15
   74 001a 094A     		ldr	r2, .L7+16
   75 001c 9342     		cmp	r3, r2
   76 001e FAD3     		bcc	.L5
-  29:startup_stm32f030x6.c ****     }
-  30:startup_stm32f030x6.c **** 
-  31:startup_stm32f030x6.c ****     SystemInit(); 
-  77              		.loc 1 31 5 view .LVU16
+  30:startup_stm32f030x6.c ****     }
+  31:startup_stm32f030x6.c **** 
+  32:startup_stm32f030x6.c ****     SystemInit(); 
+  77              		.loc 1 32 5 view .LVU16
   78 0020 FFF7FEFF 		bl	SystemInit
   79              	.LVL7:
-  32:startup_stm32f030x6.c ****     __libc_init_array();
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 3
 
 
-  80              		.loc 1 32 5 view .LVU17
+  33:startup_stm32f030x6.c ****     __libc_init_array();
+  80              		.loc 1 33 5 view .LVU17
   81 0024 FFF7FEFF 		bl	__libc_init_array
   82              	.LVL8:
-  33:startup_stm32f030x6.c ****     main();
-  83              		.loc 1 33 5 view .LVU18
+  34:startup_stm32f030x6.c ****     main();
+  83              		.loc 1 34 5 view .LVU18
   84 0028 FFF7FEFF 		bl	main
   85              	.LVL9:
   86              	.L6:
-  34:startup_stm32f030x6.c **** 
-  35:startup_stm32f030x6.c ****     while (1);
-  87              		.loc 1 35 5 discriminator 1 view .LVU19
-  88              		.loc 1 35 14 discriminator 1 view .LVU20
-  89              		.loc 1 35 11 discriminator 1 view .LVU21
+  35:startup_stm32f030x6.c **** 
+  36:startup_stm32f030x6.c ****     while (1);
+  87              		.loc 1 36 5 discriminator 1 view .LVU19
+  88              		.loc 1 36 14 discriminator 1 view .LVU20
+  89              		.loc 1 36 11 discriminator 1 view .LVU21
   90 002c FEE7     		b	.L6
   91              	.L8:
   92 002e C046     		.align	2
@@ -154,21 +155,21 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  108              		.fpu softvfp
  110              	Default_Handler:
  111              	.LFB41:
-  36:startup_stm32f030x6.c **** }
-  37:startup_stm32f030x6.c **** 
-  38:startup_stm32f030x6.c **** void Default_Handler(void)
-  39:startup_stm32f030x6.c **** {
- 112              		.loc 1 39 1 view -0
+  37:startup_stm32f030x6.c **** }
+  38:startup_stm32f030x6.c **** 
+  39:startup_stm32f030x6.c **** void Default_Handler(void)
+  40:startup_stm32f030x6.c **** {
+ 112              		.loc 1 40 1 view -0
  113              		.cfi_startproc
  114              		@ Volatile: function does not return.
  115              		@ args = 0, pretend = 0, frame = 0
  116              		@ frame_needed = 0, uses_anonymous_args = 0
  117              		@ link register save eliminated.
  118              	.L10:
-  40:startup_stm32f030x6.c ****     while (1);
- 119              		.loc 1 40 5 discriminator 1 view .LVU23
- 120              		.loc 1 40 14 discriminator 1 view .LVU24
- 121              		.loc 1 40 11 discriminator 1 view .LVU25
+  41:startup_stm32f030x6.c ****     while (1);
+ 119              		.loc 1 41 5 discriminator 1 view .LVU23
+ 120              		.loc 1 41 14 discriminator 1 view .LVU24
+ 121              		.loc 1 41 11 discriminator 1 view .LVU25
  122 0000 FEE7     		b	.L10
  123              		.cfi_endproc
  124              	.LFE41:
@@ -177,22 +178,38 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  128              		.weak	NMI_Handler
  129              		.syntax unified
  130              		.code	16
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 4
+
+
  131              		.thumb_func
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 4
-
-
  132              		.fpu softvfp
  134              	NMI_Handler:
- 135              	.LFB43:
-  41:startup_stm32f030x6.c **** }
-  42:startup_stm32f030x6.c **** 
-  43:startup_stm32f030x6.c **** void TIM16_Handler(void)
-  44:startup_stm32f030x6.c **** {
-  45:startup_stm32f030x6.c ****     HAL_TIM_IRQHandler(&htim16);
-  46:startup_stm32f030x6.c **** }
-  47:startup_stm32f030x6.c **** 
-  48:startup_stm32f030x6.c **** __weak void NMI_Handler(void)                          {Default_Handler();}
- 136              		.loc 1 48 56 view -0
+ 135              	.LFB45:
+  42:startup_stm32f030x6.c **** }
+  43:startup_stm32f030x6.c **** 
+  44:startup_stm32f030x6.c **** void TIM16_Handler(void)
+  45:startup_stm32f030x6.c **** {
+  46:startup_stm32f030x6.c ****     HAL_TIM_IRQHandler(&htim16);
+  47:startup_stm32f030x6.c **** }
+  48:startup_stm32f030x6.c **** 
+  49:startup_stm32f030x6.c **** void TIM17_Handler(void)
+  50:startup_stm32f030x6.c **** {
+  51:startup_stm32f030x6.c ****     HAL_TIM_IRQHandler(&htim17);
+  52:startup_stm32f030x6.c **** }
+  53:startup_stm32f030x6.c **** 
+  54:startup_stm32f030x6.c **** void SystemTick_Handler(void)
+  55:startup_stm32f030x6.c **** {
+  56:startup_stm32f030x6.c ****     /* USER CODE BEGIN SysTick_IRQn 0 */
+  57:startup_stm32f030x6.c **** 
+  58:startup_stm32f030x6.c ****     /* USER CODE END SysTick_IRQn 0 */
+  59:startup_stm32f030x6.c ****     HAL_IncTick();
+  60:startup_stm32f030x6.c ****     /* USER CODE BEGIN SysTick_IRQn 1 */
+  61:startup_stm32f030x6.c ****     Os_Handler_1ms();
+  62:startup_stm32f030x6.c ****     /* USER CODE END SysTick_IRQn 1 */
+  63:startup_stm32f030x6.c **** }
+  64:startup_stm32f030x6.c **** 
+  65:startup_stm32f030x6.c **** __weak void NMI_Handler(void)                          {Default_Handler();}
+ 136              		.loc 1 65 56 view -0
  137              		.cfi_startproc
  138              		@ args = 0, pretend = 0, frame = 0
  139              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -201,11 +218,11 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  142              		.cfi_def_cfa_offset 8
  143              		.cfi_offset 4, -8
  144              		.cfi_offset 14, -4
- 145              		.loc 1 48 57 view .LVU27
+ 145              		.loc 1 65 57 view .LVU27
  146 0002 FFF7FEFF 		bl	Default_Handler
  147              	.LVL10:
  148              		.cfi_endproc
- 149              	.LFE43:
+ 149              	.LFE45:
  151              		.section	.text.HardFault_Handler,"ax",%progbits
  152              		.align	1
  153              		.weak	HardFault_Handler
@@ -214,22 +231,25 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  156              		.thumb_func
  157              		.fpu softvfp
  159              	HardFault_Handler:
- 160              	.LFB44:
-  49:startup_stm32f030x6.c **** __weak void HardFault_Handler(void)                    {Default_Handler();}
- 161              		.loc 1 49 56 view -0
+ 160              	.LFB46:
+  66:startup_stm32f030x6.c **** __weak void HardFault_Handler(void)                    {Default_Handler();}
+ 161              		.loc 1 66 56 view -0
  162              		.cfi_startproc
  163              		@ args = 0, pretend = 0, frame = 0
  164              		@ frame_needed = 0, uses_anonymous_args = 0
  165 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 5
+
+
  166              	.LCFI2:
  167              		.cfi_def_cfa_offset 8
  168              		.cfi_offset 4, -8
  169              		.cfi_offset 14, -4
- 170              		.loc 1 49 57 view .LVU29
+ 170              		.loc 1 66 57 view .LVU29
  171 0002 FFF7FEFF 		bl	Default_Handler
  172              	.LVL11:
  173              		.cfi_endproc
- 174              	.LFE44:
+ 174              	.LFE46:
  176              		.section	.text.SVC_Handler,"ax",%progbits
  177              		.align	1
  178              		.weak	SVC_Handler
@@ -238,12 +258,9 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  181              		.thumb_func
  182              		.fpu softvfp
  184              	SVC_Handler:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 5
-
-
- 185              	.LFB45:
-  50:startup_stm32f030x6.c **** __weak void SVC_Handler(void)                          {Default_Handler();}
- 186              		.loc 1 50 56 view -0
+ 185              	.LFB47:
+  67:startup_stm32f030x6.c **** __weak void SVC_Handler(void)                          {Default_Handler();}
+ 186              		.loc 1 67 56 view -0
  187              		.cfi_startproc
  188              		@ args = 0, pretend = 0, frame = 0
  189              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -252,11 +269,11 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  192              		.cfi_def_cfa_offset 8
  193              		.cfi_offset 4, -8
  194              		.cfi_offset 14, -4
- 195              		.loc 1 50 57 view .LVU31
+ 195              		.loc 1 67 57 view .LVU31
  196 0002 FFF7FEFF 		bl	Default_Handler
  197              	.LVL12:
  198              		.cfi_endproc
- 199              	.LFE45:
+ 199              	.LFE47:
  201              		.section	.text.PendSV_Handler,"ax",%progbits
  202              		.align	1
  203              		.weak	PendSV_Handler
@@ -265,9 +282,9 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  206              		.thumb_func
  207              		.fpu softvfp
  209              	PendSV_Handler:
- 210              	.LFB46:
-  51:startup_stm32f030x6.c **** __weak void PendSV_Handler(void)                       {Default_Handler();}
- 211              		.loc 1 51 56 view -0
+ 210              	.LFB48:
+  68:startup_stm32f030x6.c **** __weak void PendSV_Handler(void)                       {Default_Handler();}
+ 211              		.loc 1 68 56 view -0
  212              		.cfi_startproc
  213              		@ args = 0, pretend = 0, frame = 0
  214              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -276,49 +293,50 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  217              		.cfi_def_cfa_offset 8
  218              		.cfi_offset 4, -8
  219              		.cfi_offset 14, -4
- 220              		.loc 1 51 57 view .LVU33
+ 220              		.loc 1 68 57 view .LVU33
  221 0002 FFF7FEFF 		bl	Default_Handler
  222              	.LVL13:
  223              		.cfi_endproc
- 224              	.LFE46:
- 226              		.section	.text.SysTick_Handler,"ax",%progbits
+ 224              	.LFE48:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 6
+
+
+ 226              		.section	.text.WWDG_IRQHandler,"ax",%progbits
  227              		.align	1
- 228              		.weak	SysTick_Handler
+ 228              		.weak	WWDG_IRQHandler
  229              		.syntax unified
  230              		.code	16
  231              		.thumb_func
  232              		.fpu softvfp
- 234              	SysTick_Handler:
- 235              	.LFB47:
-  52:startup_stm32f030x6.c **** __weak void SysTick_Handler(void)                      {Default_Handler();}
- 236              		.loc 1 52 56 view -0
+ 234              	WWDG_IRQHandler:
+ 235              	.LFB50:
+  69:startup_stm32f030x6.c **** __weak void SysTick_Handler(void)                      {SystemTick_Handler();}
+  70:startup_stm32f030x6.c **** __weak void WWDG_IRQHandler(void)                      {Default_Handler();}                
+ 236              		.loc 1 70 56 view -0
  237              		.cfi_startproc
  238              		@ args = 0, pretend = 0, frame = 0
  239              		@ frame_needed = 0, uses_anonymous_args = 0
  240 0000 10B5     		push	{r4, lr}
  241              	.LCFI5:
  242              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 6
-
-
  243              		.cfi_offset 4, -8
  244              		.cfi_offset 14, -4
- 245              		.loc 1 52 57 view .LVU35
+ 245              		.loc 1 70 57 view .LVU35
  246 0002 FFF7FEFF 		bl	Default_Handler
  247              	.LVL14:
  248              		.cfi_endproc
- 249              	.LFE47:
- 251              		.section	.text.WWDG_IRQHandler,"ax",%progbits
+ 249              	.LFE50:
+ 251              		.section	.text.RTC_IRQHandler,"ax",%progbits
  252              		.align	1
- 253              		.weak	WWDG_IRQHandler
+ 253              		.weak	RTC_IRQHandler
  254              		.syntax unified
  255              		.code	16
  256              		.thumb_func
  257              		.fpu softvfp
- 259              	WWDG_IRQHandler:
- 260              	.LFB48:
-  53:startup_stm32f030x6.c **** __weak void WWDG_IRQHandler(void)                      {Default_Handler();}                
- 261              		.loc 1 53 56 view -0
+ 259              	RTC_IRQHandler:
+ 260              	.LFB51:
+  71:startup_stm32f030x6.c **** __weak void RTC_IRQHandler(void)                       {Default_Handler();}            
+ 261              		.loc 1 71 56 view -0
  262              		.cfi_startproc
  263              		@ args = 0, pretend = 0, frame = 0
  264              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -327,22 +345,25 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  267              		.cfi_def_cfa_offset 8
  268              		.cfi_offset 4, -8
  269              		.cfi_offset 14, -4
- 270              		.loc 1 53 57 view .LVU37
+ 270              		.loc 1 71 57 view .LVU37
  271 0002 FFF7FEFF 		bl	Default_Handler
  272              	.LVL15:
  273              		.cfi_endproc
- 274              	.LFE48:
- 276              		.section	.text.RTC_IRQHandler,"ax",%progbits
+ 274              	.LFE51:
+ 276              		.section	.text.FLASH_IRQHandler,"ax",%progbits
  277              		.align	1
- 278              		.weak	RTC_IRQHandler
+ 278              		.weak	FLASH_IRQHandler
  279              		.syntax unified
  280              		.code	16
  281              		.thumb_func
  282              		.fpu softvfp
- 284              	RTC_IRQHandler:
- 285              	.LFB49:
-  54:startup_stm32f030x6.c **** __weak void RTC_IRQHandler(void)                       {Default_Handler();}            
- 286              		.loc 1 54 56 view -0
+ 284              	FLASH_IRQHandler:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 7
+
+
+ 285              	.LFB52:
+  72:startup_stm32f030x6.c **** __weak void FLASH_IRQHandler(void)                     {Default_Handler();}                  
+ 286              		.loc 1 72 56 view -0
  287              		.cfi_startproc
  288              		@ args = 0, pretend = 0, frame = 0
  289              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -351,25 +372,22 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  292              		.cfi_def_cfa_offset 8
  293              		.cfi_offset 4, -8
  294              		.cfi_offset 14, -4
- 295              		.loc 1 54 57 view .LVU39
+ 295              		.loc 1 72 57 view .LVU39
  296 0002 FFF7FEFF 		bl	Default_Handler
  297              	.LVL16:
  298              		.cfi_endproc
- 299              	.LFE49:
- 301              		.section	.text.FLASH_IRQHandler,"ax",%progbits
+ 299              	.LFE52:
+ 301              		.section	.text.RCC_IRQHandler,"ax",%progbits
  302              		.align	1
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 7
-
-
- 303              		.weak	FLASH_IRQHandler
+ 303              		.weak	RCC_IRQHandler
  304              		.syntax unified
  305              		.code	16
  306              		.thumb_func
  307              		.fpu softvfp
- 309              	FLASH_IRQHandler:
- 310              	.LFB50:
-  55:startup_stm32f030x6.c **** __weak void FLASH_IRQHandler(void)                     {Default_Handler();}                  
- 311              		.loc 1 55 56 view -0
+ 309              	RCC_IRQHandler:
+ 310              	.LFB53:
+  73:startup_stm32f030x6.c **** __weak void RCC_IRQHandler(void)                       {Default_Handler();}
+ 311              		.loc 1 73 56 view -0
  312              		.cfi_startproc
  313              		@ args = 0, pretend = 0, frame = 0
  314              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -378,49 +396,49 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  317              		.cfi_def_cfa_offset 8
  318              		.cfi_offset 4, -8
  319              		.cfi_offset 14, -4
- 320              		.loc 1 55 57 view .LVU41
+ 320              		.loc 1 73 57 view .LVU41
  321 0002 FFF7FEFF 		bl	Default_Handler
  322              	.LVL17:
  323              		.cfi_endproc
- 324              	.LFE50:
- 326              		.section	.text.RCC_IRQHandler,"ax",%progbits
+ 324              	.LFE53:
+ 326              		.section	.text.EXTI0_1_IRQHandler,"ax",%progbits
  327              		.align	1
- 328              		.weak	RCC_IRQHandler
+ 328              		.weak	EXTI0_1_IRQHandler
  329              		.syntax unified
  330              		.code	16
  331              		.thumb_func
  332              		.fpu softvfp
- 334              	RCC_IRQHandler:
- 335              	.LFB51:
-  56:startup_stm32f030x6.c **** __weak void RCC_IRQHandler(void)                       {Default_Handler();}
- 336              		.loc 1 56 56 view -0
+ 334              	EXTI0_1_IRQHandler:
+ 335              	.LFB54:
+  74:startup_stm32f030x6.c **** __weak void EXTI0_1_IRQHandler(void)                   {Default_Handler();}
+ 336              		.loc 1 74 56 view -0
  337              		.cfi_startproc
  338              		@ args = 0, pretend = 0, frame = 0
  339              		@ frame_needed = 0, uses_anonymous_args = 0
  340 0000 10B5     		push	{r4, lr}
  341              	.LCFI9:
  342              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 8
+
+
  343              		.cfi_offset 4, -8
  344              		.cfi_offset 14, -4
- 345              		.loc 1 56 57 view .LVU43
+ 345              		.loc 1 74 57 view .LVU43
  346 0002 FFF7FEFF 		bl	Default_Handler
  347              	.LVL18:
  348              		.cfi_endproc
- 349              	.LFE51:
- 351              		.section	.text.EXTI0_1_IRQHandler,"ax",%progbits
+ 349              	.LFE54:
+ 351              		.section	.text.EXTI2_3_IRQHandler,"ax",%progbits
  352              		.align	1
- 353              		.weak	EXTI0_1_IRQHandler
+ 353              		.weak	EXTI2_3_IRQHandler
  354              		.syntax unified
  355              		.code	16
  356              		.thumb_func
  357              		.fpu softvfp
- 359              	EXTI0_1_IRQHandler:
- 360              	.LFB52:
-  57:startup_stm32f030x6.c **** __weak void EXTI0_1_IRQHandler(void)                   {Default_Handler();}
- 361              		.loc 1 57 56 view -0
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 8
-
-
+ 359              	EXTI2_3_IRQHandler:
+ 360              	.LFB55:
+  75:startup_stm32f030x6.c **** __weak void EXTI2_3_IRQHandler(void)                   {Default_Handler();} 
+ 361              		.loc 1 75 56 view -0
  362              		.cfi_startproc
  363              		@ args = 0, pretend = 0, frame = 0
  364              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -429,22 +447,22 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  367              		.cfi_def_cfa_offset 8
  368              		.cfi_offset 4, -8
  369              		.cfi_offset 14, -4
- 370              		.loc 1 57 57 view .LVU45
+ 370              		.loc 1 75 57 view .LVU45
  371 0002 FFF7FEFF 		bl	Default_Handler
  372              	.LVL19:
  373              		.cfi_endproc
- 374              	.LFE52:
- 376              		.section	.text.EXTI2_3_IRQHandler,"ax",%progbits
+ 374              	.LFE55:
+ 376              		.section	.text.EXTI4_15_IRQHandler,"ax",%progbits
  377              		.align	1
- 378              		.weak	EXTI2_3_IRQHandler
+ 378              		.weak	EXTI4_15_IRQHandler
  379              		.syntax unified
  380              		.code	16
  381              		.thumb_func
  382              		.fpu softvfp
- 384              	EXTI2_3_IRQHandler:
- 385              	.LFB53:
-  58:startup_stm32f030x6.c **** __weak void EXTI2_3_IRQHandler(void)                   {Default_Handler();} 
- 386              		.loc 1 58 56 view -0
+ 384              	EXTI4_15_IRQHandler:
+ 385              	.LFB56:
+  76:startup_stm32f030x6.c **** __weak void EXTI4_15_IRQHandler(void)                  {Default_Handler();}       
+ 386              		.loc 1 76 56 view -0
  387              		.cfi_startproc
  388              		@ args = 0, pretend = 0, frame = 0
  389              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -453,22 +471,25 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  392              		.cfi_def_cfa_offset 8
  393              		.cfi_offset 4, -8
  394              		.cfi_offset 14, -4
- 395              		.loc 1 58 57 view .LVU47
+ 395              		.loc 1 76 57 view .LVU47
  396 0002 FFF7FEFF 		bl	Default_Handler
  397              	.LVL20:
  398              		.cfi_endproc
- 399              	.LFE53:
- 401              		.section	.text.EXTI4_15_IRQHandler,"ax",%progbits
+ 399              	.LFE56:
+ 401              		.section	.text.DMA1_Channel1_IRQHandler,"ax",%progbits
  402              		.align	1
- 403              		.weak	EXTI4_15_IRQHandler
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 9
+
+
+ 403              		.weak	DMA1_Channel1_IRQHandler
  404              		.syntax unified
  405              		.code	16
  406              		.thumb_func
  407              		.fpu softvfp
- 409              	EXTI4_15_IRQHandler:
- 410              	.LFB54:
-  59:startup_stm32f030x6.c **** __weak void EXTI4_15_IRQHandler(void)                  {Default_Handler();}       
- 411              		.loc 1 59 56 view -0
+ 409              	DMA1_Channel1_IRQHandler:
+ 410              	.LFB57:
+  77:startup_stm32f030x6.c **** __weak void DMA1_Channel1_IRQHandler(void)             {Default_Handler();}      
+ 411              		.loc 1 77 56 view -0
  412              		.cfi_startproc
  413              		@ args = 0, pretend = 0, frame = 0
  414              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -477,25 +498,22 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  417              		.cfi_def_cfa_offset 8
  418              		.cfi_offset 4, -8
  419              		.cfi_offset 14, -4
- 420              		.loc 1 59 57 view .LVU49
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 9
-
-
+ 420              		.loc 1 77 57 view .LVU49
  421 0002 FFF7FEFF 		bl	Default_Handler
  422              	.LVL21:
  423              		.cfi_endproc
- 424              	.LFE54:
- 426              		.section	.text.DMA1_Channel1_IRQHandler,"ax",%progbits
+ 424              	.LFE57:
+ 426              		.section	.text.DMA1_Channel2_3_IRQHandler,"ax",%progbits
  427              		.align	1
- 428              		.weak	DMA1_Channel1_IRQHandler
+ 428              		.weak	DMA1_Channel2_3_IRQHandler
  429              		.syntax unified
  430              		.code	16
  431              		.thumb_func
  432              		.fpu softvfp
- 434              	DMA1_Channel1_IRQHandler:
- 435              	.LFB55:
-  60:startup_stm32f030x6.c **** __weak void DMA1_Channel1_IRQHandler(void)             {Default_Handler();}      
- 436              		.loc 1 60 56 view -0
+ 434              	DMA1_Channel2_3_IRQHandler:
+ 435              	.LFB58:
+  78:startup_stm32f030x6.c **** __weak void DMA1_Channel2_3_IRQHandler(void)           {Default_Handler();}       
+ 436              		.loc 1 78 56 view -0
  437              		.cfi_startproc
  438              		@ args = 0, pretend = 0, frame = 0
  439              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -504,22 +522,25 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  442              		.cfi_def_cfa_offset 8
  443              		.cfi_offset 4, -8
  444              		.cfi_offset 14, -4
- 445              		.loc 1 60 57 view .LVU51
+ 445              		.loc 1 78 57 view .LVU51
  446 0002 FFF7FEFF 		bl	Default_Handler
  447              	.LVL22:
  448              		.cfi_endproc
- 449              	.LFE55:
- 451              		.section	.text.DMA1_Channel2_3_IRQHandler,"ax",%progbits
+ 449              	.LFE58:
+ 451              		.section	.text.DMA1_Channel4_5_IRQHandler,"ax",%progbits
  452              		.align	1
- 453              		.weak	DMA1_Channel2_3_IRQHandler
+ 453              		.weak	DMA1_Channel4_5_IRQHandler
  454              		.syntax unified
  455              		.code	16
  456              		.thumb_func
  457              		.fpu softvfp
- 459              	DMA1_Channel2_3_IRQHandler:
- 460              	.LFB56:
-  61:startup_stm32f030x6.c **** __weak void DMA1_Channel2_3_IRQHandler(void)           {Default_Handler();}       
- 461              		.loc 1 61 56 view -0
+ 459              	DMA1_Channel4_5_IRQHandler:
+ 460              	.LFB59:
+  79:startup_stm32f030x6.c **** __weak void DMA1_Channel4_5_IRQHandler(void)           {Default_Handler();}        
+ 461              		.loc 1 79 56 view -0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 10
+
+
  462              		.cfi_startproc
  463              		@ args = 0, pretend = 0, frame = 0
  464              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -528,25 +549,22 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  467              		.cfi_def_cfa_offset 8
  468              		.cfi_offset 4, -8
  469              		.cfi_offset 14, -4
- 470              		.loc 1 61 57 view .LVU53
+ 470              		.loc 1 79 57 view .LVU53
  471 0002 FFF7FEFF 		bl	Default_Handler
  472              	.LVL23:
  473              		.cfi_endproc
- 474              	.LFE56:
- 476              		.section	.text.DMA1_Channel4_5_IRQHandler,"ax",%progbits
+ 474              	.LFE59:
+ 476              		.section	.text.ADC1_IRQHandler,"ax",%progbits
  477              		.align	1
- 478              		.weak	DMA1_Channel4_5_IRQHandler
+ 478              		.weak	ADC1_IRQHandler
  479              		.syntax unified
  480              		.code	16
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 10
-
-
  481              		.thumb_func
  482              		.fpu softvfp
- 484              	DMA1_Channel4_5_IRQHandler:
- 485              	.LFB57:
-  62:startup_stm32f030x6.c **** __weak void DMA1_Channel4_5_IRQHandler(void)           {Default_Handler();}        
- 486              		.loc 1 62 56 view -0
+ 484              	ADC1_IRQHandler:
+ 485              	.LFB60:
+  80:startup_stm32f030x6.c **** __weak void ADC1_IRQHandler(void)                      {Default_Handler();}                  
+ 486              		.loc 1 80 56 view -0
  487              		.cfi_startproc
  488              		@ args = 0, pretend = 0, frame = 0
  489              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -555,22 +573,22 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  492              		.cfi_def_cfa_offset 8
  493              		.cfi_offset 4, -8
  494              		.cfi_offset 14, -4
- 495              		.loc 1 62 57 view .LVU55
+ 495              		.loc 1 80 57 view .LVU55
  496 0002 FFF7FEFF 		bl	Default_Handler
  497              	.LVL24:
  498              		.cfi_endproc
- 499              	.LFE57:
- 501              		.section	.text.ADC1_IRQHandler,"ax",%progbits
+ 499              	.LFE60:
+ 501              		.section	.text.TIM1_BRK_UP_TRG_COM_IRQHandler,"ax",%progbits
  502              		.align	1
- 503              		.weak	ADC1_IRQHandler
+ 503              		.weak	TIM1_BRK_UP_TRG_COM_IRQHandler
  504              		.syntax unified
  505              		.code	16
  506              		.thumb_func
  507              		.fpu softvfp
- 509              	ADC1_IRQHandler:
- 510              	.LFB58:
-  63:startup_stm32f030x6.c **** __weak void ADC1_IRQHandler(void)                      {Default_Handler();}                  
- 511              		.loc 1 63 56 view -0
+ 509              	TIM1_BRK_UP_TRG_COM_IRQHandler:
+ 510              	.LFB61:
+  81:startup_stm32f030x6.c **** __weak void TIM1_BRK_UP_TRG_COM_IRQHandler(void)       {Default_Handler();}    
+ 511              		.loc 1 81 56 view -0
  512              		.cfi_startproc
  513              		@ args = 0, pretend = 0, frame = 0
  514              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -579,49 +597,49 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  517              		.cfi_def_cfa_offset 8
  518              		.cfi_offset 4, -8
  519              		.cfi_offset 14, -4
- 520              		.loc 1 63 57 view .LVU57
+ 520              		.loc 1 81 57 view .LVU57
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 11
+
+
  521 0002 FFF7FEFF 		bl	Default_Handler
  522              	.LVL25:
  523              		.cfi_endproc
- 524              	.LFE58:
- 526              		.section	.text.TIM1_BRK_UP_TRG_COM_IRQHandler,"ax",%progbits
+ 524              	.LFE61:
+ 526              		.section	.text.TIM1_CC_IRQHandler,"ax",%progbits
  527              		.align	1
- 528              		.weak	TIM1_BRK_UP_TRG_COM_IRQHandler
+ 528              		.weak	TIM1_CC_IRQHandler
  529              		.syntax unified
  530              		.code	16
  531              		.thumb_func
  532              		.fpu softvfp
- 534              	TIM1_BRK_UP_TRG_COM_IRQHandler:
- 535              	.LFB59:
-  64:startup_stm32f030x6.c **** __weak void TIM1_BRK_UP_TRG_COM_IRQHandler(void)       {Default_Handler();}    
- 536              		.loc 1 64 56 view -0
+ 534              	TIM1_CC_IRQHandler:
+ 535              	.LFB62:
+  82:startup_stm32f030x6.c **** __weak void TIM1_CC_IRQHandler(void)                   {Default_Handler();}               
+ 536              		.loc 1 82 56 view -0
  537              		.cfi_startproc
  538              		@ args = 0, pretend = 0, frame = 0
  539              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 11
-
-
  540 0000 10B5     		push	{r4, lr}
  541              	.LCFI17:
  542              		.cfi_def_cfa_offset 8
  543              		.cfi_offset 4, -8
  544              		.cfi_offset 14, -4
- 545              		.loc 1 64 57 view .LVU59
+ 545              		.loc 1 82 57 view .LVU59
  546 0002 FFF7FEFF 		bl	Default_Handler
  547              	.LVL26:
  548              		.cfi_endproc
- 549              	.LFE59:
- 551              		.section	.text.TIM1_CC_IRQHandler,"ax",%progbits
+ 549              	.LFE62:
+ 551              		.section	.text.TIM3_IRQHandler,"ax",%progbits
  552              		.align	1
- 553              		.weak	TIM1_CC_IRQHandler
+ 553              		.weak	TIM3_IRQHandler
  554              		.syntax unified
  555              		.code	16
  556              		.thumb_func
  557              		.fpu softvfp
- 559              	TIM1_CC_IRQHandler:
- 560              	.LFB60:
-  65:startup_stm32f030x6.c **** __weak void TIM1_CC_IRQHandler(void)                   {Default_Handler();}               
- 561              		.loc 1 65 56 view -0
+ 559              	TIM3_IRQHandler:
+ 560              	.LFB63:
+  83:startup_stm32f030x6.c **** __weak void TIM3_IRQHandler(void)                      {Default_Handler();}                  
+ 561              		.loc 1 83 56 view -0
  562              		.cfi_startproc
  563              		@ args = 0, pretend = 0, frame = 0
  564              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -630,22 +648,25 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  567              		.cfi_def_cfa_offset 8
  568              		.cfi_offset 4, -8
  569              		.cfi_offset 14, -4
- 570              		.loc 1 65 57 view .LVU61
+ 570              		.loc 1 83 57 view .LVU61
  571 0002 FFF7FEFF 		bl	Default_Handler
  572              	.LVL27:
  573              		.cfi_endproc
- 574              	.LFE60:
- 576              		.section	.text.TIM3_IRQHandler,"ax",%progbits
+ 574              	.LFE63:
+ 576              		.section	.text.TIM14_IRQHandler,"ax",%progbits
  577              		.align	1
- 578              		.weak	TIM3_IRQHandler
+ 578              		.weak	TIM14_IRQHandler
  579              		.syntax unified
  580              		.code	16
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 12
+
+
  581              		.thumb_func
  582              		.fpu softvfp
- 584              	TIM3_IRQHandler:
- 585              	.LFB61:
-  66:startup_stm32f030x6.c **** __weak void TIM3_IRQHandler(void)                      {Default_Handler();}                  
- 586              		.loc 1 66 56 view -0
+ 584              	TIM14_IRQHandler:
+ 585              	.LFB64:
+  84:startup_stm32f030x6.c **** __weak void TIM14_IRQHandler(void)                     {Default_Handler();}               
+ 586              		.loc 1 84 56 view -0
  587              		.cfi_startproc
  588              		@ args = 0, pretend = 0, frame = 0
  589              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -654,25 +675,24 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  592              		.cfi_def_cfa_offset 8
  593              		.cfi_offset 4, -8
  594              		.cfi_offset 14, -4
- 595              		.loc 1 66 57 view .LVU63
+ 595              		.loc 1 84 57 view .LVU63
  596 0002 FFF7FEFF 		bl	Default_Handler
  597              	.LVL28:
  598              		.cfi_endproc
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 12
-
-
- 599              	.LFE61:
- 601              		.section	.text.TIM14_IRQHandler,"ax",%progbits
+ 599              	.LFE64:
+ 601              		.section	.text.I2C1_IRQHandler,"ax",%progbits
  602              		.align	1
- 603              		.weak	TIM14_IRQHandler
+ 603              		.weak	I2C1_IRQHandler
  604              		.syntax unified
  605              		.code	16
  606              		.thumb_func
  607              		.fpu softvfp
- 609              	TIM14_IRQHandler:
- 610              	.LFB62:
-  67:startup_stm32f030x6.c **** __weak void TIM14_IRQHandler(void)                     {Default_Handler();}               
- 611              		.loc 1 67 56 view -0
+ 609              	I2C1_IRQHandler:
+ 610              	.LFB67:
+  85:startup_stm32f030x6.c **** __weak void TIM16_IRQHandler(void)                     {TIM16_Handler();}               
+  86:startup_stm32f030x6.c **** __weak void TIM17_IRQHandler(void)                     {TIM17_Handler();}               
+  87:startup_stm32f030x6.c **** __weak void I2C1_IRQHandler(void)                      {Default_Handler();}             
+ 611              		.loc 1 87 56 view -0
  612              		.cfi_startproc
  613              		@ args = 0, pretend = 0, frame = 0
  614              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -681,24 +701,26 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  617              		.cfi_def_cfa_offset 8
  618              		.cfi_offset 4, -8
  619              		.cfi_offset 14, -4
- 620              		.loc 1 67 57 view .LVU65
+ 620              		.loc 1 87 57 view .LVU65
  621 0002 FFF7FEFF 		bl	Default_Handler
  622              	.LVL29:
  623              		.cfi_endproc
- 624              	.LFE62:
- 626              		.section	.text.TIM17_IRQHandler,"ax",%progbits
+ 624              	.LFE67:
+ 626              		.section	.text.SPI1_IRQHandler,"ax",%progbits
  627              		.align	1
- 628              		.weak	TIM17_IRQHandler
+ 628              		.weak	SPI1_IRQHandler
  629              		.syntax unified
  630              		.code	16
  631              		.thumb_func
  632              		.fpu softvfp
- 634              	TIM17_IRQHandler:
- 635              	.LFB64:
-  68:startup_stm32f030x6.c **** __weak void TIM16_IRQHandler(void)                     {TIM16_Handler();}               
-  69:startup_stm32f030x6.c **** __weak void TIM17_IRQHandler(void)                     {Default_Handler();}               
- 636              		.loc 1 69 56 view -0
+ 634              	SPI1_IRQHandler:
+ 635              	.LFB68:
+  88:startup_stm32f030x6.c **** __weak void SPI1_IRQHandler(void)                      {Default_Handler();}               
+ 636              		.loc 1 88 56 view -0
  637              		.cfi_startproc
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 13
+
+
  638              		@ args = 0, pretend = 0, frame = 0
  639              		@ frame_needed = 0, uses_anonymous_args = 0
  640 0000 10B5     		push	{r4, lr}
@@ -706,25 +728,22 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  642              		.cfi_def_cfa_offset 8
  643              		.cfi_offset 4, -8
  644              		.cfi_offset 14, -4
- 645              		.loc 1 69 57 view .LVU67
+ 645              		.loc 1 88 57 view .LVU67
  646 0002 FFF7FEFF 		bl	Default_Handler
  647              	.LVL30:
  648              		.cfi_endproc
- 649              	.LFE64:
- 651              		.section	.text.I2C1_IRQHandler,"ax",%progbits
+ 649              	.LFE68:
+ 651              		.section	.text.USART1_IRQHandler,"ax",%progbits
  652              		.align	1
- 653              		.weak	I2C1_IRQHandler
+ 653              		.weak	USART1_IRQHandler
  654              		.syntax unified
  655              		.code	16
  656              		.thumb_func
  657              		.fpu softvfp
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 13
-
-
- 659              	I2C1_IRQHandler:
- 660              	.LFB65:
-  70:startup_stm32f030x6.c **** __weak void I2C1_IRQHandler(void)                      {Default_Handler();}             
- 661              		.loc 1 70 56 view -0
+ 659              	USART1_IRQHandler:
+ 660              	.LFB69:
+  89:startup_stm32f030x6.c **** __weak void USART1_IRQHandler(void)                    {Default_Handler();}              
+ 661              		.loc 1 89 56 view -0
  662              		.cfi_startproc
  663              		@ args = 0, pretend = 0, frame = 0
  664              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -733,22 +752,22 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  667              		.cfi_def_cfa_offset 8
  668              		.cfi_offset 4, -8
  669              		.cfi_offset 14, -4
- 670              		.loc 1 70 57 view .LVU69
+ 670              		.loc 1 89 57 view .LVU69
  671 0002 FFF7FEFF 		bl	Default_Handler
  672              	.LVL31:
  673              		.cfi_endproc
- 674              	.LFE65:
- 676              		.section	.text.SPI1_IRQHandler,"ax",%progbits
+ 674              	.LFE69:
+ 676              		.section	.text.TIM16_Handler,"ax",%progbits
  677              		.align	1
- 678              		.weak	SPI1_IRQHandler
+ 678              		.global	TIM16_Handler
  679              		.syntax unified
  680              		.code	16
  681              		.thumb_func
  682              		.fpu softvfp
- 684              	SPI1_IRQHandler:
- 685              	.LFB66:
-  71:startup_stm32f030x6.c **** __weak void SPI1_IRQHandler(void)                      {Default_Handler();}               
- 686              		.loc 1 71 56 view -0
+ 684              	TIM16_Handler:
+ 685              	.LFB42:
+  45:startup_stm32f030x6.c ****     HAL_TIM_IRQHandler(&htim16);
+ 686              		.loc 1 45 1 view -0
  687              		.cfi_startproc
  688              		@ args = 0, pretend = 0, frame = 0
  689              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -757,237 +776,327 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 1
  692              		.cfi_def_cfa_offset 8
  693              		.cfi_offset 4, -8
  694              		.cfi_offset 14, -4
- 695              		.loc 1 71 57 view .LVU71
- 696 0002 FFF7FEFF 		bl	Default_Handler
- 697              	.LVL32:
- 698              		.cfi_endproc
- 699              	.LFE66:
- 701              		.section	.text.USART1_IRQHandler,"ax",%progbits
- 702              		.align	1
- 703              		.weak	USART1_IRQHandler
- 704              		.syntax unified
- 705              		.code	16
- 706              		.thumb_func
- 707              		.fpu softvfp
- 709              	USART1_IRQHandler:
- 710              	.LFB67:
-  72:startup_stm32f030x6.c **** __weak void USART1_IRQHandler(void)                    {Default_Handler();}              
- 711              		.loc 1 72 56 view -0
- 712              		.cfi_startproc
- 713              		@ args = 0, pretend = 0, frame = 0
- 714              		@ frame_needed = 0, uses_anonymous_args = 0
- 715 0000 10B5     		push	{r4, lr}
- 716              	.LCFI24:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 14
+  46:startup_stm32f030x6.c **** }
+ 695              		.loc 1 46 5 view .LVU71
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 14
 
 
- 717              		.cfi_def_cfa_offset 8
- 718              		.cfi_offset 4, -8
- 719              		.cfi_offset 14, -4
- 720              		.loc 1 72 57 view .LVU73
- 721 0002 FFF7FEFF 		bl	Default_Handler
- 722              	.LVL33:
- 723              		.cfi_endproc
- 724              	.LFE67:
- 726              		.section	.text.TIM16_Handler,"ax",%progbits
- 727              		.align	1
- 728              		.global	TIM16_Handler
- 729              		.syntax unified
- 730              		.code	16
- 731              		.thumb_func
- 732              		.fpu softvfp
- 734              	TIM16_Handler:
- 735              	.LFB42:
-  44:startup_stm32f030x6.c ****     HAL_TIM_IRQHandler(&htim16);
- 736              		.loc 1 44 1 view -0
- 737              		.cfi_startproc
- 738              		@ args = 0, pretend = 0, frame = 0
- 739              		@ frame_needed = 0, uses_anonymous_args = 0
- 740 0000 10B5     		push	{r4, lr}
- 741              	.LCFI25:
- 742              		.cfi_def_cfa_offset 8
- 743              		.cfi_offset 4, -8
- 744              		.cfi_offset 14, -4
-  45:startup_stm32f030x6.c **** }
- 745              		.loc 1 45 5 view .LVU75
- 746 0002 0248     		ldr	r0, .L36
- 747 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
- 748              	.LVL34:
-  46:startup_stm32f030x6.c **** 
- 749              		.loc 1 46 1 is_stmt 0 view .LVU76
- 750              		@ sp needed
- 751 0008 10BD     		pop	{r4, pc}
- 752              	.L37:
- 753 000a C046     		.align	2
- 754              	.L36:
- 755 000c 00000000 		.word	htim16
- 756              		.cfi_endproc
- 757              	.LFE42:
- 759              		.section	.text.TIM16_IRQHandler,"ax",%progbits
- 760              		.align	1
- 761              		.weak	TIM16_IRQHandler
- 762              		.syntax unified
- 763              		.code	16
- 764              		.thumb_func
- 765              		.fpu softvfp
- 767              	TIM16_IRQHandler:
- 768              	.LFB63:
-  68:startup_stm32f030x6.c **** __weak void TIM17_IRQHandler(void)                     {Default_Handler();}               
- 769              		.loc 1 68 56 is_stmt 1 view -0
- 770              		.cfi_startproc
- 771              		@ args = 0, pretend = 0, frame = 0
- 772              		@ frame_needed = 0, uses_anonymous_args = 0
- 773 0000 10B5     		push	{r4, lr}
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 15
+ 696 0002 0248     		ldr	r0, .L34
+ 697 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
+ 698              	.LVL32:
+  47:startup_stm32f030x6.c **** 
+ 699              		.loc 1 47 1 is_stmt 0 view .LVU72
+ 700              		@ sp needed
+ 701 0008 10BD     		pop	{r4, pc}
+ 702              	.L35:
+ 703 000a C046     		.align	2
+ 704              	.L34:
+ 705 000c 00000000 		.word	htim16
+ 706              		.cfi_endproc
+ 707              	.LFE42:
+ 709              		.section	.text.TIM16_IRQHandler,"ax",%progbits
+ 710              		.align	1
+ 711              		.weak	TIM16_IRQHandler
+ 712              		.syntax unified
+ 713              		.code	16
+ 714              		.thumb_func
+ 715              		.fpu softvfp
+ 717              	TIM16_IRQHandler:
+ 718              	.LFB65:
+  85:startup_stm32f030x6.c **** __weak void TIM17_IRQHandler(void)                     {TIM17_Handler();}               
+ 719              		.loc 1 85 56 is_stmt 1 view -0
+ 720              		.cfi_startproc
+ 721              		@ args = 0, pretend = 0, frame = 0
+ 722              		@ frame_needed = 0, uses_anonymous_args = 0
+ 723 0000 10B5     		push	{r4, lr}
+ 724              	.LCFI24:
+ 725              		.cfi_def_cfa_offset 8
+ 726              		.cfi_offset 4, -8
+ 727              		.cfi_offset 14, -4
+  85:startup_stm32f030x6.c **** __weak void TIM17_IRQHandler(void)                     {TIM17_Handler();}               
+ 728              		.loc 1 85 57 view .LVU74
+ 729 0002 FFF7FEFF 		bl	TIM16_Handler
+ 730              	.LVL33:
+  85:startup_stm32f030x6.c **** __weak void TIM17_IRQHandler(void)                     {TIM17_Handler();}               
+ 731              		.loc 1 85 73 is_stmt 0 view .LVU75
+ 732              		@ sp needed
+ 733 0006 10BD     		pop	{r4, pc}
+ 734              		.cfi_endproc
+ 735              	.LFE65:
+ 737              		.section	.text.TIM17_Handler,"ax",%progbits
+ 738              		.align	1
+ 739              		.global	TIM17_Handler
+ 740              		.syntax unified
+ 741              		.code	16
+ 742              		.thumb_func
+ 743              		.fpu softvfp
+ 745              	TIM17_Handler:
+ 746              	.LFB43:
+  50:startup_stm32f030x6.c ****     HAL_TIM_IRQHandler(&htim17);
+ 747              		.loc 1 50 1 is_stmt 1 view -0
+ 748              		.cfi_startproc
+ 749              		@ args = 0, pretend = 0, frame = 0
+ 750              		@ frame_needed = 0, uses_anonymous_args = 0
+ 751 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 15
 
 
- 774              	.LCFI26:
- 775              		.cfi_def_cfa_offset 8
- 776              		.cfi_offset 4, -8
- 777              		.cfi_offset 14, -4
-  68:startup_stm32f030x6.c **** __weak void TIM17_IRQHandler(void)                     {Default_Handler();}               
- 778              		.loc 1 68 57 view .LVU78
- 779 0002 FFF7FEFF 		bl	TIM16_Handler
- 780              	.LVL35:
-  68:startup_stm32f030x6.c **** __weak void TIM17_IRQHandler(void)                     {Default_Handler();}               
- 781              		.loc 1 68 73 is_stmt 0 view .LVU79
- 782              		@ sp needed
- 783 0006 10BD     		pop	{r4, pc}
- 784              		.cfi_endproc
- 785              	.LFE63:
- 787              		.global	VectorTable
- 788              		.section	.isr_vector,"aw"
- 789              		.align	2
- 792              	VectorTable:
- 793 0000 00000000 		.word	_estack
- 794 0004 00000000 		.word	Reset_Handler
- 795 0008 00000000 		.word	NMI_Handler
- 796 000c 00000000 		.word	HardFault_Handler
- 797 0010 00000000 		.word	0
- 798 0014 00000000 		.word	0
- 799 0018 00000000 		.word	0
- 800 001c 00000000 		.word	0
- 801 0020 00000000 		.word	0
- 802 0024 00000000 		.word	0
- 803 0028 00000000 		.word	0
- 804 002c 00000000 		.word	SVC_Handler
- 805 0030 00000000 		.word	0
- 806 0034 00000000 		.word	0
- 807 0038 00000000 		.word	PendSV_Handler
- 808 003c 00000000 		.word	SysTick_Handler
- 809 0040 00000000 		.word	WWDG_IRQHandler
- 810 0044 00000000 		.word	0
- 811 0048 00000000 		.word	RTC_IRQHandler
- 812 004c 00000000 		.word	FLASH_IRQHandler
- 813 0050 00000000 		.word	RCC_IRQHandler
- 814 0054 00000000 		.word	EXTI0_1_IRQHandler
- 815 0058 00000000 		.word	EXTI2_3_IRQHandler
- 816 005c 00000000 		.word	EXTI4_15_IRQHandler
- 817 0060 00000000 		.word	0
- 818 0064 00000000 		.word	DMA1_Channel1_IRQHandler
- 819 0068 00000000 		.word	DMA1_Channel2_3_IRQHandler
- 820 006c 00000000 		.word	DMA1_Channel4_5_IRQHandler
- 821 0070 00000000 		.word	ADC1_IRQHandler
- 822 0074 00000000 		.word	TIM1_BRK_UP_TRG_COM_IRQHandler
- 823 0078 00000000 		.word	TIM1_CC_IRQHandler
- 824 007c 00000000 		.word	0
- 825 0080 00000000 		.word	TIM3_IRQHandler
- 826 0084 00000000 		.word	0
- 827 0088 00000000 		.word	0
- 828 008c 00000000 		.word	TIM14_IRQHandler
- 829 0090 00000000 		.word	0
- 830 0094 00000000 		.word	TIM16_IRQHandler
- 831 0098 00000000 		.word	TIM17_IRQHandler
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 16
+ 752              	.LCFI25:
+ 753              		.cfi_def_cfa_offset 8
+ 754              		.cfi_offset 4, -8
+ 755              		.cfi_offset 14, -4
+  51:startup_stm32f030x6.c **** }
+ 756              		.loc 1 51 5 view .LVU77
+ 757 0002 0248     		ldr	r0, .L38
+ 758 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
+ 759              	.LVL34:
+  52:startup_stm32f030x6.c **** 
+ 760              		.loc 1 52 1 is_stmt 0 view .LVU78
+ 761              		@ sp needed
+ 762 0008 10BD     		pop	{r4, pc}
+ 763              	.L39:
+ 764 000a C046     		.align	2
+ 765              	.L38:
+ 766 000c 00000000 		.word	htim17
+ 767              		.cfi_endproc
+ 768              	.LFE43:
+ 770              		.section	.text.TIM17_IRQHandler,"ax",%progbits
+ 771              		.align	1
+ 772              		.weak	TIM17_IRQHandler
+ 773              		.syntax unified
+ 774              		.code	16
+ 775              		.thumb_func
+ 776              		.fpu softvfp
+ 778              	TIM17_IRQHandler:
+ 779              	.LFB66:
+  86:startup_stm32f030x6.c **** __weak void I2C1_IRQHandler(void)                      {Default_Handler();}             
+ 780              		.loc 1 86 56 is_stmt 1 view -0
+ 781              		.cfi_startproc
+ 782              		@ args = 0, pretend = 0, frame = 0
+ 783              		@ frame_needed = 0, uses_anonymous_args = 0
+ 784 0000 10B5     		push	{r4, lr}
+ 785              	.LCFI26:
+ 786              		.cfi_def_cfa_offset 8
+ 787              		.cfi_offset 4, -8
+ 788              		.cfi_offset 14, -4
+  86:startup_stm32f030x6.c **** __weak void I2C1_IRQHandler(void)                      {Default_Handler();}             
+ 789              		.loc 1 86 57 view .LVU80
+ 790 0002 FFF7FEFF 		bl	TIM17_Handler
+ 791              	.LVL35:
+  86:startup_stm32f030x6.c **** __weak void I2C1_IRQHandler(void)                      {Default_Handler();}             
+ 792              		.loc 1 86 73 is_stmt 0 view .LVU81
+ 793              		@ sp needed
+ 794 0006 10BD     		pop	{r4, pc}
+ 795              		.cfi_endproc
+ 796              	.LFE66:
+ 798              		.section	.text.SystemTick_Handler,"ax",%progbits
+ 799              		.align	1
+ 800              		.global	SystemTick_Handler
+ 801              		.syntax unified
+ 802              		.code	16
+ 803              		.thumb_func
+ 804              		.fpu softvfp
+ 806              	SystemTick_Handler:
+ 807              	.LFB44:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 16
 
 
- 832 009c 00000000 		.word	I2C1_IRQHandler
- 833 00a0 00000000 		.word	0
- 834 00a4 00000000 		.word	SPI1_IRQHandler
- 835 00a8 00000000 		.word	0
- 836 00ac 00000000 		.word	USART1_IRQHandler
- 837 00b0 00000000 		.word	0
- 838 00b4 00000000 		.word	0
- 839 00b8 00000000 		.word	0
- 840 00bc 00000000 		.word	0
- 841              		.text
- 842              	.Letext0:
- 843              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\machine\\_default_ty
- 844              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\sys\\_stdint.h"
- 845              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h"
- 846              		.file 5 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h"
- 847              		.file 6 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h"
- 848              		.file 7 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h"
- 849              		.file 8 "Core/Inc/main.h"
- 850              		.file 9 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 17
+  55:startup_stm32f030x6.c ****     /* USER CODE BEGIN SysTick_IRQn 0 */
+ 808              		.loc 1 55 1 is_stmt 1 view -0
+ 809              		.cfi_startproc
+ 810              		@ args = 0, pretend = 0, frame = 0
+ 811              		@ frame_needed = 0, uses_anonymous_args = 0
+ 812 0000 10B5     		push	{r4, lr}
+ 813              	.LCFI27:
+ 814              		.cfi_def_cfa_offset 8
+ 815              		.cfi_offset 4, -8
+ 816              		.cfi_offset 14, -4
+  59:startup_stm32f030x6.c ****     /* USER CODE BEGIN SysTick_IRQn 1 */
+ 817              		.loc 1 59 5 view .LVU83
+ 818 0002 FFF7FEFF 		bl	HAL_IncTick
+ 819              	.LVL36:
+  61:startup_stm32f030x6.c ****     /* USER CODE END SysTick_IRQn 1 */
+ 820              		.loc 1 61 5 view .LVU84
+ 821 0006 FFF7FEFF 		bl	Os_Handler_1ms
+ 822              	.LVL37:
+  63:startup_stm32f030x6.c **** 
+ 823              		.loc 1 63 1 is_stmt 0 view .LVU85
+ 824              		@ sp needed
+ 825 000a 10BD     		pop	{r4, pc}
+ 826              		.cfi_endproc
+ 827              	.LFE44:
+ 829              		.section	.text.SysTick_Handler,"ax",%progbits
+ 830              		.align	1
+ 831              		.weak	SysTick_Handler
+ 832              		.syntax unified
+ 833              		.code	16
+ 834              		.thumb_func
+ 835              		.fpu softvfp
+ 837              	SysTick_Handler:
+ 838              	.LFB49:
+  69:startup_stm32f030x6.c **** __weak void WWDG_IRQHandler(void)                      {Default_Handler();}                
+ 839              		.loc 1 69 56 is_stmt 1 view -0
+ 840              		.cfi_startproc
+ 841              		@ args = 0, pretend = 0, frame = 0
+ 842              		@ frame_needed = 0, uses_anonymous_args = 0
+ 843 0000 10B5     		push	{r4, lr}
+ 844              	.LCFI28:
+ 845              		.cfi_def_cfa_offset 8
+ 846              		.cfi_offset 4, -8
+ 847              		.cfi_offset 14, -4
+  69:startup_stm32f030x6.c **** __weak void WWDG_IRQHandler(void)                      {Default_Handler();}                
+ 848              		.loc 1 69 57 view .LVU87
+ 849 0002 FFF7FEFF 		bl	SystemTick_Handler
+ 850              	.LVL38:
+  69:startup_stm32f030x6.c **** __weak void WWDG_IRQHandler(void)                      {Default_Handler();}                
+ 851              		.loc 1 69 78 is_stmt 0 view .LVU88
+ 852              		@ sp needed
+ 853 0006 10BD     		pop	{r4, pc}
+ 854              		.cfi_endproc
+ 855              	.LFE49:
+ 857              		.global	VectorTable
+ 858              		.section	.isr_vector,"aw"
+ 859              		.align	2
+ 862              	VectorTable:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 17
+
+
+ 863 0000 00000000 		.word	_estack
+ 864 0004 00000000 		.word	Reset_Handler
+ 865 0008 00000000 		.word	NMI_Handler
+ 866 000c 00000000 		.word	HardFault_Handler
+ 867 0010 00000000 		.word	0
+ 868 0014 00000000 		.word	0
+ 869 0018 00000000 		.word	0
+ 870 001c 00000000 		.word	0
+ 871 0020 00000000 		.word	0
+ 872 0024 00000000 		.word	0
+ 873 0028 00000000 		.word	0
+ 874 002c 00000000 		.word	SVC_Handler
+ 875 0030 00000000 		.word	0
+ 876 0034 00000000 		.word	0
+ 877 0038 00000000 		.word	PendSV_Handler
+ 878 003c 00000000 		.word	SysTick_Handler
+ 879 0040 00000000 		.word	WWDG_IRQHandler
+ 880 0044 00000000 		.word	0
+ 881 0048 00000000 		.word	RTC_IRQHandler
+ 882 004c 00000000 		.word	FLASH_IRQHandler
+ 883 0050 00000000 		.word	RCC_IRQHandler
+ 884 0054 00000000 		.word	EXTI0_1_IRQHandler
+ 885 0058 00000000 		.word	EXTI2_3_IRQHandler
+ 886 005c 00000000 		.word	EXTI4_15_IRQHandler
+ 887 0060 00000000 		.word	0
+ 888 0064 00000000 		.word	DMA1_Channel1_IRQHandler
+ 889 0068 00000000 		.word	DMA1_Channel2_3_IRQHandler
+ 890 006c 00000000 		.word	DMA1_Channel4_5_IRQHandler
+ 891 0070 00000000 		.word	ADC1_IRQHandler
+ 892 0074 00000000 		.word	TIM1_BRK_UP_TRG_COM_IRQHandler
+ 893 0078 00000000 		.word	TIM1_CC_IRQHandler
+ 894 007c 00000000 		.word	0
+ 895 0080 00000000 		.word	TIM3_IRQHandler
+ 896 0084 00000000 		.word	0
+ 897 0088 00000000 		.word	0
+ 898 008c 00000000 		.word	TIM14_IRQHandler
+ 899 0090 00000000 		.word	0
+ 900 0094 00000000 		.word	TIM16_IRQHandler
+ 901 0098 00000000 		.word	TIM17_IRQHandler
+ 902 009c 00000000 		.word	I2C1_IRQHandler
+ 903 00a0 00000000 		.word	0
+ 904 00a4 00000000 		.word	SPI1_IRQHandler
+ 905 00a8 00000000 		.word	0
+ 906 00ac 00000000 		.word	USART1_IRQHandler
+ 907 00b0 00000000 		.word	0
+ 908 00b4 00000000 		.word	0
+ 909 00b8 00000000 		.word	0
+ 910 00bc 00000000 		.word	0
+ 911              		.text
+ 912              	.Letext0:
+ 913              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\machine\\_default_ty
+ 914              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 915              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h"
+ 916              		.file 5 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h"
+ 917              		.file 6 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h"
+ 918              		.file 7 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h"
+ 919              		.file 8 "Core/Inc/main.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 18
+
+
+ 920              		.file 9 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h"
+ 921              		.file 10 "Core/Inc/os.h"
+ 922              		.file 11 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 startup_stm32f030x6.c
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:16     .text.Reset_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:24     .text.Reset_Handler:00000000 Reset_Handler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:94     .text.Reset_Handler:00000030 $d
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:103    .text.Default_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:110    .text.Default_Handler:00000000 Default_Handler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:127    .text.NMI_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:134    .text.NMI_Handler:00000000 NMI_Handler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:152    .text.HardFault_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:159    .text.HardFault_Handler:00000000 HardFault_Handler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:177    .text.SVC_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:184    .text.SVC_Handler:00000000 SVC_Handler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:202    .text.PendSV_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:209    .text.PendSV_Handler:00000000 PendSV_Handler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:227    .text.SysTick_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:234    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:252    .text.WWDG_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:259    .text.WWDG_IRQHandler:00000000 WWDG_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:277    .text.RTC_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:284    .text.RTC_IRQHandler:00000000 RTC_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:302    .text.FLASH_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:309    .text.FLASH_IRQHandler:00000000 FLASH_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:327    .text.RCC_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:334    .text.RCC_IRQHandler:00000000 RCC_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:352    .text.EXTI0_1_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:359    .text.EXTI0_1_IRQHandler:00000000 EXTI0_1_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:377    .text.EXTI2_3_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:384    .text.EXTI2_3_IRQHandler:00000000 EXTI2_3_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:402    .text.EXTI4_15_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:409    .text.EXTI4_15_IRQHandler:00000000 EXTI4_15_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:427    .text.DMA1_Channel1_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:434    .text.DMA1_Channel1_IRQHandler:00000000 DMA1_Channel1_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:452    .text.DMA1_Channel2_3_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:459    .text.DMA1_Channel2_3_IRQHandler:00000000 DMA1_Channel2_3_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:477    .text.DMA1_Channel4_5_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:484    .text.DMA1_Channel4_5_IRQHandler:00000000 DMA1_Channel4_5_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:502    .text.ADC1_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:509    .text.ADC1_IRQHandler:00000000 ADC1_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:527    .text.TIM1_BRK_UP_TRG_COM_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:534    .text.TIM1_BRK_UP_TRG_COM_IRQHandler:00000000 TIM1_BRK_UP_TRG_COM_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:552    .text.TIM1_CC_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:559    .text.TIM1_CC_IRQHandler:00000000 TIM1_CC_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:577    .text.TIM3_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:584    .text.TIM3_IRQHandler:00000000 TIM3_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:602    .text.TIM14_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:609    .text.TIM14_IRQHandler:00000000 TIM14_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:627    .text.TIM17_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:634    .text.TIM17_IRQHandler:00000000 TIM17_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:652    .text.I2C1_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:659    .text.I2C1_IRQHandler:00000000 I2C1_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:677    .text.SPI1_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:684    .text.SPI1_IRQHandler:00000000 SPI1_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:702    .text.USART1_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:709    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:727    .text.TIM16_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:734    .text.TIM16_Handler:00000000 TIM16_Handler
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s 			page 18
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:16     .text.Reset_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:24     .text.Reset_Handler:00000000 Reset_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:94     .text.Reset_Handler:00000030 $d
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:103    .text.Default_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:110    .text.Default_Handler:00000000 Default_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:127    .text.NMI_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:134    .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:152    .text.HardFault_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:159    .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:177    .text.SVC_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:184    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:202    .text.PendSV_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:209    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:227    .text.WWDG_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:234    .text.WWDG_IRQHandler:00000000 WWDG_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:252    .text.RTC_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:259    .text.RTC_IRQHandler:00000000 RTC_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:277    .text.FLASH_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:284    .text.FLASH_IRQHandler:00000000 FLASH_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:302    .text.RCC_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:309    .text.RCC_IRQHandler:00000000 RCC_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:327    .text.EXTI0_1_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:334    .text.EXTI0_1_IRQHandler:00000000 EXTI0_1_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:352    .text.EXTI2_3_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:359    .text.EXTI2_3_IRQHandler:00000000 EXTI2_3_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:377    .text.EXTI4_15_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:384    .text.EXTI4_15_IRQHandler:00000000 EXTI4_15_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:402    .text.DMA1_Channel1_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:409    .text.DMA1_Channel1_IRQHandler:00000000 DMA1_Channel1_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:427    .text.DMA1_Channel2_3_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:434    .text.DMA1_Channel2_3_IRQHandler:00000000 DMA1_Channel2_3_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:452    .text.DMA1_Channel4_5_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:459    .text.DMA1_Channel4_5_IRQHandler:00000000 DMA1_Channel4_5_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:477    .text.ADC1_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:484    .text.ADC1_IRQHandler:00000000 ADC1_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:502    .text.TIM1_BRK_UP_TRG_COM_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:509    .text.TIM1_BRK_UP_TRG_COM_IRQHandler:00000000 TIM1_BRK_UP_TRG_COM_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:527    .text.TIM1_CC_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:534    .text.TIM1_CC_IRQHandler:00000000 TIM1_CC_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:552    .text.TIM3_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:559    .text.TIM3_IRQHandler:00000000 TIM3_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:577    .text.TIM14_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:584    .text.TIM14_IRQHandler:00000000 TIM14_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:602    .text.I2C1_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:609    .text.I2C1_IRQHandler:00000000 I2C1_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:627    .text.SPI1_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:634    .text.SPI1_IRQHandler:00000000 SPI1_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:652    .text.USART1_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:659    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:677    .text.TIM16_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:684    .text.TIM16_Handler:00000000 TIM16_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:705    .text.TIM16_Handler:0000000c $d
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:710    .text.TIM16_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:717    .text.TIM16_IRQHandler:00000000 TIM16_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:738    .text.TIM17_Handler:00000000 $t
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s 			page 20
 
 
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:755    .text.TIM16_Handler:0000000c $d
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:760    .text.TIM16_IRQHandler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:767    .text.TIM16_IRQHandler:00000000 TIM16_IRQHandler
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:792    .isr_vector:00000000 VectorTable
-C:\Users\jisu8\AppData\Local\Temp\cc69Nh4h.s:789    .isr_vector:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:745    .text.TIM17_Handler:00000000 TIM17_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:766    .text.TIM17_Handler:0000000c $d
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:771    .text.TIM17_IRQHandler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:778    .text.TIM17_IRQHandler:00000000 TIM17_IRQHandler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:799    .text.SystemTick_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:806    .text.SystemTick_Handler:00000000 SystemTick_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:830    .text.SysTick_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:837    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:862    .isr_vector:00000000 VectorTable
+C:\Users\jisu8\AppData\Local\Temp\ccnbQmF2.s:859    .isr_vector:00000000 $d
 
 UNDEFINED SYMBOLS
 SystemInit
@@ -1000,4 +1109,7 @@ _sbss
 _ebss
 HAL_TIM_IRQHandler
 htim16
+htim17
+HAL_IncTick
+Os_Handler_1ms
 _estack

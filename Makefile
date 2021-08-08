@@ -42,9 +42,8 @@ Core/Src/stm32f0xx_hal_msp.c \
 Core/Src/os.c \
 Core/Src/led.c \
 Core/Src/switch.c \
-Core/Src/oled.c \
-Core/Src/ssd1306.c \
-Core/Src/ssd1306_fonts.c \
+Core/Src/pwm.c \
+Core/Src/temp.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc_ex.c \
 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c \
@@ -66,8 +65,7 @@ Core/Src/system_stm32f0xx.c \
 startup_stm32f030x6.c
 
 # ASM sources
-ASM_SOURCES =  \
-#startup_stm32f030x6.s
+ASM_SOURCES =  
 
 
 #######################################

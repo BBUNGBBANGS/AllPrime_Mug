@@ -3,6 +3,7 @@
 #include "stm32f0xx.h"
 #include "stm32f0xx_hal_def.h"
 #include "main.h"
+#include "os.h"
 
 extern uint32_t _sidata;
 extern uint32_t _sdata;
@@ -45,11 +46,27 @@ void TIM16_Handler(void)
     HAL_TIM_IRQHandler(&htim16);
 }
 
+void TIM17_Handler(void)
+{
+    HAL_TIM_IRQHandler(&htim17);
+}
+
+void SystemTick_Handler(void)
+{
+    /* USER CODE BEGIN SysTick_IRQn 0 */
+
+    /* USER CODE END SysTick_IRQn 0 */
+    HAL_IncTick();
+    /* USER CODE BEGIN SysTick_IRQn 1 */
+    Os_Handler_1ms();
+    /* USER CODE END SysTick_IRQn 1 */
+}
+
 __weak void NMI_Handler(void)                          {Default_Handler();}
 __weak void HardFault_Handler(void)                    {Default_Handler();}
 __weak void SVC_Handler(void)                          {Default_Handler();}
 __weak void PendSV_Handler(void)                       {Default_Handler();}
-__weak void SysTick_Handler(void)                      {Default_Handler();}
+__weak void SysTick_Handler(void)                      {SystemTick_Handler();}
 __weak void WWDG_IRQHandler(void)                      {Default_Handler();}                
 __weak void RTC_IRQHandler(void)                       {Default_Handler();}            
 __weak void FLASH_IRQHandler(void)                     {Default_Handler();}                  
@@ -66,7 +83,7 @@ __weak void TIM1_CC_IRQHandler(void)                   {Default_Handler();}
 __weak void TIM3_IRQHandler(void)                      {Default_Handler();}                  
 __weak void TIM14_IRQHandler(void)                     {Default_Handler();}               
 __weak void TIM16_IRQHandler(void)                     {TIM16_Handler();}               
-__weak void TIM17_IRQHandler(void)                     {Default_Handler();}               
+__weak void TIM17_IRQHandler(void)                     {TIM17_Handler();}               
 __weak void I2C1_IRQHandler(void)                      {Default_Handler();}             
 __weak void SPI1_IRQHandler(void)                      {Default_Handler();}               
 __weak void USART1_IRQHandler(void)                    {Default_Handler();}              

@@ -1,0 +1,247 @@
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 0
+  10              		.eabi_attribute 18, 4
+  11              		.file	"pwm.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.Pwm_Peltier_Set_Duty,"ax",%progbits
+  16              		.align	1
+  17              		.arch armv6s-m
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	Pwm_Peltier_Set_Duty:
+  24              	.LVL0:
+  25              	.LFB41:
+  26              		.file 1 "Core/Src/pwm.c"
+   1:Core/Src/pwm.c **** #include "pwm.h"
+   2:Core/Src/pwm.c **** 
+   3:Core/Src/pwm.c **** static Pwm_Peltier_Set_Duty(uint16 duty);
+   4:Core/Src/pwm.c **** static Pwm_Heater_Set_Duty(uint16 duty);
+   5:Core/Src/pwm.c **** static Pwm_Servo_Set_Duty(uint16 duty);
+   6:Core/Src/pwm.c **** 
+   7:Core/Src/pwm.c **** uint16 Pwm_Duty_Peltier = 300;
+   8:Core/Src/pwm.c **** uint16 Pwm_Duty_Heater = 0;
+   9:Core/Src/pwm.c **** uint16 Pwm_Duty_Servo = 300;
+  10:Core/Src/pwm.c **** 
+  11:Core/Src/pwm.c **** void Pwm_Output(void)
+  12:Core/Src/pwm.c **** {
+  13:Core/Src/pwm.c ****     Pwm_Peltier_Set_Duty(Pwm_Duty_Peltier);
+  14:Core/Src/pwm.c ****     Pwm_Heater_Set_Duty(Pwm_Duty_Heater);
+  15:Core/Src/pwm.c ****     Pwm_Servo_Set_Duty(Pwm_Duty_Servo);
+  16:Core/Src/pwm.c ****     return;
+  17:Core/Src/pwm.c **** }
+  18:Core/Src/pwm.c **** 
+  19:Core/Src/pwm.c **** static Pwm_Peltier_Set_Duty(uint16 duty)
+  20:Core/Src/pwm.c **** {
+  27              		.loc 1 20 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  21:Core/Src/pwm.c ****     /* Resolution : 0.1[%] */
+  22:Core/Src/pwm.c ****     PWM_TIM_MODULE_PELTIER-> CCR1 = duty;
+  32              		.loc 1 22 5 view .LVU1
+  33              		.loc 1 22 35 is_stmt 0 view .LVU2
+  34 0000 014B     		ldr	r3, .L2
+  35 0002 5863     		str	r0, [r3, #52]
+  36              	.LVL1:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s 			page 2
+
+
+  23:Core/Src/pwm.c **** }
+  37              		.loc 1 23 1 view .LVU3
+  38              		@ sp needed
+  39 0004 7047     		bx	lr
+  40              	.L3:
+  41 0006 C046     		.align	2
+  42              	.L2:
+  43 0008 00200040 		.word	1073750016
+  44              		.cfi_endproc
+  45              	.LFE41:
+  47              		.section	.text.Pwm_Heater_Set_Duty,"ax",%progbits
+  48              		.align	1
+  49              		.syntax unified
+  50              		.code	16
+  51              		.thumb_func
+  52              		.fpu softvfp
+  54              	Pwm_Heater_Set_Duty:
+  55              	.LVL2:
+  56              	.LFB42:
+  24:Core/Src/pwm.c **** 
+  25:Core/Src/pwm.c **** static Pwm_Heater_Set_Duty(uint16 duty)
+  26:Core/Src/pwm.c **** {
+  57              		.loc 1 26 1 is_stmt 1 view -0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61              		@ link register save eliminated.
+  27:Core/Src/pwm.c ****     /* Resolution : 0.1[%] */
+  28:Core/Src/pwm.c ****     PWM_TIM_MODULE_HEATER-> CCR1 = duty;
+  62              		.loc 1 28 5 view .LVU5
+  63              		.loc 1 28 34 is_stmt 0 view .LVU6
+  64 0000 014B     		ldr	r3, .L5
+  65 0002 5863     		str	r0, [r3, #52]
+  66              	.LVL3:
+  29:Core/Src/pwm.c **** }
+  67              		.loc 1 29 1 view .LVU7
+  68              		@ sp needed
+  69 0004 7047     		bx	lr
+  70              	.L6:
+  71 0006 C046     		.align	2
+  72              	.L5:
+  73 0008 00040040 		.word	1073742848
+  74              		.cfi_endproc
+  75              	.LFE42:
+  77              		.section	.text.Pwm_Servo_Set_Duty,"ax",%progbits
+  78              		.align	1
+  79              		.syntax unified
+  80              		.code	16
+  81              		.thumb_func
+  82              		.fpu softvfp
+  84              	Pwm_Servo_Set_Duty:
+  85              	.LVL4:
+  86              	.LFB43:
+  30:Core/Src/pwm.c **** 
+  31:Core/Src/pwm.c **** static Pwm_Servo_Set_Duty(uint16 duty)
+  32:Core/Src/pwm.c **** {
+  87              		.loc 1 32 1 is_stmt 1 view -0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s 			page 3
+
+
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 0
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91              		@ link register save eliminated.
+  33:Core/Src/pwm.c ****     /* Resolution : 0.1[%] */
+  34:Core/Src/pwm.c ****     PWM_TIM_MODULE_SERVO-> CCR3 = duty;
+  92              		.loc 1 34 5 view .LVU9
+  93              		.loc 1 34 33 is_stmt 0 view .LVU10
+  94 0000 014B     		ldr	r3, .L8
+  95 0002 D863     		str	r0, [r3, #60]
+  96              	.LVL5:
+  35:Core/Src/pwm.c **** }...
+  97              		.loc 1 35 1 view .LVU11
+  98              		@ sp needed
+  99 0004 7047     		bx	lr
+ 100              	.L9:
+ 101 0006 C046     		.align	2
+ 102              	.L8:
+ 103 0008 002C0140 		.word	1073818624
+ 104              		.cfi_endproc
+ 105              	.LFE43:
+ 107              		.section	.text.Pwm_Output,"ax",%progbits
+ 108              		.align	1
+ 109              		.global	Pwm_Output
+ 110              		.syntax unified
+ 111              		.code	16
+ 112              		.thumb_func
+ 113              		.fpu softvfp
+ 115              	Pwm_Output:
+ 116              	.LFB40:
+  12:Core/Src/pwm.c **** {
+ 117              		.loc 1 12 1 is_stmt 1 view -0
+ 118              		.cfi_startproc
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121 0000 10B5     		push	{r4, lr}
+ 122              	.LCFI0:
+ 123              		.cfi_def_cfa_offset 8
+ 124              		.cfi_offset 4, -8
+ 125              		.cfi_offset 14, -4
+  13:Core/Src/pwm.c ****     Pwm_Peltier_Set_Duty(Pwm_Duty_Peltier);
+ 126              		.loc 1 13 5 view .LVU13
+ 127 0002 064B     		ldr	r3, .L11
+ 128 0004 1868     		ldr	r0, [r3]
+ 129 0006 FFF7FEFF 		bl	Pwm_Peltier_Set_Duty
+ 130              	.LVL6:
+  14:Core/Src/pwm.c ****     Pwm_Heater_Set_Duty(Pwm_Duty_Heater);
+ 131              		.loc 1 14 5 view .LVU14
+ 132 000a 054B     		ldr	r3, .L11+4
+ 133 000c 1868     		ldr	r0, [r3]
+ 134 000e FFF7FEFF 		bl	Pwm_Heater_Set_Duty
+ 135              	.LVL7:
+  15:Core/Src/pwm.c ****     Pwm_Servo_Set_Duty(Pwm_Duty_Servo);
+ 136              		.loc 1 15 5 view .LVU15
+ 137 0012 044B     		ldr	r3, .L11+8
+ 138 0014 1868     		ldr	r0, [r3]
+ 139 0016 FFF7FEFF 		bl	Pwm_Servo_Set_Duty
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s 			page 4
+
+
+ 140              	.LVL8:
+  16:Core/Src/pwm.c ****     return;
+ 141              		.loc 1 16 5 view .LVU16
+  17:Core/Src/pwm.c **** }
+ 142              		.loc 1 17 1 is_stmt 0 view .LVU17
+ 143              		@ sp needed
+ 144 001a 10BD     		pop	{r4, pc}
+ 145              	.L12:
+ 146              		.align	2
+ 147              	.L11:
+ 148 001c 00000000 		.word	.LANCHOR0
+ 149 0020 00000000 		.word	.LANCHOR1
+ 150 0024 00000000 		.word	.LANCHOR2
+ 151              		.cfi_endproc
+ 152              	.LFE40:
+ 154              		.global	Pwm_Duty_Servo
+ 155              		.global	Pwm_Duty_Heater
+ 156              		.global	Pwm_Duty_Peltier
+ 157              		.section	.bss.Pwm_Duty_Heater,"aw",%nobits
+ 158              		.align	2
+ 159              		.set	.LANCHOR1,. + 0
+ 162              	Pwm_Duty_Heater:
+ 163 0000 00000000 		.space	4
+ 164              		.section	.data.Pwm_Duty_Peltier,"aw"
+ 165              		.align	2
+ 166              		.set	.LANCHOR0,. + 0
+ 169              	Pwm_Duty_Peltier:
+ 170 0000 2C010000 		.word	300
+ 171              		.section	.data.Pwm_Duty_Servo,"aw"
+ 172              		.align	2
+ 173              		.set	.LANCHOR2,. + 0
+ 176              	Pwm_Duty_Servo:
+ 177 0000 2C010000 		.word	300
+ 178              		.text
+ 179              	.Letext0:
+ 180              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\machine\\_default_ty
+ 181              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 182              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h"
+ 183              		.file 5 "Core/Inc/vardef.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 pwm.c
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:16     .text.Pwm_Peltier_Set_Duty:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:23     .text.Pwm_Peltier_Set_Duty:00000000 Pwm_Peltier_Set_Duty
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:43     .text.Pwm_Peltier_Set_Duty:00000008 $d
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:48     .text.Pwm_Heater_Set_Duty:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:54     .text.Pwm_Heater_Set_Duty:00000000 Pwm_Heater_Set_Duty
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:73     .text.Pwm_Heater_Set_Duty:00000008 $d
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:78     .text.Pwm_Servo_Set_Duty:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:84     .text.Pwm_Servo_Set_Duty:00000000 Pwm_Servo_Set_Duty
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:103    .text.Pwm_Servo_Set_Duty:00000008 $d
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:108    .text.Pwm_Output:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:115    .text.Pwm_Output:00000000 Pwm_Output
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:148    .text.Pwm_Output:0000001c $d
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:176    .data.Pwm_Duty_Servo:00000000 Pwm_Duty_Servo
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:162    .bss.Pwm_Duty_Heater:00000000 Pwm_Duty_Heater
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:169    .data.Pwm_Duty_Peltier:00000000 Pwm_Duty_Peltier
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:158    .bss.Pwm_Duty_Heater:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:165    .data.Pwm_Duty_Peltier:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccUkhJJL.s:172    .data.Pwm_Duty_Servo:00000000 $d
+
+NO UNDEFINED SYMBOLS

@@ -28,5 +28,7 @@ void LED_Control(void)
         HAL_GPIO_WritePin(LED_3_1_GROUP,LED_3_2_PIN,LED_OFF);
     }
 
+    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
+
     return;
 }
