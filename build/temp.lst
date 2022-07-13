@@ -1,39 +1,31 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 1
 
 
    1              		.cpu cortex-m0
-   2              		.eabi_attribute 20, 1
-   3              		.eabi_attribute 21, 1
-   4              		.eabi_attribute 23, 3
-   5              		.eabi_attribute 24, 1
-   6              		.eabi_attribute 25, 1
-   7              		.eabi_attribute 26, 1
-   8              		.eabi_attribute 30, 1
-   9              		.eabi_attribute 34, 0
-  10              		.eabi_attribute 18, 4
-  11              		.file	"temp.c"
-  12              		.text
-  13              	.Ltext0:
-  14              		.cfi_sections	.debug_frame
-  15              		.global	__aeabi_uidiv
-  16              		.global	__aeabi_ui2f
-  17              		.global	__aeabi_fmul
-  18              		.global	__aeabi_fdiv
-  19              		.global	__aeabi_f2uiz
-  20              		.global	__aeabi_fsub
-  21              		.global	__aeabi_f2iz
-  22              		.global	__aeabi_fadd
-  23              		.section	.text.Temp_Read,"ax",%progbits
-  24              		.align	1
-  25              		.global	Temp_Read
-  26              		.arch armv6s-m
-  27              		.syntax unified
-  28              		.code	16
-  29              		.thumb_func
-  30              		.fpu softvfp
-  32              	Temp_Read:
-  33              	.LFB40:
-  34              		.file 1 "Core/Src/temp.c"
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"temp.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Temperature_Compensation,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.code	16
+  21              		.thumb_func
+  23              	Temperature_Compensation:
+  24              	.LVL0:
+  25              	.LFB41:
+  26              		.file 1 "Core/Src/temp.c"
    1:Core/Src/temp.c **** #include "temp.h"
    2:Core/Src/temp.c **** 
    3:Core/Src/temp.c **** uint16 Temp_Adc_TP_Raw;
@@ -52,529 +44,2735 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 1
   16:Core/Src/temp.c **** 
   17:Core/Src/temp.c **** sint16 Temp_Adc_TP;
   18:Core/Src/temp.c **** sint16 Temp_Adc_CPU;
-  19:Core/Src/temp.c **** void Temp_Read(void)
-  20:Core/Src/temp.c **** {
-  35              		.loc 1 20 1 view -0
-  36              		.cfi_startproc
-  37              		@ args = 0, pretend = 0, frame = 0
-  38              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 2
+  19:Core/Src/temp.c **** 
+  20:Core/Src/temp.c **** static void Temperature_Compensation(uint16 temp_volt);
+  21:Core/Src/temp.c **** 
+  22:Core/Src/temp.c **** void Temp_Read(void)
+  23:Core/Src/temp.c **** {
+  24:Core/Src/temp.c ****     HAL_ADC_Start(&TEMP_MODULE);
+  25:Core/Src/temp.c ****     if(HAL_OK == HAL_ADC_PollForConversion(&TEMP_MODULE,10))
+  26:Core/Src/temp.c ****     {
+  27:Core/Src/temp.c ****         Temp_Adc_TP_Raw = HAL_ADC_GetValue(&TEMP_MODULE);
+  28:Core/Src/temp.c ****         Temp_Adc_TP_Status = 1;
+  29:Core/Src/temp.c ****     }
+  30:Core/Src/temp.c ****     else
+  31:Core/Src/temp.c ****     {
+  32:Core/Src/temp.c ****         Temp_Adc_TP_Status = 0;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 2
 
 
-  39 0000 10B5     		push	{r4, lr}
-  40              	.LCFI0:
-  41              		.cfi_def_cfa_offset 8
-  42              		.cfi_offset 4, -8
-  43              		.cfi_offset 14, -4
-  21:Core/Src/temp.c ****     HAL_ADC_Start(&hadc);
-  44              		.loc 1 21 5 view .LVU1
-  45 0002 4C4C     		ldr	r4, .L12
-  46 0004 2000     		movs	r0, r4
-  47 0006 FFF7FEFF 		bl	HAL_ADC_Start
-  48              	.LVL0:
-  22:Core/Src/temp.c ****     if(HAL_OK == HAL_ADC_PollForConversion(&TEMP_MODULE,10))
-  49              		.loc 1 22 5 view .LVU2
-  50              		.loc 1 22 18 is_stmt 0 view .LVU3
-  51 000a 0A21     		movs	r1, #10
-  52 000c 2000     		movs	r0, r4
-  53 000e FFF7FEFF 		bl	HAL_ADC_PollForConversion
-  54              	.LVL1:
-  55              		.loc 1 22 7 view .LVU4
-  56 0012 0028     		cmp	r0, #0
-  57 0014 18D0     		beq	.L8
-  23:Core/Src/temp.c ****     {
-  24:Core/Src/temp.c ****         Temp_Adc_TP_Raw = HAL_ADC_GetValue(&TEMP_MODULE);
-  25:Core/Src/temp.c ****         Temp_Adc_TP_Status = 1;
-  26:Core/Src/temp.c ****     }
-  27:Core/Src/temp.c ****     else
-  28:Core/Src/temp.c ****     {
-  29:Core/Src/temp.c ****         Temp_Adc_TP_Status = 0;
-  58              		.loc 1 29 9 is_stmt 1 view .LVU5
-  59              		.loc 1 29 28 is_stmt 0 view .LVU6
-  60 0016 484B     		ldr	r3, .L12+4
-  61 0018 0022     		movs	r2, #0
-  62 001a 1A70     		strb	r2, [r3]
-  63              	.L3:
-  30:Core/Src/temp.c ****     }
-  31:Core/Src/temp.c **** 
-  32:Core/Src/temp.c ****     HAL_ADC_Start(&hadc);
-  64              		.loc 1 32 5 is_stmt 1 view .LVU7
-  65 001c 454C     		ldr	r4, .L12
-  66 001e 2000     		movs	r0, r4
-  67 0020 FFF7FEFF 		bl	HAL_ADC_Start
-  68              	.LVL2:
-  33:Core/Src/temp.c ****     if(HAL_OK == HAL_ADC_PollForConversion(&TEMP_MODULE,10))
-  69              		.loc 1 33 5 view .LVU8
-  70              		.loc 1 33 18 is_stmt 0 view .LVU9
-  71 0024 0A21     		movs	r1, #10
-  72 0026 2000     		movs	r0, r4
-  73 0028 FFF7FEFF 		bl	HAL_ADC_PollForConversion
-  74              	.LVL3:
-  75              		.loc 1 33 7 view .LVU10
-  76 002c 0028     		cmp	r0, #0
-  77 002e 14D0     		beq	.L9
-  34:Core/Src/temp.c ****     {
-  35:Core/Src/temp.c ****         Temp_Adc_CPU_Raw = HAL_ADC_GetValue(&TEMP_MODULE);
-  36:Core/Src/temp.c ****         Temp_Adc_CPU_Status = 1;
-  37:Core/Src/temp.c ****     }
-  38:Core/Src/temp.c ****     else
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 3
+  33:Core/Src/temp.c ****     }
+  34:Core/Src/temp.c **** 
+  35:Core/Src/temp.c ****     HAL_ADC_Start(&TEMP_MODULE);
+  36:Core/Src/temp.c ****     if(HAL_OK == HAL_ADC_PollForConversion(&TEMP_MODULE,10))
+  37:Core/Src/temp.c ****     {
+  38:Core/Src/temp.c ****         Temp_Adc_CPU_Raw = HAL_ADC_GetValue(&TEMP_MODULE);
+  39:Core/Src/temp.c ****         Temp_Adc_CPU_Status = 1;
+  40:Core/Src/temp.c ****     }
+  41:Core/Src/temp.c ****     else
+  42:Core/Src/temp.c ****     {
+  43:Core/Src/temp.c ****         Temp_Adc_CPU_Status = 0;
+  44:Core/Src/temp.c ****     }
+  45:Core/Src/temp.c **** 
+  46:Core/Src/temp.c **** 
+  47:Core/Src/temp.c ****     if(1 == Temp_Adc_TP_Status)
+  48:Core/Src/temp.c ****     {
+  49:Core/Src/temp.c ****         Temp_Avg_TP_Count++;
+  50:Core/Src/temp.c ****         Temp_Adc_TP_Sum += Temp_Adc_TP_Raw;
+  51:Core/Src/temp.c ****         if(Temp_Avg_TP_Count>=10)
+  52:Core/Src/temp.c ****         {
+  53:Core/Src/temp.c ****             Temp_Adc_TP_Volt = (uint16)((float)(Temp_Adc_TP_Sum / Temp_Avg_TP_Count)*5000.0f/4095.0
+  54:Core/Src/temp.c ****             Temperature_Compensation(Temp_Adc_TP_Volt);
+  55:Core/Src/temp.c ****             Temp_Avg_TP_Count = 0;
+  56:Core/Src/temp.c ****             Temp_Adc_TP_Sum = 0;
+  57:Core/Src/temp.c ****         }
+  58:Core/Src/temp.c ****     }
+  59:Core/Src/temp.c ****     
+  60:Core/Src/temp.c ****     if(1 == Temp_Adc_CPU_Status)
+  61:Core/Src/temp.c ****     {
+  62:Core/Src/temp.c ****         Temp_Avg_CPU_Count++;
+  63:Core/Src/temp.c ****         Temp_Adc_CPU_Sum += Temp_Adc_CPU_Raw;
+  64:Core/Src/temp.c ****         if(Temp_Avg_CPU_Count>=10)
+  65:Core/Src/temp.c ****         {
+  66:Core/Src/temp.c ****             Temp_Adc_CPU_Volt = (uint16)((float)(Temp_Adc_CPU_Sum / Temp_Avg_CPU_Count)*3300.0f/409
+  67:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
+  68:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
+  69:Core/Src/temp.c ****             Temp_Adc_CPU_Sum = 0;
+  70:Core/Src/temp.c ****         }
+  71:Core/Src/temp.c ****     }
+  72:Core/Src/temp.c **** 
+  73:Core/Src/temp.c ****     return;
+  74:Core/Src/temp.c **** }
+  75:Core/Src/temp.c **** 
+  76:Core/Src/temp.c **** static void Temperature_Compensation(uint16 temp_volt)
+  77:Core/Src/temp.c **** {
+  27              		.loc 1 77 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		.loc 1 77 1 is_stmt 0 view .LVU1
+  32 0000 00B5     		push	{lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 14, -4
+  78:Core/Src/temp.c ****     sint16 Compensation_val = 0;
+  36              		.loc 1 78 5 is_stmt 1 view .LVU2
+  37              	.LVL1:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 3
 
 
-  39:Core/Src/temp.c ****     {
-  40:Core/Src/temp.c ****         Temp_Adc_CPU_Status = 0;
-  78              		.loc 1 40 9 is_stmt 1 view .LVU11
-  79              		.loc 1 40 29 is_stmt 0 view .LVU12
-  80 0030 424B     		ldr	r3, .L12+8
-  81 0032 0022     		movs	r2, #0
-  82 0034 1A70     		strb	r2, [r3]
-  83              	.L5:
-  41:Core/Src/temp.c ****     }
-  42:Core/Src/temp.c **** 
-  43:Core/Src/temp.c **** 
-  44:Core/Src/temp.c ****     if(1 == Temp_Adc_TP_Status)
-  84              		.loc 1 44 5 is_stmt 1 view .LVU13
-  85              		.loc 1 44 10 is_stmt 0 view .LVU14
-  86 0036 404B     		ldr	r3, .L12+4
-  87 0038 1B78     		ldrb	r3, [r3]
-  88              		.loc 1 44 7 view .LVU15
-  89 003a 012B     		cmp	r3, #1
-  90 003c 16D0     		beq	.L10
-  91              	.L6:
-  45:Core/Src/temp.c ****     {
-  46:Core/Src/temp.c ****         Temp_Avg_TP_Count++;
-  47:Core/Src/temp.c ****         Temp_Adc_TP_Sum += Temp_Adc_TP_Raw;
-  48:Core/Src/temp.c ****         if(Temp_Avg_TP_Count>=10)
-  49:Core/Src/temp.c ****         {
-  50:Core/Src/temp.c ****             Temp_Adc_TP_Volt = (uint16)((float)(Temp_Adc_TP_Sum / Temp_Avg_TP_Count)*5000.0f/4095.0
-  51:Core/Src/temp.c ****             Temp_Adc_TP = (sint16)((4750 - (float)Temp_Adc_TP_Volt)*0.0375f - 40.0f);
-  52:Core/Src/temp.c ****             Temp_Avg_TP_Count = 0;
-  53:Core/Src/temp.c ****             Temp_Adc_TP_Sum = 0;
-  54:Core/Src/temp.c ****         }
-  55:Core/Src/temp.c ****     }
-  56:Core/Src/temp.c ****     
-  57:Core/Src/temp.c ****     if(1 == Temp_Adc_CPU_Status)
-  92              		.loc 1 57 5 is_stmt 1 view .LVU16
-  93              		.loc 1 57 10 is_stmt 0 view .LVU17
-  94 003e 3F4B     		ldr	r3, .L12+8
-  95 0040 1B78     		ldrb	r3, [r3]
-  96              		.loc 1 57 7 view .LVU18
-  97 0042 012B     		cmp	r3, #1
-  98 0044 44D0     		beq	.L11
-  99              	.L1:
-  58:Core/Src/temp.c ****     {
-  59:Core/Src/temp.c ****         Temp_Avg_CPU_Count++;
-  60:Core/Src/temp.c ****         Temp_Adc_CPU_Sum += Temp_Adc_CPU_Raw;
-  61:Core/Src/temp.c ****         if(Temp_Avg_CPU_Count>=10)
-  62:Core/Src/temp.c ****         {
-  63:Core/Src/temp.c ****             Temp_Adc_CPU_Volt = (uint16)((float)(Temp_Adc_CPU_Sum / Temp_Avg_CPU_Count)*3300.0f/409
-  64:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
-  65:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
-  66:Core/Src/temp.c ****             Temp_Adc_CPU_Sum = 0;
-  67:Core/Src/temp.c ****         }
-  68:Core/Src/temp.c ****     }
-  69:Core/Src/temp.c **** 
-  70:Core/Src/temp.c ****     return;
-  71:Core/Src/temp.c **** }
- 100              		.loc 1 71 1 view .LVU19
- 101              		@ sp needed
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 4
+  79:Core/Src/temp.c ****     if(temp_volt>TEMP_ZONE1_THRESHOLD)
+  38              		.loc 1 79 5 view .LVU3
+  39              		.loc 1 79 7 is_stmt 0 view .LVU4
+  40 0002 CB4B     		ldr	r3, .L124
+  41 0004 9842     		cmp	r0, r3
+  42 0006 00D9     		bls	.LCB14
+  43 0008 81E2     		b	.L3	@long jump
+  44              	.LCB14:
+  80:Core/Src/temp.c ****     {
+  81:Core/Src/temp.c ****         Compensation_val = -11;
+  82:Core/Src/temp.c ****     }
+  83:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE2_THRESHOLD)
+  45              		.loc 1 83 10 is_stmt 1 view .LVU5
+  46              		.loc 1 83 12 is_stmt 0 view .LVU6
+  47 000a CA4B     		ldr	r3, .L124+4
+  48 000c 9842     		cmp	r0, r3
+  49 000e 00D9     		bls	.LCB18
+  50 0010 82E2     		b	.L4	@long jump
+  51              	.LCB18:
+  84:Core/Src/temp.c ****     {
+  85:Core/Src/temp.c ****         Compensation_val = -10;       
+  86:Core/Src/temp.c ****     }
+  87:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE3_THRESHOLD)
+  52              		.loc 1 87 10 is_stmt 1 view .LVU7
+  53              		.loc 1 87 12 is_stmt 0 view .LVU8
+  54 0012 C94B     		ldr	r3, .L124+8
+  55 0014 9842     		cmp	r0, r3
+  56 0016 00D9     		bls	.LCB22
+  57 0018 81E2     		b	.L5	@long jump
+  58              	.LCB22:
+  88:Core/Src/temp.c ****     {
+  89:Core/Src/temp.c ****         Compensation_val = -9;       
+  90:Core/Src/temp.c ****     }    
+  91:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE4_THRESHOLD)
+  59              		.loc 1 91 10 is_stmt 1 view .LVU9
+  60              		.loc 1 91 12 is_stmt 0 view .LVU10
+  61 001a C84B     		ldr	r3, .L124+12
+  62 001c 9842     		cmp	r0, r3
+  63 001e 00D9     		bls	.LCB26
+  64 0020 80E2     		b	.L6	@long jump
+  65              	.LCB26:
+  92:Core/Src/temp.c ****     {
+  93:Core/Src/temp.c ****         Compensation_val = -8;       
+  94:Core/Src/temp.c ****     }    
+  95:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE5_THRESHOLD)
+  66              		.loc 1 95 10 is_stmt 1 view .LVU11
+  67              		.loc 1 95 12 is_stmt 0 view .LVU12
+  68 0022 C74B     		ldr	r3, .L124+16
+  69 0024 9842     		cmp	r0, r3
+  70 0026 00D9     		bls	.LCB30
+  71 0028 7FE2     		b	.L7	@long jump
+  72              	.LCB30:
+  96:Core/Src/temp.c ****     {
+  97:Core/Src/temp.c ****         Compensation_val = -7;       
+  98:Core/Src/temp.c ****     }    
+  99:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE6_THRESHOLD)
+  73              		.loc 1 99 10 is_stmt 1 view .LVU13
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 4
 
 
- 102 0046 10BD     		pop	{r4, pc}
- 103              	.L8:
-  24:Core/Src/temp.c ****         Temp_Adc_TP_Status = 1;
- 104              		.loc 1 24 9 is_stmt 1 view .LVU20
-  24:Core/Src/temp.c ****         Temp_Adc_TP_Status = 1;
- 105              		.loc 1 24 27 is_stmt 0 view .LVU21
- 106 0048 3A48     		ldr	r0, .L12
- 107 004a FFF7FEFF 		bl	HAL_ADC_GetValue
- 108              	.LVL4:
-  24:Core/Src/temp.c ****         Temp_Adc_TP_Status = 1;
- 109              		.loc 1 24 25 view .LVU22
- 110 004e 3C4B     		ldr	r3, .L12+12
- 111 0050 1860     		str	r0, [r3]
-  25:Core/Src/temp.c ****     }
- 112              		.loc 1 25 9 is_stmt 1 view .LVU23
-  25:Core/Src/temp.c ****     }
- 113              		.loc 1 25 28 is_stmt 0 view .LVU24
- 114 0052 394B     		ldr	r3, .L12+4
- 115 0054 0122     		movs	r2, #1
- 116 0056 1A70     		strb	r2, [r3]
- 117 0058 E0E7     		b	.L3
- 118              	.L9:
-  35:Core/Src/temp.c ****         Temp_Adc_CPU_Status = 1;
- 119              		.loc 1 35 9 is_stmt 1 view .LVU25
-  35:Core/Src/temp.c ****         Temp_Adc_CPU_Status = 1;
- 120              		.loc 1 35 28 is_stmt 0 view .LVU26
- 121 005a 3648     		ldr	r0, .L12
- 122 005c FFF7FEFF 		bl	HAL_ADC_GetValue
- 123              	.LVL5:
-  35:Core/Src/temp.c ****         Temp_Adc_CPU_Status = 1;
- 124              		.loc 1 35 26 view .LVU27
- 125 0060 384B     		ldr	r3, .L12+16
- 126 0062 1860     		str	r0, [r3]
-  36:Core/Src/temp.c ****     }
- 127              		.loc 1 36 9 is_stmt 1 view .LVU28
-  36:Core/Src/temp.c ****     }
- 128              		.loc 1 36 29 is_stmt 0 view .LVU29
- 129 0064 354B     		ldr	r3, .L12+8
- 130 0066 0122     		movs	r2, #1
- 131 0068 1A70     		strb	r2, [r3]
- 132 006a E4E7     		b	.L5
- 133              	.L10:
-  46:Core/Src/temp.c ****         Temp_Adc_TP_Sum += Temp_Adc_TP_Raw;
- 134              		.loc 1 46 9 is_stmt 1 view .LVU30
-  46:Core/Src/temp.c ****         Temp_Adc_TP_Sum += Temp_Adc_TP_Raw;
- 135              		.loc 1 46 26 is_stmt 0 view .LVU31
- 136 006c 364B     		ldr	r3, .L12+20
- 137 006e 1978     		ldrb	r1, [r3]
- 138 0070 0131     		adds	r1, r1, #1
- 139 0072 C9B2     		uxtb	r1, r1
- 140 0074 1970     		strb	r1, [r3]
-  47:Core/Src/temp.c ****         if(Temp_Avg_TP_Count>=10)
- 141              		.loc 1 47 9 is_stmt 1 view .LVU32
-  47:Core/Src/temp.c ****         if(Temp_Avg_TP_Count>=10)
- 142              		.loc 1 47 25 is_stmt 0 view .LVU33
- 143 0076 354B     		ldr	r3, .L12+24
- 144 0078 314A     		ldr	r2, .L12+12
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 5
+  74              		.loc 1 99 12 is_stmt 0 view .LVU14
+  75 002a C64B     		ldr	r3, .L124+20
+  76 002c 9842     		cmp	r0, r3
+  77 002e 00D9     		bls	.LCB34
+  78 0030 7EE2     		b	.L8	@long jump
+  79              	.LCB34:
+ 100:Core/Src/temp.c ****     {
+ 101:Core/Src/temp.c ****         Compensation_val = -6;       
+ 102:Core/Src/temp.c ****     }    
+ 103:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE7_THRESHOLD)
+  80              		.loc 1 103 10 is_stmt 1 view .LVU15
+  81              		.loc 1 103 12 is_stmt 0 view .LVU16
+  82 0032 C54B     		ldr	r3, .L124+24
+  83 0034 9842     		cmp	r0, r3
+  84 0036 00D9     		bls	.LCB38
+  85 0038 7DE2     		b	.L9	@long jump
+  86              	.LCB38:
+ 104:Core/Src/temp.c ****     {
+ 105:Core/Src/temp.c ****         Compensation_val = -5;       
+ 106:Core/Src/temp.c ****     }    
+ 107:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE8_THRESHOLD)
+  87              		.loc 1 107 10 is_stmt 1 view .LVU17
+  88              		.loc 1 107 12 is_stmt 0 view .LVU18
+  89 003a C44B     		ldr	r3, .L124+28
+  90 003c 9842     		cmp	r0, r3
+  91 003e 00D9     		bls	.LCB42
+  92 0040 7CE2     		b	.L10	@long jump
+  93              	.LCB42:
+ 108:Core/Src/temp.c ****     {
+ 109:Core/Src/temp.c ****         Compensation_val = -4;       
+ 110:Core/Src/temp.c ****     }    
+ 111:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE9_THRESHOLD)
+  94              		.loc 1 111 10 is_stmt 1 view .LVU19
+  95              		.loc 1 111 12 is_stmt 0 view .LVU20
+  96 0042 C34B     		ldr	r3, .L124+32
+  97 0044 9842     		cmp	r0, r3
+  98 0046 00D9     		bls	.LCB46
+  99 0048 7BE2     		b	.L11	@long jump
+ 100              	.LCB46:
+ 112:Core/Src/temp.c ****     {
+ 113:Core/Src/temp.c ****         Compensation_val = -3;       
+ 114:Core/Src/temp.c ****     }    
+ 115:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE10_THRESHOLD)
+ 101              		.loc 1 115 10 is_stmt 1 view .LVU21
+ 102              		.loc 1 115 12 is_stmt 0 view .LVU22
+ 103 004a C24B     		ldr	r3, .L124+36
+ 104 004c 9842     		cmp	r0, r3
+ 105 004e 00D9     		bls	.LCB50
+ 106 0050 7AE2     		b	.L12	@long jump
+ 107              	.LCB50:
+ 116:Core/Src/temp.c ****     {
+ 117:Core/Src/temp.c ****         Compensation_val = -2;       
+ 118:Core/Src/temp.c ****     }    
+ 119:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE11_THRESHOLD)
+ 108              		.loc 1 119 10 is_stmt 1 view .LVU23
+ 109              		.loc 1 119 12 is_stmt 0 view .LVU24
+ 110 0052 C14B     		ldr	r3, .L124+40
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 5
 
 
- 145 007a 1068     		ldr	r0, [r2]
- 146 007c 1A68     		ldr	r2, [r3]
- 147 007e 9446     		mov	ip, r2
- 148 0080 6044     		add	r0, r0, ip
- 149 0082 1860     		str	r0, [r3]
-  48:Core/Src/temp.c ****         {
- 150              		.loc 1 48 9 is_stmt 1 view .LVU34
-  48:Core/Src/temp.c ****         {
- 151              		.loc 1 48 11 is_stmt 0 view .LVU35
- 152 0084 0929     		cmp	r1, #9
- 153 0086 DAD9     		bls	.L6
-  50:Core/Src/temp.c ****             Temp_Adc_TP = (sint16)((4750 - (float)Temp_Adc_TP_Volt)*0.0375f - 40.0f);
- 154              		.loc 1 50 13 is_stmt 1 view .LVU36
-  50:Core/Src/temp.c ****             Temp_Adc_TP = (sint16)((4750 - (float)Temp_Adc_TP_Volt)*0.0375f - 40.0f);
- 155              		.loc 1 50 65 is_stmt 0 view .LVU37
- 156 0088 FFF7FEFF 		bl	__aeabi_uidiv
- 157              	.LVL6:
-  50:Core/Src/temp.c ****             Temp_Adc_TP = (sint16)((4750 - (float)Temp_Adc_TP_Volt)*0.0375f - 40.0f);
- 158              		.loc 1 50 41 view .LVU38
- 159 008c FFF7FEFF 		bl	__aeabi_ui2f
- 160              	.LVL7:
-  50:Core/Src/temp.c ****             Temp_Adc_TP = (sint16)((4750 - (float)Temp_Adc_TP_Volt)*0.0375f - 40.0f);
- 161              		.loc 1 50 85 view .LVU39
- 162 0090 2F49     		ldr	r1, .L12+28
- 163 0092 FFF7FEFF 		bl	__aeabi_fmul
- 164              	.LVL8:
-  50:Core/Src/temp.c ****             Temp_Adc_TP = (sint16)((4750 - (float)Temp_Adc_TP_Volt)*0.0375f - 40.0f);
- 165              		.loc 1 50 93 view .LVU40
- 166 0096 2F49     		ldr	r1, .L12+32
- 167 0098 FFF7FEFF 		bl	__aeabi_fdiv
- 168              	.LVL9:
-  50:Core/Src/temp.c ****             Temp_Adc_TP = (sint16)((4750 - (float)Temp_Adc_TP_Volt)*0.0375f - 40.0f);
- 169              		.loc 1 50 32 view .LVU41
- 170 009c FFF7FEFF 		bl	__aeabi_f2uiz
- 171              	.LVL10:
-  50:Core/Src/temp.c ****             Temp_Adc_TP = (sint16)((4750 - (float)Temp_Adc_TP_Volt)*0.0375f - 40.0f);
- 172              		.loc 1 50 30 view .LVU42
- 173 00a0 2D4B     		ldr	r3, .L12+36
- 174 00a2 1860     		str	r0, [r3]
-  51:Core/Src/temp.c ****             Temp_Avg_TP_Count = 0;
- 175              		.loc 1 51 13 is_stmt 1 view .LVU43
-  51:Core/Src/temp.c ****             Temp_Avg_TP_Count = 0;
- 176              		.loc 1 51 44 is_stmt 0 view .LVU44
- 177 00a4 FFF7FEFF 		bl	__aeabi_ui2f
- 178              	.LVL11:
- 179 00a8 011C     		adds	r1, r0, #0
-  51:Core/Src/temp.c ****             Temp_Avg_TP_Count = 0;
- 180              		.loc 1 51 42 view .LVU45
- 181 00aa 2C48     		ldr	r0, .L12+40
- 182 00ac FFF7FEFF 		bl	__aeabi_fsub
- 183              	.LVL12:
-  51:Core/Src/temp.c ****             Temp_Avg_TP_Count = 0;
- 184              		.loc 1 51 68 view .LVU46
- 185 00b0 2B49     		ldr	r1, .L12+44
- 186 00b2 FFF7FEFF 		bl	__aeabi_fmul
- 187              	.LVL13:
-  51:Core/Src/temp.c ****             Temp_Avg_TP_Count = 0;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 6
+ 111 0054 9842     		cmp	r0, r3
+ 112 0056 00D9     		bls	.LCB54
+ 113 0058 79E2     		b	.L13	@long jump
+ 114              	.LCB54:
+ 120:Core/Src/temp.c ****     {
+ 121:Core/Src/temp.c ****         Compensation_val = -1;       
+ 122:Core/Src/temp.c ****     }    
+ 123:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE12_THRESHOLD)
+ 115              		.loc 1 123 10 is_stmt 1 view .LVU25
+ 116              		.loc 1 123 12 is_stmt 0 view .LVU26
+ 117 005a C04B     		ldr	r3, .L124+44
+ 118 005c 9842     		cmp	r0, r3
+ 119 005e 00D9     		bls	.LCB58
+ 120 0060 78E2     		b	.L14	@long jump
+ 121              	.LCB58:
+ 124:Core/Src/temp.c ****     {
+ 125:Core/Src/temp.c ****         Compensation_val = 0;       
+ 126:Core/Src/temp.c ****     }    
+ 127:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE13_THRESHOLD)
+ 122              		.loc 1 127 10 is_stmt 1 view .LVU27
+ 123              		.loc 1 127 12 is_stmt 0 view .LVU28
+ 124 0062 BF4B     		ldr	r3, .L124+48
+ 125 0064 9842     		cmp	r0, r3
+ 126 0066 00D9     		bls	.LCB62
+ 127 0068 76E2     		b	.L15	@long jump
+ 128              	.LCB62:
+ 128:Core/Src/temp.c ****     {
+ 129:Core/Src/temp.c ****         Compensation_val = 1;       
+ 130:Core/Src/temp.c ****     }    
+ 131:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE14_THRESHOLD)
+ 129              		.loc 1 131 10 is_stmt 1 view .LVU29
+ 130              		.loc 1 131 12 is_stmt 0 view .LVU30
+ 131 006a BE4B     		ldr	r3, .L124+52
+ 132 006c 9842     		cmp	r0, r3
+ 133 006e 00D9     		bls	.LCB66
+ 134 0070 74E2     		b	.L16	@long jump
+ 135              	.LCB66:
+ 132:Core/Src/temp.c ****     {
+ 133:Core/Src/temp.c ****         Compensation_val = 2;       
+ 134:Core/Src/temp.c ****     }    
+ 135:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE15_THRESHOLD)
+ 136              		.loc 1 135 10 is_stmt 1 view .LVU31
+ 137              		.loc 1 135 12 is_stmt 0 view .LVU32
+ 138 0072 BD4B     		ldr	r3, .L124+56
+ 139 0074 9842     		cmp	r0, r3
+ 140 0076 00D9     		bls	.LCB70
+ 141 0078 72E2     		b	.L17	@long jump
+ 142              	.LCB70:
+ 136:Core/Src/temp.c ****     {
+ 137:Core/Src/temp.c ****         Compensation_val = 3;       
+ 138:Core/Src/temp.c ****     }    
+ 139:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE16_THRESHOLD)
+ 143              		.loc 1 139 10 is_stmt 1 view .LVU33
+ 144              		.loc 1 139 12 is_stmt 0 view .LVU34
+ 145 007a BC4B     		ldr	r3, .L124+60
+ 146 007c 9842     		cmp	r0, r3
+ 147 007e 00D9     		bls	.LCB74
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 6
 
 
- 188              		.loc 1 51 77 view .LVU47
- 189 00b6 2B49     		ldr	r1, .L12+48
- 190 00b8 FFF7FEFF 		bl	__aeabi_fsub
- 191              	.LVL14:
-  51:Core/Src/temp.c ****             Temp_Avg_TP_Count = 0;
- 192              		.loc 1 51 27 view .LVU48
- 193 00bc FFF7FEFF 		bl	__aeabi_f2iz
- 194              	.LVL15:
-  51:Core/Src/temp.c ****             Temp_Avg_TP_Count = 0;
- 195              		.loc 1 51 25 view .LVU49
- 196 00c0 294B     		ldr	r3, .L12+52
- 197 00c2 1860     		str	r0, [r3]
-  52:Core/Src/temp.c ****             Temp_Adc_TP_Sum = 0;
- 198              		.loc 1 52 13 is_stmt 1 view .LVU50
-  52:Core/Src/temp.c ****             Temp_Adc_TP_Sum = 0;
- 199              		.loc 1 52 31 is_stmt 0 view .LVU51
- 200 00c4 0023     		movs	r3, #0
- 201 00c6 204A     		ldr	r2, .L12+20
- 202 00c8 1370     		strb	r3, [r2]
-  53:Core/Src/temp.c ****         }
- 203              		.loc 1 53 13 is_stmt 1 view .LVU52
-  53:Core/Src/temp.c ****         }
- 204              		.loc 1 53 29 is_stmt 0 view .LVU53
- 205 00ca 204A     		ldr	r2, .L12+24
- 206 00cc 1360     		str	r3, [r2]
- 207 00ce B6E7     		b	.L6
- 208              	.L11:
-  59:Core/Src/temp.c ****         Temp_Adc_CPU_Sum += Temp_Adc_CPU_Raw;
- 209              		.loc 1 59 9 is_stmt 1 view .LVU54
-  59:Core/Src/temp.c ****         Temp_Adc_CPU_Sum += Temp_Adc_CPU_Raw;
- 210              		.loc 1 59 27 is_stmt 0 view .LVU55
- 211 00d0 264B     		ldr	r3, .L12+56
- 212 00d2 1978     		ldrb	r1, [r3]
- 213 00d4 0131     		adds	r1, r1, #1
- 214 00d6 C9B2     		uxtb	r1, r1
- 215 00d8 1970     		strb	r1, [r3]
-  60:Core/Src/temp.c ****         if(Temp_Avg_CPU_Count>=10)
- 216              		.loc 1 60 9 is_stmt 1 view .LVU56
-  60:Core/Src/temp.c ****         if(Temp_Avg_CPU_Count>=10)
- 217              		.loc 1 60 26 is_stmt 0 view .LVU57
- 218 00da 254B     		ldr	r3, .L12+60
- 219 00dc 194A     		ldr	r2, .L12+16
- 220 00de 1068     		ldr	r0, [r2]
- 221 00e0 1A68     		ldr	r2, [r3]
- 222 00e2 9446     		mov	ip, r2
- 223 00e4 6044     		add	r0, r0, ip
- 224 00e6 1860     		str	r0, [r3]
-  61:Core/Src/temp.c ****         {
- 225              		.loc 1 61 9 is_stmt 1 view .LVU58
-  61:Core/Src/temp.c ****         {
- 226              		.loc 1 61 11 is_stmt 0 view .LVU59
- 227 00e8 0929     		cmp	r1, #9
- 228 00ea ACD9     		bls	.L1
-  63:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
- 229              		.loc 1 63 13 is_stmt 1 view .LVU60
-  63:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
- 230              		.loc 1 63 67 is_stmt 0 view .LVU61
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 7
+ 148 0080 70E2     		b	.L18	@long jump
+ 149              	.LCB74:
+ 140:Core/Src/temp.c ****     {
+ 141:Core/Src/temp.c ****         Compensation_val = 4;       
+ 142:Core/Src/temp.c ****     }    
+ 143:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE17_THRESHOLD)
+ 150              		.loc 1 143 10 is_stmt 1 view .LVU35
+ 151              		.loc 1 143 12 is_stmt 0 view .LVU36
+ 152 0082 BB4B     		ldr	r3, .L124+64
+ 153 0084 9842     		cmp	r0, r3
+ 154 0086 00D9     		bls	.LCB78
+ 155 0088 6EE2     		b	.L19	@long jump
+ 156              	.LCB78:
+ 144:Core/Src/temp.c ****     {
+ 145:Core/Src/temp.c ****         Compensation_val = 5;       
+ 146:Core/Src/temp.c ****     }    
+ 147:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE18_THRESHOLD)
+ 157              		.loc 1 147 10 is_stmt 1 view .LVU37
+ 158              		.loc 1 147 12 is_stmt 0 view .LVU38
+ 159 008a BA4B     		ldr	r3, .L124+68
+ 160 008c 9842     		cmp	r0, r3
+ 161 008e 00D9     		bls	.LCB82
+ 162 0090 6CE2     		b	.L20	@long jump
+ 163              	.LCB82:
+ 148:Core/Src/temp.c ****     {
+ 149:Core/Src/temp.c ****         Compensation_val = 6;       
+ 150:Core/Src/temp.c ****     }    
+ 151:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE19_THRESHOLD)
+ 164              		.loc 1 151 10 is_stmt 1 view .LVU39
+ 165              		.loc 1 151 12 is_stmt 0 view .LVU40
+ 166 0092 B94B     		ldr	r3, .L124+72
+ 167 0094 9842     		cmp	r0, r3
+ 168 0096 00D9     		bls	.LCB86
+ 169 0098 6AE2     		b	.L21	@long jump
+ 170              	.LCB86:
+ 152:Core/Src/temp.c ****     {
+ 153:Core/Src/temp.c ****         Compensation_val = 7;       
+ 154:Core/Src/temp.c ****     }    
+ 155:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE20_THRESHOLD)
+ 171              		.loc 1 155 10 is_stmt 1 view .LVU41
+ 172              		.loc 1 155 12 is_stmt 0 view .LVU42
+ 173 009a B84B     		ldr	r3, .L124+76
+ 174 009c 9842     		cmp	r0, r3
+ 175 009e 00D9     		bls	.LCB90
+ 176 00a0 68E2     		b	.L22	@long jump
+ 177              	.LCB90:
+ 156:Core/Src/temp.c ****     {
+ 157:Core/Src/temp.c ****         Compensation_val = 8;       
+ 158:Core/Src/temp.c ****     }    
+ 159:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE21_THRESHOLD)
+ 178              		.loc 1 159 10 is_stmt 1 view .LVU43
+ 179              		.loc 1 159 12 is_stmt 0 view .LVU44
+ 180 00a2 B74B     		ldr	r3, .L124+80
+ 181 00a4 9842     		cmp	r0, r3
+ 182 00a6 00D9     		bls	.LCB94
+ 183 00a8 66E2     		b	.L23	@long jump
+ 184              	.LCB94:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 7
 
 
- 231 00ec FFF7FEFF 		bl	__aeabi_uidiv
- 232              	.LVL16:
-  63:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
- 233              		.loc 1 63 42 view .LVU62
- 234 00f0 FFF7FEFF 		bl	__aeabi_ui2f
- 235              	.LVL17:
-  63:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
- 236              		.loc 1 63 88 view .LVU63
- 237 00f4 1F49     		ldr	r1, .L12+64
- 238 00f6 FFF7FEFF 		bl	__aeabi_fmul
- 239              	.LVL18:
-  63:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
- 240              		.loc 1 63 96 view .LVU64
- 241 00fa 1649     		ldr	r1, .L12+32
- 242 00fc FFF7FEFF 		bl	__aeabi_fdiv
- 243              	.LVL19:
-  63:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
- 244              		.loc 1 63 33 view .LVU65
- 245 0100 FFF7FEFF 		bl	__aeabi_f2uiz
- 246              	.LVL20:
-  63:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
- 247              		.loc 1 63 31 view .LVU66
- 248 0104 1C4B     		ldr	r3, .L12+68
- 249 0106 1860     		str	r0, [r3]
-  64:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
- 250              		.loc 1 64 13 is_stmt 1 view .LVU67
-  64:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
- 251              		.loc 1 64 38 is_stmt 0 view .LVU68
- 252 0108 FFF7FEFF 		bl	__aeabi_ui2f
- 253              	.LVL21:
-  64:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
- 254              		.loc 1 64 63 view .LVU69
- 255 010c 1B49     		ldr	r1, .L12+72
- 256 010e FFF7FEFF 		bl	__aeabi_fsub
- 257              	.LVL22:
-  64:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
- 258              		.loc 1 64 73 view .LVU70
- 259 0112 1B49     		ldr	r1, .L12+76
- 260 0114 FFF7FEFF 		bl	__aeabi_fdiv
- 261              	.LVL23:
-  64:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
- 262              		.loc 1 64 80 view .LVU71
- 263 0118 1A49     		ldr	r1, .L12+80
- 264 011a FFF7FEFF 		bl	__aeabi_fadd
- 265              	.LVL24:
-  64:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
- 266              		.loc 1 64 28 view .LVU72
- 267 011e FFF7FEFF 		bl	__aeabi_f2iz
- 268              	.LVL25:
-  64:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
- 269              		.loc 1 64 26 view .LVU73
- 270 0122 194B     		ldr	r3, .L12+84
- 271 0124 1860     		str	r0, [r3]
-  65:Core/Src/temp.c ****             Temp_Adc_CPU_Sum = 0;
- 272              		.loc 1 65 13 is_stmt 1 view .LVU74
-  65:Core/Src/temp.c ****             Temp_Adc_CPU_Sum = 0;
- 273              		.loc 1 65 32 is_stmt 0 view .LVU75
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 8
+ 160:Core/Src/temp.c ****     {
+ 161:Core/Src/temp.c ****         Compensation_val = 9;       
+ 162:Core/Src/temp.c ****     }    
+ 163:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE22_THRESHOLD)
+ 185              		.loc 1 163 10 is_stmt 1 view .LVU45
+ 186              		.loc 1 163 12 is_stmt 0 view .LVU46
+ 187 00aa B64B     		ldr	r3, .L124+84
+ 188 00ac 9842     		cmp	r0, r3
+ 189 00ae 00D9     		bls	.LCB98
+ 190 00b0 64E2     		b	.L24	@long jump
+ 191              	.LCB98:
+ 164:Core/Src/temp.c ****     {
+ 165:Core/Src/temp.c ****         Compensation_val = 10;       
+ 166:Core/Src/temp.c ****     }    
+ 167:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE23_THRESHOLD)
+ 192              		.loc 1 167 10 is_stmt 1 view .LVU47
+ 193              		.loc 1 167 12 is_stmt 0 view .LVU48
+ 194 00b2 B54B     		ldr	r3, .L124+88
+ 195 00b4 9842     		cmp	r0, r3
+ 196 00b6 00D9     		bls	.LCB102
+ 197 00b8 62E2     		b	.L25	@long jump
+ 198              	.LCB102:
+ 168:Core/Src/temp.c ****     {
+ 169:Core/Src/temp.c ****         Compensation_val = 11;       
+ 170:Core/Src/temp.c ****     }    
+ 171:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE24_THRESHOLD)
+ 199              		.loc 1 171 10 is_stmt 1 view .LVU49
+ 200              		.loc 1 171 12 is_stmt 0 view .LVU50
+ 201 00ba B44B     		ldr	r3, .L124+92
+ 202 00bc 9842     		cmp	r0, r3
+ 203 00be 00D9     		bls	.LCB106
+ 204 00c0 60E2     		b	.L26	@long jump
+ 205              	.LCB106:
+ 172:Core/Src/temp.c ****     {
+ 173:Core/Src/temp.c ****         Compensation_val = 12;       
+ 174:Core/Src/temp.c ****     }    
+ 175:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE25_THRESHOLD)
+ 206              		.loc 1 175 10 is_stmt 1 view .LVU51
+ 207              		.loc 1 175 12 is_stmt 0 view .LVU52
+ 208 00c2 063B     		subs	r3, r3, #6
+ 209 00c4 9842     		cmp	r0, r3
+ 210 00c6 00D9     		bls	.LCB110
+ 211 00c8 5EE2     		b	.L27	@long jump
+ 212              	.LCB110:
+ 176:Core/Src/temp.c ****     {
+ 177:Core/Src/temp.c ****         Compensation_val = 13;       
+ 178:Core/Src/temp.c ****     }    
+ 179:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE26_THRESHOLD)
+ 213              		.loc 1 179 10 is_stmt 1 view .LVU53
+ 214              		.loc 1 179 12 is_stmt 0 view .LVU54
+ 215 00ca B14B     		ldr	r3, .L124+96
+ 216 00cc 9842     		cmp	r0, r3
+ 217 00ce 00D9     		bls	.LCB114
+ 218 00d0 5CE2     		b	.L28	@long jump
+ 219              	.LCB114:
+ 180:Core/Src/temp.c ****     {
+ 181:Core/Src/temp.c ****         Compensation_val = 14;       
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 8
 
 
- 274 0126 0023     		movs	r3, #0
- 275 0128 104A     		ldr	r2, .L12+56
- 276 012a 1370     		strb	r3, [r2]
-  66:Core/Src/temp.c ****         }
- 277              		.loc 1 66 13 is_stmt 1 view .LVU76
-  66:Core/Src/temp.c ****         }
- 278              		.loc 1 66 30 is_stmt 0 view .LVU77
- 279 012c 104A     		ldr	r2, .L12+60
- 280 012e 1360     		str	r3, [r2]
-  70:Core/Src/temp.c **** }
- 281              		.loc 1 70 5 is_stmt 1 view .LVU78
- 282 0130 89E7     		b	.L1
- 283              	.L13:
- 284 0132 C046     		.align	2
- 285              	.L12:
- 286 0134 00000000 		.word	hadc
- 287 0138 00000000 		.word	.LANCHOR1
- 288 013c 00000000 		.word	.LANCHOR3
- 289 0140 00000000 		.word	.LANCHOR0
- 290 0144 00000000 		.word	.LANCHOR2
- 291 0148 00000000 		.word	.LANCHOR4
- 292 014c 00000000 		.word	.LANCHOR5
- 293 0150 00409C45 		.word	1167867904
- 294 0154 00F07F45 		.word	1166012416
- 295 0158 00000000 		.word	.LANCHOR6
- 296 015c 00709445 		.word	1167355904
- 297 0160 9A99193D 		.word	1025087898
- 298 0164 00002042 		.word	1109393408
- 299 0168 00000000 		.word	.LANCHOR7
- 300 016c 00000000 		.word	.LANCHOR8
- 301 0170 00000000 		.word	.LANCHOR9
- 302 0174 00404E45 		.word	1162756096
- 303 0178 00000000 		.word	.LANCHOR10
- 304 017c 00003E44 		.word	1144913920
- 305 0180 00002040 		.word	1075838976
- 306 0184 0000C841 		.word	1103626240
- 307 0188 00000000 		.word	.LANCHOR11
- 308              		.cfi_endproc
- 309              	.LFE40:
- 311              		.global	Temp_Adc_CPU
- 312              		.global	Temp_Adc_TP
- 313              		.global	Temp_Adc_CPU_Volt
- 314              		.global	Temp_Adc_TP_Volt
- 315              		.global	Temp_Adc_CPU_Sum
- 316              		.global	Temp_Adc_TP_Sum
- 317              		.global	Temp_Avg_CPU_Count
- 318              		.global	Temp_Avg_TP_Count
- 319              		.global	Temp_Adc_CPU_Status
- 320              		.global	Temp_Adc_TP_Status
- 321              		.global	Temp_Adc_CPU_Raw
- 322              		.global	Temp_Adc_TP_Raw
- 323              		.section	.bss.Temp_Adc_CPU,"aw",%nobits
- 324              		.align	2
- 325              		.set	.LANCHOR11,. + 0
- 328              	Temp_Adc_CPU:
- 329 0000 00000000 		.space	4
- 330              		.section	.bss.Temp_Adc_CPU_Raw,"aw",%nobits
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 9
+ 182:Core/Src/temp.c ****     }    
+ 183:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE27_THRESHOLD)
+ 220              		.loc 1 183 10 is_stmt 1 view .LVU55
+ 221              		.loc 1 183 12 is_stmt 0 view .LVU56
+ 222 00d2 B04B     		ldr	r3, .L124+100
+ 223 00d4 9842     		cmp	r0, r3
+ 224 00d6 00D9     		bls	.LCB118
+ 225 00d8 5AE2     		b	.L29	@long jump
+ 226              	.LCB118:
+ 184:Core/Src/temp.c ****     {
+ 185:Core/Src/temp.c ****         Compensation_val = 15;       
+ 186:Core/Src/temp.c ****     }    
+ 187:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE28_THRESHOLD)
+ 227              		.loc 1 187 10 is_stmt 1 view .LVU57
+ 228              		.loc 1 187 12 is_stmt 0 view .LVU58
+ 229 00da AF4B     		ldr	r3, .L124+104
+ 230 00dc 9842     		cmp	r0, r3
+ 231 00de 00D9     		bls	.LCB122
+ 232 00e0 58E2     		b	.L30	@long jump
+ 233              	.LCB122:
+ 188:Core/Src/temp.c ****     {
+ 189:Core/Src/temp.c ****         Compensation_val = 16;       
+ 190:Core/Src/temp.c ****     }    
+ 191:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE29_THRESHOLD)
+ 234              		.loc 1 191 10 is_stmt 1 view .LVU59
+ 235              		.loc 1 191 12 is_stmt 0 view .LVU60
+ 236 00e2 053B     		subs	r3, r3, #5
+ 237 00e4 9842     		cmp	r0, r3
+ 238 00e6 00D3     		bcc	.LCB126
+ 239 00e8 56E2     		b	.L31	@long jump
+ 240              	.LCB126:
+ 192:Core/Src/temp.c ****     {
+ 193:Core/Src/temp.c ****         Compensation_val = 17;       
+ 194:Core/Src/temp.c ****     }    
+ 195:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE30_THRESHOLD)
+ 241              		.loc 1 195 10 is_stmt 1 view .LVU61
+ 242              		.loc 1 195 12 is_stmt 0 view .LVU62
+ 243 00ea AC4B     		ldr	r3, .L124+108
+ 244 00ec 9842     		cmp	r0, r3
+ 245 00ee 00D9     		bls	.LCB130
+ 246 00f0 54E2     		b	.L32	@long jump
+ 247              	.LCB130:
+ 196:Core/Src/temp.c ****     {
+ 197:Core/Src/temp.c ****         Compensation_val = 18;       
+ 198:Core/Src/temp.c ****     }    
+ 199:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE31_THRESHOLD)
+ 248              		.loc 1 199 10 is_stmt 1 view .LVU63
+ 249              		.loc 1 199 12 is_stmt 0 view .LVU64
+ 250 00f2 AB4B     		ldr	r3, .L124+112
+ 251 00f4 9842     		cmp	r0, r3
+ 252 00f6 00D9     		bls	.LCB134
+ 253 00f8 52E2     		b	.L33	@long jump
+ 254              	.LCB134:
+ 200:Core/Src/temp.c ****     {
+ 201:Core/Src/temp.c ****         Compensation_val = 19;       
+ 202:Core/Src/temp.c ****     }    
+ 203:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE32_THRESHOLD)
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 9
 
 
- 331              		.align	2
- 332              		.set	.LANCHOR2,. + 0
- 335              	Temp_Adc_CPU_Raw:
- 336 0000 00000000 		.space	4
- 337              		.section	.bss.Temp_Adc_CPU_Status,"aw",%nobits
- 338              		.set	.LANCHOR3,. + 0
- 341              	Temp_Adc_CPU_Status:
- 342 0000 00       		.space	1
- 343              		.section	.bss.Temp_Adc_CPU_Sum,"aw",%nobits
- 344              		.align	2
- 345              		.set	.LANCHOR9,. + 0
- 348              	Temp_Adc_CPU_Sum:
- 349 0000 00000000 		.space	4
- 350              		.section	.bss.Temp_Adc_CPU_Volt,"aw",%nobits
- 351              		.align	2
- 352              		.set	.LANCHOR10,. + 0
- 355              	Temp_Adc_CPU_Volt:
- 356 0000 00000000 		.space	4
- 357              		.section	.bss.Temp_Adc_TP,"aw",%nobits
- 358              		.align	2
- 359              		.set	.LANCHOR7,. + 0
- 362              	Temp_Adc_TP:
- 363 0000 00000000 		.space	4
- 364              		.section	.bss.Temp_Adc_TP_Raw,"aw",%nobits
- 365              		.align	2
- 366              		.set	.LANCHOR0,. + 0
- 369              	Temp_Adc_TP_Raw:
- 370 0000 00000000 		.space	4
- 371              		.section	.bss.Temp_Adc_TP_Status,"aw",%nobits
- 372              		.set	.LANCHOR1,. + 0
- 375              	Temp_Adc_TP_Status:
- 376 0000 00       		.space	1
- 377              		.section	.bss.Temp_Adc_TP_Sum,"aw",%nobits
- 378              		.align	2
- 379              		.set	.LANCHOR5,. + 0
- 382              	Temp_Adc_TP_Sum:
- 383 0000 00000000 		.space	4
- 384              		.section	.bss.Temp_Adc_TP_Volt,"aw",%nobits
- 385              		.align	2
- 386              		.set	.LANCHOR6,. + 0
- 389              	Temp_Adc_TP_Volt:
- 390 0000 00000000 		.space	4
- 391              		.section	.data.Temp_Avg_CPU_Count,"aw"
- 392              		.set	.LANCHOR8,. + 0
- 395              	Temp_Avg_CPU_Count:
- 396 0000 0A       		.byte	10
- 397              		.section	.data.Temp_Avg_TP_Count,"aw"
- 398              		.set	.LANCHOR4,. + 0
- 401              	Temp_Avg_TP_Count:
- 402 0000 0A       		.byte	10
- 403              		.text
- 404              	.Letext0:
- 405              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\machine\\_default_ty
- 406              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\sys\\_stdint.h"
- 407              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h"
- 408              		.file 5 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h"
- 409              		.file 6 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 10
+ 255              		.loc 1 203 10 is_stmt 1 view .LVU65
+ 256              		.loc 1 203 12 is_stmt 0 view .LVU66
+ 257 00fa AA4B     		ldr	r3, .L124+116
+ 258 00fc 9842     		cmp	r0, r3
+ 259 00fe 00D9     		bls	.LCB138
+ 260 0100 50E2     		b	.L34	@long jump
+ 261              	.LCB138:
+ 204:Core/Src/temp.c ****     {
+ 205:Core/Src/temp.c ****         Compensation_val = 20;       
+ 206:Core/Src/temp.c ****     }    
+ 207:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE33_THRESHOLD)
+ 262              		.loc 1 207 10 is_stmt 1 view .LVU67
+ 263              		.loc 1 207 12 is_stmt 0 view .LVU68
+ 264 0102 A94B     		ldr	r3, .L124+120
+ 265 0104 9842     		cmp	r0, r3
+ 266 0106 00D9     		bls	.LCB142
+ 267 0108 4EE2     		b	.L35	@long jump
+ 268              	.LCB142:
+ 208:Core/Src/temp.c ****     {
+ 209:Core/Src/temp.c ****         Compensation_val = 21;       
+ 210:Core/Src/temp.c ****     }    
+ 211:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE34_THRESHOLD)
+ 269              		.loc 1 211 10 is_stmt 1 view .LVU69
+ 270              		.loc 1 211 12 is_stmt 0 view .LVU70
+ 271 010a A84B     		ldr	r3, .L124+124
+ 272 010c 9842     		cmp	r0, r3
+ 273 010e 00D9     		bls	.LCB146
+ 274 0110 4CE2     		b	.L36	@long jump
+ 275              	.LCB146:
+ 212:Core/Src/temp.c ****     {
+ 213:Core/Src/temp.c ****         Compensation_val = 22;       
+ 214:Core/Src/temp.c ****     }    
+ 215:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE35_THRESHOLD)
+ 276              		.loc 1 215 10 is_stmt 1 view .LVU71
+ 277              		.loc 1 215 12 is_stmt 0 view .LVU72
+ 278 0112 A74B     		ldr	r3, .L124+128
+ 279 0114 9842     		cmp	r0, r3
+ 280 0116 00D9     		bls	.LCB150
+ 281 0118 4AE2     		b	.L37	@long jump
+ 282              	.LCB150:
+ 216:Core/Src/temp.c ****     {
+ 217:Core/Src/temp.c ****         Compensation_val = 23;       
+ 218:Core/Src/temp.c ****     }    
+ 219:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE36_THRESHOLD)
+ 283              		.loc 1 219 10 is_stmt 1 view .LVU73
+ 284              		.loc 1 219 12 is_stmt 0 view .LVU74
+ 285 011a 063B     		subs	r3, r3, #6
+ 286 011c 9842     		cmp	r0, r3
+ 287 011e 00D3     		bcc	.LCB154
+ 288 0120 48E2     		b	.L38	@long jump
+ 289              	.LCB154:
+ 220:Core/Src/temp.c ****     {
+ 221:Core/Src/temp.c ****         Compensation_val = 24;       
+ 222:Core/Src/temp.c ****     }    
+ 223:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE37_THRESHOLD)
+ 290              		.loc 1 223 10 is_stmt 1 view .LVU75
+ 291              		.loc 1 223 12 is_stmt 0 view .LVU76
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 10
 
 
- 410              		.file 7 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h"
- 411              		.file 8 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h"
- 412              		.file 9 "Core/Inc/vardef.h"
- 413              		.file 10 "Core/Inc/main.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s 			page 11
+ 292 0122 083B     		subs	r3, r3, #8
+ 293 0124 9842     		cmp	r0, r3
+ 294 0126 00D9     		bls	.LCB158
+ 295 0128 46E2     		b	.L39	@long jump
+ 296              	.LCB158:
+ 224:Core/Src/temp.c ****     {
+ 225:Core/Src/temp.c ****         Compensation_val = 25;       
+ 226:Core/Src/temp.c ****     }    
+ 227:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE38_THRESHOLD)
+ 297              		.loc 1 227 10 is_stmt 1 view .LVU77
+ 298              		.loc 1 227 12 is_stmt 0 view .LVU78
+ 299 012a A24B     		ldr	r3, .L124+132
+ 300 012c 9842     		cmp	r0, r3
+ 301 012e 00D9     		bls	.LCB162
+ 302 0130 44E2     		b	.L40	@long jump
+ 303              	.LCB162:
+ 228:Core/Src/temp.c ****     {
+ 229:Core/Src/temp.c ****         Compensation_val = 26;       
+ 230:Core/Src/temp.c ****     }    
+ 231:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE39_THRESHOLD)
+ 304              		.loc 1 231 10 is_stmt 1 view .LVU79
+ 305              		.loc 1 231 12 is_stmt 0 view .LVU80
+ 306 0132 A14B     		ldr	r3, .L124+136
+ 307 0134 9842     		cmp	r0, r3
+ 308 0136 00D9     		bls	.LCB166
+ 309 0138 42E2     		b	.L41	@long jump
+ 310              	.LCB166:
+ 232:Core/Src/temp.c ****     {
+ 233:Core/Src/temp.c ****         Compensation_val = 27;       
+ 234:Core/Src/temp.c ****     }    
+ 235:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE40_THRESHOLD)
+ 311              		.loc 1 235 10 is_stmt 1 view .LVU81
+ 312              		.loc 1 235 12 is_stmt 0 view .LVU82
+ 313 013a A04B     		ldr	r3, .L124+140
+ 314 013c 9842     		cmp	r0, r3
+ 315 013e 00D9     		bls	.LCB170
+ 316 0140 40E2     		b	.L42	@long jump
+ 317              	.LCB170:
+ 236:Core/Src/temp.c ****     {
+ 237:Core/Src/temp.c ****         Compensation_val = 28;       
+ 238:Core/Src/temp.c ****     }    
+ 239:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE41_THRESHOLD)
+ 318              		.loc 1 239 10 is_stmt 1 view .LVU83
+ 319              		.loc 1 239 12 is_stmt 0 view .LVU84
+ 320 0142 9F4B     		ldr	r3, .L124+144
+ 321 0144 9842     		cmp	r0, r3
+ 322 0146 00D9     		bls	.LCB174
+ 323 0148 3EE2     		b	.L43	@long jump
+ 324              	.LCB174:
+ 240:Core/Src/temp.c ****     {
+ 241:Core/Src/temp.c ****         Compensation_val = 29;       
+ 242:Core/Src/temp.c ****     }    
+ 243:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE42_THRESHOLD)
+ 325              		.loc 1 243 10 is_stmt 1 view .LVU85
+ 326              		.loc 1 243 12 is_stmt 0 view .LVU86
+ 327 014a 9E4B     		ldr	r3, .L124+148
+ 328 014c 9842     		cmp	r0, r3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 11
+
+
+ 329 014e 00D9     		bls	.LCB178
+ 330 0150 3CE2     		b	.L44	@long jump
+ 331              	.LCB178:
+ 244:Core/Src/temp.c ****     {
+ 245:Core/Src/temp.c ****         Compensation_val = 30;       
+ 246:Core/Src/temp.c ****     }    
+ 247:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE43_THRESHOLD)
+ 332              		.loc 1 247 10 is_stmt 1 view .LVU87
+ 333              		.loc 1 247 12 is_stmt 0 view .LVU88
+ 334 0152 9D4B     		ldr	r3, .L124+152
+ 335 0154 9842     		cmp	r0, r3
+ 336 0156 00D9     		bls	.LCB182
+ 337 0158 3AE2     		b	.L45	@long jump
+ 338              	.LCB182:
+ 248:Core/Src/temp.c ****     {
+ 249:Core/Src/temp.c ****         Compensation_val = 31;       
+ 250:Core/Src/temp.c ****     }    
+ 251:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE44_THRESHOLD)
+ 339              		.loc 1 251 10 is_stmt 1 view .LVU89
+ 340              		.loc 1 251 12 is_stmt 0 view .LVU90
+ 341 015a 9C4B     		ldr	r3, .L124+156
+ 342 015c 9842     		cmp	r0, r3
+ 343 015e 00D9     		bls	.LCB186
+ 344 0160 38E2     		b	.L46	@long jump
+ 345              	.LCB186:
+ 252:Core/Src/temp.c ****     {
+ 253:Core/Src/temp.c ****         Compensation_val = 32;       
+ 254:Core/Src/temp.c ****     }    
+ 255:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE45_THRESHOLD)
+ 346              		.loc 1 255 10 is_stmt 1 view .LVU91
+ 347              		.loc 1 255 12 is_stmt 0 view .LVU92
+ 348 0162 9B4B     		ldr	r3, .L124+160
+ 349 0164 9842     		cmp	r0, r3
+ 350 0166 00D9     		bls	.LCB190
+ 351 0168 36E2     		b	.L47	@long jump
+ 352              	.LCB190:
+ 256:Core/Src/temp.c ****     {
+ 257:Core/Src/temp.c ****         Compensation_val = 33;       
+ 258:Core/Src/temp.c ****     }    
+ 259:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE46_THRESHOLD)
+ 353              		.loc 1 259 10 is_stmt 1 view .LVU93
+ 354              		.loc 1 259 12 is_stmt 0 view .LVU94
+ 355 016a 9A4B     		ldr	r3, .L124+164
+ 356 016c 9842     		cmp	r0, r3
+ 357 016e 00D9     		bls	.LCB194
+ 358 0170 34E2     		b	.L48	@long jump
+ 359              	.LCB194:
+ 260:Core/Src/temp.c ****     {
+ 261:Core/Src/temp.c ****         Compensation_val = 34;       
+ 262:Core/Src/temp.c ****     }    
+ 263:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE47_THRESHOLD)
+ 360              		.loc 1 263 10 is_stmt 1 view .LVU95
+ 361              		.loc 1 263 12 is_stmt 0 view .LVU96
+ 362 0172 994B     		ldr	r3, .L124+168
+ 363 0174 9842     		cmp	r0, r3
+ 364 0176 00D9     		bls	.LCB198
+ 365 0178 32E2     		b	.L49	@long jump
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 12
+
+
+ 366              	.LCB198:
+ 264:Core/Src/temp.c ****     {
+ 265:Core/Src/temp.c ****         Compensation_val = 35;       
+ 266:Core/Src/temp.c ****     }    
+ 267:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE48_THRESHOLD)
+ 367              		.loc 1 267 10 is_stmt 1 view .LVU97
+ 368              		.loc 1 267 12 is_stmt 0 view .LVU98
+ 369 017a 984B     		ldr	r3, .L124+172
+ 370 017c 9842     		cmp	r0, r3
+ 371 017e 00D9     		bls	.LCB202
+ 372 0180 30E2     		b	.L50	@long jump
+ 373              	.LCB202:
+ 268:Core/Src/temp.c ****     {
+ 269:Core/Src/temp.c ****         Compensation_val = 36;       
+ 270:Core/Src/temp.c ****     }    
+ 271:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE49_THRESHOLD)
+ 374              		.loc 1 271 10 is_stmt 1 view .LVU99
+ 375              		.loc 1 271 12 is_stmt 0 view .LVU100
+ 376 0182 974B     		ldr	r3, .L124+176
+ 377 0184 9842     		cmp	r0, r3
+ 378 0186 00D9     		bls	.LCB206
+ 379 0188 2EE2     		b	.L51	@long jump
+ 380              	.LCB206:
+ 272:Core/Src/temp.c ****     {
+ 273:Core/Src/temp.c ****         Compensation_val = 37;       
+ 274:Core/Src/temp.c ****     }    
+ 275:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE50_THRESHOLD)
+ 381              		.loc 1 275 10 is_stmt 1 view .LVU101
+ 382              		.loc 1 275 12 is_stmt 0 view .LVU102
+ 383 018a 093B     		subs	r3, r3, #9
+ 384 018c 9842     		cmp	r0, r3
+ 385 018e 00D9     		bls	.LCB210
+ 386 0190 2CE2     		b	.L52	@long jump
+ 387              	.LCB210:
+ 276:Core/Src/temp.c ****     {
+ 277:Core/Src/temp.c ****         Compensation_val = 38;       
+ 278:Core/Src/temp.c ****     }    
+ 279:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE51_THRESHOLD)
+ 388              		.loc 1 279 10 is_stmt 1 view .LVU103
+ 389              		.loc 1 279 12 is_stmt 0 view .LVU104
+ 390 0192 083B     		subs	r3, r3, #8
+ 391 0194 9842     		cmp	r0, r3
+ 392 0196 00D9     		bls	.LCB214
+ 393 0198 2AE2     		b	.L53	@long jump
+ 394              	.LCB214:
+ 280:Core/Src/temp.c ****     {
+ 281:Core/Src/temp.c ****         Compensation_val = 39;       
+ 282:Core/Src/temp.c ****     }    
+ 283:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE52_THRESHOLD)
+ 395              		.loc 1 283 10 is_stmt 1 view .LVU105
+ 396              		.loc 1 283 12 is_stmt 0 view .LVU106
+ 397 019a 924B     		ldr	r3, .L124+180
+ 398 019c 9842     		cmp	r0, r3
+ 399 019e 00D9     		bls	.LCB218
+ 400 01a0 28E2     		b	.L54	@long jump
+ 401              	.LCB218:
+ 284:Core/Src/temp.c ****     {
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 13
+
+
+ 285:Core/Src/temp.c ****         Compensation_val = 40;       
+ 286:Core/Src/temp.c ****     }    
+ 287:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE53_THRESHOLD)
+ 402              		.loc 1 287 10 is_stmt 1 view .LVU107
+ 403              		.loc 1 287 12 is_stmt 0 view .LVU108
+ 404 01a2 914B     		ldr	r3, .L124+184
+ 405 01a4 9842     		cmp	r0, r3
+ 406 01a6 00D9     		bls	.LCB222
+ 407 01a8 26E2     		b	.L55	@long jump
+ 408              	.LCB222:
+ 288:Core/Src/temp.c ****     {
+ 289:Core/Src/temp.c ****         Compensation_val = 41;       
+ 290:Core/Src/temp.c ****     }    
+ 291:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE54_THRESHOLD)
+ 409              		.loc 1 291 10 is_stmt 1 view .LVU109
+ 410              		.loc 1 291 12 is_stmt 0 view .LVU110
+ 411 01aa 904B     		ldr	r3, .L124+188
+ 412 01ac 9842     		cmp	r0, r3
+ 413 01ae 00D9     		bls	.LCB226
+ 414 01b0 24E2     		b	.L56	@long jump
+ 415              	.LCB226:
+ 292:Core/Src/temp.c ****     {
+ 293:Core/Src/temp.c ****         Compensation_val = 42;       
+ 294:Core/Src/temp.c ****     }    
+ 295:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE55_THRESHOLD)
+ 416              		.loc 1 295 10 is_stmt 1 view .LVU111
+ 417              		.loc 1 295 12 is_stmt 0 view .LVU112
+ 418 01b2 0A3B     		subs	r3, r3, #10
+ 419 01b4 9842     		cmp	r0, r3
+ 420 01b6 00D9     		bls	.LCB230
+ 421 01b8 22E2     		b	.L57	@long jump
+ 422              	.LCB230:
+ 296:Core/Src/temp.c ****     {
+ 297:Core/Src/temp.c ****         Compensation_val = 43;       
+ 298:Core/Src/temp.c ****     }    
+ 299:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE56_THRESHOLD)
+ 423              		.loc 1 299 10 is_stmt 1 view .LVU113
+ 424              		.loc 1 299 12 is_stmt 0 view .LVU114
+ 425 01ba 8D4B     		ldr	r3, .L124+192
+ 426 01bc 9842     		cmp	r0, r3
+ 427 01be 00D9     		bls	.LCB234
+ 428 01c0 20E2     		b	.L58	@long jump
+ 429              	.LCB234:
+ 300:Core/Src/temp.c ****     {
+ 301:Core/Src/temp.c ****         Compensation_val = 44;       
+ 302:Core/Src/temp.c ****     }    
+ 303:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE57_THRESHOLD)
+ 430              		.loc 1 303 10 is_stmt 1 view .LVU115
+ 431              		.loc 1 303 12 is_stmt 0 view .LVU116
+ 432 01c2 8C4B     		ldr	r3, .L124+196
+ 433 01c4 9842     		cmp	r0, r3
+ 434 01c6 00D9     		bls	.LCB238
+ 435 01c8 1EE2     		b	.L59	@long jump
+ 436              	.LCB238:
+ 304:Core/Src/temp.c ****     {
+ 305:Core/Src/temp.c ****         Compensation_val = 45;       
+ 306:Core/Src/temp.c ****     }    
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 14
+
+
+ 307:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE58_THRESHOLD)
+ 437              		.loc 1 307 10 is_stmt 1 view .LVU117
+ 438              		.loc 1 307 12 is_stmt 0 view .LVU118
+ 439 01ca 8B4B     		ldr	r3, .L124+200
+ 440 01cc 9842     		cmp	r0, r3
+ 441 01ce 00D9     		bls	.LCB242
+ 442 01d0 1CE2     		b	.L60	@long jump
+ 443              	.LCB242:
+ 308:Core/Src/temp.c ****     {
+ 309:Core/Src/temp.c ****         Compensation_val = 46;       
+ 310:Core/Src/temp.c ****     }    
+ 311:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE59_THRESHOLD)
+ 444              		.loc 1 311 10 is_stmt 1 view .LVU119
+ 445              		.loc 1 311 12 is_stmt 0 view .LVU120
+ 446 01d2 0A3B     		subs	r3, r3, #10
+ 447 01d4 9842     		cmp	r0, r3
+ 448 01d6 00D9     		bls	.LCB246
+ 449 01d8 1AE2     		b	.L61	@long jump
+ 450              	.LCB246:
+ 312:Core/Src/temp.c ****     {
+ 313:Core/Src/temp.c ****         Compensation_val = 47;       
+ 314:Core/Src/temp.c ****     }    
+ 315:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE60_THRESHOLD)
+ 451              		.loc 1 315 10 is_stmt 1 view .LVU121
+ 452              		.loc 1 315 12 is_stmt 0 view .LVU122
+ 453 01da 884B     		ldr	r3, .L124+204
+ 454 01dc 9842     		cmp	r0, r3
+ 455 01de 00D9     		bls	.LCB250
+ 456 01e0 18E2     		b	.L62	@long jump
+ 457              	.LCB250:
+ 316:Core/Src/temp.c ****     {
+ 317:Core/Src/temp.c ****         Compensation_val = 48;       
+ 318:Core/Src/temp.c ****     }    
+ 319:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE61_THRESHOLD)
+ 458              		.loc 1 319 10 is_stmt 1 view .LVU123
+ 459              		.loc 1 319 12 is_stmt 0 view .LVU124
+ 460 01e2 874B     		ldr	r3, .L124+208
+ 461 01e4 9842     		cmp	r0, r3
+ 462 01e6 00D9     		bls	.LCB254
+ 463 01e8 16E2     		b	.L63	@long jump
+ 464              	.LCB254:
+ 320:Core/Src/temp.c ****     {
+ 321:Core/Src/temp.c ****         Compensation_val = 49;       
+ 322:Core/Src/temp.c ****     }    
+ 323:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE62_THRESHOLD)
+ 465              		.loc 1 323 10 is_stmt 1 view .LVU125
+ 466              		.loc 1 323 12 is_stmt 0 view .LVU126
+ 467 01ea 0C3B     		subs	r3, r3, #12
+ 468 01ec 9842     		cmp	r0, r3
+ 469 01ee 00D3     		bcc	.LCB258
+ 470 01f0 14E2     		b	.L64	@long jump
+ 471              	.LCB258:
+ 324:Core/Src/temp.c ****     {
+ 325:Core/Src/temp.c ****         Compensation_val = 50;       
+ 326:Core/Src/temp.c ****     }    
+ 327:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE63_THRESHOLD)
+ 472              		.loc 1 327 10 is_stmt 1 view .LVU127
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 15
+
+
+ 473              		.loc 1 327 12 is_stmt 0 view .LVU128
+ 474 01f2 844B     		ldr	r3, .L124+212
+ 475 01f4 9842     		cmp	r0, r3
+ 476 01f6 00D9     		bls	.LCB262
+ 477 01f8 12E2     		b	.L65	@long jump
+ 478              	.LCB262:
+ 328:Core/Src/temp.c ****     {
+ 329:Core/Src/temp.c ****         Compensation_val = 51;       
+ 330:Core/Src/temp.c ****     }    
+ 331:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE64_THRESHOLD)
+ 479              		.loc 1 331 10 is_stmt 1 view .LVU129
+ 480              		.loc 1 331 12 is_stmt 0 view .LVU130
+ 481 01fa 834B     		ldr	r3, .L124+216
+ 482 01fc 9842     		cmp	r0, r3
+ 483 01fe 00D9     		bls	.LCB266
+ 484 0200 10E2     		b	.L66	@long jump
+ 485              	.LCB266:
+ 332:Core/Src/temp.c ****     {
+ 333:Core/Src/temp.c ****         Compensation_val = 52;       
+ 334:Core/Src/temp.c ****     }    
+ 335:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE65_THRESHOLD)
+ 486              		.loc 1 335 10 is_stmt 1 view .LVU131
+ 487              		.loc 1 335 12 is_stmt 0 view .LVU132
+ 488 0202 0D3B     		subs	r3, r3, #13
+ 489 0204 9842     		cmp	r0, r3
+ 490 0206 00D9     		bls	.LCB270
+ 491 0208 0EE2     		b	.L67	@long jump
+ 492              	.LCB270:
+ 336:Core/Src/temp.c ****     {
+ 337:Core/Src/temp.c ****         Compensation_val = 53;       
+ 338:Core/Src/temp.c ****     }    
+ 339:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE66_THRESHOLD)
+ 493              		.loc 1 339 10 is_stmt 1 view .LVU133
+ 494              		.loc 1 339 12 is_stmt 0 view .LVU134
+ 495 020a 804B     		ldr	r3, .L124+220
+ 496 020c 9842     		cmp	r0, r3
+ 497 020e 00D9     		bls	.LCB274
+ 498 0210 0CE2     		b	.L68	@long jump
+ 499              	.LCB274:
+ 340:Core/Src/temp.c ****     {
+ 341:Core/Src/temp.c ****         Compensation_val = 54;       
+ 342:Core/Src/temp.c ****     }    
+ 343:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE67_THRESHOLD)
+ 500              		.loc 1 343 10 is_stmt 1 view .LVU135
+ 501              		.loc 1 343 12 is_stmt 0 view .LVU136
+ 502 0212 7F4B     		ldr	r3, .L124+224
+ 503 0214 9842     		cmp	r0, r3
+ 504 0216 00D9     		bls	.LCB278
+ 505 0218 0AE2     		b	.L69	@long jump
+ 506              	.LCB278:
+ 344:Core/Src/temp.c ****     {
+ 345:Core/Src/temp.c ****         Compensation_val = 55;       
+ 346:Core/Src/temp.c ****     }    
+ 347:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE68_THRESHOLD)
+ 507              		.loc 1 347 10 is_stmt 1 view .LVU137
+ 508              		.loc 1 347 12 is_stmt 0 view .LVU138
+ 509 021a 7E4B     		ldr	r3, .L124+228
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 16
+
+
+ 510 021c 9842     		cmp	r0, r3
+ 511 021e 00D9     		bls	.LCB282
+ 512 0220 08E2     		b	.L70	@long jump
+ 513              	.LCB282:
+ 348:Core/Src/temp.c ****     {
+ 349:Core/Src/temp.c ****         Compensation_val = 56;       
+ 350:Core/Src/temp.c ****     }    
+ 351:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE69_THRESHOLD)
+ 514              		.loc 1 351 10 is_stmt 1 view .LVU139
+ 515              		.loc 1 351 12 is_stmt 0 view .LVU140
+ 516 0222 7D4B     		ldr	r3, .L124+232
+ 517 0224 9842     		cmp	r0, r3
+ 518 0226 00D9     		bls	.LCB286
+ 519 0228 06E2     		b	.L71	@long jump
+ 520              	.LCB286:
+ 352:Core/Src/temp.c ****     {
+ 353:Core/Src/temp.c ****         Compensation_val = 57;       
+ 354:Core/Src/temp.c ****     }    
+ 355:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE70_THRESHOLD)
+ 521              		.loc 1 355 10 is_stmt 1 view .LVU141
+ 522              		.loc 1 355 12 is_stmt 0 view .LVU142
+ 523 022a 0C3B     		subs	r3, r3, #12
+ 524 022c 9842     		cmp	r0, r3
+ 525 022e 00D3     		bcc	.LCB290
+ 526 0230 04E2     		b	.L72	@long jump
+ 527              	.LCB290:
+ 356:Core/Src/temp.c ****     {
+ 357:Core/Src/temp.c ****         Compensation_val = 58;       
+ 358:Core/Src/temp.c ****     }    
+ 359:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE71_THRESHOLD)
+ 528              		.loc 1 359 10 is_stmt 1 view .LVU143
+ 529              		.loc 1 359 12 is_stmt 0 view .LVU144
+ 530 0232 7A4B     		ldr	r3, .L124+236
+ 531 0234 9842     		cmp	r0, r3
+ 532 0236 00D9     		bls	.LCB294
+ 533 0238 02E2     		b	.L73	@long jump
+ 534              	.LCB294:
+ 360:Core/Src/temp.c ****     {
+ 361:Core/Src/temp.c ****         Compensation_val = 59;       
+ 362:Core/Src/temp.c ****     }    
+ 363:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE72_THRESHOLD)
+ 535              		.loc 1 363 10 is_stmt 1 view .LVU145
+ 536              		.loc 1 363 12 is_stmt 0 view .LVU146
+ 537 023a 794B     		ldr	r3, .L124+240
+ 538 023c 9842     		cmp	r0, r3
+ 539 023e 00D9     		bls	.LCB298
+ 540 0240 00E2     		b	.L74	@long jump
+ 541              	.LCB298:
+ 364:Core/Src/temp.c ****     {
+ 365:Core/Src/temp.c ****         Compensation_val = 60;       
+ 366:Core/Src/temp.c ****     }    
+ 367:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE73_THRESHOLD)
+ 542              		.loc 1 367 10 is_stmt 1 view .LVU147
+ 543              		.loc 1 367 12 is_stmt 0 view .LVU148
+ 544 0242 0D3B     		subs	r3, r3, #13
+ 545 0244 9842     		cmp	r0, r3
+ 546 0246 00D9     		bls	.LCB302
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 17
+
+
+ 547 0248 FEE1     		b	.L75	@long jump
+ 548              	.LCB302:
+ 368:Core/Src/temp.c ****     {
+ 369:Core/Src/temp.c ****         Compensation_val = 61;       
+ 370:Core/Src/temp.c ****     }    
+ 371:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE74_THRESHOLD)
+ 549              		.loc 1 371 10 is_stmt 1 view .LVU149
+ 550              		.loc 1 371 12 is_stmt 0 view .LVU150
+ 551 024a 764B     		ldr	r3, .L124+244
+ 552 024c 9842     		cmp	r0, r3
+ 553 024e 00D9     		bls	.LCB306
+ 554 0250 FCE1     		b	.L76	@long jump
+ 555              	.LCB306:
+ 372:Core/Src/temp.c ****     {
+ 373:Core/Src/temp.c ****         Compensation_val = 62;       
+ 374:Core/Src/temp.c ****     }    
+ 375:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE75_THRESHOLD)
+ 556              		.loc 1 375 10 is_stmt 1 view .LVU151
+ 557              		.loc 1 375 12 is_stmt 0 view .LVU152
+ 558 0252 0C3B     		subs	r3, r3, #12
+ 559 0254 9842     		cmp	r0, r3
+ 560 0256 00D3     		bcc	.LCB310
+ 561 0258 FAE1     		b	.L77	@long jump
+ 562              	.LCB310:
+ 376:Core/Src/temp.c ****     {
+ 377:Core/Src/temp.c ****         Compensation_val = 63;       
+ 378:Core/Src/temp.c ****     }    
+ 379:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE76_THRESHOLD)
+ 563              		.loc 1 379 10 is_stmt 1 view .LVU153
+ 564              		.loc 1 379 12 is_stmt 0 view .LVU154
+ 565 025a 734B     		ldr	r3, .L124+248
+ 566 025c 9842     		cmp	r0, r3
+ 567 025e 00D9     		bls	.LCB314
+ 568 0260 F8E1     		b	.L78	@long jump
+ 569              	.LCB314:
+ 380:Core/Src/temp.c ****     {
+ 381:Core/Src/temp.c ****         Compensation_val = 64;       
+ 382:Core/Src/temp.c ****     }    
+ 383:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE77_THRESHOLD)
+ 570              		.loc 1 383 10 is_stmt 1 view .LVU155
+ 571              		.loc 1 383 12 is_stmt 0 view .LVU156
+ 572 0262 724B     		ldr	r3, .L124+252
+ 573 0264 9842     		cmp	r0, r3
+ 574 0266 00D9     		bls	.LCB318
+ 575 0268 F6E1     		b	.L79	@long jump
+ 576              	.LCB318:
+ 384:Core/Src/temp.c ****     {
+ 385:Core/Src/temp.c ****         Compensation_val = 65;       
+ 386:Core/Src/temp.c ****     }    
+ 387:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE78_THRESHOLD)
+ 577              		.loc 1 387 10 is_stmt 1 view .LVU157
+ 578              		.loc 1 387 12 is_stmt 0 view .LVU158
+ 579 026a 0D3B     		subs	r3, r3, #13
+ 580 026c 9842     		cmp	r0, r3
+ 581 026e 00D9     		bls	.LCB322
+ 582 0270 F4E1     		b	.L80	@long jump
+ 583              	.LCB322:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 18
+
+
+ 388:Core/Src/temp.c ****     {
+ 389:Core/Src/temp.c ****         Compensation_val = 66;       
+ 390:Core/Src/temp.c ****     }    
+ 391:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE79_THRESHOLD)
+ 584              		.loc 1 391 10 is_stmt 1 view .LVU159
+ 585              		.loc 1 391 12 is_stmt 0 view .LVU160
+ 586 0272 6F4B     		ldr	r3, .L124+256
+ 587 0274 9842     		cmp	r0, r3
+ 588 0276 00D9     		bls	.LCB326
+ 589 0278 F2E1     		b	.L81	@long jump
+ 590              	.LCB326:
+ 392:Core/Src/temp.c ****     {
+ 393:Core/Src/temp.c ****         Compensation_val = 67;       
+ 394:Core/Src/temp.c ****     }    
+ 395:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE80_THRESHOLD)
+ 591              		.loc 1 395 10 is_stmt 1 view .LVU161
+ 592              		.loc 1 395 12 is_stmt 0 view .LVU162
+ 593 027a 0C3B     		subs	r3, r3, #12
+ 594 027c 9842     		cmp	r0, r3
+ 595 027e 00D3     		bcc	.LCB330
+ 596 0280 F0E1     		b	.L82	@long jump
+ 597              	.LCB330:
+ 396:Core/Src/temp.c ****     {
+ 397:Core/Src/temp.c ****         Compensation_val = 68;       
+ 398:Core/Src/temp.c ****     }    
+ 399:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE81_THRESHOLD)
+ 598              		.loc 1 399 10 is_stmt 1 view .LVU163
+ 599              		.loc 1 399 12 is_stmt 0 view .LVU164
+ 600 0282 6C4B     		ldr	r3, .L124+260
+ 601 0284 9842     		cmp	r0, r3
+ 602 0286 00D9     		bls	.LCB334
+ 603 0288 EEE1     		b	.L83	@long jump
+ 604              	.LCB334:
+ 400:Core/Src/temp.c ****     {
+ 401:Core/Src/temp.c ****         Compensation_val = 69;       
+ 402:Core/Src/temp.c ****     }    
+ 403:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE82_THRESHOLD)
+ 605              		.loc 1 403 10 is_stmt 1 view .LVU165
+ 606              		.loc 1 403 12 is_stmt 0 view .LVU166
+ 607 028a 6B4B     		ldr	r3, .L124+264
+ 608 028c 9842     		cmp	r0, r3
+ 609 028e 00D9     		bls	.LCB338
+ 610 0290 ECE1     		b	.L84	@long jump
+ 611              	.LCB338:
+ 404:Core/Src/temp.c ****     {
+ 405:Core/Src/temp.c ****         Compensation_val = 70;       
+ 406:Core/Src/temp.c ****     }    
+ 407:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE83_THRESHOLD)
+ 612              		.loc 1 407 10 is_stmt 1 view .LVU167
+ 613              		.loc 1 407 12 is_stmt 0 view .LVU168
+ 614 0292 0D3B     		subs	r3, r3, #13
+ 615 0294 9842     		cmp	r0, r3
+ 616 0296 00D3     		bcc	.LCB342
+ 617 0298 EAE1     		b	.L85	@long jump
+ 618              	.LCB342:
+ 408:Core/Src/temp.c ****     {
+ 409:Core/Src/temp.c ****         Compensation_val = 71;       
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 19
+
+
+ 410:Core/Src/temp.c ****     }    
+ 411:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE84_THRESHOLD)
+ 619              		.loc 1 411 10 is_stmt 1 view .LVU169
+ 620              		.loc 1 411 12 is_stmt 0 view .LVU170
+ 621 029a 684B     		ldr	r3, .L124+268
+ 622 029c 9842     		cmp	r0, r3
+ 623 029e 00D9     		bls	.LCB346
+ 624 02a0 E8E1     		b	.L86	@long jump
+ 625              	.LCB346:
+ 412:Core/Src/temp.c ****     {
+ 413:Core/Src/temp.c ****         Compensation_val = 72;       
+ 414:Core/Src/temp.c ****     }    
+ 415:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE85_THRESHOLD)
+ 626              		.loc 1 415 10 is_stmt 1 view .LVU171
+ 627              		.loc 1 415 12 is_stmt 0 view .LVU172
+ 628 02a2 674B     		ldr	r3, .L124+272
+ 629 02a4 9842     		cmp	r0, r3
+ 630 02a6 00D9     		bls	.LCB350
+ 631 02a8 E6E1     		b	.L87	@long jump
+ 632              	.LCB350:
+ 416:Core/Src/temp.c ****     {
+ 417:Core/Src/temp.c ****         Compensation_val = 73;       
+ 418:Core/Src/temp.c ****     }    
+ 419:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE86_THRESHOLD)
+ 633              		.loc 1 419 10 is_stmt 1 view .LVU173
+ 634              		.loc 1 419 12 is_stmt 0 view .LVU174
+ 635 02aa 0C3B     		subs	r3, r3, #12
+ 636 02ac 9842     		cmp	r0, r3
+ 637 02ae 00D3     		bcc	.LCB354
+ 638 02b0 E4E1     		b	.L88	@long jump
+ 639              	.LCB354:
+ 420:Core/Src/temp.c ****     {
+ 421:Core/Src/temp.c ****         Compensation_val = 74;       
+ 422:Core/Src/temp.c ****     }    
+ 423:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE87_THRESHOLD)
+ 640              		.loc 1 423 10 is_stmt 1 view .LVU175
+ 641              		.loc 1 423 12 is_stmt 0 view .LVU176
+ 642 02b2 644B     		ldr	r3, .L124+276
+ 643 02b4 9842     		cmp	r0, r3
+ 644 02b6 00D9     		bls	.LCB358
+ 645 02b8 E2E1     		b	.L89	@long jump
+ 646              	.LCB358:
+ 424:Core/Src/temp.c ****     {
+ 425:Core/Src/temp.c ****         Compensation_val = 75;       
+ 426:Core/Src/temp.c ****     }    
+ 427:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE88_THRESHOLD)
+ 647              		.loc 1 427 10 is_stmt 1 view .LVU177
+ 648              		.loc 1 427 12 is_stmt 0 view .LVU178
+ 649 02ba 634B     		ldr	r3, .L124+280
+ 650 02bc 9842     		cmp	r0, r3
+ 651 02be 00D9     		bls	.LCB362
+ 652 02c0 E0E1     		b	.L90	@long jump
+ 653              	.LCB362:
+ 428:Core/Src/temp.c ****     {
+ 429:Core/Src/temp.c ****         Compensation_val = 76;       
+ 430:Core/Src/temp.c ****     }    
+ 431:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE89_THRESHOLD)
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 20
+
+
+ 654              		.loc 1 431 10 is_stmt 1 view .LVU179
+ 655              		.loc 1 431 12 is_stmt 0 view .LVU180
+ 656 02c2 0C3B     		subs	r3, r3, #12
+ 657 02c4 9842     		cmp	r0, r3
+ 658 02c6 00D3     		bcc	.LCB366
+ 659 02c8 DEE1     		b	.L91	@long jump
+ 660              	.LCB366:
+ 432:Core/Src/temp.c ****     {
+ 433:Core/Src/temp.c ****         Compensation_val = 77;       
+ 434:Core/Src/temp.c ****     }    
+ 435:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE90_THRESHOLD)
+ 661              		.loc 1 435 10 is_stmt 1 view .LVU181
+ 662              		.loc 1 435 12 is_stmt 0 view .LVU182
+ 663 02ca 604B     		ldr	r3, .L124+284
+ 664 02cc 9842     		cmp	r0, r3
+ 665 02ce 00D9     		bls	.LCB370
+ 666 02d0 DCE1     		b	.L92	@long jump
+ 667              	.LCB370:
+ 436:Core/Src/temp.c ****     {
+ 437:Core/Src/temp.c ****         Compensation_val = 78;       
+ 438:Core/Src/temp.c ****     }    
+ 439:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE91_THRESHOLD)
+ 668              		.loc 1 439 10 is_stmt 1 view .LVU183
+ 669              		.loc 1 439 12 is_stmt 0 view .LVU184
+ 670 02d2 5F4B     		ldr	r3, .L124+288
+ 671 02d4 9842     		cmp	r0, r3
+ 672 02d6 00D9     		bls	.LCB374
+ 673 02d8 DAE1     		b	.L93	@long jump
+ 674              	.LCB374:
+ 440:Core/Src/temp.c ****     {
+ 441:Core/Src/temp.c ****         Compensation_val = 79;       
+ 442:Core/Src/temp.c ****     }    
+ 443:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE92_THRESHOLD)
+ 675              		.loc 1 443 10 is_stmt 1 view .LVU185
+ 676              		.loc 1 443 12 is_stmt 0 view .LVU186
+ 677 02da 0C3B     		subs	r3, r3, #12
+ 678 02dc 9842     		cmp	r0, r3
+ 679 02de 00D3     		bcc	.LCB378
+ 680 02e0 D8E1     		b	.L94	@long jump
+ 681              	.LCB378:
+ 444:Core/Src/temp.c ****     {
+ 445:Core/Src/temp.c ****         Compensation_val = 80;       
+ 446:Core/Src/temp.c ****     }    
+ 447:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE93_THRESHOLD)
+ 682              		.loc 1 447 10 is_stmt 1 view .LVU187
+ 683              		.loc 1 447 12 is_stmt 0 view .LVU188
+ 684 02e2 5C4B     		ldr	r3, .L124+292
+ 685 02e4 9842     		cmp	r0, r3
+ 686 02e6 00D9     		bls	.LCB382
+ 687 02e8 D6E1     		b	.L95	@long jump
+ 688              	.LCB382:
+ 448:Core/Src/temp.c ****     {
+ 449:Core/Src/temp.c ****         Compensation_val = 81;       
+ 450:Core/Src/temp.c ****     }    
+ 451:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE94_THRESHOLD)
+ 689              		.loc 1 451 10 is_stmt 1 view .LVU189
+ 690              		.loc 1 451 12 is_stmt 0 view .LVU190
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 21
+
+
+ 691 02ea 0E3B     		subs	r3, r3, #14
+ 692 02ec 9842     		cmp	r0, r3
+ 693 02ee 00D9     		bls	.LCB386
+ 694 02f0 D4E1     		b	.L96	@long jump
+ 695              	.LCB386:
+ 452:Core/Src/temp.c ****     {
+ 453:Core/Src/temp.c ****         Compensation_val = 82;       
+ 454:Core/Src/temp.c ****     }    
+ 455:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE95_THRESHOLD)
+ 696              		.loc 1 455 10 is_stmt 1 view .LVU191
+ 697              		.loc 1 455 12 is_stmt 0 view .LVU192
+ 698 02f2 0C3B     		subs	r3, r3, #12
+ 699 02f4 9842     		cmp	r0, r3
+ 700 02f6 00D3     		bcc	.LCB390
+ 701 02f8 D2E1     		b	.L97	@long jump
+ 702              	.LCB390:
+ 456:Core/Src/temp.c ****     {
+ 457:Core/Src/temp.c ****         Compensation_val = 83;       
+ 458:Core/Src/temp.c ****     }    
+ 459:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE96_THRESHOLD)
+ 703              		.loc 1 459 10 is_stmt 1 view .LVU193
+ 704              		.loc 1 459 12 is_stmt 0 view .LVU194
+ 705 02fa 574B     		ldr	r3, .L124+296
+ 706 02fc 9842     		cmp	r0, r3
+ 707 02fe 00D9     		bls	.LCB394
+ 708 0300 D0E1     		b	.L98	@long jump
+ 709              	.LCB394:
+ 460:Core/Src/temp.c ****     {
+ 461:Core/Src/temp.c ****         Compensation_val = 84;       
+ 462:Core/Src/temp.c ****     }    
+ 463:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE97_THRESHOLD)
+ 710              		.loc 1 463 10 is_stmt 1 view .LVU195
+ 711              		.loc 1 463 12 is_stmt 0 view .LVU196
+ 712 0302 564B     		ldr	r3, .L124+300
+ 713 0304 9842     		cmp	r0, r3
+ 714 0306 00D9     		bls	.LCB398
+ 715 0308 CEE1     		b	.L99	@long jump
+ 716              	.LCB398:
+ 464:Core/Src/temp.c ****     {
+ 465:Core/Src/temp.c ****         Compensation_val = 85;       
+ 466:Core/Src/temp.c ****     }    
+ 467:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE98_THRESHOLD)
+ 717              		.loc 1 467 10 is_stmt 1 view .LVU197
+ 718              		.loc 1 467 12 is_stmt 0 view .LVU198
+ 719 030a 0D3B     		subs	r3, r3, #13
+ 720 030c 9842     		cmp	r0, r3
+ 721 030e 00D3     		bcc	.LCB402
+ 722 0310 CCE1     		b	.L100	@long jump
+ 723              	.LCB402:
+ 468:Core/Src/temp.c ****     {
+ 469:Core/Src/temp.c ****         Compensation_val = 86;       
+ 470:Core/Src/temp.c ****     }    
+ 471:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE99_THRESHOLD)
+ 724              		.loc 1 471 10 is_stmt 1 view .LVU199
+ 725              		.loc 1 471 12 is_stmt 0 view .LVU200
+ 726 0312 534B     		ldr	r3, .L124+304
+ 727 0314 9842     		cmp	r0, r3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 22
+
+
+ 728 0316 00D9     		bls	.LCB406
+ 729 0318 CAE1     		b	.L101	@long jump
+ 730              	.LCB406:
+ 472:Core/Src/temp.c ****     {
+ 473:Core/Src/temp.c ****         Compensation_val = 87;       
+ 474:Core/Src/temp.c ****     }    
+ 475:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE100_THRESHOLD)
+ 731              		.loc 1 475 10 is_stmt 1 view .LVU201
+ 732              		.loc 1 475 12 is_stmt 0 view .LVU202
+ 733 031a 524B     		ldr	r3, .L124+308
+ 734 031c 9842     		cmp	r0, r3
+ 735 031e 00D9     		bls	.LCB410
+ 736 0320 C8E1     		b	.L102	@long jump
+ 737              	.LCB410:
+ 476:Core/Src/temp.c ****     {
+ 477:Core/Src/temp.c ****         Compensation_val = 88;       
+ 478:Core/Src/temp.c ****     }    
+ 479:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE101_THRESHOLD)
+ 738              		.loc 1 479 10 is_stmt 1 view .LVU203
+ 739              		.loc 1 479 12 is_stmt 0 view .LVU204
+ 740 0322 0D3B     		subs	r3, r3, #13
+ 741 0324 9842     		cmp	r0, r3
+ 742 0326 00D9     		bls	.LCB414
+ 743 0328 C6E1     		b	.L103	@long jump
+ 744              	.LCB414:
+ 480:Core/Src/temp.c ****     {
+ 481:Core/Src/temp.c ****         Compensation_val = 89;       
+ 482:Core/Src/temp.c ****     }    
+ 483:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE102_THRESHOLD)
+ 745              		.loc 1 483 10 is_stmt 1 view .LVU205
+ 746              		.loc 1 483 12 is_stmt 0 view .LVU206
+ 747 032a 4F4B     		ldr	r3, .L124+312
+ 748 032c 9EE0     		b	.L125
+ 749              	.L126:
+ 750 032e C046     		.align	2
+ 751              	.L124:
+ 752 0330 2A070000 		.word	1834
+ 753 0334 26070000 		.word	1830
+ 754 0338 22070000 		.word	1826
+ 755 033c 1E070000 		.word	1822
+ 756 0340 1A070000 		.word	1818
+ 757 0344 16070000 		.word	1814
+ 758 0348 12070000 		.word	1810
+ 759 034c 0E070000 		.word	1806
+ 760 0350 0A070000 		.word	1802
+ 761 0354 06070000 		.word	1798
+ 762 0358 02070000 		.word	1794
+ 763 035c FD060000 		.word	1789
+ 764 0360 F9060000 		.word	1785
+ 765 0364 F5060000 		.word	1781
+ 766 0368 F1060000 		.word	1777
+ 767 036c ED060000 		.word	1773
+ 768 0370 E9060000 		.word	1769
+ 769 0374 E5060000 		.word	1765
+ 770 0378 E1060000 		.word	1761
+ 771 037c DD060000 		.word	1757
+ 772 0380 D9060000 		.word	1753
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 23
+
+
+ 773 0384 D3060000 		.word	1747
+ 774 0388 CD060000 		.word	1741
+ 775 038c C6060000 		.word	1734
+ 776 0390 BA060000 		.word	1722
+ 777 0394 B2060000 		.word	1714
+ 778 0398 AD060000 		.word	1709
+ 779 039c A1060000 		.word	1697
+ 780 03a0 9B060000 		.word	1691
+ 781 03a4 93060000 		.word	1683
+ 782 03a8 8C060000 		.word	1676
+ 783 03ac 85060000 		.word	1669
+ 784 03b0 7E060000 		.word	1662
+ 785 03b4 69060000 		.word	1641
+ 786 03b8 62060000 		.word	1634
+ 787 03bc 5B060000 		.word	1627
+ 788 03c0 54060000 		.word	1620
+ 789 03c4 4C060000 		.word	1612
+ 790 03c8 43060000 		.word	1603
+ 791 03cc 3B060000 		.word	1595
+ 792 03d0 32060000 		.word	1586
+ 793 03d4 2A060000 		.word	1578
+ 794 03d8 22060000 		.word	1570
+ 795 03dc 19060000 		.word	1561
+ 796 03e0 11060000 		.word	1553
+ 797 03e4 F6050000 		.word	1526
+ 798 03e8 EC050000 		.word	1516
+ 799 03ec E2050000 		.word	1506
+ 800 03f0 CE050000 		.word	1486
+ 801 03f4 C4050000 		.word	1476
+ 802 03f8 BA050000 		.word	1466
+ 803 03fc A6050000 		.word	1446
+ 804 0400 9C050000 		.word	1436
+ 805 0404 82050000 		.word	1410
+ 806 0408 75050000 		.word	1397
+ 807 040c 5B050000 		.word	1371
+ 808 0410 4E050000 		.word	1358
+ 809 0414 41050000 		.word	1345
+ 810 0418 34050000 		.word	1332
+ 811 041c 1A050000 		.word	1306
+ 812 0420 0D050000 		.word	1293
+ 813 0424 F4040000 		.word	1268
+ 814 0428 DA040000 		.word	1242
+ 815 042c CD040000 		.word	1229
+ 816 0430 B4040000 		.word	1204
+ 817 0434 9A040000 		.word	1178
+ 818 0438 8D040000 		.word	1165
+ 819 043c 72040000 		.word	1138
+ 820 0440 64040000 		.word	1124
+ 821 0444 4A040000 		.word	1098
+ 822 0448 3C040000 		.word	1084
+ 823 044c 21040000 		.word	1057
+ 824 0450 14040000 		.word	1044
+ 825 0454 FA030000 		.word	1018
+ 826 0458 D2030000 		.word	978
+ 827 045c C5030000 		.word	965
+ 828 0460 AA030000 		.word	938
+ 829 0464 9D030000 		.word	925
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 24
+
+
+ 830 0468 82030000 		.word	898
+ 831              	.L125:
+ 832 046c 9842     		cmp	r0, r3
+ 833 046e 00D9     		bls	.LCB505
+ 834 0470 24E1     		b	.L104	@long jump
+ 835              	.LCB505:
+ 484:Core/Src/temp.c ****     {
+ 485:Core/Src/temp.c ****         Compensation_val = 90;       
+ 486:Core/Src/temp.c ****     }    
+ 487:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE103_THRESHOLD)
+ 836              		.loc 1 487 10 is_stmt 1 view .LVU207
+ 837              		.loc 1 487 12 is_stmt 0 view .LVU208
+ 838 0472 A64B     		ldr	r3, .L127
+ 839 0474 9842     		cmp	r0, r3
+ 840 0476 00D9     		bls	.LCB509
+ 841 0478 22E1     		b	.L105	@long jump
+ 842              	.LCB509:
+ 488:Core/Src/temp.c ****     {
+ 489:Core/Src/temp.c ****         Compensation_val = 91;       
+ 490:Core/Src/temp.c ****     }    
+ 491:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE104_THRESHOLD)
+ 843              		.loc 1 491 10 is_stmt 1 view .LVU209
+ 844              		.loc 1 491 12 is_stmt 0 view .LVU210
+ 845 047a 0D3B     		subs	r3, r3, #13
+ 846 047c 9842     		cmp	r0, r3
+ 847 047e 00D9     		bls	.LCB513
+ 848 0480 20E1     		b	.L106	@long jump
+ 849              	.LCB513:
+ 492:Core/Src/temp.c ****     {
+ 493:Core/Src/temp.c ****         Compensation_val = 92;       
+ 494:Core/Src/temp.c ****     }    
+ 495:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE105_THRESHOLD)
+ 850              		.loc 1 495 10 is_stmt 1 view .LVU211
+ 851              		.loc 1 495 12 is_stmt 0 view .LVU212
+ 852 0482 0C3B     		subs	r3, r3, #12
+ 853 0484 9842     		cmp	r0, r3
+ 854 0486 00D3     		bcc	.LCB517
+ 855 0488 1EE1     		b	.L107	@long jump
+ 856              	.LCB517:
+ 496:Core/Src/temp.c ****     {
+ 497:Core/Src/temp.c ****         Compensation_val = 93;       
+ 498:Core/Src/temp.c ****     }    
+ 499:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE106_THRESHOLD)
+ 857              		.loc 1 499 10 is_stmt 1 view .LVU213
+ 858              		.loc 1 499 12 is_stmt 0 view .LVU214
+ 859 048a A14B     		ldr	r3, .L127+4
+ 860 048c 9842     		cmp	r0, r3
+ 861 048e 00D9     		bls	.LCB521
+ 862 0490 1CE1     		b	.L108	@long jump
+ 863              	.LCB521:
+ 500:Core/Src/temp.c ****     {
+ 501:Core/Src/temp.c ****         Compensation_val = 94;       
+ 502:Core/Src/temp.c ****     }    
+ 503:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE107_THRESHOLD)
+ 864              		.loc 1 503 10 is_stmt 1 view .LVU215
+ 865              		.loc 1 503 12 is_stmt 0 view .LVU216
+ 866 0492 0D3B     		subs	r3, r3, #13
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 25
+
+
+ 867 0494 9842     		cmp	r0, r3
+ 868 0496 00D9     		bls	.LCB525
+ 869 0498 1AE1     		b	.L109	@long jump
+ 870              	.LCB525:
+ 504:Core/Src/temp.c ****     {
+ 505:Core/Src/temp.c ****         Compensation_val = 95;       
+ 506:Core/Src/temp.c ****     }    
+ 507:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE108_THRESHOLD)
+ 871              		.loc 1 507 10 is_stmt 1 view .LVU217
+ 872              		.loc 1 507 12 is_stmt 0 view .LVU218
+ 873 049a 0C3B     		subs	r3, r3, #12
+ 874 049c 9842     		cmp	r0, r3
+ 875 049e 00D3     		bcc	.LCB529
+ 876 04a0 18E1     		b	.L110	@long jump
+ 877              	.LCB529:
+ 508:Core/Src/temp.c ****     {
+ 509:Core/Src/temp.c ****         Compensation_val = 96;       
+ 510:Core/Src/temp.c ****     }    
+ 511:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE109_THRESHOLD)
+ 878              		.loc 1 511 10 is_stmt 1 view .LVU219
+ 879              		.loc 1 511 12 is_stmt 0 view .LVU220
+ 880 04a2 9C4B     		ldr	r3, .L127+8
+ 881 04a4 9842     		cmp	r0, r3
+ 882 04a6 00D9     		bls	.LCB533
+ 883 04a8 16E1     		b	.L111	@long jump
+ 884              	.LCB533:
+ 512:Core/Src/temp.c ****     {
+ 513:Core/Src/temp.c ****         Compensation_val = 97;       
+ 514:Core/Src/temp.c ****     }    
+ 515:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE110_THRESHOLD)
+ 885              		.loc 1 515 10 is_stmt 1 view .LVU221
+ 886              		.loc 1 515 12 is_stmt 0 view .LVU222
+ 887 04aa 0E3B     		subs	r3, r3, #14
+ 888 04ac 9842     		cmp	r0, r3
+ 889 04ae 00D9     		bls	.LCB537
+ 890 04b0 14E1     		b	.L112	@long jump
+ 891              	.LCB537:
+ 516:Core/Src/temp.c ****     {
+ 517:Core/Src/temp.c ****         Compensation_val = 98;       
+ 518:Core/Src/temp.c ****     }    
+ 519:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE111_THRESHOLD)
+ 892              		.loc 1 519 10 is_stmt 1 view .LVU223
+ 893              		.loc 1 519 12 is_stmt 0 view .LVU224
+ 894 04b2 0C3B     		subs	r3, r3, #12
+ 895 04b4 9842     		cmp	r0, r3
+ 896 04b6 00D3     		bcc	.LCB541
+ 897 04b8 12E1     		b	.L113	@long jump
+ 898              	.LCB541:
+ 520:Core/Src/temp.c ****     {
+ 521:Core/Src/temp.c ****         Compensation_val = 99;       
+ 522:Core/Src/temp.c ****     }    
+ 523:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE112_THRESHOLD)
+ 899              		.loc 1 523 10 is_stmt 1 view .LVU225
+ 900              		.loc 1 523 12 is_stmt 0 view .LVU226
+ 901 04ba 974B     		ldr	r3, .L127+12
+ 902 04bc 9842     		cmp	r0, r3
+ 903 04be 00D9     		bls	.LCB545
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 26
+
+
+ 904 04c0 10E1     		b	.L114	@long jump
+ 905              	.LCB545:
+ 524:Core/Src/temp.c ****     {
+ 525:Core/Src/temp.c ****         Compensation_val = 100;       
+ 526:Core/Src/temp.c ****     }    
+ 527:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE113_THRESHOLD)
+ 906              		.loc 1 527 10 is_stmt 1 view .LVU227
+ 907              		.loc 1 527 12 is_stmt 0 view .LVU228
+ 908 04c2 964B     		ldr	r3, .L127+16
+ 909 04c4 9842     		cmp	r0, r3
+ 910 04c6 00D9     		bls	.LCB549
+ 911 04c8 0EE1     		b	.L115	@long jump
+ 912              	.LCB549:
+ 528:Core/Src/temp.c ****     {
+ 529:Core/Src/temp.c ****         Compensation_val = 101;       
+ 530:Core/Src/temp.c ****     }    
+ 531:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE114_THRESHOLD)
+ 913              		.loc 1 531 10 is_stmt 1 view .LVU229
+ 914              		.loc 1 531 12 is_stmt 0 view .LVU230
+ 915 04ca 0D3B     		subs	r3, r3, #13
+ 916 04cc 9842     		cmp	r0, r3
+ 917 04ce 00D3     		bcc	.LCB553
+ 918 04d0 0CE1     		b	.L116	@long jump
+ 919              	.LCB553:
+ 532:Core/Src/temp.c ****     {
+ 533:Core/Src/temp.c ****         Compensation_val = 102;       
+ 534:Core/Src/temp.c ****     }    
+ 535:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE115_THRESHOLD)
+ 920              		.loc 1 535 10 is_stmt 1 view .LVU231
+ 921              		.loc 1 535 12 is_stmt 0 view .LVU232
+ 922 04d2 934B     		ldr	r3, .L127+20
+ 923 04d4 9842     		cmp	r0, r3
+ 924 04d6 00D9     		bls	.LCB557
+ 925 04d8 0AE1     		b	.L117	@long jump
+ 926              	.LCB557:
+ 536:Core/Src/temp.c ****     {
+ 537:Core/Src/temp.c ****         Compensation_val = 103;       
+ 538:Core/Src/temp.c ****     }    
+ 539:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE116_THRESHOLD)
+ 927              		.loc 1 539 10 is_stmt 1 view .LVU233
+ 928              		.loc 1 539 12 is_stmt 0 view .LVU234
+ 929 04da 924B     		ldr	r3, .L127+24
+ 930 04dc 9842     		cmp	r0, r3
+ 931 04de 00D9     		bls	.LCB561
+ 932 04e0 08E1     		b	.L118	@long jump
+ 933              	.LCB561:
+ 540:Core/Src/temp.c ****     {
+ 541:Core/Src/temp.c ****         Compensation_val = 104;       
+ 542:Core/Src/temp.c ****     }    
+ 543:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE117_THRESHOLD)
+ 934              		.loc 1 543 10 is_stmt 1 view .LVU235
+ 935              		.loc 1 543 12 is_stmt 0 view .LVU236
+ 936 04e2 0D3B     		subs	r3, r3, #13
+ 937 04e4 9842     		cmp	r0, r3
+ 938 04e6 00D9     		bls	.LCB565
+ 939 04e8 06E1     		b	.L119	@long jump
+ 940              	.LCB565:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 27
+
+
+ 544:Core/Src/temp.c ****     {
+ 545:Core/Src/temp.c ****         Compensation_val = 105;       
+ 546:Core/Src/temp.c ****     }    
+ 547:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE118_THRESHOLD)
+ 941              		.loc 1 547 10 is_stmt 1 view .LVU237
+ 942              		.loc 1 547 12 is_stmt 0 view .LVU238
+ 943 04ea 8F4B     		ldr	r3, .L127+28
+ 944 04ec 9842     		cmp	r0, r3
+ 945 04ee 00D9     		bls	.LCB569
+ 946 04f0 04E1     		b	.L120	@long jump
+ 947              	.LCB569:
+ 548:Core/Src/temp.c ****     {
+ 549:Core/Src/temp.c ****         Compensation_val = 106;       
+ 550:Core/Src/temp.c ****     }    
+ 551:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE119_THRESHOLD)
+ 948              		.loc 1 551 10 is_stmt 1 view .LVU239
+ 949              		.loc 1 551 12 is_stmt 0 view .LVU240
+ 950 04f2 8E4B     		ldr	r3, .L127+32
+ 951 04f4 9842     		cmp	r0, r3
+ 952 04f6 00D9     		bls	.LCB573
+ 953 04f8 02E1     		b	.L121	@long jump
+ 954              	.LCB573:
+ 552:Core/Src/temp.c ****     {
+ 553:Core/Src/temp.c ****         Compensation_val = 107;       
+ 554:Core/Src/temp.c ****     }    
+ 555:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE120_THRESHOLD)
+ 955              		.loc 1 555 10 is_stmt 1 view .LVU241
+ 956              		.loc 1 555 12 is_stmt 0 view .LVU242
+ 957 04fa 0D3B     		subs	r3, r3, #13
+ 958 04fc 9842     		cmp	r0, r3
+ 959 04fe 00D9     		bls	.LCB577
+ 960 0500 00E1     		b	.L122	@long jump
+ 961              	.LCB577:
+ 556:Core/Src/temp.c ****     {
+ 557:Core/Src/temp.c ****         Compensation_val = 108;       
+ 558:Core/Src/temp.c ****     }    
+ 559:Core/Src/temp.c ****     else if(temp_volt>TEMP_ZONE121_THRESHOLD)
+ 962              		.loc 1 559 10 is_stmt 1 view .LVU243
+ 963              		.loc 1 559 12 is_stmt 0 view .LVU244
+ 964 0502 0C3B     		subs	r3, r3, #12
+ 965 0504 9842     		cmp	r0, r3
+ 966 0506 00D2     		bcs	.LCB581
+ 967 0508 FEE0     		b	.L123	@long jump
+ 968              	.LCB581:
+ 560:Core/Src/temp.c ****     {
+ 561:Core/Src/temp.c ****         Compensation_val = 109;       
+ 969              		.loc 1 561 26 view .LVU245
+ 970 050a 6D23     		movs	r3, #109
+ 971 050c 01E0     		b	.L2
+ 972              	.L3:
+  81:Core/Src/temp.c ****     }
+ 973              		.loc 1 81 26 view .LVU246
+ 974 050e 0B23     		movs	r3, #11
+ 975 0510 5B42     		rsbs	r3, r3, #0
+ 976              	.L2:
+ 977              	.LVL2:
+ 562:Core/Src/temp.c ****     }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 28
+
+
+ 563:Core/Src/temp.c ****     else
+ 564:Core/Src/temp.c ****     {
+ 565:Core/Src/temp.c ****         Compensation_val = 110;    
+ 566:Core/Src/temp.c ****     }
+ 567:Core/Src/temp.c **** 
+ 568:Core/Src/temp.c ****     Temp_Adc_TP = Compensation_val;
+ 978              		.loc 1 568 5 is_stmt 1 view .LVU247
+ 979              		.loc 1 568 17 is_stmt 0 view .LVU248
+ 980 0512 874A     		ldr	r2, .L127+36
+ 981 0514 1380     		strh	r3, [r2]
+ 569:Core/Src/temp.c ****     
+ 570:Core/Src/temp.c **** }
+ 982              		.loc 1 570 1 view .LVU249
+ 983              		@ sp needed
+ 984 0516 00BD     		pop	{pc}
+ 985              	.LVL3:
+ 986              	.L4:
+  85:Core/Src/temp.c ****     }
+ 987              		.loc 1 85 26 view .LVU250
+ 988 0518 0A23     		movs	r3, #10
+ 989 051a 5B42     		rsbs	r3, r3, #0
+ 990 051c F9E7     		b	.L2
+ 991              	.L5:
+  89:Core/Src/temp.c ****     }    
+ 992              		.loc 1 89 26 view .LVU251
+ 993 051e 0923     		movs	r3, #9
+ 994 0520 5B42     		rsbs	r3, r3, #0
+ 995 0522 F6E7     		b	.L2
+ 996              	.L6:
+  93:Core/Src/temp.c ****     }    
+ 997              		.loc 1 93 26 view .LVU252
+ 998 0524 0823     		movs	r3, #8
+ 999 0526 5B42     		rsbs	r3, r3, #0
+ 1000 0528 F3E7     		b	.L2
+ 1001              	.L7:
+  97:Core/Src/temp.c ****     }    
+ 1002              		.loc 1 97 26 view .LVU253
+ 1003 052a 0723     		movs	r3, #7
+ 1004 052c 5B42     		rsbs	r3, r3, #0
+ 1005 052e F0E7     		b	.L2
+ 1006              	.L8:
+ 101:Core/Src/temp.c ****     }    
+ 1007              		.loc 1 101 26 view .LVU254
+ 1008 0530 0623     		movs	r3, #6
+ 1009 0532 5B42     		rsbs	r3, r3, #0
+ 1010 0534 EDE7     		b	.L2
+ 1011              	.L9:
+ 105:Core/Src/temp.c ****     }    
+ 1012              		.loc 1 105 26 view .LVU255
+ 1013 0536 0523     		movs	r3, #5
+ 1014 0538 5B42     		rsbs	r3, r3, #0
+ 1015 053a EAE7     		b	.L2
+ 1016              	.L10:
+ 109:Core/Src/temp.c ****     }    
+ 1017              		.loc 1 109 26 view .LVU256
+ 1018 053c 0423     		movs	r3, #4
+ 1019 053e 5B42     		rsbs	r3, r3, #0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 29
+
+
+ 1020 0540 E7E7     		b	.L2
+ 1021              	.L11:
+ 113:Core/Src/temp.c ****     }    
+ 1022              		.loc 1 113 26 view .LVU257
+ 1023 0542 0323     		movs	r3, #3
+ 1024 0544 5B42     		rsbs	r3, r3, #0
+ 1025 0546 E4E7     		b	.L2
+ 1026              	.L12:
+ 117:Core/Src/temp.c ****     }    
+ 1027              		.loc 1 117 26 view .LVU258
+ 1028 0548 0223     		movs	r3, #2
+ 1029 054a 5B42     		rsbs	r3, r3, #0
+ 1030 054c E1E7     		b	.L2
+ 1031              	.L13:
+ 121:Core/Src/temp.c ****     }    
+ 1032              		.loc 1 121 26 view .LVU259
+ 1033 054e 0123     		movs	r3, #1
+ 1034 0550 5B42     		rsbs	r3, r3, #0
+ 1035 0552 DEE7     		b	.L2
+ 1036              	.L14:
+ 125:Core/Src/temp.c ****     }    
+ 1037              		.loc 1 125 26 view .LVU260
+ 1038 0554 0023     		movs	r3, #0
+ 1039 0556 DCE7     		b	.L2
+ 1040              	.L15:
+ 129:Core/Src/temp.c ****     }    
+ 1041              		.loc 1 129 26 view .LVU261
+ 1042 0558 0123     		movs	r3, #1
+ 1043 055a DAE7     		b	.L2
+ 1044              	.L16:
+ 133:Core/Src/temp.c ****     }    
+ 1045              		.loc 1 133 26 view .LVU262
+ 1046 055c 0223     		movs	r3, #2
+ 1047 055e D8E7     		b	.L2
+ 1048              	.L17:
+ 137:Core/Src/temp.c ****     }    
+ 1049              		.loc 1 137 26 view .LVU263
+ 1050 0560 0323     		movs	r3, #3
+ 1051 0562 D6E7     		b	.L2
+ 1052              	.L18:
+ 141:Core/Src/temp.c ****     }    
+ 1053              		.loc 1 141 26 view .LVU264
+ 1054 0564 0423     		movs	r3, #4
+ 1055 0566 D4E7     		b	.L2
+ 1056              	.L19:
+ 145:Core/Src/temp.c ****     }    
+ 1057              		.loc 1 145 26 view .LVU265
+ 1058 0568 0523     		movs	r3, #5
+ 1059 056a D2E7     		b	.L2
+ 1060              	.L20:
+ 149:Core/Src/temp.c ****     }    
+ 1061              		.loc 1 149 26 view .LVU266
+ 1062 056c 0623     		movs	r3, #6
+ 1063 056e D0E7     		b	.L2
+ 1064              	.L21:
+ 153:Core/Src/temp.c ****     }    
+ 1065              		.loc 1 153 26 view .LVU267
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 30
+
+
+ 1066 0570 0723     		movs	r3, #7
+ 1067 0572 CEE7     		b	.L2
+ 1068              	.L22:
+ 157:Core/Src/temp.c ****     }    
+ 1069              		.loc 1 157 26 view .LVU268
+ 1070 0574 0823     		movs	r3, #8
+ 1071 0576 CCE7     		b	.L2
+ 1072              	.L23:
+ 161:Core/Src/temp.c ****     }    
+ 1073              		.loc 1 161 26 view .LVU269
+ 1074 0578 0923     		movs	r3, #9
+ 1075 057a CAE7     		b	.L2
+ 1076              	.L24:
+ 165:Core/Src/temp.c ****     }    
+ 1077              		.loc 1 165 26 view .LVU270
+ 1078 057c 0A23     		movs	r3, #10
+ 1079 057e C8E7     		b	.L2
+ 1080              	.L25:
+ 169:Core/Src/temp.c ****     }    
+ 1081              		.loc 1 169 26 view .LVU271
+ 1082 0580 0B23     		movs	r3, #11
+ 1083 0582 C6E7     		b	.L2
+ 1084              	.L26:
+ 173:Core/Src/temp.c ****     }    
+ 1085              		.loc 1 173 26 view .LVU272
+ 1086 0584 0C23     		movs	r3, #12
+ 1087 0586 C4E7     		b	.L2
+ 1088              	.L27:
+ 177:Core/Src/temp.c ****     }    
+ 1089              		.loc 1 177 26 view .LVU273
+ 1090 0588 0D23     		movs	r3, #13
+ 1091 058a C2E7     		b	.L2
+ 1092              	.L28:
+ 181:Core/Src/temp.c ****     }    
+ 1093              		.loc 1 181 26 view .LVU274
+ 1094 058c 0E23     		movs	r3, #14
+ 1095 058e C0E7     		b	.L2
+ 1096              	.L29:
+ 185:Core/Src/temp.c ****     }    
+ 1097              		.loc 1 185 26 view .LVU275
+ 1098 0590 0F23     		movs	r3, #15
+ 1099 0592 BEE7     		b	.L2
+ 1100              	.L30:
+ 189:Core/Src/temp.c ****     }    
+ 1101              		.loc 1 189 26 view .LVU276
+ 1102 0594 1023     		movs	r3, #16
+ 1103 0596 BCE7     		b	.L2
+ 1104              	.L31:
+ 193:Core/Src/temp.c ****     }    
+ 1105              		.loc 1 193 26 view .LVU277
+ 1106 0598 1123     		movs	r3, #17
+ 1107 059a BAE7     		b	.L2
+ 1108              	.L32:
+ 197:Core/Src/temp.c ****     }    
+ 1109              		.loc 1 197 26 view .LVU278
+ 1110 059c 1223     		movs	r3, #18
+ 1111 059e B8E7     		b	.L2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 31
+
+
+ 1112              	.L33:
+ 201:Core/Src/temp.c ****     }    
+ 1113              		.loc 1 201 26 view .LVU279
+ 1114 05a0 1323     		movs	r3, #19
+ 1115 05a2 B6E7     		b	.L2
+ 1116              	.L34:
+ 205:Core/Src/temp.c ****     }    
+ 1117              		.loc 1 205 26 view .LVU280
+ 1118 05a4 1423     		movs	r3, #20
+ 1119 05a6 B4E7     		b	.L2
+ 1120              	.L35:
+ 209:Core/Src/temp.c ****     }    
+ 1121              		.loc 1 209 26 view .LVU281
+ 1122 05a8 1523     		movs	r3, #21
+ 1123 05aa B2E7     		b	.L2
+ 1124              	.L36:
+ 213:Core/Src/temp.c ****     }    
+ 1125              		.loc 1 213 26 view .LVU282
+ 1126 05ac 1623     		movs	r3, #22
+ 1127 05ae B0E7     		b	.L2
+ 1128              	.L37:
+ 217:Core/Src/temp.c ****     }    
+ 1129              		.loc 1 217 26 view .LVU283
+ 1130 05b0 1723     		movs	r3, #23
+ 1131 05b2 AEE7     		b	.L2
+ 1132              	.L38:
+ 221:Core/Src/temp.c ****     }    
+ 1133              		.loc 1 221 26 view .LVU284
+ 1134 05b4 1823     		movs	r3, #24
+ 1135 05b6 ACE7     		b	.L2
+ 1136              	.L39:
+ 225:Core/Src/temp.c ****     }    
+ 1137              		.loc 1 225 26 view .LVU285
+ 1138 05b8 1923     		movs	r3, #25
+ 1139 05ba AAE7     		b	.L2
+ 1140              	.L40:
+ 229:Core/Src/temp.c ****     }    
+ 1141              		.loc 1 229 26 view .LVU286
+ 1142 05bc 1A23     		movs	r3, #26
+ 1143 05be A8E7     		b	.L2
+ 1144              	.L41:
+ 233:Core/Src/temp.c ****     }    
+ 1145              		.loc 1 233 26 view .LVU287
+ 1146 05c0 1B23     		movs	r3, #27
+ 1147 05c2 A6E7     		b	.L2
+ 1148              	.L42:
+ 237:Core/Src/temp.c ****     }    
+ 1149              		.loc 1 237 26 view .LVU288
+ 1150 05c4 1C23     		movs	r3, #28
+ 1151 05c6 A4E7     		b	.L2
+ 1152              	.L43:
+ 241:Core/Src/temp.c ****     }    
+ 1153              		.loc 1 241 26 view .LVU289
+ 1154 05c8 1D23     		movs	r3, #29
+ 1155 05ca A2E7     		b	.L2
+ 1156              	.L44:
+ 245:Core/Src/temp.c ****     }    
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 32
+
+
+ 1157              		.loc 1 245 26 view .LVU290
+ 1158 05cc 1E23     		movs	r3, #30
+ 1159 05ce A0E7     		b	.L2
+ 1160              	.L45:
+ 249:Core/Src/temp.c ****     }    
+ 1161              		.loc 1 249 26 view .LVU291
+ 1162 05d0 1F23     		movs	r3, #31
+ 1163 05d2 9EE7     		b	.L2
+ 1164              	.L46:
+ 253:Core/Src/temp.c ****     }    
+ 1165              		.loc 1 253 26 view .LVU292
+ 1166 05d4 2023     		movs	r3, #32
+ 1167 05d6 9CE7     		b	.L2
+ 1168              	.L47:
+ 257:Core/Src/temp.c ****     }    
+ 1169              		.loc 1 257 26 view .LVU293
+ 1170 05d8 2123     		movs	r3, #33
+ 1171 05da 9AE7     		b	.L2
+ 1172              	.L48:
+ 261:Core/Src/temp.c ****     }    
+ 1173              		.loc 1 261 26 view .LVU294
+ 1174 05dc 2223     		movs	r3, #34
+ 1175 05de 98E7     		b	.L2
+ 1176              	.L49:
+ 265:Core/Src/temp.c ****     }    
+ 1177              		.loc 1 265 26 view .LVU295
+ 1178 05e0 2323     		movs	r3, #35
+ 1179 05e2 96E7     		b	.L2
+ 1180              	.L50:
+ 269:Core/Src/temp.c ****     }    
+ 1181              		.loc 1 269 26 view .LVU296
+ 1182 05e4 2423     		movs	r3, #36
+ 1183 05e6 94E7     		b	.L2
+ 1184              	.L51:
+ 273:Core/Src/temp.c ****     }    
+ 1185              		.loc 1 273 26 view .LVU297
+ 1186 05e8 2523     		movs	r3, #37
+ 1187 05ea 92E7     		b	.L2
+ 1188              	.L52:
+ 277:Core/Src/temp.c ****     }    
+ 1189              		.loc 1 277 26 view .LVU298
+ 1190 05ec 2623     		movs	r3, #38
+ 1191 05ee 90E7     		b	.L2
+ 1192              	.L53:
+ 281:Core/Src/temp.c ****     }    
+ 1193              		.loc 1 281 26 view .LVU299
+ 1194 05f0 2723     		movs	r3, #39
+ 1195 05f2 8EE7     		b	.L2
+ 1196              	.L54:
+ 285:Core/Src/temp.c ****     }    
+ 1197              		.loc 1 285 26 view .LVU300
+ 1198 05f4 2823     		movs	r3, #40
+ 1199 05f6 8CE7     		b	.L2
+ 1200              	.L55:
+ 289:Core/Src/temp.c ****     }    
+ 1201              		.loc 1 289 26 view .LVU301
+ 1202 05f8 2923     		movs	r3, #41
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 33
+
+
+ 1203 05fa 8AE7     		b	.L2
+ 1204              	.L56:
+ 293:Core/Src/temp.c ****     }    
+ 1205              		.loc 1 293 26 view .LVU302
+ 1206 05fc 2A23     		movs	r3, #42
+ 1207 05fe 88E7     		b	.L2
+ 1208              	.L57:
+ 297:Core/Src/temp.c ****     }    
+ 1209              		.loc 1 297 26 view .LVU303
+ 1210 0600 2B23     		movs	r3, #43
+ 1211 0602 86E7     		b	.L2
+ 1212              	.L58:
+ 301:Core/Src/temp.c ****     }    
+ 1213              		.loc 1 301 26 view .LVU304
+ 1214 0604 2C23     		movs	r3, #44
+ 1215 0606 84E7     		b	.L2
+ 1216              	.L59:
+ 305:Core/Src/temp.c ****     }    
+ 1217              		.loc 1 305 26 view .LVU305
+ 1218 0608 2D23     		movs	r3, #45
+ 1219 060a 82E7     		b	.L2
+ 1220              	.L60:
+ 309:Core/Src/temp.c ****     }    
+ 1221              		.loc 1 309 26 view .LVU306
+ 1222 060c 2E23     		movs	r3, #46
+ 1223 060e 80E7     		b	.L2
+ 1224              	.L61:
+ 313:Core/Src/temp.c ****     }    
+ 1225              		.loc 1 313 26 view .LVU307
+ 1226 0610 2F23     		movs	r3, #47
+ 1227 0612 7EE7     		b	.L2
+ 1228              	.L62:
+ 317:Core/Src/temp.c ****     }    
+ 1229              		.loc 1 317 26 view .LVU308
+ 1230 0614 3023     		movs	r3, #48
+ 1231 0616 7CE7     		b	.L2
+ 1232              	.L63:
+ 321:Core/Src/temp.c ****     }    
+ 1233              		.loc 1 321 26 view .LVU309
+ 1234 0618 3123     		movs	r3, #49
+ 1235 061a 7AE7     		b	.L2
+ 1236              	.L64:
+ 325:Core/Src/temp.c ****     }    
+ 1237              		.loc 1 325 26 view .LVU310
+ 1238 061c 3223     		movs	r3, #50
+ 1239 061e 78E7     		b	.L2
+ 1240              	.L65:
+ 329:Core/Src/temp.c ****     }    
+ 1241              		.loc 1 329 26 view .LVU311
+ 1242 0620 3323     		movs	r3, #51
+ 1243 0622 76E7     		b	.L2
+ 1244              	.L66:
+ 333:Core/Src/temp.c ****     }    
+ 1245              		.loc 1 333 26 view .LVU312
+ 1246 0624 3423     		movs	r3, #52
+ 1247 0626 74E7     		b	.L2
+ 1248              	.L67:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 34
+
+
+ 337:Core/Src/temp.c ****     }    
+ 1249              		.loc 1 337 26 view .LVU313
+ 1250 0628 3523     		movs	r3, #53
+ 1251 062a 72E7     		b	.L2
+ 1252              	.L68:
+ 341:Core/Src/temp.c ****     }    
+ 1253              		.loc 1 341 26 view .LVU314
+ 1254 062c 3623     		movs	r3, #54
+ 1255 062e 70E7     		b	.L2
+ 1256              	.L69:
+ 345:Core/Src/temp.c ****     }    
+ 1257              		.loc 1 345 26 view .LVU315
+ 1258 0630 3723     		movs	r3, #55
+ 1259 0632 6EE7     		b	.L2
+ 1260              	.L70:
+ 349:Core/Src/temp.c ****     }    
+ 1261              		.loc 1 349 26 view .LVU316
+ 1262 0634 3823     		movs	r3, #56
+ 1263 0636 6CE7     		b	.L2
+ 1264              	.L71:
+ 353:Core/Src/temp.c ****     }    
+ 1265              		.loc 1 353 26 view .LVU317
+ 1266 0638 3923     		movs	r3, #57
+ 1267 063a 6AE7     		b	.L2
+ 1268              	.L72:
+ 357:Core/Src/temp.c ****     }    
+ 1269              		.loc 1 357 26 view .LVU318
+ 1270 063c 3A23     		movs	r3, #58
+ 1271 063e 68E7     		b	.L2
+ 1272              	.L73:
+ 361:Core/Src/temp.c ****     }    
+ 1273              		.loc 1 361 26 view .LVU319
+ 1274 0640 3B23     		movs	r3, #59
+ 1275 0642 66E7     		b	.L2
+ 1276              	.L74:
+ 365:Core/Src/temp.c ****     }    
+ 1277              		.loc 1 365 26 view .LVU320
+ 1278 0644 3C23     		movs	r3, #60
+ 1279 0646 64E7     		b	.L2
+ 1280              	.L75:
+ 369:Core/Src/temp.c ****     }    
+ 1281              		.loc 1 369 26 view .LVU321
+ 1282 0648 3D23     		movs	r3, #61
+ 1283 064a 62E7     		b	.L2
+ 1284              	.L76:
+ 373:Core/Src/temp.c ****     }    
+ 1285              		.loc 1 373 26 view .LVU322
+ 1286 064c 3E23     		movs	r3, #62
+ 1287 064e 60E7     		b	.L2
+ 1288              	.L77:
+ 377:Core/Src/temp.c ****     }    
+ 1289              		.loc 1 377 26 view .LVU323
+ 1290 0650 3F23     		movs	r3, #63
+ 1291 0652 5EE7     		b	.L2
+ 1292              	.L78:
+ 381:Core/Src/temp.c ****     }    
+ 1293              		.loc 1 381 26 view .LVU324
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 35
+
+
+ 1294 0654 4023     		movs	r3, #64
+ 1295 0656 5CE7     		b	.L2
+ 1296              	.L79:
+ 385:Core/Src/temp.c ****     }    
+ 1297              		.loc 1 385 26 view .LVU325
+ 1298 0658 4123     		movs	r3, #65
+ 1299 065a 5AE7     		b	.L2
+ 1300              	.L80:
+ 389:Core/Src/temp.c ****     }    
+ 1301              		.loc 1 389 26 view .LVU326
+ 1302 065c 4223     		movs	r3, #66
+ 1303 065e 58E7     		b	.L2
+ 1304              	.L81:
+ 393:Core/Src/temp.c ****     }    
+ 1305              		.loc 1 393 26 view .LVU327
+ 1306 0660 4323     		movs	r3, #67
+ 1307 0662 56E7     		b	.L2
+ 1308              	.L82:
+ 397:Core/Src/temp.c ****     }    
+ 1309              		.loc 1 397 26 view .LVU328
+ 1310 0664 4423     		movs	r3, #68
+ 1311 0666 54E7     		b	.L2
+ 1312              	.L83:
+ 401:Core/Src/temp.c ****     }    
+ 1313              		.loc 1 401 26 view .LVU329
+ 1314 0668 4523     		movs	r3, #69
+ 1315 066a 52E7     		b	.L2
+ 1316              	.L84:
+ 405:Core/Src/temp.c ****     }    
+ 1317              		.loc 1 405 26 view .LVU330
+ 1318 066c 4623     		movs	r3, #70
+ 1319 066e 50E7     		b	.L2
+ 1320              	.L85:
+ 409:Core/Src/temp.c ****     }    
+ 1321              		.loc 1 409 26 view .LVU331
+ 1322 0670 4723     		movs	r3, #71
+ 1323 0672 4EE7     		b	.L2
+ 1324              	.L86:
+ 413:Core/Src/temp.c ****     }    
+ 1325              		.loc 1 413 26 view .LVU332
+ 1326 0674 4823     		movs	r3, #72
+ 1327 0676 4CE7     		b	.L2
+ 1328              	.L87:
+ 417:Core/Src/temp.c ****     }    
+ 1329              		.loc 1 417 26 view .LVU333
+ 1330 0678 4923     		movs	r3, #73
+ 1331 067a 4AE7     		b	.L2
+ 1332              	.L88:
+ 421:Core/Src/temp.c ****     }    
+ 1333              		.loc 1 421 26 view .LVU334
+ 1334 067c 4A23     		movs	r3, #74
+ 1335 067e 48E7     		b	.L2
+ 1336              	.L89:
+ 425:Core/Src/temp.c ****     }    
+ 1337              		.loc 1 425 26 view .LVU335
+ 1338 0680 4B23     		movs	r3, #75
+ 1339 0682 46E7     		b	.L2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 36
+
+
+ 1340              	.L90:
+ 429:Core/Src/temp.c ****     }    
+ 1341              		.loc 1 429 26 view .LVU336
+ 1342 0684 4C23     		movs	r3, #76
+ 1343 0686 44E7     		b	.L2
+ 1344              	.L91:
+ 433:Core/Src/temp.c ****     }    
+ 1345              		.loc 1 433 26 view .LVU337
+ 1346 0688 4D23     		movs	r3, #77
+ 1347 068a 42E7     		b	.L2
+ 1348              	.L92:
+ 437:Core/Src/temp.c ****     }    
+ 1349              		.loc 1 437 26 view .LVU338
+ 1350 068c 4E23     		movs	r3, #78
+ 1351 068e 40E7     		b	.L2
+ 1352              	.L93:
+ 441:Core/Src/temp.c ****     }    
+ 1353              		.loc 1 441 26 view .LVU339
+ 1354 0690 4F23     		movs	r3, #79
+ 1355 0692 3EE7     		b	.L2
+ 1356              	.L94:
+ 445:Core/Src/temp.c ****     }    
+ 1357              		.loc 1 445 26 view .LVU340
+ 1358 0694 5023     		movs	r3, #80
+ 1359 0696 3CE7     		b	.L2
+ 1360              	.L95:
+ 449:Core/Src/temp.c ****     }    
+ 1361              		.loc 1 449 26 view .LVU341
+ 1362 0698 5123     		movs	r3, #81
+ 1363 069a 3AE7     		b	.L2
+ 1364              	.L96:
+ 453:Core/Src/temp.c ****     }    
+ 1365              		.loc 1 453 26 view .LVU342
+ 1366 069c 5223     		movs	r3, #82
+ 1367 069e 38E7     		b	.L2
+ 1368              	.L97:
+ 457:Core/Src/temp.c ****     }    
+ 1369              		.loc 1 457 26 view .LVU343
+ 1370 06a0 5323     		movs	r3, #83
+ 1371 06a2 36E7     		b	.L2
+ 1372              	.L98:
+ 461:Core/Src/temp.c ****     }    
+ 1373              		.loc 1 461 26 view .LVU344
+ 1374 06a4 5423     		movs	r3, #84
+ 1375 06a6 34E7     		b	.L2
+ 1376              	.L99:
+ 465:Core/Src/temp.c ****     }    
+ 1377              		.loc 1 465 26 view .LVU345
+ 1378 06a8 5523     		movs	r3, #85
+ 1379 06aa 32E7     		b	.L2
+ 1380              	.L100:
+ 469:Core/Src/temp.c ****     }    
+ 1381              		.loc 1 469 26 view .LVU346
+ 1382 06ac 5623     		movs	r3, #86
+ 1383 06ae 30E7     		b	.L2
+ 1384              	.L101:
+ 473:Core/Src/temp.c ****     }    
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 37
+
+
+ 1385              		.loc 1 473 26 view .LVU347
+ 1386 06b0 5723     		movs	r3, #87
+ 1387 06b2 2EE7     		b	.L2
+ 1388              	.L102:
+ 477:Core/Src/temp.c ****     }    
+ 1389              		.loc 1 477 26 view .LVU348
+ 1390 06b4 5823     		movs	r3, #88
+ 1391 06b6 2CE7     		b	.L2
+ 1392              	.L103:
+ 481:Core/Src/temp.c ****     }    
+ 1393              		.loc 1 481 26 view .LVU349
+ 1394 06b8 5923     		movs	r3, #89
+ 1395 06ba 2AE7     		b	.L2
+ 1396              	.L104:
+ 485:Core/Src/temp.c ****     }    
+ 1397              		.loc 1 485 26 view .LVU350
+ 1398 06bc 5A23     		movs	r3, #90
+ 1399 06be 28E7     		b	.L2
+ 1400              	.L105:
+ 489:Core/Src/temp.c ****     }    
+ 1401              		.loc 1 489 26 view .LVU351
+ 1402 06c0 5B23     		movs	r3, #91
+ 1403 06c2 26E7     		b	.L2
+ 1404              	.L106:
+ 493:Core/Src/temp.c ****     }    
+ 1405              		.loc 1 493 26 view .LVU352
+ 1406 06c4 5C23     		movs	r3, #92
+ 1407 06c6 24E7     		b	.L2
+ 1408              	.L107:
+ 497:Core/Src/temp.c ****     }    
+ 1409              		.loc 1 497 26 view .LVU353
+ 1410 06c8 5D23     		movs	r3, #93
+ 1411 06ca 22E7     		b	.L2
+ 1412              	.L108:
+ 501:Core/Src/temp.c ****     }    
+ 1413              		.loc 1 501 26 view .LVU354
+ 1414 06cc 5E23     		movs	r3, #94
+ 1415 06ce 20E7     		b	.L2
+ 1416              	.L109:
+ 505:Core/Src/temp.c ****     }    
+ 1417              		.loc 1 505 26 view .LVU355
+ 1418 06d0 5F23     		movs	r3, #95
+ 1419 06d2 1EE7     		b	.L2
+ 1420              	.L110:
+ 509:Core/Src/temp.c ****     }    
+ 1421              		.loc 1 509 26 view .LVU356
+ 1422 06d4 6023     		movs	r3, #96
+ 1423 06d6 1CE7     		b	.L2
+ 1424              	.L111:
+ 513:Core/Src/temp.c ****     }    
+ 1425              		.loc 1 513 26 view .LVU357
+ 1426 06d8 6123     		movs	r3, #97
+ 1427 06da 1AE7     		b	.L2
+ 1428              	.L112:
+ 517:Core/Src/temp.c ****     }    
+ 1429              		.loc 1 517 26 view .LVU358
+ 1430 06dc 6223     		movs	r3, #98
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 38
+
+
+ 1431 06de 18E7     		b	.L2
+ 1432              	.L113:
+ 521:Core/Src/temp.c ****     }    
+ 1433              		.loc 1 521 26 view .LVU359
+ 1434 06e0 6323     		movs	r3, #99
+ 1435 06e2 16E7     		b	.L2
+ 1436              	.L114:
+ 525:Core/Src/temp.c ****     }    
+ 1437              		.loc 1 525 26 view .LVU360
+ 1438 06e4 6423     		movs	r3, #100
+ 1439 06e6 14E7     		b	.L2
+ 1440              	.L115:
+ 529:Core/Src/temp.c ****     }    
+ 1441              		.loc 1 529 26 view .LVU361
+ 1442 06e8 6523     		movs	r3, #101
+ 1443 06ea 12E7     		b	.L2
+ 1444              	.L116:
+ 533:Core/Src/temp.c ****     }    
+ 1445              		.loc 1 533 26 view .LVU362
+ 1446 06ec 6623     		movs	r3, #102
+ 1447 06ee 10E7     		b	.L2
+ 1448              	.L117:
+ 537:Core/Src/temp.c ****     }    
+ 1449              		.loc 1 537 26 view .LVU363
+ 1450 06f0 6723     		movs	r3, #103
+ 1451 06f2 0EE7     		b	.L2
+ 1452              	.L118:
+ 541:Core/Src/temp.c ****     }    
+ 1453              		.loc 1 541 26 view .LVU364
+ 1454 06f4 6823     		movs	r3, #104
+ 1455 06f6 0CE7     		b	.L2
+ 1456              	.L119:
+ 545:Core/Src/temp.c ****     }    
+ 1457              		.loc 1 545 26 view .LVU365
+ 1458 06f8 6923     		movs	r3, #105
+ 1459 06fa 0AE7     		b	.L2
+ 1460              	.L120:
+ 549:Core/Src/temp.c ****     }    
+ 1461              		.loc 1 549 26 view .LVU366
+ 1462 06fc 6A23     		movs	r3, #106
+ 1463 06fe 08E7     		b	.L2
+ 1464              	.L121:
+ 553:Core/Src/temp.c ****     }    
+ 1465              		.loc 1 553 26 view .LVU367
+ 1466 0700 6B23     		movs	r3, #107
+ 1467 0702 06E7     		b	.L2
+ 1468              	.L122:
+ 557:Core/Src/temp.c ****     }    
+ 1469              		.loc 1 557 26 view .LVU368
+ 1470 0704 6C23     		movs	r3, #108
+ 1471 0706 04E7     		b	.L2
+ 1472              	.L123:
+ 565:Core/Src/temp.c ****     }
+ 1473              		.loc 1 565 26 view .LVU369
+ 1474 0708 6E23     		movs	r3, #110
+ 1475 070a 02E7     		b	.L2
+ 1476              	.L128:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 39
+
+
+ 1477              		.align	2
+ 1478              	.L127:
+ 1479 070c 75030000 		.word	885
+ 1480 0710 4D030000 		.word	845
+ 1481 0714 26030000 		.word	806
+ 1482 0718 FE020000 		.word	766
+ 1483 071c F1020000 		.word	753
+ 1484 0720 D6020000 		.word	726
+ 1485 0724 C9020000 		.word	713
+ 1486 0728 AE020000 		.word	686
+ 1487 072c A1020000 		.word	673
+ 1488 0730 00000000 		.word	.LANCHOR0
+ 1489              		.cfi_endproc
+ 1490              	.LFE41:
+ 1492              		.global	__aeabi_uidiv
+ 1493              		.global	__aeabi_ui2f
+ 1494              		.global	__aeabi_fmul
+ 1495              		.global	__aeabi_fdiv
+ 1496              		.global	__aeabi_f2uiz
+ 1497              		.global	__aeabi_fsub
+ 1498              		.global	__aeabi_fadd
+ 1499              		.global	__aeabi_f2iz
+ 1500              		.section	.text.Temp_Read,"ax",%progbits
+ 1501              		.align	1
+ 1502              		.global	Temp_Read
+ 1503              		.syntax unified
+ 1504              		.code	16
+ 1505              		.thumb_func
+ 1507              	Temp_Read:
+ 1508              	.LFB40:
+  23:Core/Src/temp.c ****     HAL_ADC_Start(&TEMP_MODULE);
+ 1509              		.loc 1 23 1 is_stmt 1 view -0
+ 1510              		.cfi_startproc
+ 1511              		@ args = 0, pretend = 0, frame = 0
+ 1512              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1513 0000 10B5     		push	{r4, lr}
+ 1514              	.LCFI1:
+ 1515              		.cfi_def_cfa_offset 8
+ 1516              		.cfi_offset 4, -8
+ 1517              		.cfi_offset 14, -4
+  24:Core/Src/temp.c ****     if(HAL_OK == HAL_ADC_PollForConversion(&TEMP_MODULE,10))
+ 1518              		.loc 1 24 5 view .LVU371
+ 1519 0002 464C     		ldr	r4, .L140
+ 1520 0004 2000     		movs	r0, r4
+ 1521 0006 FFF7FEFF 		bl	HAL_ADC_Start
+ 1522              	.LVL4:
+  25:Core/Src/temp.c ****     {
+ 1523              		.loc 1 25 5 view .LVU372
+  25:Core/Src/temp.c ****     {
+ 1524              		.loc 1 25 18 is_stmt 0 view .LVU373
+ 1525 000a 0A21     		movs	r1, #10
+ 1526 000c 2000     		movs	r0, r4
+ 1527 000e FFF7FEFF 		bl	HAL_ADC_PollForConversion
+ 1528              	.LVL5:
+  25:Core/Src/temp.c ****     {
+ 1529              		.loc 1 25 7 view .LVU374
+ 1530 0012 0028     		cmp	r0, #0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 40
+
+
+ 1531 0014 18D0     		beq	.L136
+  32:Core/Src/temp.c ****     }
+ 1532              		.loc 1 32 9 is_stmt 1 view .LVU375
+  32:Core/Src/temp.c ****     }
+ 1533              		.loc 1 32 28 is_stmt 0 view .LVU376
+ 1534 0016 424B     		ldr	r3, .L140+4
+ 1535 0018 0022     		movs	r2, #0
+ 1536 001a 1A70     		strb	r2, [r3]
+ 1537              	.L131:
+  35:Core/Src/temp.c ****     if(HAL_OK == HAL_ADC_PollForConversion(&TEMP_MODULE,10))
+ 1538              		.loc 1 35 5 is_stmt 1 view .LVU377
+ 1539 001c 3F4C     		ldr	r4, .L140
+ 1540 001e 2000     		movs	r0, r4
+ 1541 0020 FFF7FEFF 		bl	HAL_ADC_Start
+ 1542              	.LVL6:
+  36:Core/Src/temp.c ****     {
+ 1543              		.loc 1 36 5 view .LVU378
+  36:Core/Src/temp.c ****     {
+ 1544              		.loc 1 36 18 is_stmt 0 view .LVU379
+ 1545 0024 0A21     		movs	r1, #10
+ 1546 0026 2000     		movs	r0, r4
+ 1547 0028 FFF7FEFF 		bl	HAL_ADC_PollForConversion
+ 1548              	.LVL7:
+  36:Core/Src/temp.c ****     {
+ 1549              		.loc 1 36 7 view .LVU380
+ 1550 002c 0028     		cmp	r0, #0
+ 1551 002e 14D0     		beq	.L137
+  43:Core/Src/temp.c ****     }
+ 1552              		.loc 1 43 9 is_stmt 1 view .LVU381
+  43:Core/Src/temp.c ****     }
+ 1553              		.loc 1 43 29 is_stmt 0 view .LVU382
+ 1554 0030 3C4B     		ldr	r3, .L140+8
+ 1555 0032 0022     		movs	r2, #0
+ 1556 0034 1A70     		strb	r2, [r3]
+ 1557              	.L133:
+  47:Core/Src/temp.c ****     {
+ 1558              		.loc 1 47 5 is_stmt 1 view .LVU383
+  47:Core/Src/temp.c ****     {
+ 1559              		.loc 1 47 10 is_stmt 0 view .LVU384
+ 1560 0036 3A4B     		ldr	r3, .L140+4
+ 1561 0038 1B78     		ldrb	r3, [r3]
+  47:Core/Src/temp.c ****     {
+ 1562              		.loc 1 47 7 view .LVU385
+ 1563 003a 012B     		cmp	r3, #1
+ 1564 003c 16D0     		beq	.L138
+ 1565              	.L134:
+  60:Core/Src/temp.c ****     {
+ 1566              		.loc 1 60 5 is_stmt 1 view .LVU386
+  60:Core/Src/temp.c ****     {
+ 1567              		.loc 1 60 10 is_stmt 0 view .LVU387
+ 1568 003e 394B     		ldr	r3, .L140+8
+ 1569 0040 1B78     		ldrb	r3, [r3]
+  60:Core/Src/temp.c ****     {
+ 1570              		.loc 1 60 7 view .LVU388
+ 1571 0042 012B     		cmp	r3, #1
+ 1572 0044 37D0     		beq	.L139
+ 1573              	.L129:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 41
+
+
+  74:Core/Src/temp.c **** 
+ 1574              		.loc 1 74 1 view .LVU389
+ 1575              		@ sp needed
+ 1576 0046 10BD     		pop	{r4, pc}
+ 1577              	.L136:
+  27:Core/Src/temp.c ****         Temp_Adc_TP_Status = 1;
+ 1578              		.loc 1 27 9 is_stmt 1 view .LVU390
+  27:Core/Src/temp.c ****         Temp_Adc_TP_Status = 1;
+ 1579              		.loc 1 27 27 is_stmt 0 view .LVU391
+ 1580 0048 3448     		ldr	r0, .L140
+ 1581 004a FFF7FEFF 		bl	HAL_ADC_GetValue
+ 1582              	.LVL8:
+  27:Core/Src/temp.c ****         Temp_Adc_TP_Status = 1;
+ 1583              		.loc 1 27 25 view .LVU392
+ 1584 004e 364B     		ldr	r3, .L140+12
+ 1585 0050 1880     		strh	r0, [r3]
+  28:Core/Src/temp.c ****     }
+ 1586              		.loc 1 28 9 is_stmt 1 view .LVU393
+  28:Core/Src/temp.c ****     }
+ 1587              		.loc 1 28 28 is_stmt 0 view .LVU394
+ 1588 0052 334B     		ldr	r3, .L140+4
+ 1589 0054 0122     		movs	r2, #1
+ 1590 0056 1A70     		strb	r2, [r3]
+ 1591 0058 E0E7     		b	.L131
+ 1592              	.L137:
+  38:Core/Src/temp.c ****         Temp_Adc_CPU_Status = 1;
+ 1593              		.loc 1 38 9 is_stmt 1 view .LVU395
+  38:Core/Src/temp.c ****         Temp_Adc_CPU_Status = 1;
+ 1594              		.loc 1 38 28 is_stmt 0 view .LVU396
+ 1595 005a 3048     		ldr	r0, .L140
+ 1596 005c FFF7FEFF 		bl	HAL_ADC_GetValue
+ 1597              	.LVL9:
+  38:Core/Src/temp.c ****         Temp_Adc_CPU_Status = 1;
+ 1598              		.loc 1 38 26 view .LVU397
+ 1599 0060 324B     		ldr	r3, .L140+16
+ 1600 0062 1880     		strh	r0, [r3]
+  39:Core/Src/temp.c ****     }
+ 1601              		.loc 1 39 9 is_stmt 1 view .LVU398
+  39:Core/Src/temp.c ****     }
+ 1602              		.loc 1 39 29 is_stmt 0 view .LVU399
+ 1603 0064 2F4B     		ldr	r3, .L140+8
+ 1604 0066 0122     		movs	r2, #1
+ 1605 0068 1A70     		strb	r2, [r3]
+ 1606 006a E4E7     		b	.L133
+ 1607              	.L138:
+  49:Core/Src/temp.c ****         Temp_Adc_TP_Sum += Temp_Adc_TP_Raw;
+ 1608              		.loc 1 49 9 is_stmt 1 view .LVU400
+  49:Core/Src/temp.c ****         Temp_Adc_TP_Sum += Temp_Adc_TP_Raw;
+ 1609              		.loc 1 49 26 is_stmt 0 view .LVU401
+ 1610 006c 304B     		ldr	r3, .L140+20
+ 1611 006e 1978     		ldrb	r1, [r3]
+ 1612 0070 0131     		adds	r1, r1, #1
+ 1613 0072 C9B2     		uxtb	r1, r1
+ 1614 0074 1970     		strb	r1, [r3]
+  50:Core/Src/temp.c ****         if(Temp_Avg_TP_Count>=10)
+ 1615              		.loc 1 50 9 is_stmt 1 view .LVU402
+  50:Core/Src/temp.c ****         if(Temp_Avg_TP_Count>=10)
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 42
+
+
+ 1616              		.loc 1 50 25 is_stmt 0 view .LVU403
+ 1617 0076 2C4B     		ldr	r3, .L140+12
+ 1618 0078 1888     		ldrh	r0, [r3]
+ 1619 007a 2E4B     		ldr	r3, .L140+24
+ 1620 007c 1A68     		ldr	r2, [r3]
+ 1621 007e 9446     		mov	ip, r2
+ 1622 0080 6044     		add	r0, r0, ip
+ 1623 0082 1860     		str	r0, [r3]
+  51:Core/Src/temp.c ****         {
+ 1624              		.loc 1 51 9 is_stmt 1 view .LVU404
+  51:Core/Src/temp.c ****         {
+ 1625              		.loc 1 51 11 is_stmt 0 view .LVU405
+ 1626 0084 0929     		cmp	r1, #9
+ 1627 0086 DAD9     		bls	.L134
+  53:Core/Src/temp.c ****             Temperature_Compensation(Temp_Adc_TP_Volt);
+ 1628              		.loc 1 53 13 is_stmt 1 view .LVU406
+  53:Core/Src/temp.c ****             Temperature_Compensation(Temp_Adc_TP_Volt);
+ 1629              		.loc 1 53 65 is_stmt 0 view .LVU407
+ 1630 0088 FFF7FEFF 		bl	__aeabi_uidiv
+ 1631              	.LVL10:
+  53:Core/Src/temp.c ****             Temperature_Compensation(Temp_Adc_TP_Volt);
+ 1632              		.loc 1 53 41 view .LVU408
+ 1633 008c FFF7FEFF 		bl	__aeabi_ui2f
+ 1634              	.LVL11:
+  53:Core/Src/temp.c ****             Temperature_Compensation(Temp_Adc_TP_Volt);
+ 1635              		.loc 1 53 85 view .LVU409
+ 1636 0090 2949     		ldr	r1, .L140+28
+ 1637 0092 FFF7FEFF 		bl	__aeabi_fmul
+ 1638              	.LVL12:
+  53:Core/Src/temp.c ****             Temperature_Compensation(Temp_Adc_TP_Volt);
+ 1639              		.loc 1 53 93 view .LVU410
+ 1640 0096 2949     		ldr	r1, .L140+32
+ 1641 0098 FFF7FEFF 		bl	__aeabi_fdiv
+ 1642              	.LVL13:
+  53:Core/Src/temp.c ****             Temperature_Compensation(Temp_Adc_TP_Volt);
+ 1643              		.loc 1 53 32 view .LVU411
+ 1644 009c FFF7FEFF 		bl	__aeabi_f2uiz
+ 1645              	.LVL14:
+ 1646 00a0 80B2     		uxth	r0, r0
+  53:Core/Src/temp.c ****             Temperature_Compensation(Temp_Adc_TP_Volt);
+ 1647              		.loc 1 53 30 view .LVU412
+ 1648 00a2 274B     		ldr	r3, .L140+36
+ 1649 00a4 1880     		strh	r0, [r3]
+  54:Core/Src/temp.c ****             Temp_Avg_TP_Count = 0;
+ 1650              		.loc 1 54 13 is_stmt 1 view .LVU413
+ 1651 00a6 FFF7FEFF 		bl	Temperature_Compensation
+ 1652              	.LVL15:
+  55:Core/Src/temp.c ****             Temp_Adc_TP_Sum = 0;
+ 1653              		.loc 1 55 13 view .LVU414
+  55:Core/Src/temp.c ****             Temp_Adc_TP_Sum = 0;
+ 1654              		.loc 1 55 31 is_stmt 0 view .LVU415
+ 1655 00aa 0023     		movs	r3, #0
+ 1656 00ac 204A     		ldr	r2, .L140+20
+ 1657 00ae 1370     		strb	r3, [r2]
+  56:Core/Src/temp.c ****         }
+ 1658              		.loc 1 56 13 is_stmt 1 view .LVU416
+  56:Core/Src/temp.c ****         }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 43
+
+
+ 1659              		.loc 1 56 29 is_stmt 0 view .LVU417
+ 1660 00b0 204A     		ldr	r2, .L140+24
+ 1661 00b2 1360     		str	r3, [r2]
+ 1662 00b4 C3E7     		b	.L134
+ 1663              	.L139:
+  62:Core/Src/temp.c ****         Temp_Adc_CPU_Sum += Temp_Adc_CPU_Raw;
+ 1664              		.loc 1 62 9 is_stmt 1 view .LVU418
+  62:Core/Src/temp.c ****         Temp_Adc_CPU_Sum += Temp_Adc_CPU_Raw;
+ 1665              		.loc 1 62 27 is_stmt 0 view .LVU419
+ 1666 00b6 234B     		ldr	r3, .L140+40
+ 1667 00b8 1978     		ldrb	r1, [r3]
+ 1668 00ba 0131     		adds	r1, r1, #1
+ 1669 00bc C9B2     		uxtb	r1, r1
+ 1670 00be 1970     		strb	r1, [r3]
+  63:Core/Src/temp.c ****         if(Temp_Avg_CPU_Count>=10)
+ 1671              		.loc 1 63 9 is_stmt 1 view .LVU420
+  63:Core/Src/temp.c ****         if(Temp_Avg_CPU_Count>=10)
+ 1672              		.loc 1 63 26 is_stmt 0 view .LVU421
+ 1673 00c0 1A4B     		ldr	r3, .L140+16
+ 1674 00c2 1888     		ldrh	r0, [r3]
+ 1675 00c4 204B     		ldr	r3, .L140+44
+ 1676 00c6 1A68     		ldr	r2, [r3]
+ 1677 00c8 9446     		mov	ip, r2
+ 1678 00ca 6044     		add	r0, r0, ip
+ 1679 00cc 1860     		str	r0, [r3]
+  64:Core/Src/temp.c ****         {
+ 1680              		.loc 1 64 9 is_stmt 1 view .LVU422
+  64:Core/Src/temp.c ****         {
+ 1681              		.loc 1 64 11 is_stmt 0 view .LVU423
+ 1682 00ce 0929     		cmp	r1, #9
+ 1683 00d0 B9D9     		bls	.L129
+  66:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
+ 1684              		.loc 1 66 13 is_stmt 1 view .LVU424
+  66:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
+ 1685              		.loc 1 66 67 is_stmt 0 view .LVU425
+ 1686 00d2 FFF7FEFF 		bl	__aeabi_uidiv
+ 1687              	.LVL16:
+  66:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
+ 1688              		.loc 1 66 42 view .LVU426
+ 1689 00d6 FFF7FEFF 		bl	__aeabi_ui2f
+ 1690              	.LVL17:
+  66:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
+ 1691              		.loc 1 66 88 view .LVU427
+ 1692 00da 1C49     		ldr	r1, .L140+48
+ 1693 00dc FFF7FEFF 		bl	__aeabi_fmul
+ 1694              	.LVL18:
+  66:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
+ 1695              		.loc 1 66 96 view .LVU428
+ 1696 00e0 1649     		ldr	r1, .L140+32
+ 1697 00e2 FFF7FEFF 		bl	__aeabi_fdiv
+ 1698              	.LVL19:
+  66:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
+ 1699              		.loc 1 66 33 view .LVU429
+ 1700 00e6 FFF7FEFF 		bl	__aeabi_f2uiz
+ 1701              	.LVL20:
+ 1702 00ea 80B2     		uxth	r0, r0
+  66:Core/Src/temp.c ****             Temp_Adc_CPU = (sint16)(((float)Temp_Adc_CPU_Volt - 760.0f) / 2.5f + 25.0f);
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 44
+
+
+ 1703              		.loc 1 66 31 view .LVU430
+ 1704 00ec 184B     		ldr	r3, .L140+52
+ 1705 00ee 1880     		strh	r0, [r3]
+  67:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
+ 1706              		.loc 1 67 13 is_stmt 1 view .LVU431
+  67:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
+ 1707              		.loc 1 67 38 is_stmt 0 view .LVU432
+ 1708 00f0 FFF7FEFF 		bl	__aeabi_ui2f
+ 1709              	.LVL21:
+  67:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
+ 1710              		.loc 1 67 63 view .LVU433
+ 1711 00f4 1749     		ldr	r1, .L140+56
+ 1712 00f6 FFF7FEFF 		bl	__aeabi_fsub
+ 1713              	.LVL22:
+  67:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
+ 1714              		.loc 1 67 73 view .LVU434
+ 1715 00fa 1749     		ldr	r1, .L140+60
+ 1716 00fc FFF7FEFF 		bl	__aeabi_fdiv
+ 1717              	.LVL23:
+  67:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
+ 1718              		.loc 1 67 80 view .LVU435
+ 1719 0100 1649     		ldr	r1, .L140+64
+ 1720 0102 FFF7FEFF 		bl	__aeabi_fadd
+ 1721              	.LVL24:
+  67:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
+ 1722              		.loc 1 67 28 view .LVU436
+ 1723 0106 FFF7FEFF 		bl	__aeabi_f2iz
+ 1724              	.LVL25:
+  67:Core/Src/temp.c ****             Temp_Avg_CPU_Count = 0;
+ 1725              		.loc 1 67 26 view .LVU437
+ 1726 010a 154B     		ldr	r3, .L140+68
+ 1727 010c 1880     		strh	r0, [r3]
+  68:Core/Src/temp.c ****             Temp_Adc_CPU_Sum = 0;
+ 1728              		.loc 1 68 13 is_stmt 1 view .LVU438
+  68:Core/Src/temp.c ****             Temp_Adc_CPU_Sum = 0;
+ 1729              		.loc 1 68 32 is_stmt 0 view .LVU439
+ 1730 010e 0023     		movs	r3, #0
+ 1731 0110 0C4A     		ldr	r2, .L140+40
+ 1732 0112 1370     		strb	r3, [r2]
+  69:Core/Src/temp.c ****         }
+ 1733              		.loc 1 69 13 is_stmt 1 view .LVU440
+  69:Core/Src/temp.c ****         }
+ 1734              		.loc 1 69 30 is_stmt 0 view .LVU441
+ 1735 0114 0C4A     		ldr	r2, .L140+44
+ 1736 0116 1360     		str	r3, [r2]
+  73:Core/Src/temp.c **** }
+ 1737              		.loc 1 73 5 is_stmt 1 view .LVU442
+ 1738 0118 95E7     		b	.L129
+ 1739              	.L141:
+ 1740 011a C046     		.align	2
+ 1741              	.L140:
+ 1742 011c 00000000 		.word	hadc
+ 1743 0120 00000000 		.word	.LANCHOR2
+ 1744 0124 00000000 		.word	.LANCHOR4
+ 1745 0128 00000000 		.word	.LANCHOR1
+ 1746 012c 00000000 		.word	.LANCHOR3
+ 1747 0130 00000000 		.word	.LANCHOR5
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 45
+
+
+ 1748 0134 00000000 		.word	.LANCHOR6
+ 1749 0138 00409C45 		.word	1167867904
+ 1750 013c 00F07F45 		.word	1166012416
+ 1751 0140 00000000 		.word	.LANCHOR7
+ 1752 0144 00000000 		.word	.LANCHOR8
+ 1753 0148 00000000 		.word	.LANCHOR9
+ 1754 014c 00404E45 		.word	1162756096
+ 1755 0150 00000000 		.word	.LANCHOR10
+ 1756 0154 00003E44 		.word	1144913920
+ 1757 0158 00002040 		.word	1075838976
+ 1758 015c 0000C841 		.word	1103626240
+ 1759 0160 00000000 		.word	.LANCHOR11
+ 1760              		.cfi_endproc
+ 1761              	.LFE40:
+ 1763              		.global	Temp_Adc_CPU
+ 1764              		.global	Temp_Adc_TP
+ 1765              		.global	Temp_Adc_CPU_Volt
+ 1766              		.global	Temp_Adc_TP_Volt
+ 1767              		.global	Temp_Adc_CPU_Sum
+ 1768              		.global	Temp_Adc_TP_Sum
+ 1769              		.global	Temp_Avg_CPU_Count
+ 1770              		.global	Temp_Avg_TP_Count
+ 1771              		.global	Temp_Adc_CPU_Status
+ 1772              		.global	Temp_Adc_TP_Status
+ 1773              		.global	Temp_Adc_CPU_Raw
+ 1774              		.global	Temp_Adc_TP_Raw
+ 1775              		.section	.bss.Temp_Adc_CPU,"aw",%nobits
+ 1776              		.align	1
+ 1777              		.set	.LANCHOR11,. + 0
+ 1780              	Temp_Adc_CPU:
+ 1781 0000 0000     		.space	2
+ 1782              		.section	.bss.Temp_Adc_CPU_Raw,"aw",%nobits
+ 1783              		.align	1
+ 1784              		.set	.LANCHOR3,. + 0
+ 1787              	Temp_Adc_CPU_Raw:
+ 1788 0000 0000     		.space	2
+ 1789              		.section	.bss.Temp_Adc_CPU_Status,"aw",%nobits
+ 1790              		.set	.LANCHOR4,. + 0
+ 1793              	Temp_Adc_CPU_Status:
+ 1794 0000 00       		.space	1
+ 1795              		.section	.bss.Temp_Adc_CPU_Sum,"aw",%nobits
+ 1796              		.align	2
+ 1797              		.set	.LANCHOR9,. + 0
+ 1800              	Temp_Adc_CPU_Sum:
+ 1801 0000 00000000 		.space	4
+ 1802              		.section	.bss.Temp_Adc_CPU_Volt,"aw",%nobits
+ 1803              		.align	1
+ 1804              		.set	.LANCHOR10,. + 0
+ 1807              	Temp_Adc_CPU_Volt:
+ 1808 0000 0000     		.space	2
+ 1809              		.section	.bss.Temp_Adc_TP,"aw",%nobits
+ 1810              		.align	1
+ 1811              		.set	.LANCHOR0,. + 0
+ 1814              	Temp_Adc_TP:
+ 1815 0000 0000     		.space	2
+ 1816              		.section	.bss.Temp_Adc_TP_Raw,"aw",%nobits
+ 1817              		.align	1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 46
+
+
+ 1818              		.set	.LANCHOR1,. + 0
+ 1821              	Temp_Adc_TP_Raw:
+ 1822 0000 0000     		.space	2
+ 1823              		.section	.bss.Temp_Adc_TP_Status,"aw",%nobits
+ 1824              		.set	.LANCHOR2,. + 0
+ 1827              	Temp_Adc_TP_Status:
+ 1828 0000 00       		.space	1
+ 1829              		.section	.bss.Temp_Adc_TP_Sum,"aw",%nobits
+ 1830              		.align	2
+ 1831              		.set	.LANCHOR6,. + 0
+ 1834              	Temp_Adc_TP_Sum:
+ 1835 0000 00000000 		.space	4
+ 1836              		.section	.bss.Temp_Adc_TP_Volt,"aw",%nobits
+ 1837              		.align	1
+ 1838              		.set	.LANCHOR7,. + 0
+ 1841              	Temp_Adc_TP_Volt:
+ 1842 0000 0000     		.space	2
+ 1843              		.section	.data.Temp_Avg_CPU_Count,"aw"
+ 1844              		.set	.LANCHOR8,. + 0
+ 1847              	Temp_Avg_CPU_Count:
+ 1848 0000 0A       		.byte	10
+ 1849              		.section	.data.Temp_Avg_TP_Count,"aw"
+ 1850              		.set	.LANCHOR5,. + 0
+ 1853              	Temp_Avg_TP_Count:
+ 1854 0000 0A       		.byte	10
+ 1855              		.text
+ 1856              	.Letext0:
+ 1857              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1858              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1859              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h"
+ 1860              		.file 5 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h"
+ 1861              		.file 6 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h"
+ 1862              		.file 7 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h"
+ 1863              		.file 8 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h"
+ 1864              		.file 9 "Core/Inc/vardef.h"
+ 1865              		.file 10 "Core/Inc/main.h"
+ 1866              		.file 11 "Core/Inc/temp.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s 			page 47
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 temp.c
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:24     .text.Temp_Read:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:32     .text.Temp_Read:00000000 Temp_Read
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:286    .text.Temp_Read:00000134 $d
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:328    .bss.Temp_Adc_CPU:00000000 Temp_Adc_CPU
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:362    .bss.Temp_Adc_TP:00000000 Temp_Adc_TP
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:355    .bss.Temp_Adc_CPU_Volt:00000000 Temp_Adc_CPU_Volt
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:389    .bss.Temp_Adc_TP_Volt:00000000 Temp_Adc_TP_Volt
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:348    .bss.Temp_Adc_CPU_Sum:00000000 Temp_Adc_CPU_Sum
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:382    .bss.Temp_Adc_TP_Sum:00000000 Temp_Adc_TP_Sum
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:395    .data.Temp_Avg_CPU_Count:00000000 Temp_Avg_CPU_Count
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:401    .data.Temp_Avg_TP_Count:00000000 Temp_Avg_TP_Count
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:341    .bss.Temp_Adc_CPU_Status:00000000 Temp_Adc_CPU_Status
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:375    .bss.Temp_Adc_TP_Status:00000000 Temp_Adc_TP_Status
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:335    .bss.Temp_Adc_CPU_Raw:00000000 Temp_Adc_CPU_Raw
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:369    .bss.Temp_Adc_TP_Raw:00000000 Temp_Adc_TP_Raw
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:324    .bss.Temp_Adc_CPU:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:331    .bss.Temp_Adc_CPU_Raw:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:342    .bss.Temp_Adc_CPU_Status:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:344    .bss.Temp_Adc_CPU_Sum:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:351    .bss.Temp_Adc_CPU_Volt:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:358    .bss.Temp_Adc_TP:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:365    .bss.Temp_Adc_TP_Raw:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:376    .bss.Temp_Adc_TP_Status:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:378    .bss.Temp_Adc_TP_Sum:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccniD3Yw.s:385    .bss.Temp_Adc_TP_Volt:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:18     .text.Temperature_Compensation:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:23     .text.Temperature_Compensation:00000000 Temperature_Compensation
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:752    .text.Temperature_Compensation:00000330 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:832    .text.Temperature_Compensation:0000046c $t
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1479   .text.Temperature_Compensation:0000070c $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1501   .text.Temp_Read:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1507   .text.Temp_Read:00000000 Temp_Read
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1742   .text.Temp_Read:0000011c $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1780   .bss.Temp_Adc_CPU:00000000 Temp_Adc_CPU
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1814   .bss.Temp_Adc_TP:00000000 Temp_Adc_TP
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1807   .bss.Temp_Adc_CPU_Volt:00000000 Temp_Adc_CPU_Volt
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1841   .bss.Temp_Adc_TP_Volt:00000000 Temp_Adc_TP_Volt
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1800   .bss.Temp_Adc_CPU_Sum:00000000 Temp_Adc_CPU_Sum
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1834   .bss.Temp_Adc_TP_Sum:00000000 Temp_Adc_TP_Sum
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1847   .data.Temp_Avg_CPU_Count:00000000 Temp_Avg_CPU_Count
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1853   .data.Temp_Avg_TP_Count:00000000 Temp_Avg_TP_Count
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1793   .bss.Temp_Adc_CPU_Status:00000000 Temp_Adc_CPU_Status
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1827   .bss.Temp_Adc_TP_Status:00000000 Temp_Adc_TP_Status
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1787   .bss.Temp_Adc_CPU_Raw:00000000 Temp_Adc_CPU_Raw
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1821   .bss.Temp_Adc_TP_Raw:00000000 Temp_Adc_TP_Raw
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1776   .bss.Temp_Adc_CPU:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1783   .bss.Temp_Adc_CPU_Raw:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1794   .bss.Temp_Adc_CPU_Status:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1796   .bss.Temp_Adc_CPU_Sum:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1803   .bss.Temp_Adc_CPU_Volt:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1810   .bss.Temp_Adc_TP:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1817   .bss.Temp_Adc_TP_Raw:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1828   .bss.Temp_Adc_TP_Status:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1830   .bss.Temp_Adc_TP_Sum:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK2G8dw.s:1837   .bss.Temp_Adc_TP_Volt:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_uidiv
@@ -583,8 +2781,8 @@ __aeabi_fmul
 __aeabi_fdiv
 __aeabi_f2uiz
 __aeabi_fsub
-__aeabi_f2iz
 __aeabi_fadd
+__aeabi_f2iz
 HAL_ADC_Start
 HAL_ADC_PollForConversion
 HAL_ADC_GetValue

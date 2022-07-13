@@ -1,0 +1,6 @@
+make.exe --dry-run --keep-going --print-directory
+make.exe: Entering directory `d:/1.Project_workspace/AllPrime_Mug'
+make.exe: `all'�� ���� �� ���� �����ϴ�
+ 
+make.exe: Leaving directory `d:/1.Project_workspace/AllPrime_Mug'
+ 

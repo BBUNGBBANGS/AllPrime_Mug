@@ -1,184 +1,1621 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 1
 
 
    1              		.cpu cortex-m0
-   2              		.eabi_attribute 20, 1
-   3              		.eabi_attribute 21, 1
-   4              		.eabi_attribute 23, 3
-   5              		.eabi_attribute 24, 1
-   6              		.eabi_attribute 25, 1
-   7              		.eabi_attribute 26, 1
-   8              		.eabi_attribute 30, 1
-   9              		.eabi_attribute 34, 0
-  10              		.eabi_attribute 18, 4
-  11              		.file	"switch.c"
-  12              		.text
-  13              	.Ltext0:
-  14              		.cfi_sections	.debug_frame
-  15              		.section	.text.Switch_Control,"ax",%progbits
-  16              		.align	1
-  17              		.global	Switch_Control
-  18              		.arch armv6s-m
-  19              		.syntax unified
-  20              		.code	16
-  21              		.thumb_func
-  22              		.fpu softvfp
-  24              	Switch_Control:
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"switch.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Switch_Val_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	Switch_Val_Init
+  20              		.syntax unified
+  21              		.code	16
+  22              		.thumb_func
+  24              	Switch_Val_Init:
   25              	.LFB40:
   26              		.file 1 "Core/Src/switch.c"
    1:Core/Src/switch.c **** #include "switch.h"
-   2:Core/Src/switch.c **** 
-   3:Core/Src/switch.c **** uint8 switch_status1,switch_status2,switch_status3,switch_status4;
-   4:Core/Src/switch.c **** uint8 cup_in;
-   5:Core/Src/switch.c **** 
-   6:Core/Src/switch.c **** void Switch_Control(void)
-   7:Core/Src/switch.c **** {
-  27              		.loc 1 7 1 view -0
+   2:Core/Src/switch.c **** #include "pwm.h"
+   3:Core/Src/switch.c **** #include "eeprom.h"
+   4:Core/Src/switch.c **** 
+   5:Core/Src/switch.c **** uint8 switch1_status,switch2_status,switch3_status,switch4_status;
+   6:Core/Src/switch.c **** uint8 switch1_status_old,switch2_status_old,switch3_status_old,switch4_status_old;
+   7:Core/Src/switch.c **** uint8 switch_overtemp;
+   8:Core/Src/switch.c **** uint8 switch_mode;
+   9:Core/Src/switch.c **** uint8 switch_submode;
+  10:Core/Src/switch.c **** uint8 cup_in,cup_in_old;
+  11:Core/Src/switch.c **** uint8 switch4_mode,switch4_mode_old;
+  12:Core/Src/switch.c **** uint8 switch_custom_mode;
+  13:Core/Src/switch.c **** 
+  14:Core/Src/switch.c **** sint16 switch_trg_temp;
+  15:Core/Src/switch.c **** sint16 switch_trg_time;
+  16:Core/Src/switch.c **** sint16 switch_idle_temp;
+  17:Core/Src/switch.c **** 
+  18:Core/Src/switch.c **** uint16 switch_timer1,switch_timer2,switch_timer3;
+  19:Core/Src/switch.c **** extern uint16 Servo_timer;
+  20:Core/Src/switch.c **** void Switch_Val_Init(void)
+  21:Core/Src/switch.c **** {
+  27              		.loc 1 21 1 view -0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
-  31 0000 10B5     		push	{r4, lr}
-  32              	.LCFI0:
-  33              		.cfi_def_cfa_offset 8
-  34              		.cfi_offset 4, -8
-  35              		.cfi_offset 14, -4
-   8:Core/Src/switch.c ****     switch_status1 = HAL_GPIO_ReadPin(SWITCH_GROUP_1,SWITCH_PIN_1);
-  36              		.loc 1 8 5 view .LVU1
-  37              		.loc 1 8 22 is_stmt 0 view .LVU2
-  38 0002 8021     		movs	r1, #128
-  39 0004 9024     		movs	r4, #144
-  40 0006 E405     		lsls	r4, r4, #23
-  41 0008 C900     		lsls	r1, r1, #3
-  42 000a 2000     		movs	r0, r4
-  43 000c FFF7FEFF 		bl	HAL_GPIO_ReadPin
-  44              	.LVL0:
-  45              		.loc 1 8 20 view .LVU3
-  46 0010 114B     		ldr	r3, .L2
-  47 0012 1870     		strb	r0, [r3]
-   9:Core/Src/switch.c ****     switch_status2 = HAL_GPIO_ReadPin(SWITCH_GROUP_2,SWITCH_PIN_2);
-  48              		.loc 1 9 5 is_stmt 1 view .LVU4
-  49              		.loc 1 9 22 is_stmt 0 view .LVU5
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s 			page 2
+  31              		@ link register save eliminated.
+  22:Core/Src/switch.c ****     if((*(uint16*)(EEPROM_PAGE127_START+(0*2))) != 0xFFFF)
+  32              		.loc 1 22 5 view .LVU1
+  33              		.loc 1 22 9 is_stmt 0 view .LVU2
+  34 0000 1A4B     		ldr	r3, .L10
+  35 0002 1A88     		ldrh	r2, [r3]
+  36              		.loc 1 22 7 view .LVU3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 2
 
 
-  50 0014 8021     		movs	r1, #128
-  51 0016 0901     		lsls	r1, r1, #4
-  52 0018 2000     		movs	r0, r4
-  53 001a FFF7FEFF 		bl	HAL_GPIO_ReadPin
-  54              	.LVL1:
-  55              		.loc 1 9 20 view .LVU6
-  56 001e 0F4B     		ldr	r3, .L2+4
-  57 0020 1870     		strb	r0, [r3]
-  10:Core/Src/switch.c ****     switch_status3 = HAL_GPIO_ReadPin(SWITCH_GROUP_3,SWITCH_PIN_3);
-  58              		.loc 1 10 5 is_stmt 1 view .LVU7
-  59              		.loc 1 10 22 is_stmt 0 view .LVU8
-  60 0022 8021     		movs	r1, #128
-  61 0024 4901     		lsls	r1, r1, #5
-  62 0026 2000     		movs	r0, r4
-  63 0028 FFF7FEFF 		bl	HAL_GPIO_ReadPin
-  64              	.LVL2:
-  65              		.loc 1 10 20 view .LVU9
-  66 002c 0C4B     		ldr	r3, .L2+8
-  67 002e 1870     		strb	r0, [r3]
-  11:Core/Src/switch.c ****     switch_status4 = HAL_GPIO_ReadPin(SWITCH_GROUP_4,SWITCH_PIN_4);
-  68              		.loc 1 11 5 is_stmt 1 view .LVU10
-  69              		.loc 1 11 22 is_stmt 0 view .LVU11
-  70 0030 8021     		movs	r1, #128
-  71 0032 4900     		lsls	r1, r1, #1
-  72 0034 2000     		movs	r0, r4
-  73 0036 FFF7FEFF 		bl	HAL_GPIO_ReadPin
-  74              	.LVL3:
-  75              		.loc 1 11 20 view .LVU12
-  76 003a 0A4B     		ldr	r3, .L2+12
-  77 003c 1870     		strb	r0, [r3]
-  12:Core/Src/switch.c ****     cup_in = HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_3);
-  78              		.loc 1 12 5 is_stmt 1 view .LVU13
-  79              		.loc 1 12 14 is_stmt 0 view .LVU14
-  80 003e 0821     		movs	r1, #8
-  81 0040 2000     		movs	r0, r4
-  82 0042 FFF7FEFF 		bl	HAL_GPIO_ReadPin
-  83              	.LVL4:
-  84              		.loc 1 12 12 view .LVU15
-  85 0046 084B     		ldr	r3, .L2+16
-  86 0048 1870     		strb	r0, [r3]
-  13:Core/Src/switch.c ****     HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
-  87              		.loc 1 13 5 is_stmt 1 view .LVU16
-  88 004a 0122     		movs	r2, #1
-  89 004c 2021     		movs	r1, #32
-  90 004e 2000     		movs	r0, r4
-  91 0050 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  92              	.LVL5:
-  14:Core/Src/switch.c **** 
-  15:Core/Src/switch.c ****     return;
-  93              		.loc 1 15 5 view .LVU17
-  16:Core/Src/switch.c **** }...
-  94              		.loc 1 16 1 is_stmt 0 view .LVU18
-  95              		@ sp needed
-  96 0054 10BD     		pop	{r4, pc}
-  97              	.L3:
-  98 0056 C046     		.align	2
-  99              	.L2:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s 			page 3
+  37 0004 1A4B     		ldr	r3, .L10+4
+  38 0006 9A42     		cmp	r2, r3
+  39 0008 1FD0     		beq	.L2
+  23:Core/Src/switch.c ****     {
+  24:Core/Src/switch.c ****         switch_submode = switch_submodeEEP;
+  40              		.loc 1 24 9 is_stmt 1 view .LVU4
+  41              		.loc 1 24 24 is_stmt 0 view .LVU5
+  42 000a 1A4B     		ldr	r3, .L10+8
+  43 000c 1A78     		ldrb	r2, [r3]
+  44 000e 1A4B     		ldr	r3, .L10+12
+  45 0010 1A70     		strb	r2, [r3]
+  46              	.L3:
+  25:Core/Src/switch.c ****     }
+  26:Core/Src/switch.c ****     else
+  27:Core/Src/switch.c ****     {
+  28:Core/Src/switch.c ****         switch_submode = SWITCH_SUB_MODE_1;
+  29:Core/Src/switch.c ****     }
+  30:Core/Src/switch.c ****     if((*(uint16*)(EEPROM_PAGE127_START+(1*2))) != 0xFFFF)
+  47              		.loc 1 30 5 is_stmt 1 view .LVU6
+  48              		.loc 1 30 9 is_stmt 0 view .LVU7
+  49 0012 1A4B     		ldr	r3, .L10+16
+  50 0014 1A88     		ldrh	r2, [r3]
+  51              		.loc 1 30 7 view .LVU8
+  52 0016 164B     		ldr	r3, .L10+4
+  53 0018 9A42     		cmp	r2, r3
+  54 001a 1AD0     		beq	.L4
+  31:Core/Src/switch.c ****     {
+  32:Core/Src/switch.c ****         switch_trg_temp = (sint16)switch_trg_tempEEP;
+  55              		.loc 1 32 9 is_stmt 1 view .LVU9
+  56              		.loc 1 32 25 is_stmt 0 view .LVU10
+  57 001c 184B     		ldr	r3, .L10+20
+  58 001e 1A88     		ldrh	r2, [r3]
+  59 0020 184B     		ldr	r3, .L10+24
+  60 0022 1A80     		strh	r2, [r3]
+  61              	.L5:
+  33:Core/Src/switch.c ****     }
+  34:Core/Src/switch.c ****     else
+  35:Core/Src/switch.c ****     {
+  36:Core/Src/switch.c ****         switch_trg_temp = 0;
+  37:Core/Src/switch.c ****     }    
+  38:Core/Src/switch.c ****     if((*(uint16*)(EEPROM_PAGE127_START+(2*2))) != 0xFFFF)
+  62              		.loc 1 38 5 is_stmt 1 view .LVU11
+  63              		.loc 1 38 9 is_stmt 0 view .LVU12
+  64 0024 184B     		ldr	r3, .L10+28
+  65 0026 1A88     		ldrh	r2, [r3]
+  66              		.loc 1 38 7 view .LVU13
+  67 0028 114B     		ldr	r3, .L10+4
+  68 002a 9A42     		cmp	r2, r3
+  69 002c 15D0     		beq	.L6
+  39:Core/Src/switch.c ****     {
+  40:Core/Src/switch.c ****         switch_trg_time = (sint16)switch_trg_timeEEP;
+  70              		.loc 1 40 9 is_stmt 1 view .LVU14
+  71              		.loc 1 40 25 is_stmt 0 view .LVU15
+  72 002e 174B     		ldr	r3, .L10+32
+  73 0030 1A88     		ldrh	r2, [r3]
+  74 0032 174B     		ldr	r3, .L10+36
+  75 0034 1A80     		strh	r2, [r3]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 3
 
 
- 100 0058 00000000 		.word	.LANCHOR0
- 101 005c 00000000 		.word	.LANCHOR1
- 102 0060 00000000 		.word	.LANCHOR2
- 103 0064 00000000 		.word	.LANCHOR3
- 104 0068 00000000 		.word	.LANCHOR4
- 105              		.cfi_endproc
- 106              	.LFE40:
- 108              		.global	cup_in
- 109              		.global	switch_status4
- 110              		.global	switch_status3
- 111              		.global	switch_status2
- 112              		.global	switch_status1
- 113              		.section	.bss.cup_in,"aw",%nobits
- 114              		.set	.LANCHOR4,. + 0
- 117              	cup_in:
- 118 0000 00       		.space	1
- 119              		.section	.bss.switch_status1,"aw",%nobits
- 120              		.set	.LANCHOR0,. + 0
- 123              	switch_status1:
- 124 0000 00       		.space	1
- 125              		.section	.bss.switch_status2,"aw",%nobits
- 126              		.set	.LANCHOR1,. + 0
- 129              	switch_status2:
- 130 0000 00       		.space	1
- 131              		.section	.bss.switch_status3,"aw",%nobits
- 132              		.set	.LANCHOR2,. + 0
- 135              	switch_status3:
- 136 0000 00       		.space	1
- 137              		.section	.bss.switch_status4,"aw",%nobits
- 138              		.set	.LANCHOR3,. + 0
- 141              	switch_status4:
- 142 0000 00       		.space	1
- 143              		.text
- 144              	.Letext0:
- 145              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\machine\\_default_ty
- 146              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\20_q4_major\\arm-none-eabi\\include\\sys\\_stdint.h"
- 147              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h"
- 148              		.file 5 "Core/Inc/vardef.h"
- 149              		.file 6 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s 			page 4
+  76              	.L7:
+  41:Core/Src/switch.c ****     }
+  42:Core/Src/switch.c ****     else
+  43:Core/Src/switch.c ****     {
+  44:Core/Src/switch.c ****         switch_trg_time = 0;
+  45:Core/Src/switch.c ****     }    
+  46:Core/Src/switch.c ****     if((*(uint16*)(EEPROM_PAGE127_START+(3*2))) != 0xFFFF)
+  77              		.loc 1 46 5 is_stmt 1 view .LVU16
+  78              		.loc 1 46 9 is_stmt 0 view .LVU17
+  79 0036 174B     		ldr	r3, .L10+40
+  80 0038 1A88     		ldrh	r2, [r3]
+  81              		.loc 1 46 7 view .LVU18
+  82 003a 0D4B     		ldr	r3, .L10+4
+  83 003c 9A42     		cmp	r2, r3
+  84 003e 10D0     		beq	.L8
+  47:Core/Src/switch.c ****     {
+  48:Core/Src/switch.c ****         switch_idle_temp = (sint16)switch_idle_tempEEP;
+  85              		.loc 1 48 9 is_stmt 1 view .LVU19
+  86              		.loc 1 48 26 is_stmt 0 view .LVU20
+  87 0040 154B     		ldr	r3, .L10+44
+  88 0042 1A88     		ldrh	r2, [r3]
+  89 0044 154B     		ldr	r3, .L10+48
+  90 0046 1A80     		strh	r2, [r3]
+  91              	.L1:
+  49:Core/Src/switch.c ****     }
+  50:Core/Src/switch.c ****     else
+  51:Core/Src/switch.c ****     {
+  52:Core/Src/switch.c ****         switch_idle_temp = 0;
+  53:Core/Src/switch.c ****     }
+  54:Core/Src/switch.c ****     return;
+  55:Core/Src/switch.c **** }
+  92              		.loc 1 55 1 view .LVU21
+  93              		@ sp needed
+  94 0048 7047     		bx	lr
+  95              	.L2:
+  28:Core/Src/switch.c ****     }
+  96              		.loc 1 28 9 is_stmt 1 view .LVU22
+  28:Core/Src/switch.c ****     }
+  97              		.loc 1 28 24 is_stmt 0 view .LVU23
+  98 004a 0B4B     		ldr	r3, .L10+12
+  99 004c 0122     		movs	r2, #1
+ 100 004e 1A70     		strb	r2, [r3]
+ 101 0050 DFE7     		b	.L3
+ 102              	.L4:
+  36:Core/Src/switch.c ****     }    
+ 103              		.loc 1 36 9 is_stmt 1 view .LVU24
+  36:Core/Src/switch.c ****     }    
+ 104              		.loc 1 36 25 is_stmt 0 view .LVU25
+ 105 0052 0C4B     		ldr	r3, .L10+24
+ 106 0054 0022     		movs	r2, #0
+ 107 0056 1A80     		strh	r2, [r3]
+ 108 0058 E4E7     		b	.L5
+ 109              	.L6:
+  44:Core/Src/switch.c ****     }    
+ 110              		.loc 1 44 9 is_stmt 1 view .LVU26
+  44:Core/Src/switch.c ****     }    
+ 111              		.loc 1 44 25 is_stmt 0 view .LVU27
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 4
+
+
+ 112 005a 0D4B     		ldr	r3, .L10+36
+ 113 005c 0022     		movs	r2, #0
+ 114 005e 1A80     		strh	r2, [r3]
+ 115 0060 E9E7     		b	.L7
+ 116              	.L8:
+  52:Core/Src/switch.c ****     }
+ 117              		.loc 1 52 9 is_stmt 1 view .LVU28
+  52:Core/Src/switch.c ****     }
+ 118              		.loc 1 52 26 is_stmt 0 view .LVU29
+ 119 0062 0E4B     		ldr	r3, .L10+48
+ 120 0064 0022     		movs	r2, #0
+ 121 0066 1A80     		strh	r2, [r3]
+  54:Core/Src/switch.c **** }
+ 122              		.loc 1 54 5 is_stmt 1 view .LVU30
+ 123 0068 EEE7     		b	.L1
+ 124              	.L11:
+ 125 006a C046     		.align	2
+ 126              	.L10:
+ 127 006c 00FC0108 		.word	134347776
+ 128 0070 FFFF0000 		.word	65535
+ 129 0074 00000000 		.word	switch_submodeEEP
+ 130 0078 00000000 		.word	.LANCHOR0
+ 131 007c 02FC0108 		.word	134347778
+ 132 0080 00000000 		.word	switch_trg_tempEEP
+ 133 0084 00000000 		.word	.LANCHOR1
+ 134 0088 04FC0108 		.word	134347780
+ 135 008c 00000000 		.word	switch_trg_timeEEP
+ 136 0090 00000000 		.word	.LANCHOR2
+ 137 0094 06FC0108 		.word	134347782
+ 138 0098 00000000 		.word	switch_idle_tempEEP
+ 139 009c 00000000 		.word	.LANCHOR3
+ 140              		.cfi_endproc
+ 141              	.LFE40:
+ 143              		.section	.text.Switch_Control,"ax",%progbits
+ 144              		.align	1
+ 145              		.global	Switch_Control
+ 146              		.syntax unified
+ 147              		.code	16
+ 148              		.thumb_func
+ 150              	Switch_Control:
+ 151              	.LFB41:
+  56:Core/Src/switch.c **** void Switch_Control(void)
+  57:Core/Src/switch.c **** {
+ 152              		.loc 1 57 1 view -0
+ 153              		.cfi_startproc
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 156 0000 70B5     		push	{r4, r5, r6, lr}
+ 157              	.LCFI0:
+ 158              		.cfi_def_cfa_offset 16
+ 159              		.cfi_offset 4, -16
+ 160              		.cfi_offset 5, -12
+ 161              		.cfi_offset 6, -8
+ 162              		.cfi_offset 14, -4
+  58:Core/Src/switch.c ****     switch_timer2 = 0;
+ 163              		.loc 1 58 5 view .LVU32
+ 164              		.loc 1 58 19 is_stmt 0 view .LVU33
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 5
+
+
+ 165 0002 B84B     		ldr	r3, .L57
+ 166 0004 0022     		movs	r2, #0
+ 167 0006 1A80     		strh	r2, [r3]
+  59:Core/Src/switch.c **** 
+  60:Core/Src/switch.c ****     switch1_status = HAL_GPIO_ReadPin(SWITCH_GROUP_1,SWITCH_PIN_1);
+ 168              		.loc 1 60 5 is_stmt 1 view .LVU34
+ 169              		.loc 1 60 22 is_stmt 0 view .LVU35
+ 170 0008 8021     		movs	r1, #128
+ 171 000a 9024     		movs	r4, #144
+ 172 000c E405     		lsls	r4, r4, #23
+ 173 000e C900     		lsls	r1, r1, #3
+ 174 0010 2000     		movs	r0, r4
+ 175 0012 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 176              	.LVL0:
+ 177              		.loc 1 60 20 view .LVU36
+ 178 0016 B44D     		ldr	r5, .L57+4
+ 179 0018 2870     		strb	r0, [r5]
+  61:Core/Src/switch.c ****     switch2_status = HAL_GPIO_ReadPin(SWITCH_GROUP_2,SWITCH_PIN_2);
+ 180              		.loc 1 61 5 is_stmt 1 view .LVU37
+ 181              		.loc 1 61 22 is_stmt 0 view .LVU38
+ 182 001a 8021     		movs	r1, #128
+ 183 001c 0901     		lsls	r1, r1, #4
+ 184 001e 2000     		movs	r0, r4
+ 185 0020 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 186              	.LVL1:
+ 187              		.loc 1 61 20 view .LVU39
+ 188 0024 B14B     		ldr	r3, .L57+8
+ 189 0026 1870     		strb	r0, [r3]
+  62:Core/Src/switch.c ****     switch3_status = HAL_GPIO_ReadPin(SWITCH_GROUP_3,SWITCH_PIN_3);
+ 190              		.loc 1 62 5 is_stmt 1 view .LVU40
+ 191              		.loc 1 62 22 is_stmt 0 view .LVU41
+ 192 0028 8021     		movs	r1, #128
+ 193 002a 4901     		lsls	r1, r1, #5
+ 194 002c 2000     		movs	r0, r4
+ 195 002e FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 196              	.LVL2:
+ 197              		.loc 1 62 20 view .LVU42
+ 198 0032 AF4B     		ldr	r3, .L57+12
+ 199 0034 1870     		strb	r0, [r3]
+  63:Core/Src/switch.c ****     switch4_status = HAL_GPIO_ReadPin(SWITCH_GROUP_4,SWITCH_PIN_4);
+ 200              		.loc 1 63 5 is_stmt 1 view .LVU43
+ 201              		.loc 1 63 22 is_stmt 0 view .LVU44
+ 202 0036 1021     		movs	r1, #16
+ 203 0038 2000     		movs	r0, r4
+ 204 003a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 205              	.LVL3:
+ 206              		.loc 1 63 20 view .LVU45
+ 207 003e AD4B     		ldr	r3, .L57+16
+ 208 0040 1870     		strb	r0, [r3]
+  64:Core/Src/switch.c ****     switch_overtemp = HAL_GPIO_ReadPin(OVERTEMP_GROUP,OVERTEMP_PIN);
+ 209              		.loc 1 64 5 is_stmt 1 view .LVU46
+ 210              		.loc 1 64 23 is_stmt 0 view .LVU47
+ 211 0042 8021     		movs	r1, #128
+ 212 0044 C901     		lsls	r1, r1, #7
+ 213 0046 AC48     		ldr	r0, .L57+20
+ 214 0048 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 215              	.LVL4:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 6
+
+
+ 216              		.loc 1 64 21 view .LVU48
+ 217 004c AB4B     		ldr	r3, .L57+24
+ 218 004e 1870     		strb	r0, [r3]
+  65:Core/Src/switch.c ****     cup_in = HAL_GPIO_ReadPin(CUP_GROUP,CUP_PIN); 
+ 219              		.loc 1 65 5 is_stmt 1 view .LVU49
+ 220              		.loc 1 65 14 is_stmt 0 view .LVU50
+ 221 0050 8021     		movs	r1, #128
+ 222 0052 8900     		lsls	r1, r1, #2
+ 223 0054 2000     		movs	r0, r4
+ 224 0056 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 225              	.LVL5:
+ 226              		.loc 1 65 12 view .LVU51
+ 227 005a A94B     		ldr	r3, .L57+28
+ 228 005c 1870     		strb	r0, [r3]
+  66:Core/Src/switch.c **** 
+  67:Core/Src/switch.c ****     if((1 == switch1_status)||(1 == switch2_status)||(1 == switch3_status))
+ 229              		.loc 1 67 5 is_stmt 1 view .LVU52
+ 230              		.loc 1 67 11 is_stmt 0 view .LVU53
+ 231 005e 2B78     		ldrb	r3, [r5]
+ 232              		.loc 1 67 7 view .LVU54
+ 233 0060 012B     		cmp	r3, #1
+ 234 0062 07D0     		beq	.L13
+ 235              		.loc 1 67 34 discriminator 1 view .LVU55
+ 236 0064 A14B     		ldr	r3, .L57+8
+ 237 0066 1B78     		ldrb	r3, [r3]
+ 238              		.loc 1 67 29 discriminator 1 view .LVU56
+ 239 0068 012B     		cmp	r3, #1
+ 240 006a 03D0     		beq	.L13
+ 241              		.loc 1 67 57 discriminator 2 view .LVU57
+ 242 006c A04B     		ldr	r3, .L57+12
+ 243 006e 1B78     		ldrb	r3, [r3]
+ 244              		.loc 1 67 52 discriminator 2 view .LVU58
+ 245 0070 012B     		cmp	r3, #1
+ 246 0072 44D1     		bne	.L14
+ 247              	.L13:
+  68:Core/Src/switch.c ****     {   
+  69:Core/Src/switch.c ****         HAL_GPIO_WritePin(BUZZER_GROUP,BUZZER_PIN,GPIO_PIN_SET);
+ 248              		.loc 1 69 9 is_stmt 1 view .LVU59
+ 249 0074 8021     		movs	r1, #128
+ 250 0076 0122     		movs	r2, #1
+ 251 0078 8901     		lsls	r1, r1, #6
+ 252 007a 9F48     		ldr	r0, .L57+20
+ 253 007c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 254              	.LVL6:
+ 255              	.L15:
+  70:Core/Src/switch.c ****     }
+  71:Core/Src/switch.c ****     else
+  72:Core/Src/switch.c ****     {
+  73:Core/Src/switch.c ****         HAL_GPIO_WritePin(BUZZER_GROUP,BUZZER_PIN,GPIO_PIN_RESET);       
+  74:Core/Src/switch.c ****     }
+  75:Core/Src/switch.c **** 
+  76:Core/Src/switch.c ****     if((switch1_status == 1)&&(switch_mode == SWITCH_MODE_NONE))
+ 256              		.loc 1 76 5 view .LVU60
+ 257              		.loc 1 76 24 is_stmt 0 view .LVU61
+ 258 0080 994B     		ldr	r3, .L57+4
+ 259 0082 1978     		ldrb	r1, [r3]
+ 260              		.loc 1 76 7 view .LVU62
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 7
+
+
+ 261 0084 0129     		cmp	r1, #1
+ 262 0086 41D0     		beq	.L40
+ 263              	.L16:
+  77:Core/Src/switch.c ****     {
+  78:Core/Src/switch.c ****         switch_timer1++;
+  79:Core/Src/switch.c ****         if(switch_timer1>=SWITCH1_DEBOUNCE_TIME)
+  80:Core/Src/switch.c ****         {
+  81:Core/Src/switch.c ****             switch_timer1 = 0;
+  82:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_MENUSELECT;
+  83:Core/Src/switch.c ****         }
+  84:Core/Src/switch.c ****     }
+  85:Core/Src/switch.c ****     else
+  86:Core/Src/switch.c ****     {
+  87:Core/Src/switch.c ****         switch_timer1 = 0;
+ 264              		.loc 1 87 9 is_stmt 1 view .LVU63
+ 265              		.loc 1 87 23 is_stmt 0 view .LVU64
+ 266 0088 9E4B     		ldr	r3, .L57+32
+ 267 008a 0022     		movs	r2, #0
+ 268 008c 1A80     		strh	r2, [r3]
+ 269              	.L17:
+  88:Core/Src/switch.c ****     }
+  89:Core/Src/switch.c **** 
+  90:Core/Src/switch.c ****     if((switch3_status == 1)&&(switch_mode == SWITCH_MODE_RUN))
+ 270              		.loc 1 90 5 is_stmt 1 view .LVU65
+ 271              		.loc 1 90 24 is_stmt 0 view .LVU66
+ 272 008e 984B     		ldr	r3, .L57+12
+ 273 0090 1A78     		ldrb	r2, [r3]
+ 274              		.loc 1 90 7 view .LVU67
+ 275 0092 012A     		cmp	r2, #1
+ 276 0094 4CD0     		beq	.L41
+ 277              	.L18:
+  91:Core/Src/switch.c ****     {
+  92:Core/Src/switch.c ****         switch_timer3++;
+  93:Core/Src/switch.c ****         if(switch_timer3>=SWITCH3_DEBOUNCE_TIME)
+  94:Core/Src/switch.c ****         {
+  95:Core/Src/switch.c ****             switch_timer3 = 0;
+  96:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_NONE;
+  97:Core/Src/switch.c ****             switch_custom_mode = SWITCH_CUSTOM_TARGET_TEMP_SET;
+  98:Core/Src/switch.c ****         }
+  99:Core/Src/switch.c ****     }
+ 100:Core/Src/switch.c ****     else
+ 101:Core/Src/switch.c ****     {
+ 102:Core/Src/switch.c ****         switch_timer3 = 0;
+ 278              		.loc 1 102 9 is_stmt 1 view .LVU68
+ 279              		.loc 1 102 23 is_stmt 0 view .LVU69
+ 280 0096 9C4B     		ldr	r3, .L57+36
+ 281 0098 0020     		movs	r0, #0
+ 282 009a 1880     		strh	r0, [r3]
+ 283              	.L19:
+ 103:Core/Src/switch.c ****     }
+ 104:Core/Src/switch.c **** 
+ 105:Core/Src/switch.c ****     if((switch_submode != SWITCH_SUB_MODE_18)&&(switch_submode != SWITCH_SUB_MODE_19))
+ 284              		.loc 1 105 5 is_stmt 1 view .LVU70
+ 285              		.loc 1 105 46 is_stmt 0 view .LVU71
+ 286 009c 9B4B     		ldr	r3, .L57+40
+ 287 009e 1878     		ldrb	r0, [r3]
+ 288 00a0 0300     		movs	r3, r0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 8
+
+
+ 289 00a2 123B     		subs	r3, r3, #18
+ 290 00a4 DBB2     		uxtb	r3, r3
+ 291              		.loc 1 105 7 view .LVU72
+ 292 00a6 012B     		cmp	r3, #1
+ 293 00a8 17D9     		bls	.L20
+ 106:Core/Src/switch.c ****     {
+ 107:Core/Src/switch.c ****         if(((cup_in == 1)&&(cup_in_old == 0))||((cup_in == 1)&&(switch4_status == 0)&&(switch4_stat
+ 294              		.loc 1 107 9 is_stmt 1 view .LVU73
+ 295              		.loc 1 107 21 is_stmt 0 view .LVU74
+ 296 00aa 954B     		ldr	r3, .L57+28
+ 297 00ac 1B78     		ldrb	r3, [r3]
+ 298              		.loc 1 107 11 view .LVU75
+ 299 00ae 012B     		cmp	r3, #1
+ 300 00b0 51D0     		beq	.L42
+ 301              	.L21:
+ 302              		.loc 1 107 46 discriminator 3 view .LVU76
+ 303 00b2 012B     		cmp	r3, #1
+ 304 00b4 5CD0     		beq	.L43
+ 305              	.L23:
+ 108:Core/Src/switch.c ****         {
+ 109:Core/Src/switch.c ****             Pwm_Servo_status = PWM_SERVO_STATUS_RUN;
+ 110:Core/Src/switch.c ****             Servo_timer = 0;
+ 111:Core/Src/switch.c ****             switch4_mode = 1;
+ 112:Core/Src/switch.c ****         }
+ 113:Core/Src/switch.c ****         if(((cup_in == 0)&&(cup_in_old == 1))||((cup_in == 1)&&(switch4_status == 1)&&(switch4_stat
+ 306              		.loc 1 113 9 is_stmt 1 view .LVU77
+ 307              		.loc 1 113 11 is_stmt 0 view .LVU78
+ 308 00b6 002B     		cmp	r3, #0
+ 309 00b8 03D1     		bne	.L24
+ 310              		.loc 1 113 40 discriminator 1 view .LVU79
+ 311 00ba 954C     		ldr	r4, .L57+44
+ 312 00bc 2478     		ldrb	r4, [r4]
+ 313              		.loc 1 113 26 discriminator 1 view .LVU80
+ 314 00be 012C     		cmp	r4, #1
+ 315 00c0 67D0     		beq	.L25
+ 316              	.L24:
+ 317              		.loc 1 113 46 discriminator 3 view .LVU81
+ 318 00c2 012B     		cmp	r3, #1
+ 319 00c4 5DD0     		beq	.L44
+ 320              	.L26:
+ 114:Core/Src/switch.c ****         {
+ 115:Core/Src/switch.c ****             Pwm_Servo_status = PWM_SERVO_STATUS_RUN;
+ 116:Core/Src/switch.c ****             Servo_timer = 0;
+ 117:Core/Src/switch.c ****             switch4_mode = 0;
+ 118:Core/Src/switch.c ****         }        
+ 119:Core/Src/switch.c ****         cup_in_old = cup_in;
+ 321              		.loc 1 119 9 is_stmt 1 view .LVU82
+ 322              		.loc 1 119 20 is_stmt 0 view .LVU83
+ 323 00c6 924C     		ldr	r4, .L57+44
+ 324 00c8 2370     		strb	r3, [r4]
+ 120:Core/Src/switch.c ****         switch4_mode_old=switch4_mode;
+ 325              		.loc 1 120 9 is_stmt 1 view .LVU84
+ 326              		.loc 1 120 25 is_stmt 0 view .LVU85
+ 327 00ca 924B     		ldr	r3, .L57+48
+ 328 00cc 1C78     		ldrb	r4, [r3]
+ 329 00ce 924B     		ldr	r3, .L57+52
+ 330 00d0 1C70     		strb	r4, [r3]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 9
+
+
+ 121:Core/Src/switch.c ****         switch4_status_old = switch4_status;
+ 331              		.loc 1 121 9 is_stmt 1 view .LVU86
+ 332              		.loc 1 121 28 is_stmt 0 view .LVU87
+ 333 00d2 884B     		ldr	r3, .L57+16
+ 334 00d4 1C78     		ldrb	r4, [r3]
+ 335 00d6 914B     		ldr	r3, .L57+56
+ 336 00d8 1C70     		strb	r4, [r3]
+ 337              	.L20:
+ 122:Core/Src/switch.c ****     }
+ 123:Core/Src/switch.c **** 
+ 124:Core/Src/switch.c ****     if(switch_mode == SWITCH_MODE_CUSTOM)
+ 338              		.loc 1 124 5 is_stmt 1 view .LVU88
+ 339              		.loc 1 124 20 is_stmt 0 view .LVU89
+ 340 00da 914B     		ldr	r3, .L57+60
+ 341 00dc 1B78     		ldrb	r3, [r3]
+ 342              		.loc 1 124 7 view .LVU90
+ 343 00de 022B     		cmp	r3, #2
+ 344 00e0 60D0     		beq	.L45
+ 345              	.L27:
+ 125:Core/Src/switch.c ****     {
+ 126:Core/Src/switch.c ****         if(switch_custom_mode == SWITCH_CUSTOM_TARGET_TEMP_SET)
+ 127:Core/Src/switch.c ****         {
+ 128:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 129:Core/Src/switch.c ****             {
+ 130:Core/Src/switch.c ****                 switch_trg_temp--;
+ 131:Core/Src/switch.c ****                 if(switch_trg_temp < 0)
+ 132:Core/Src/switch.c ****                 {
+ 133:Core/Src/switch.c ****                     switch_trg_temp = 100;
+ 134:Core/Src/switch.c ****                 }
+ 135:Core/Src/switch.c ****             }
+ 136:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 137:Core/Src/switch.c ****             {
+ 138:Core/Src/switch.c ****                 switch_trg_temp++;
+ 139:Core/Src/switch.c ****                 if(switch_trg_temp > 100)
+ 140:Core/Src/switch.c ****                 {
+ 141:Core/Src/switch.c ****                     switch_trg_temp = 0;
+ 142:Core/Src/switch.c ****                 }
+ 143:Core/Src/switch.c ****             }        
+ 144:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 145:Core/Src/switch.c ****             {
+ 146:Core/Src/switch.c ****                 switch_custom_mode = SWITCH_CUSTOM_TARGET_TIME_SET;
+ 147:Core/Src/switch.c ****             }
+ 148:Core/Src/switch.c ****             else
+ 149:Core/Src/switch.c ****             {
+ 150:Core/Src/switch.c **** 
+ 151:Core/Src/switch.c ****             }
+ 152:Core/Src/switch.c ****         }
+ 153:Core/Src/switch.c ****         else if(switch_custom_mode == SWITCH_CUSTOM_TARGET_TIME_SET)
+ 154:Core/Src/switch.c ****         {
+ 155:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 156:Core/Src/switch.c ****             {
+ 157:Core/Src/switch.c ****                 switch_trg_time--;
+ 158:Core/Src/switch.c ****                 if(switch_trg_time < 0)
+ 159:Core/Src/switch.c ****                 {
+ 160:Core/Src/switch.c ****                     switch_trg_time = 60;
+ 161:Core/Src/switch.c ****                 }
+ 162:Core/Src/switch.c ****             }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 10
+
+
+ 163:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 164:Core/Src/switch.c ****             {
+ 165:Core/Src/switch.c ****                 switch_trg_time++;
+ 166:Core/Src/switch.c ****                 if(switch_trg_time > 60)
+ 167:Core/Src/switch.c ****                 {
+ 168:Core/Src/switch.c ****                     switch_trg_time = 0;
+ 169:Core/Src/switch.c ****                 }
+ 170:Core/Src/switch.c ****             }        
+ 171:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 172:Core/Src/switch.c ****             {
+ 173:Core/Src/switch.c ****                 switch_custom_mode = SWITCH_CUSTOM_IDLE_SET;
+ 174:Core/Src/switch.c ****             }
+ 175:Core/Src/switch.c ****             else
+ 176:Core/Src/switch.c ****             {
+ 177:Core/Src/switch.c **** 
+ 178:Core/Src/switch.c ****             }            
+ 179:Core/Src/switch.c ****         }
+ 180:Core/Src/switch.c ****         else if(switch_custom_mode == SWITCH_CUSTOM_IDLE_SET)
+ 181:Core/Src/switch.c ****         {
+ 182:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 183:Core/Src/switch.c ****             {
+ 184:Core/Src/switch.c ****                 switch_idle_temp--;
+ 185:Core/Src/switch.c ****                 if(switch_idle_temp < 0)
+ 186:Core/Src/switch.c ****                 {
+ 187:Core/Src/switch.c ****                     switch_idle_temp = 60;
+ 188:Core/Src/switch.c ****                 }
+ 189:Core/Src/switch.c ****             }
+ 190:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 191:Core/Src/switch.c ****             {
+ 192:Core/Src/switch.c ****                 switch_idle_temp++;
+ 193:Core/Src/switch.c ****                 if(switch_idle_temp > 60)
+ 194:Core/Src/switch.c ****                 {
+ 195:Core/Src/switch.c ****                     switch_idle_temp = 0;
+ 196:Core/Src/switch.c ****                 }
+ 197:Core/Src/switch.c ****             }        
+ 198:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 199:Core/Src/switch.c ****             {
+ 200:Core/Src/switch.c ****                 switch_mode = SWITCH_MODE_RUN;
+ 201:Core/Src/switch.c ****             }
+ 202:Core/Src/switch.c ****             else
+ 203:Core/Src/switch.c ****             {
+ 204:Core/Src/switch.c **** 
+ 205:Core/Src/switch.c ****             }            
+ 346              		.loc 1 205 13 is_stmt 1 view .LVU91
+ 206:Core/Src/switch.c ****         }
+ 207:Core/Src/switch.c ****     }
+ 208:Core/Src/switch.c **** 
+ 209:Core/Src/switch.c ****     if(switch_mode == SWITCH_MODE_MENUSELECT)
+ 347              		.loc 1 209 5 view .LVU92
+ 348              		.loc 1 209 20 is_stmt 0 view .LVU93
+ 349 00e2 8F4B     		ldr	r3, .L57+60
+ 350 00e4 1B78     		ldrb	r3, [r3]
+ 351              		.loc 1 209 7 view .LVU94
+ 352 00e6 012B     		cmp	r3, #1
+ 353 00e8 00D1     		bne	.LCB276
+ 354 00ea 2DE1     		b	.L46	@long jump
+ 355              	.LCB276:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 11
+
+
+ 356              	.L36:
+ 210:Core/Src/switch.c ****     {
+ 211:Core/Src/switch.c ****         if((1u == switch1_status)&&(0==switch1_status_old))
+ 212:Core/Src/switch.c ****         {
+ 213:Core/Src/switch.c ****             switch_submode--;
+ 214:Core/Src/switch.c ****             if(switch_submode < SWITCH_SUB_MODE_1)
+ 215:Core/Src/switch.c ****             {
+ 216:Core/Src/switch.c ****                 switch_submode = SWITCH_SUB_MODE_19;
+ 217:Core/Src/switch.c ****             }
+ 218:Core/Src/switch.c ****         }
+ 219:Core/Src/switch.c ****         else if((1u == switch2_status)&&(0==switch2_status_old))
+ 220:Core/Src/switch.c ****         {
+ 221:Core/Src/switch.c ****             switch_submode++;
+ 222:Core/Src/switch.c ****             if(switch_submode > SWITCH_SUB_MODE_19)
+ 223:Core/Src/switch.c ****             {
+ 224:Core/Src/switch.c ****                 switch_submode = SWITCH_SUB_MODE_1;
+ 225:Core/Src/switch.c ****             }
+ 226:Core/Src/switch.c ****         }
+ 227:Core/Src/switch.c ****         else if((1u == switch3_status)&&(0==switch3_status_old)&&(SWITCH_SUB_MODE_17 == switch_subm
+ 228:Core/Src/switch.c ****         {
+ 229:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_CUSTOM;
+ 230:Core/Src/switch.c ****         }
+ 231:Core/Src/switch.c ****         else if((1u == switch3_status)&&(0==switch3_status_old))
+ 232:Core/Src/switch.c ****         {
+ 233:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_RUN;
+ 234:Core/Src/switch.c ****         }
+ 235:Core/Src/switch.c ****         else
+ 236:Core/Src/switch.c ****         {
+ 237:Core/Src/switch.c **** 
+ 238:Core/Src/switch.c ****         }
+ 357              		.loc 1 238 9 is_stmt 1 view .LVU95
+ 239:Core/Src/switch.c ****     }
+ 240:Core/Src/switch.c **** 
+ 241:Core/Src/switch.c ****     switch1_status_old = switch1_status;
+ 358              		.loc 1 241 5 view .LVU96
+ 359              		.loc 1 241 24 is_stmt 0 view .LVU97
+ 360 00ec 8D4B     		ldr	r3, .L57+64
+ 361 00ee 1970     		strb	r1, [r3]
+ 242:Core/Src/switch.c ****     switch2_status_old = switch2_status;
+ 362              		.loc 1 242 5 is_stmt 1 view .LVU98
+ 363              		.loc 1 242 24 is_stmt 0 view .LVU99
+ 364 00f0 7E4B     		ldr	r3, .L57+8
+ 365 00f2 1978     		ldrb	r1, [r3]
+ 366 00f4 8C4B     		ldr	r3, .L57+68
+ 367 00f6 1970     		strb	r1, [r3]
+ 243:Core/Src/switch.c ****     switch3_status_old = switch3_status;
+ 368              		.loc 1 243 5 is_stmt 1 view .LVU100
+ 369              		.loc 1 243 24 is_stmt 0 view .LVU101
+ 370 00f8 8C4B     		ldr	r3, .L57+72
+ 371 00fa 1A70     		strb	r2, [r3]
+ 244:Core/Src/switch.c ****     
+ 245:Core/Src/switch.c ****     return;
+ 372              		.loc 1 245 5 is_stmt 1 view .LVU102
+ 246:Core/Src/switch.c **** }...
+ 373              		.loc 1 246 1 is_stmt 0 view .LVU103
+ 374              		@ sp needed
+ 375 00fc 70BD     		pop	{r4, r5, r6, pc}
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 12
+
+
+ 376              	.L14:
+  73:Core/Src/switch.c ****         HAL_GPIO_WritePin(BUZZER_GROUP,BUZZER_PIN,GPIO_PIN_RESET);       
+ 377              		.loc 1 73 9 is_stmt 1 view .LVU104
+ 378 00fe 8021     		movs	r1, #128
+ 379 0100 0022     		movs	r2, #0
+ 380 0102 8901     		lsls	r1, r1, #6
+ 381 0104 7C48     		ldr	r0, .L57+20
+ 382 0106 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 383              	.LVL7:
+ 384 010a B9E7     		b	.L15
+ 385              	.L40:
+  76:Core/Src/switch.c ****     if((switch1_status == 1)&&(switch_mode == SWITCH_MODE_NONE))
+ 386              		.loc 1 76 44 is_stmt 0 discriminator 1 view .LVU105
+ 387 010c 844B     		ldr	r3, .L57+60
+ 388 010e 1B78     		ldrb	r3, [r3]
+  76:Core/Src/switch.c ****     if((switch1_status == 1)&&(switch_mode == SWITCH_MODE_NONE))
+ 389              		.loc 1 76 29 discriminator 1 view .LVU106
+ 390 0110 002B     		cmp	r3, #0
+ 391 0112 B9D1     		bne	.L16
+  78:Core/Src/switch.c ****         switch_timer1++;
+ 392              		.loc 1 78 9 is_stmt 1 view .LVU107
+  78:Core/Src/switch.c ****         switch_timer1++;
+ 393              		.loc 1 78 22 is_stmt 0 view .LVU108
+ 394 0114 7B4A     		ldr	r2, .L57+32
+ 395 0116 1388     		ldrh	r3, [r2]
+ 396 0118 0133     		adds	r3, r3, #1
+ 397 011a 9BB2     		uxth	r3, r3
+ 398 011c 1380     		strh	r3, [r2]
+  79:Core/Src/switch.c ****         if(switch_timer1>=SWITCH1_DEBOUNCE_TIME)
+ 399              		.loc 1 79 9 is_stmt 1 view .LVU109
+  79:Core/Src/switch.c ****         if(switch_timer1>=SWITCH1_DEBOUNCE_TIME)
+ 400              		.loc 1 79 11 is_stmt 0 view .LVU110
+ 401 011e 632B     		cmp	r3, #99
+ 402 0120 B5D9     		bls	.L17
+  81:Core/Src/switch.c ****             switch_timer1 = 0;
+ 403              		.loc 1 81 13 is_stmt 1 view .LVU111
+  81:Core/Src/switch.c ****             switch_timer1 = 0;
+ 404              		.loc 1 81 27 is_stmt 0 view .LVU112
+ 405 0122 1300     		movs	r3, r2
+ 406 0124 0022     		movs	r2, #0
+ 407 0126 1A80     		strh	r2, [r3]
+  82:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_MENUSELECT;
+ 408              		.loc 1 82 13 is_stmt 1 view .LVU113
+  82:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_MENUSELECT;
+ 409              		.loc 1 82 25 is_stmt 0 view .LVU114
+ 410 0128 7D4B     		ldr	r3, .L57+60
+ 411 012a 0132     		adds	r2, r2, #1
+ 412 012c 1A70     		strb	r2, [r3]
+ 413 012e AEE7     		b	.L17
+ 414              	.L41:
+  90:Core/Src/switch.c ****     if((switch3_status == 1)&&(switch_mode == SWITCH_MODE_RUN))
+ 415              		.loc 1 90 44 discriminator 1 view .LVU115
+ 416 0130 7B4B     		ldr	r3, .L57+60
+ 417 0132 1B78     		ldrb	r3, [r3]
+  90:Core/Src/switch.c ****     if((switch3_status == 1)&&(switch_mode == SWITCH_MODE_RUN))
+ 418              		.loc 1 90 29 discriminator 1 view .LVU116
+ 419 0134 032B     		cmp	r3, #3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 13
+
+
+ 420 0136 AED1     		bne	.L18
+  92:Core/Src/switch.c ****         switch_timer3++;
+ 421              		.loc 1 92 9 is_stmt 1 view .LVU117
+  92:Core/Src/switch.c ****         switch_timer3++;
+ 422              		.loc 1 92 22 is_stmt 0 view .LVU118
+ 423 0138 7348     		ldr	r0, .L57+36
+ 424 013a 0388     		ldrh	r3, [r0]
+ 425 013c 0133     		adds	r3, r3, #1
+ 426 013e 9BB2     		uxth	r3, r3
+ 427 0140 0380     		strh	r3, [r0]
+  93:Core/Src/switch.c ****         if(switch_timer3>=SWITCH3_DEBOUNCE_TIME)
+ 428              		.loc 1 93 9 is_stmt 1 view .LVU119
+  93:Core/Src/switch.c ****         if(switch_timer3>=SWITCH3_DEBOUNCE_TIME)
+ 429              		.loc 1 93 11 is_stmt 0 view .LVU120
+ 430 0142 632B     		cmp	r3, #99
+ 431 0144 AAD9     		bls	.L19
+  95:Core/Src/switch.c ****             switch_timer3 = 0;
+ 432              		.loc 1 95 13 is_stmt 1 view .LVU121
+  95:Core/Src/switch.c ****             switch_timer3 = 0;
+ 433              		.loc 1 95 27 is_stmt 0 view .LVU122
+ 434 0146 0300     		movs	r3, r0
+ 435 0148 0020     		movs	r0, #0
+ 436 014a 1880     		strh	r0, [r3]
+  96:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_NONE;
+ 437              		.loc 1 96 13 is_stmt 1 view .LVU123
+  96:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_NONE;
+ 438              		.loc 1 96 25 is_stmt 0 view .LVU124
+ 439 014c 744B     		ldr	r3, .L57+60
+ 440 014e 1870     		strb	r0, [r3]
+  97:Core/Src/switch.c ****             switch_custom_mode = SWITCH_CUSTOM_TARGET_TEMP_SET;
+ 441              		.loc 1 97 13 is_stmt 1 view .LVU125
+  97:Core/Src/switch.c ****             switch_custom_mode = SWITCH_CUSTOM_TARGET_TEMP_SET;
+ 442              		.loc 1 97 32 is_stmt 0 view .LVU126
+ 443 0150 774B     		ldr	r3, .L57+76
+ 444 0152 1870     		strb	r0, [r3]
+ 445 0154 A2E7     		b	.L19
+ 446              	.L42:
+ 107:Core/Src/switch.c ****         if(((cup_in == 1)&&(cup_in_old == 0))||((cup_in == 1)&&(switch4_status == 0)&&(switch4_stat
+ 447              		.loc 1 107 40 discriminator 1 view .LVU127
+ 448 0156 6E4C     		ldr	r4, .L57+44
+ 449 0158 2478     		ldrb	r4, [r4]
+ 107:Core/Src/switch.c ****         if(((cup_in == 1)&&(cup_in_old == 0))||((cup_in == 1)&&(switch4_status == 0)&&(switch4_stat
+ 450              		.loc 1 107 26 discriminator 1 view .LVU128
+ 451 015a 002C     		cmp	r4, #0
+ 452 015c A9D1     		bne	.L21
+ 453              	.L22:
+ 109:Core/Src/switch.c ****             Pwm_Servo_status = PWM_SERVO_STATUS_RUN;
+ 454              		.loc 1 109 13 is_stmt 1 view .LVU129
+ 109:Core/Src/switch.c ****             Pwm_Servo_status = PWM_SERVO_STATUS_RUN;
+ 455              		.loc 1 109 30 is_stmt 0 view .LVU130
+ 456 015e 0124     		movs	r4, #1
+ 457 0160 744D     		ldr	r5, .L57+80
+ 458 0162 2C70     		strb	r4, [r5]
+ 110:Core/Src/switch.c ****             Servo_timer = 0;
+ 459              		.loc 1 110 13 is_stmt 1 view .LVU131
+ 110:Core/Src/switch.c ****             Servo_timer = 0;
+ 460              		.loc 1 110 25 is_stmt 0 view .LVU132
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 14
+
+
+ 461 0164 744D     		ldr	r5, .L57+84
+ 462 0166 0026     		movs	r6, #0
+ 463 0168 2E80     		strh	r6, [r5]
+ 111:Core/Src/switch.c ****             switch4_mode = 1;
+ 464              		.loc 1 111 13 is_stmt 1 view .LVU133
+ 111:Core/Src/switch.c ****             switch4_mode = 1;
+ 465              		.loc 1 111 26 is_stmt 0 view .LVU134
+ 466 016a 6A4D     		ldr	r5, .L57+48
+ 467 016c 2C70     		strb	r4, [r5]
+ 468 016e A2E7     		b	.L23
+ 469              	.L43:
+ 107:Core/Src/switch.c ****         if(((cup_in == 1)&&(cup_in_old == 0))||((cup_in == 1)&&(switch4_status == 0)&&(switch4_stat
+ 470              		.loc 1 107 80 discriminator 4 view .LVU135
+ 471 0170 604C     		ldr	r4, .L57+16
+ 472 0172 2478     		ldrb	r4, [r4]
+ 107:Core/Src/switch.c ****         if(((cup_in == 1)&&(cup_in_old == 0))||((cup_in == 1)&&(switch4_status == 0)&&(switch4_stat
+ 473              		.loc 1 107 62 discriminator 4 view .LVU136
+ 474 0174 002C     		cmp	r4, #0
+ 475 0176 9ED1     		bne	.L23
+ 107:Core/Src/switch.c ****         if(((cup_in == 1)&&(cup_in_old == 0))||((cup_in == 1)&&(switch4_status == 0)&&(switch4_stat
+ 476              		.loc 1 107 107 discriminator 5 view .LVU137
+ 477 0178 684C     		ldr	r4, .L57+56
+ 478 017a 2478     		ldrb	r4, [r4]
+ 107:Core/Src/switch.c ****         if(((cup_in == 1)&&(cup_in_old == 0))||((cup_in == 1)&&(switch4_status == 0)&&(switch4_stat
+ 479              		.loc 1 107 85 discriminator 5 view .LVU138
+ 480 017c 012C     		cmp	r4, #1
+ 481 017e 9AD1     		bne	.L23
+ 482 0180 EDE7     		b	.L22
+ 483              	.L44:
+ 113:Core/Src/switch.c ****         if(((cup_in == 0)&&(cup_in_old == 1))||((cup_in == 1)&&(switch4_status == 1)&&(switch4_stat
+ 484              		.loc 1 113 80 discriminator 4 view .LVU139
+ 485 0182 5C4C     		ldr	r4, .L57+16
+ 486 0184 2478     		ldrb	r4, [r4]
+ 113:Core/Src/switch.c ****         if(((cup_in == 0)&&(cup_in_old == 1))||((cup_in == 1)&&(switch4_status == 1)&&(switch4_stat
+ 487              		.loc 1 113 62 discriminator 4 view .LVU140
+ 488 0186 012C     		cmp	r4, #1
+ 489 0188 9DD1     		bne	.L26
+ 113:Core/Src/switch.c ****         if(((cup_in == 0)&&(cup_in_old == 1))||((cup_in == 1)&&(switch4_status == 1)&&(switch4_stat
+ 490              		.loc 1 113 107 discriminator 5 view .LVU141
+ 491 018a 644C     		ldr	r4, .L57+56
+ 492 018c 2478     		ldrb	r4, [r4]
+ 113:Core/Src/switch.c ****         if(((cup_in == 0)&&(cup_in_old == 1))||((cup_in == 1)&&(switch4_status == 1)&&(switch4_stat
+ 493              		.loc 1 113 85 discriminator 5 view .LVU142
+ 494 018e 002C     		cmp	r4, #0
+ 495 0190 99D1     		bne	.L26
+ 496              	.L25:
+ 115:Core/Src/switch.c ****             Pwm_Servo_status = PWM_SERVO_STATUS_RUN;
+ 497              		.loc 1 115 13 is_stmt 1 view .LVU143
+ 115:Core/Src/switch.c ****             Pwm_Servo_status = PWM_SERVO_STATUS_RUN;
+ 498              		.loc 1 115 30 is_stmt 0 view .LVU144
+ 499 0192 684C     		ldr	r4, .L57+80
+ 500 0194 0125     		movs	r5, #1
+ 501 0196 2570     		strb	r5, [r4]
+ 116:Core/Src/switch.c ****             Servo_timer = 0;
+ 502              		.loc 1 116 13 is_stmt 1 view .LVU145
+ 116:Core/Src/switch.c ****             Servo_timer = 0;
+ 503              		.loc 1 116 25 is_stmt 0 view .LVU146
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 15
+
+
+ 504 0198 674C     		ldr	r4, .L57+84
+ 505 019a 0025     		movs	r5, #0
+ 506 019c 2580     		strh	r5, [r4]
+ 117:Core/Src/switch.c ****             switch4_mode = 0;
+ 507              		.loc 1 117 13 is_stmt 1 view .LVU147
+ 117:Core/Src/switch.c ****             switch4_mode = 0;
+ 508              		.loc 1 117 26 is_stmt 0 view .LVU148
+ 509 019e 5D4C     		ldr	r4, .L57+48
+ 510 01a0 2570     		strb	r5, [r4]
+ 511 01a2 90E7     		b	.L26
+ 512              	.L45:
+ 126:Core/Src/switch.c ****         if(switch_custom_mode == SWITCH_CUSTOM_TARGET_TEMP_SET)
+ 513              		.loc 1 126 9 is_stmt 1 view .LVU149
+ 126:Core/Src/switch.c ****         if(switch_custom_mode == SWITCH_CUSTOM_TARGET_TEMP_SET)
+ 514              		.loc 1 126 31 is_stmt 0 view .LVU150
+ 515 01a4 624B     		ldr	r3, .L57+76
+ 516 01a6 1B78     		ldrb	r3, [r3]
+ 126:Core/Src/switch.c ****         if(switch_custom_mode == SWITCH_CUSTOM_TARGET_TEMP_SET)
+ 517              		.loc 1 126 11 view .LVU151
+ 518 01a8 002B     		cmp	r3, #0
+ 519 01aa 31D1     		bne	.L28
+ 128:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 520              		.loc 1 128 13 is_stmt 1 view .LVU152
+ 128:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 521              		.loc 1 128 15 is_stmt 0 view .LVU153
+ 522 01ac 0129     		cmp	r1, #1
+ 523 01ae 0FD0     		beq	.L47
+ 524              	.L29:
+ 136:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 525              		.loc 1 136 18 is_stmt 1 view .LVU154
+ 136:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 526              		.loc 1 136 25 is_stmt 0 view .LVU155
+ 527 01b0 4E4B     		ldr	r3, .L57+8
+ 528 01b2 1B78     		ldrb	r3, [r3]
+ 136:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 529              		.loc 1 136 20 view .LVU156
+ 530 01b4 012B     		cmp	r3, #1
+ 531 01b6 1BD0     		beq	.L48
+ 532              	.L30:
+ 144:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 533              		.loc 1 144 18 is_stmt 1 view .LVU157
+ 144:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 534              		.loc 1 144 20 is_stmt 0 view .LVU158
+ 535 01b8 012A     		cmp	r2, #1
+ 536 01ba 00D0     		beq	.LCB435
+ 537 01bc 91E7     		b	.L27	@long jump
+ 538              	.LCB435:
+ 144:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 539              		.loc 1 144 47 discriminator 1 view .LVU159
+ 540 01be 5B4B     		ldr	r3, .L57+72
+ 541 01c0 1B78     		ldrb	r3, [r3]
+ 144:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 542              		.loc 1 144 43 discriminator 1 view .LVU160
+ 543 01c2 002B     		cmp	r3, #0
+ 544 01c4 00D0     		beq	.LCB439
+ 545 01c6 8CE7     		b	.L27	@long jump
+ 546              	.LCB439:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 16
+
+
+ 146:Core/Src/switch.c ****                 switch_custom_mode = SWITCH_CUSTOM_TARGET_TIME_SET;
+ 547              		.loc 1 146 17 is_stmt 1 view .LVU161
+ 146:Core/Src/switch.c ****                 switch_custom_mode = SWITCH_CUSTOM_TARGET_TIME_SET;
+ 548              		.loc 1 146 36 is_stmt 0 view .LVU162
+ 549 01c8 594B     		ldr	r3, .L57+76
+ 550 01ca 0124     		movs	r4, #1
+ 551 01cc 1C70     		strb	r4, [r3]
+ 552 01ce 88E7     		b	.L27
+ 553              	.L47:
+ 128:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 554              		.loc 1 128 42 discriminator 1 view .LVU163
+ 555 01d0 544B     		ldr	r3, .L57+64
+ 556 01d2 1B78     		ldrb	r3, [r3]
+ 128:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 557              		.loc 1 128 38 discriminator 1 view .LVU164
+ 558 01d4 002B     		cmp	r3, #0
+ 559 01d6 EBD1     		bne	.L29
+ 130:Core/Src/switch.c ****                 switch_trg_temp--;
+ 560              		.loc 1 130 17 is_stmt 1 view .LVU165
+ 130:Core/Src/switch.c ****                 switch_trg_temp--;
+ 561              		.loc 1 130 32 is_stmt 0 view .LVU166
+ 562 01d8 584C     		ldr	r4, .L57+88
+ 563 01da 2388     		ldrh	r3, [r4]
+ 564 01dc 013B     		subs	r3, r3, #1
+ 565 01de 1BB2     		sxth	r3, r3
+ 566 01e0 2380     		strh	r3, [r4]
+ 131:Core/Src/switch.c ****                 if(switch_trg_temp < 0)
+ 567              		.loc 1 131 17 is_stmt 1 view .LVU167
+ 131:Core/Src/switch.c ****                 if(switch_trg_temp < 0)
+ 568              		.loc 1 131 19 is_stmt 0 view .LVU168
+ 569 01e2 002B     		cmp	r3, #0
+ 570 01e4 00DB     		blt	.LCB460
+ 571 01e6 7CE7     		b	.L27	@long jump
+ 572              	.LCB460:
+ 133:Core/Src/switch.c ****                     switch_trg_temp = 100;
+ 573              		.loc 1 133 21 is_stmt 1 view .LVU169
+ 133:Core/Src/switch.c ****                     switch_trg_temp = 100;
+ 574              		.loc 1 133 37 is_stmt 0 view .LVU170
+ 575 01e8 2300     		movs	r3, r4
+ 576 01ea 6424     		movs	r4, #100
+ 577 01ec 1C80     		strh	r4, [r3]
+ 578 01ee 78E7     		b	.L27
+ 579              	.L48:
+ 136:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 580              		.loc 1 136 47 discriminator 1 view .LVU171
+ 581 01f0 4D4B     		ldr	r3, .L57+68
+ 582 01f2 1B78     		ldrb	r3, [r3]
+ 136:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 583              		.loc 1 136 43 discriminator 1 view .LVU172
+ 584 01f4 002B     		cmp	r3, #0
+ 585 01f6 DFD1     		bne	.L30
+ 138:Core/Src/switch.c ****                 switch_trg_temp++;
+ 586              		.loc 1 138 17 is_stmt 1 view .LVU173
+ 138:Core/Src/switch.c ****                 switch_trg_temp++;
+ 587              		.loc 1 138 32 is_stmt 0 view .LVU174
+ 588 01f8 504C     		ldr	r4, .L57+88
+ 589 01fa 2388     		ldrh	r3, [r4]
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 17
+
+
+ 590 01fc 0133     		adds	r3, r3, #1
+ 591 01fe 1BB2     		sxth	r3, r3
+ 592 0200 2380     		strh	r3, [r4]
+ 139:Core/Src/switch.c ****                 if(switch_trg_temp > 100)
+ 593              		.loc 1 139 17 is_stmt 1 view .LVU175
+ 139:Core/Src/switch.c ****                 if(switch_trg_temp > 100)
+ 594              		.loc 1 139 19 is_stmt 0 view .LVU176
+ 595 0202 642B     		cmp	r3, #100
+ 596 0204 00DC     		bgt	.LCB481
+ 597 0206 6CE7     		b	.L27	@long jump
+ 598              	.LCB481:
+ 141:Core/Src/switch.c ****                     switch_trg_temp = 0;
+ 599              		.loc 1 141 21 is_stmt 1 view .LVU177
+ 141:Core/Src/switch.c ****                     switch_trg_temp = 0;
+ 600              		.loc 1 141 37 is_stmt 0 view .LVU178
+ 601 0208 2300     		movs	r3, r4
+ 602 020a 0024     		movs	r4, #0
+ 603 020c 1C80     		strh	r4, [r3]
+ 604 020e 68E7     		b	.L27
+ 605              	.L28:
+ 153:Core/Src/switch.c ****         else if(switch_custom_mode == SWITCH_CUSTOM_TARGET_TIME_SET)
+ 606              		.loc 1 153 14 is_stmt 1 view .LVU179
+ 153:Core/Src/switch.c ****         else if(switch_custom_mode == SWITCH_CUSTOM_TARGET_TIME_SET)
+ 607              		.loc 1 153 16 is_stmt 0 view .LVU180
+ 608 0210 012B     		cmp	r3, #1
+ 609 0212 14D0     		beq	.L49
+ 180:Core/Src/switch.c ****         else if(switch_custom_mode == SWITCH_CUSTOM_IDLE_SET)
+ 610              		.loc 1 180 14 is_stmt 1 view .LVU181
+ 180:Core/Src/switch.c ****         else if(switch_custom_mode == SWITCH_CUSTOM_IDLE_SET)
+ 611              		.loc 1 180 16 is_stmt 0 view .LVU182
+ 612 0214 022B     		cmp	r3, #2
+ 613 0216 00D0     		beq	.LCB495
+ 614 0218 63E7     		b	.L27	@long jump
+ 615              	.LCB495:
+ 182:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 616              		.loc 1 182 13 is_stmt 1 view .LVU183
+ 182:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 617              		.loc 1 182 15 is_stmt 0 view .LVU184
+ 618 021a 0129     		cmp	r1, #1
+ 619 021c 41D0     		beq	.L50
+ 620              	.L34:
+ 190:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 621              		.loc 1 190 18 is_stmt 1 view .LVU185
+ 190:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 622              		.loc 1 190 25 is_stmt 0 view .LVU186
+ 623 021e 334B     		ldr	r3, .L57+8
+ 624 0220 1B78     		ldrb	r3, [r3]
+ 190:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 625              		.loc 1 190 20 view .LVU187
+ 626 0222 012B     		cmp	r3, #1
+ 627 0224 4DD0     		beq	.L51
+ 628              	.L35:
+ 198:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 629              		.loc 1 198 18 is_stmt 1 view .LVU188
+ 198:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 630              		.loc 1 198 20 is_stmt 0 view .LVU189
+ 631 0226 012A     		cmp	r2, #1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 18
+
+
+ 632 0228 00D0     		beq	.LCB508
+ 633 022a 5AE7     		b	.L27	@long jump
+ 634              	.LCB508:
+ 198:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 635              		.loc 1 198 47 discriminator 1 view .LVU190
+ 636 022c 3F4B     		ldr	r3, .L57+72
+ 637 022e 1B78     		ldrb	r3, [r3]
+ 198:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 638              		.loc 1 198 43 discriminator 1 view .LVU191
+ 639 0230 002B     		cmp	r3, #0
+ 640 0232 00D0     		beq	.LCB512
+ 641 0234 55E7     		b	.L27	@long jump
+ 642              	.LCB512:
+ 200:Core/Src/switch.c ****                 switch_mode = SWITCH_MODE_RUN;
+ 643              		.loc 1 200 17 is_stmt 1 view .LVU192
+ 200:Core/Src/switch.c ****                 switch_mode = SWITCH_MODE_RUN;
+ 644              		.loc 1 200 29 is_stmt 0 view .LVU193
+ 645 0236 3A4B     		ldr	r3, .L57+60
+ 646 0238 0324     		movs	r4, #3
+ 647 023a 1C70     		strb	r4, [r3]
+ 648 023c 51E7     		b	.L27
+ 649              	.L49:
+ 155:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 650              		.loc 1 155 13 is_stmt 1 view .LVU194
+ 155:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 651              		.loc 1 155 15 is_stmt 0 view .LVU195
+ 652 023e 0129     		cmp	r1, #1
+ 653 0240 0FD0     		beq	.L52
+ 654              	.L32:
+ 163:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 655              		.loc 1 163 18 is_stmt 1 view .LVU196
+ 163:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 656              		.loc 1 163 25 is_stmt 0 view .LVU197
+ 657 0242 2A4B     		ldr	r3, .L57+8
+ 658 0244 1B78     		ldrb	r3, [r3]
+ 163:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 659              		.loc 1 163 20 view .LVU198
+ 660 0246 012B     		cmp	r3, #1
+ 661 0248 1BD0     		beq	.L53
+ 662              	.L33:
+ 171:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 663              		.loc 1 171 18 is_stmt 1 view .LVU199
+ 171:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 664              		.loc 1 171 20 is_stmt 0 view .LVU200
+ 665 024a 012A     		cmp	r2, #1
+ 666 024c 00D0     		beq	.LCB533
+ 667 024e 48E7     		b	.L27	@long jump
+ 668              	.LCB533:
+ 171:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 669              		.loc 1 171 47 discriminator 1 view .LVU201
+ 670 0250 364B     		ldr	r3, .L57+72
+ 671 0252 1B78     		ldrb	r3, [r3]
+ 171:Core/Src/switch.c ****             else if((1u == switch3_status)&&(0==switch3_status_old))
+ 672              		.loc 1 171 43 discriminator 1 view .LVU202
+ 673 0254 002B     		cmp	r3, #0
+ 674 0256 00D0     		beq	.LCB537
+ 675 0258 43E7     		b	.L27	@long jump
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 19
+
+
+ 676              	.LCB537:
+ 173:Core/Src/switch.c ****                 switch_custom_mode = SWITCH_CUSTOM_IDLE_SET;
+ 677              		.loc 1 173 17 is_stmt 1 view .LVU203
+ 173:Core/Src/switch.c ****                 switch_custom_mode = SWITCH_CUSTOM_IDLE_SET;
+ 678              		.loc 1 173 36 is_stmt 0 view .LVU204
+ 679 025a 354B     		ldr	r3, .L57+76
+ 680 025c 0224     		movs	r4, #2
+ 681 025e 1C70     		strb	r4, [r3]
+ 682 0260 3FE7     		b	.L27
+ 683              	.L52:
+ 155:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 684              		.loc 1 155 42 discriminator 1 view .LVU205
+ 685 0262 304B     		ldr	r3, .L57+64
+ 686 0264 1B78     		ldrb	r3, [r3]
+ 155:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 687              		.loc 1 155 38 discriminator 1 view .LVU206
+ 688 0266 002B     		cmp	r3, #0
+ 689 0268 EBD1     		bne	.L32
+ 157:Core/Src/switch.c ****                 switch_trg_time--;
+ 690              		.loc 1 157 17 is_stmt 1 view .LVU207
+ 157:Core/Src/switch.c ****                 switch_trg_time--;
+ 691              		.loc 1 157 32 is_stmt 0 view .LVU208
+ 692 026a 354C     		ldr	r4, .L57+92
+ 693 026c 2388     		ldrh	r3, [r4]
+ 694 026e 013B     		subs	r3, r3, #1
+ 695 0270 1BB2     		sxth	r3, r3
+ 696 0272 2380     		strh	r3, [r4]
+ 158:Core/Src/switch.c ****                 if(switch_trg_time < 0)
+ 697              		.loc 1 158 17 is_stmt 1 view .LVU209
+ 158:Core/Src/switch.c ****                 if(switch_trg_time < 0)
+ 698              		.loc 1 158 19 is_stmt 0 view .LVU210
+ 699 0274 002B     		cmp	r3, #0
+ 700 0276 00DB     		blt	.LCB558
+ 701 0278 33E7     		b	.L27	@long jump
+ 702              	.LCB558:
+ 160:Core/Src/switch.c ****                     switch_trg_time = 60;
+ 703              		.loc 1 160 21 is_stmt 1 view .LVU211
+ 160:Core/Src/switch.c ****                     switch_trg_time = 60;
+ 704              		.loc 1 160 37 is_stmt 0 view .LVU212
+ 705 027a 2300     		movs	r3, r4
+ 706 027c 3C24     		movs	r4, #60
+ 707 027e 1C80     		strh	r4, [r3]
+ 708 0280 2FE7     		b	.L27
+ 709              	.L53:
+ 163:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 710              		.loc 1 163 47 discriminator 1 view .LVU213
+ 711 0282 294B     		ldr	r3, .L57+68
+ 712 0284 1B78     		ldrb	r3, [r3]
+ 163:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 713              		.loc 1 163 43 discriminator 1 view .LVU214
+ 714 0286 002B     		cmp	r3, #0
+ 715 0288 DFD1     		bne	.L33
+ 165:Core/Src/switch.c ****                 switch_trg_time++;
+ 716              		.loc 1 165 17 is_stmt 1 view .LVU215
+ 165:Core/Src/switch.c ****                 switch_trg_time++;
+ 717              		.loc 1 165 32 is_stmt 0 view .LVU216
+ 718 028a 2D4C     		ldr	r4, .L57+92
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 20
+
+
+ 719 028c 2388     		ldrh	r3, [r4]
+ 720 028e 0133     		adds	r3, r3, #1
+ 721 0290 1BB2     		sxth	r3, r3
+ 722 0292 2380     		strh	r3, [r4]
+ 166:Core/Src/switch.c ****                 if(switch_trg_time > 60)
+ 723              		.loc 1 166 17 is_stmt 1 view .LVU217
+ 166:Core/Src/switch.c ****                 if(switch_trg_time > 60)
+ 724              		.loc 1 166 19 is_stmt 0 view .LVU218
+ 725 0294 3C2B     		cmp	r3, #60
+ 726 0296 00DC     		bgt	.LCB579
+ 727 0298 23E7     		b	.L27	@long jump
+ 728              	.LCB579:
+ 168:Core/Src/switch.c ****                     switch_trg_time = 0;
+ 729              		.loc 1 168 21 is_stmt 1 view .LVU219
+ 168:Core/Src/switch.c ****                     switch_trg_time = 0;
+ 730              		.loc 1 168 37 is_stmt 0 view .LVU220
+ 731 029a 2300     		movs	r3, r4
+ 732 029c 0024     		movs	r4, #0
+ 733 029e 1C80     		strh	r4, [r3]
+ 734 02a0 1FE7     		b	.L27
+ 735              	.L50:
+ 182:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 736              		.loc 1 182 42 discriminator 1 view .LVU221
+ 737 02a2 204B     		ldr	r3, .L57+64
+ 738 02a4 1B78     		ldrb	r3, [r3]
+ 182:Core/Src/switch.c ****             if((1u == switch1_status)&&(0==switch1_status_old))
+ 739              		.loc 1 182 38 discriminator 1 view .LVU222
+ 740 02a6 002B     		cmp	r3, #0
+ 741 02a8 B9D1     		bne	.L34
+ 184:Core/Src/switch.c ****                 switch_idle_temp--;
+ 742              		.loc 1 184 17 is_stmt 1 view .LVU223
+ 184:Core/Src/switch.c ****                 switch_idle_temp--;
+ 743              		.loc 1 184 33 is_stmt 0 view .LVU224
+ 744 02aa 264C     		ldr	r4, .L57+96
+ 745 02ac 2388     		ldrh	r3, [r4]
+ 746 02ae 013B     		subs	r3, r3, #1
+ 747 02b0 1BB2     		sxth	r3, r3
+ 748 02b2 2380     		strh	r3, [r4]
+ 185:Core/Src/switch.c ****                 if(switch_idle_temp < 0)
+ 749              		.loc 1 185 17 is_stmt 1 view .LVU225
+ 185:Core/Src/switch.c ****                 if(switch_idle_temp < 0)
+ 750              		.loc 1 185 19 is_stmt 0 view .LVU226
+ 751 02b4 002B     		cmp	r3, #0
+ 752 02b6 00DB     		blt	.LCB600
+ 753 02b8 13E7     		b	.L27	@long jump
+ 754              	.LCB600:
+ 187:Core/Src/switch.c ****                     switch_idle_temp = 60;
+ 755              		.loc 1 187 21 is_stmt 1 view .LVU227
+ 187:Core/Src/switch.c ****                     switch_idle_temp = 60;
+ 756              		.loc 1 187 38 is_stmt 0 view .LVU228
+ 757 02ba 2300     		movs	r3, r4
+ 758 02bc 3C24     		movs	r4, #60
+ 759 02be 1C80     		strh	r4, [r3]
+ 760 02c0 0FE7     		b	.L27
+ 761              	.L51:
+ 190:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 762              		.loc 1 190 47 discriminator 1 view .LVU229
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 21
+
+
+ 763 02c2 194B     		ldr	r3, .L57+68
+ 764 02c4 1B78     		ldrb	r3, [r3]
+ 190:Core/Src/switch.c ****             else if((1u == switch2_status)&&(0==switch2_status_old))
+ 765              		.loc 1 190 43 discriminator 1 view .LVU230
+ 766 02c6 002B     		cmp	r3, #0
+ 767 02c8 ADD1     		bne	.L35
+ 192:Core/Src/switch.c ****                 switch_idle_temp++;
+ 768              		.loc 1 192 17 is_stmt 1 view .LVU231
+ 192:Core/Src/switch.c ****                 switch_idle_temp++;
+ 769              		.loc 1 192 33 is_stmt 0 view .LVU232
+ 770 02ca 1E4C     		ldr	r4, .L57+96
+ 771 02cc 2388     		ldrh	r3, [r4]
+ 772 02ce 0133     		adds	r3, r3, #1
+ 773 02d0 1BB2     		sxth	r3, r3
+ 774 02d2 2380     		strh	r3, [r4]
+ 193:Core/Src/switch.c ****                 if(switch_idle_temp > 60)
+ 775              		.loc 1 193 17 is_stmt 1 view .LVU233
+ 193:Core/Src/switch.c ****                 if(switch_idle_temp > 60)
+ 776              		.loc 1 193 19 is_stmt 0 view .LVU234
+ 777 02d4 3C2B     		cmp	r3, #60
+ 778 02d6 00DC     		bgt	.LCB621
+ 779 02d8 03E7     		b	.L27	@long jump
+ 780              	.LCB621:
+ 195:Core/Src/switch.c ****                     switch_idle_temp = 0;
+ 781              		.loc 1 195 21 is_stmt 1 view .LVU235
+ 195:Core/Src/switch.c ****                     switch_idle_temp = 0;
+ 782              		.loc 1 195 38 is_stmt 0 view .LVU236
+ 783 02da 2300     		movs	r3, r4
+ 784 02dc 0024     		movs	r4, #0
+ 785 02de 1C80     		strh	r4, [r3]
+ 786 02e0 FFE6     		b	.L27
+ 787              	.L58:
+ 788 02e2 C046     		.align	2
+ 789              	.L57:
+ 790 02e4 00000000 		.word	.LANCHOR4
+ 791 02e8 00000000 		.word	.LANCHOR5
+ 792 02ec 00000000 		.word	.LANCHOR6
+ 793 02f0 00000000 		.word	.LANCHOR7
+ 794 02f4 00000000 		.word	.LANCHOR8
+ 795 02f8 00040048 		.word	1207960576
+ 796 02fc 00000000 		.word	.LANCHOR9
+ 797 0300 00000000 		.word	.LANCHOR10
+ 798 0304 00000000 		.word	.LANCHOR12
+ 799 0308 00000000 		.word	.LANCHOR13
+ 800 030c 00000000 		.word	.LANCHOR0
+ 801 0310 00000000 		.word	.LANCHOR15
+ 802 0314 00000000 		.word	.LANCHOR17
+ 803 0318 00000000 		.word	.LANCHOR18
+ 804 031c 00000000 		.word	.LANCHOR16
+ 805 0320 00000000 		.word	.LANCHOR11
+ 806 0324 00000000 		.word	.LANCHOR19
+ 807 0328 00000000 		.word	.LANCHOR20
+ 808 032c 00000000 		.word	.LANCHOR21
+ 809 0330 00000000 		.word	.LANCHOR14
+ 810 0334 00000000 		.word	Pwm_Servo_status
+ 811 0338 00000000 		.word	Servo_timer
+ 812 033c 00000000 		.word	.LANCHOR1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 22
+
+
+ 813 0340 00000000 		.word	.LANCHOR2
+ 814 0344 00000000 		.word	.LANCHOR3
+ 815              	.L46:
+ 211:Core/Src/switch.c ****         if((1u == switch1_status)&&(0==switch1_status_old))
+ 816              		.loc 1 211 9 is_stmt 1 view .LVU237
+ 211:Core/Src/switch.c ****         if((1u == switch1_status)&&(0==switch1_status_old))
+ 817              		.loc 1 211 11 is_stmt 0 view .LVU238
+ 818 0348 0129     		cmp	r1, #1
+ 819 034a 11D0     		beq	.L54
+ 820              	.L37:
+ 219:Core/Src/switch.c ****         else if((1u == switch2_status)&&(0==switch2_status_old))
+ 821              		.loc 1 219 14 is_stmt 1 view .LVU239
+ 219:Core/Src/switch.c ****         else if((1u == switch2_status)&&(0==switch2_status_old))
+ 822              		.loc 1 219 21 is_stmt 0 view .LVU240
+ 823 034c 1B4B     		ldr	r3, .L59
+ 824 034e 1B78     		ldrb	r3, [r3]
+ 219:Core/Src/switch.c ****         else if((1u == switch2_status)&&(0==switch2_status_old))
+ 825              		.loc 1 219 16 view .LVU241
+ 826 0350 012B     		cmp	r3, #1
+ 827 0352 1BD0     		beq	.L55
+ 828              	.L38:
+ 227:Core/Src/switch.c ****         else if((1u == switch3_status)&&(0==switch3_status_old)&&(SWITCH_SUB_MODE_17 == switch_subm
+ 829              		.loc 1 227 14 is_stmt 1 view .LVU242
+ 227:Core/Src/switch.c ****         else if((1u == switch3_status)&&(0==switch3_status_old)&&(SWITCH_SUB_MODE_17 == switch_subm
+ 830              		.loc 1 227 16 is_stmt 0 view .LVU243
+ 831 0354 012A     		cmp	r2, #1
+ 832 0356 27D0     		beq	.L56
+ 833              	.L39:
+ 231:Core/Src/switch.c ****         else if((1u == switch3_status)&&(0==switch3_status_old))
+ 834              		.loc 1 231 14 is_stmt 1 view .LVU244
+ 231:Core/Src/switch.c ****         else if((1u == switch3_status)&&(0==switch3_status_old))
+ 835              		.loc 1 231 16 is_stmt 0 view .LVU245
+ 836 0358 012A     		cmp	r2, #1
+ 837 035a 00D0     		beq	.LCB676
+ 838 035c C6E6     		b	.L36	@long jump
+ 839              	.LCB676:
+ 231:Core/Src/switch.c ****         else if((1u == switch3_status)&&(0==switch3_status_old))
+ 840              		.loc 1 231 43 discriminator 1 view .LVU246
+ 841 035e 184B     		ldr	r3, .L59+4
+ 842 0360 1B78     		ldrb	r3, [r3]
+ 231:Core/Src/switch.c ****         else if((1u == switch3_status)&&(0==switch3_status_old))
+ 843              		.loc 1 231 39 discriminator 1 view .LVU247
+ 844 0362 002B     		cmp	r3, #0
+ 845 0364 00D0     		beq	.LCB680
+ 846 0366 C1E6     		b	.L36	@long jump
+ 847              	.LCB680:
+ 233:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_RUN;
+ 848              		.loc 1 233 13 is_stmt 1 view .LVU248
+ 233:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_RUN;
+ 849              		.loc 1 233 25 is_stmt 0 view .LVU249
+ 850 0368 164B     		ldr	r3, .L59+8
+ 851 036a 0320     		movs	r0, #3
+ 852 036c 1870     		strb	r0, [r3]
+ 853 036e BDE6     		b	.L36
+ 854              	.L54:
+ 211:Core/Src/switch.c ****         if((1u == switch1_status)&&(0==switch1_status_old))
+ 855              		.loc 1 211 38 discriminator 1 view .LVU250
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 23
+
+
+ 856 0370 154B     		ldr	r3, .L59+12
+ 857 0372 1B78     		ldrb	r3, [r3]
+ 211:Core/Src/switch.c ****         if((1u == switch1_status)&&(0==switch1_status_old))
+ 858              		.loc 1 211 34 discriminator 1 view .LVU251
+ 859 0374 002B     		cmp	r3, #0
+ 860 0376 E9D1     		bne	.L37
+ 213:Core/Src/switch.c ****             switch_submode--;
+ 861              		.loc 1 213 13 is_stmt 1 view .LVU252
+ 213:Core/Src/switch.c ****             switch_submode--;
+ 862              		.loc 1 213 27 is_stmt 0 view .LVU253
+ 863 0378 0138     		subs	r0, r0, #1
+ 864 037a C0B2     		uxtb	r0, r0
+ 865 037c 134B     		ldr	r3, .L59+16
+ 866 037e 1870     		strb	r0, [r3]
+ 214:Core/Src/switch.c ****             if(switch_submode < SWITCH_SUB_MODE_1)
+ 867              		.loc 1 214 13 is_stmt 1 view .LVU254
+ 214:Core/Src/switch.c ****             if(switch_submode < SWITCH_SUB_MODE_1)
+ 868              		.loc 1 214 15 is_stmt 0 view .LVU255
+ 869 0380 0028     		cmp	r0, #0
+ 870 0382 00D0     		beq	.LCB700
+ 871 0384 B2E6     		b	.L36	@long jump
+ 872              	.LCB700:
+ 216:Core/Src/switch.c ****                 switch_submode = SWITCH_SUB_MODE_19;
+ 873              		.loc 1 216 17 is_stmt 1 view .LVU256
+ 216:Core/Src/switch.c ****                 switch_submode = SWITCH_SUB_MODE_19;
+ 874              		.loc 1 216 32 is_stmt 0 view .LVU257
+ 875 0386 1330     		adds	r0, r0, #19
+ 876 0388 1870     		strb	r0, [r3]
+ 877 038a AFE6     		b	.L36
+ 878              	.L55:
+ 219:Core/Src/switch.c ****         else if((1u == switch2_status)&&(0==switch2_status_old))
+ 879              		.loc 1 219 43 discriminator 1 view .LVU258
+ 880 038c 104B     		ldr	r3, .L59+20
+ 881 038e 1B78     		ldrb	r3, [r3]
+ 219:Core/Src/switch.c ****         else if((1u == switch2_status)&&(0==switch2_status_old))
+ 882              		.loc 1 219 39 discriminator 1 view .LVU259
+ 883 0390 002B     		cmp	r3, #0
+ 884 0392 DFD1     		bne	.L38
+ 221:Core/Src/switch.c ****             switch_submode++;
+ 885              		.loc 1 221 13 is_stmt 1 view .LVU260
+ 221:Core/Src/switch.c ****             switch_submode++;
+ 886              		.loc 1 221 27 is_stmt 0 view .LVU261
+ 887 0394 0130     		adds	r0, r0, #1
+ 888 0396 C0B2     		uxtb	r0, r0
+ 889 0398 0C4B     		ldr	r3, .L59+16
+ 890 039a 1870     		strb	r0, [r3]
+ 222:Core/Src/switch.c ****             if(switch_submode > SWITCH_SUB_MODE_19)
+ 891              		.loc 1 222 13 is_stmt 1 view .LVU262
+ 222:Core/Src/switch.c ****             if(switch_submode > SWITCH_SUB_MODE_19)
+ 892              		.loc 1 222 15 is_stmt 0 view .LVU263
+ 893 039c 1328     		cmp	r0, #19
+ 894 039e 00D8     		bhi	.LCB719
+ 895 03a0 A4E6     		b	.L36	@long jump
+ 896              	.LCB719:
+ 224:Core/Src/switch.c ****                 switch_submode = SWITCH_SUB_MODE_1;
+ 897              		.loc 1 224 17 is_stmt 1 view .LVU264
+ 224:Core/Src/switch.c ****                 switch_submode = SWITCH_SUB_MODE_1;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 24
+
+
+ 898              		.loc 1 224 32 is_stmt 0 view .LVU265
+ 899 03a2 0120     		movs	r0, #1
+ 900 03a4 1870     		strb	r0, [r3]
+ 901 03a6 A1E6     		b	.L36
+ 902              	.L56:
+ 227:Core/Src/switch.c ****         else if((1u == switch3_status)&&(0==switch3_status_old)&&(SWITCH_SUB_MODE_17 == switch_subm
+ 903              		.loc 1 227 43 discriminator 1 view .LVU266
+ 904 03a8 054B     		ldr	r3, .L59+4
+ 905 03aa 1B78     		ldrb	r3, [r3]
+ 227:Core/Src/switch.c ****         else if((1u == switch3_status)&&(0==switch3_status_old)&&(SWITCH_SUB_MODE_17 == switch_subm
+ 906              		.loc 1 227 39 discriminator 1 view .LVU267
+ 907 03ac 002B     		cmp	r3, #0
+ 908 03ae D3D1     		bne	.L39
+ 227:Core/Src/switch.c ****         else if((1u == switch3_status)&&(0==switch3_status_old)&&(SWITCH_SUB_MODE_17 == switch_subm
+ 909              		.loc 1 227 64 discriminator 2 view .LVU268
+ 910 03b0 1128     		cmp	r0, #17
+ 911 03b2 D1D1     		bne	.L39
+ 229:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_CUSTOM;
+ 912              		.loc 1 229 13 is_stmt 1 view .LVU269
+ 229:Core/Src/switch.c ****             switch_mode = SWITCH_MODE_CUSTOM;
+ 913              		.loc 1 229 25 is_stmt 0 view .LVU270
+ 914 03b4 034B     		ldr	r3, .L59+8
+ 915 03b6 0F38     		subs	r0, r0, #15
+ 916 03b8 1870     		strb	r0, [r3]
+ 917 03ba 97E6     		b	.L36
+ 918              	.L60:
+ 919              		.align	2
+ 920              	.L59:
+ 921 03bc 00000000 		.word	.LANCHOR6
+ 922 03c0 00000000 		.word	.LANCHOR21
+ 923 03c4 00000000 		.word	.LANCHOR11
+ 924 03c8 00000000 		.word	.LANCHOR19
+ 925 03cc 00000000 		.word	.LANCHOR0
+ 926 03d0 00000000 		.word	.LANCHOR20
+ 927              		.cfi_endproc
+ 928              	.LFE41:
+ 930              		.global	switch_timer3
+ 931              		.global	switch_timer2
+ 932              		.global	switch_timer1
+ 933              		.global	switch_idle_temp
+ 934              		.global	switch_trg_time
+ 935              		.global	switch_trg_temp
+ 936              		.global	switch_custom_mode
+ 937              		.global	switch4_mode_old
+ 938              		.global	switch4_mode
+ 939              		.global	cup_in_old
+ 940              		.global	cup_in
+ 941              		.global	switch_submode
+ 942              		.global	switch_mode
+ 943              		.global	switch_overtemp
+ 944              		.global	switch4_status_old
+ 945              		.global	switch3_status_old
+ 946              		.global	switch2_status_old
+ 947              		.global	switch1_status_old
+ 948              		.global	switch4_status
+ 949              		.global	switch3_status
+ 950              		.global	switch2_status
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 25
+
+
+ 951              		.global	switch1_status
+ 952              		.section	.bss.cup_in,"aw",%nobits
+ 953              		.set	.LANCHOR10,. + 0
+ 956              	cup_in:
+ 957 0000 00       		.space	1
+ 958              		.section	.bss.cup_in_old,"aw",%nobits
+ 959              		.set	.LANCHOR15,. + 0
+ 962              	cup_in_old:
+ 963 0000 00       		.space	1
+ 964              		.section	.bss.switch1_status,"aw",%nobits
+ 965              		.set	.LANCHOR5,. + 0
+ 968              	switch1_status:
+ 969 0000 00       		.space	1
+ 970              		.section	.bss.switch1_status_old,"aw",%nobits
+ 971              		.set	.LANCHOR19,. + 0
+ 974              	switch1_status_old:
+ 975 0000 00       		.space	1
+ 976              		.section	.bss.switch2_status,"aw",%nobits
+ 977              		.set	.LANCHOR6,. + 0
+ 980              	switch2_status:
+ 981 0000 00       		.space	1
+ 982              		.section	.bss.switch2_status_old,"aw",%nobits
+ 983              		.set	.LANCHOR20,. + 0
+ 986              	switch2_status_old:
+ 987 0000 00       		.space	1
+ 988              		.section	.bss.switch3_status,"aw",%nobits
+ 989              		.set	.LANCHOR7,. + 0
+ 992              	switch3_status:
+ 993 0000 00       		.space	1
+ 994              		.section	.bss.switch3_status_old,"aw",%nobits
+ 995              		.set	.LANCHOR21,. + 0
+ 998              	switch3_status_old:
+ 999 0000 00       		.space	1
+ 1000              		.section	.bss.switch4_mode,"aw",%nobits
+ 1001              		.set	.LANCHOR17,. + 0
+ 1004              	switch4_mode:
+ 1005 0000 00       		.space	1
+ 1006              		.section	.bss.switch4_mode_old,"aw",%nobits
+ 1007              		.set	.LANCHOR18,. + 0
+ 1010              	switch4_mode_old:
+ 1011 0000 00       		.space	1
+ 1012              		.section	.bss.switch4_status,"aw",%nobits
+ 1013              		.set	.LANCHOR8,. + 0
+ 1016              	switch4_status:
+ 1017 0000 00       		.space	1
+ 1018              		.section	.bss.switch4_status_old,"aw",%nobits
+ 1019              		.set	.LANCHOR16,. + 0
+ 1022              	switch4_status_old:
+ 1023 0000 00       		.space	1
+ 1024              		.section	.bss.switch_custom_mode,"aw",%nobits
+ 1025              		.set	.LANCHOR14,. + 0
+ 1028              	switch_custom_mode:
+ 1029 0000 00       		.space	1
+ 1030              		.section	.bss.switch_idle_temp,"aw",%nobits
+ 1031              		.align	1
+ 1032              		.set	.LANCHOR3,. + 0
+ 1035              	switch_idle_temp:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 26
+
+
+ 1036 0000 0000     		.space	2
+ 1037              		.section	.bss.switch_mode,"aw",%nobits
+ 1038              		.set	.LANCHOR11,. + 0
+ 1041              	switch_mode:
+ 1042 0000 00       		.space	1
+ 1043              		.section	.bss.switch_overtemp,"aw",%nobits
+ 1044              		.set	.LANCHOR9,. + 0
+ 1047              	switch_overtemp:
+ 1048 0000 00       		.space	1
+ 1049              		.section	.bss.switch_submode,"aw",%nobits
+ 1050              		.set	.LANCHOR0,. + 0
+ 1053              	switch_submode:
+ 1054 0000 00       		.space	1
+ 1055              		.section	.bss.switch_timer1,"aw",%nobits
+ 1056              		.align	1
+ 1057              		.set	.LANCHOR12,. + 0
+ 1060              	switch_timer1:
+ 1061 0000 0000     		.space	2
+ 1062              		.section	.bss.switch_timer2,"aw",%nobits
+ 1063              		.align	1
+ 1064              		.set	.LANCHOR4,. + 0
+ 1067              	switch_timer2:
+ 1068 0000 0000     		.space	2
+ 1069              		.section	.bss.switch_timer3,"aw",%nobits
+ 1070              		.align	1
+ 1071              		.set	.LANCHOR13,. + 0
+ 1074              	switch_timer3:
+ 1075 0000 0000     		.space	2
+ 1076              		.section	.bss.switch_trg_temp,"aw",%nobits
+ 1077              		.align	1
+ 1078              		.set	.LANCHOR1,. + 0
+ 1081              	switch_trg_temp:
+ 1082 0000 0000     		.space	2
+ 1083              		.section	.bss.switch_trg_time,"aw",%nobits
+ 1084              		.align	1
+ 1085              		.set	.LANCHOR2,. + 0
+ 1088              	switch_trg_time:
+ 1089 0000 0000     		.space	2
+ 1090              		.text
+ 1091              	.Letext0:
+ 1092              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1093              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1094              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h"
+ 1095              		.file 5 "Core/Inc/vardef.h"
+ 1096              		.file 6 "Core/Inc/switch.h"
+ 1097              		.file 7 "Core/Inc/pwm.h"
+ 1098              		.file 8 "Core/Inc/eeprom.h"
+ 1099              		.file 9 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 27
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 switch.c
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:16     .text.Switch_Control:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:24     .text.Switch_Control:00000000 Switch_Control
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:100    .text.Switch_Control:00000058 $d
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:117    .bss.cup_in:00000000 cup_in
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:141    .bss.switch_status4:00000000 switch_status4
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:135    .bss.switch_status3:00000000 switch_status3
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:129    .bss.switch_status2:00000000 switch_status2
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:123    .bss.switch_status1:00000000 switch_status1
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:118    .bss.cup_in:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:124    .bss.switch_status1:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:130    .bss.switch_status2:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:136    .bss.switch_status3:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cct8EAr3.s:142    .bss.switch_status4:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:18     .text.Switch_Val_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:24     .text.Switch_Val_Init:00000000 Switch_Val_Init
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:127    .text.Switch_Val_Init:0000006c $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:144    .text.Switch_Control:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:150    .text.Switch_Control:00000000 Switch_Control
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:790    .text.Switch_Control:000002e4 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:818    .text.Switch_Control:00000348 $t
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:921    .text.Switch_Control:000003bc $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1074   .bss.switch_timer3:00000000 switch_timer3
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1067   .bss.switch_timer2:00000000 switch_timer2
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1060   .bss.switch_timer1:00000000 switch_timer1
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1035   .bss.switch_idle_temp:00000000 switch_idle_temp
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1088   .bss.switch_trg_time:00000000 switch_trg_time
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1081   .bss.switch_trg_temp:00000000 switch_trg_temp
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1028   .bss.switch_custom_mode:00000000 switch_custom_mode
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1010   .bss.switch4_mode_old:00000000 switch4_mode_old
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1004   .bss.switch4_mode:00000000 switch4_mode
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:962    .bss.cup_in_old:00000000 cup_in_old
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:956    .bss.cup_in:00000000 cup_in
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1053   .bss.switch_submode:00000000 switch_submode
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1041   .bss.switch_mode:00000000 switch_mode
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1047   .bss.switch_overtemp:00000000 switch_overtemp
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1022   .bss.switch4_status_old:00000000 switch4_status_old
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:998    .bss.switch3_status_old:00000000 switch3_status_old
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:986    .bss.switch2_status_old:00000000 switch2_status_old
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:974    .bss.switch1_status_old:00000000 switch1_status_old
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1016   .bss.switch4_status:00000000 switch4_status
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:992    .bss.switch3_status:00000000 switch3_status
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:980    .bss.switch2_status:00000000 switch2_status
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:968    .bss.switch1_status:00000000 switch1_status
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:957    .bss.cup_in:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:963    .bss.cup_in_old:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:969    .bss.switch1_status:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:975    .bss.switch1_status_old:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:981    .bss.switch2_status:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:987    .bss.switch2_status_old:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:993    .bss.switch3_status:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:999    .bss.switch3_status_old:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1005   .bss.switch4_mode:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1011   .bss.switch4_mode_old:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1017   .bss.switch4_status:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1023   .bss.switch4_status_old:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1029   .bss.switch_custom_mode:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1031   .bss.switch_idle_temp:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1042   .bss.switch_mode:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1048   .bss.switch_overtemp:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1054   .bss.switch_submode:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1056   .bss.switch_timer1:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1063   .bss.switch_timer2:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1070   .bss.switch_timer3:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1077   .bss.switch_trg_temp:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s:1084   .bss.switch_trg_time:00000000 $d
 
 UNDEFINED SYMBOLS
+switch_submodeEEP
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccNszEo0.s 			page 28
+
+
+switch_trg_tempEEP
+switch_trg_timeEEP
+switch_idle_tempEEP
 HAL_GPIO_ReadPin
 HAL_GPIO_WritePin
+Pwm_Servo_status
+Servo_timer

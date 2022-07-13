@@ -41,14 +41,14 @@ void Default_Handler(void)
     while (1);
 }
 
+void TIM14_Handler(void)
+{
+    HAL_TIM_IRQHandler(&htim14);
+}
+
 void TIM16_Handler(void)
 {
     HAL_TIM_IRQHandler(&htim16);
-}
-
-void TIM17_Handler(void)
-{
-    HAL_TIM_IRQHandler(&htim17);
 }
 
 void SystemTick_Handler(void)
@@ -81,9 +81,9 @@ __weak void ADC1_IRQHandler(void)                      {Default_Handler();}
 __weak void TIM1_BRK_UP_TRG_COM_IRQHandler(void)       {Default_Handler();}    
 __weak void TIM1_CC_IRQHandler(void)                   {Default_Handler();}               
 __weak void TIM3_IRQHandler(void)                      {Default_Handler();}                  
-__weak void TIM14_IRQHandler(void)                     {Default_Handler();}               
+__weak void TIM14_IRQHandler(void)                     {TIM14_Handler();}               
 __weak void TIM16_IRQHandler(void)                     {TIM16_Handler();}               
-__weak void TIM17_IRQHandler(void)                     {TIM17_Handler();}               
+__weak void TIM17_IRQHandler(void)                     {Default_Handler();}               
 __weak void I2C1_IRQHandler(void)                      {Default_Handler();}             
 __weak void SPI1_IRQHandler(void)                      {Default_Handler();}               
 __weak void USART1_IRQHandler(void)                    {Default_Handler();}              

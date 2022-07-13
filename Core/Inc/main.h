@@ -30,9 +30,19 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f0xx_hal.h"
 #include "vardef.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+extern ADC_HandleTypeDef hadc;
 
+extern I2C_HandleTypeDef hi2c1;
+
+extern TIM_HandleTypeDef htim1;
+extern TIM_HandleTypeDef htim3;
+extern TIM_HandleTypeDef htim14;
+extern TIM_HandleTypeDef htim16;
+
+extern UART_HandleTypeDef huart1;
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -54,13 +64,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
-extern ADC_HandleTypeDef hadc;
-extern I2C_HandleTypeDef hi2c1;
-extern TIM_HandleTypeDef htim1;
-extern TIM_HandleTypeDef htim3;
-extern TIM_HandleTypeDef htim14;
-extern TIM_HandleTypeDef htim16;
-extern TIM_HandleTypeDef htim17;
+
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
