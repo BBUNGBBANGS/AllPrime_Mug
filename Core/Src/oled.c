@@ -39,37 +39,66 @@ void OLED_Init(void)
     uint8 length;
  /* Init LCD */
     OLED_Write_Command(0xAE); // Set display off
+    HAL_Delay(10);
     OLED_Write_Command(0xA8); // Set multiplex ratio
+    HAL_Delay(10);
     OLED_Write_Command(0x1F); // -- from default 63 to 31 (i.e. 32MUX)
+    HAL_Delay(10);
     OLED_Write_Command(0xD3); // Set display offset
+    HAL_Delay(10);
     OLED_Write_Command(0x00); // -- no offset
+    HAL_Delay(10);
     OLED_Write_Command(0x40); // Set display start line
+    HAL_Delay(10);
     OLED_Write_Command(0xA1); // Set segment re-map, column address 127 is mapped to SEG0
+    HAL_Delay(10);
     OLED_Write_Command(0xC8); // Set COM output scan direction - remapped mode
+    HAL_Delay(10);
     OLED_Write_Command(0x81); // Set contrast control for BANK0
+    HAL_Delay(10);
     OLED_Write_Command(0x7F); // -- range 0x00 to 0xFF => 50%
+    HAL_Delay(10);
     OLED_Write_Command(0xA4); // Enable display outputs according to the GDDRAM contents.
+    HAL_Delay(10);
     OLED_Write_Command(0xA6); // Set normal display
+    HAL_Delay(10);
     OLED_Write_Command(0xD5); // Set display clock divide ration and oscillator frequency
+    HAL_Delay(10);
     OLED_Write_Command(0x80); // -- frequency (1000 - default); display clock divide ratio (0000 - divide ration 1)
+    HAL_Delay(10);
     OLED_Write_Command(0x8D); // Charge pump setting
+    HAL_Delay(10);
     OLED_Write_Command(0x14); // -- enable charge pump
+    HAL_Delay(10);
 
     OLED_Write_Command(0x2E); // Deactivate scroll
+    HAL_Delay(10);
     OLED_Write_Command(0x20); // Set memory addressing mode
+    HAL_Delay(10);
     OLED_Write_Command(0x10); // -- Page Addressing Mode (RESET)
+    HAL_Delay(10);
     OLED_Write_Command(0xDA); // Set COM pins hardware configuration
+    HAL_Delay(10);
     OLED_Write_Command(0x02); // --
+    HAL_Delay(10);
     OLED_Write_Command(0xD9); // Set pre-charge period
+    HAL_Delay(10);
     OLED_Write_Command(0x22); // --
+    HAL_Delay(10);
     OLED_Write_Command(0xDB); // Set Vcomh deselect level
+    HAL_Delay(10);
     OLED_Write_Command(0x20); // -- 0.77 x Vcc (RESET)
+    HAL_Delay(10);
 
     OLED_Write_Command(0xB0); // Set page start address for page addressing mode
+    HAL_Delay(10);
     OLED_Write_Command(0x00); // Set lower column start address for page addressing mode
+    HAL_Delay(10);
     OLED_Write_Command(0x10); // Set higher column start address for page addressing mode
+    HAL_Delay(10);
 
     OLED_Write_Command(0xAF); // Set display on    
+    HAL_Delay(10);
 
     OLED_Fill_Screen(OLED_COLOR_BLACK);
     OLED_Update_Screen();
@@ -375,7 +404,7 @@ static void OLED_Print_Idle(void)
 static void OLED_Write_Command(uint8 command)
 {
     uint8 data[2] = {0x00,command};
-    HAL_I2C_Master_Transmit(&OLED_HW_MODULE,OLED_ADDRESS<<1,data,sizeof(data),1000);
+    HAL_I2C_Master_Transmit(&OLED_HW_MODULE,OLED_ADDRESS<<1,data,sizeof(data),50);
 }
 
 static void OLED_Fill_Screen(OLED_COLOR_t color)

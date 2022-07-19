@@ -21,7 +21,7 @@ void Os_Init_Task(void)
 {
 	OLED_Init();
 	CO2_Init();
-	Switch_Val_Init();
+	//Switch_Val_Init();
 }
 static void Os_1ms_Task(void)
 {
@@ -46,14 +46,14 @@ static void Os_100ms_Task(void)
 	if(((switch_mode_old == SWITCH_MODE_MENUSELECT)&&(switch_mode == SWITCH_MODE_RUN))||
 	    ((switch_mode_old == SWITCH_MODE_CUSTOM)&&(switch_mode == SWITCH_MODE_RUN)))
 	{
-		EEPROM_Erase();
+		//EEPROM_Erase();
 		EEPROM_Write_Req = 1;
 	}
 	switch_mode_old = switch_mode;
 
 	if(EEPROM_Write_Req == 1)
 	{
-		EEPROM_Write();
+		//EEPROM_Write();
 		EEPROM_Write_cntReq++;
 		if(EEPROM_Write_cntReq>=8)
 		{

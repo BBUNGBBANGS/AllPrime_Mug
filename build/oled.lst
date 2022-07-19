@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
   31:Core/Src/oled.c ****     else
   32:Core/Src/oled.c ****     {
   33:Core/Src/oled.c ****         OLED_Address++;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 2
 
 
   34:Core/Src/oled.c ****     }
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
   88:Core/Src/oled.c **** extern uint16 CO2_Data16;
   89:Core/Src/oled.c **** void OLED_Display(void)
   90:Core/Src/oled.c **** {
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 3
 
 
   91:Core/Src/oled.c ****     uint8 dummy;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
   50 000e D154     		strb	r1, [r2, r3]
  117:Core/Src/oled.c ****     for(int i=0;i<100;i++)
   51              		.loc 1 117 23 is_stmt 1 discriminator 3 view .LVU9
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 4
 
 
  117:Core/Src/oled.c ****     for(int i=0;i<100;i++)
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  145:Core/Src/oled.c **** static void Print_TxBufferKorean(void)
  146:Core/Src/oled.c **** {
  147:Core/Src/oled.c ****     uint8 dummy;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 5
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 5
 
 
  148:Core/Src/oled.c ****     for(uint8 idx=0;idx<25;idx++)
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  202:Core/Src/oled.c ****     }
  203:Core/Src/oled.c ****     else
  204:Core/Src/oled.c ****     {
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 6
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 6
 
 
  205:Core/Src/oled.c ****         Tx_data[length+3] = n100 + 16 + 32;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  259:Core/Src/oled.c ****     uint8 n1,n10;
  260:Core/Src/oled.c ****     uint16 length;
  261:Core/Src/oled.c ****     Clear_TxBuffer();
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 7
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 7
 
 
  262:Core/Src/oled.c ****     sprintf(Tx_data,"  < Select Menu >");
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  316:Core/Src/oled.c ****         n1 = switch_trg_time % 10;
  317:Core/Src/oled.c ****         n10 = (switch_trg_time % 100) / 10;
  318:Core/Src/oled.c ****         if(n10>0)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 8
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 8
 
 
  319:Core/Src/oled.c ****         {
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  373:Core/Src/oled.c **** }
  374:Core/Src/oled.c **** 
  375:Core/Src/oled.c **** static void OLED_Write_Command(uint8 command)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 9
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 9
 
 
  376:Core/Src/oled.c **** {
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  107              		.thumb_func
  109              	OLED_DrawPixel:
  110              	.LVL4:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 10
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 10
 
 
  111              	.LFB56:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  458:Core/Src/oled.c **** {
  112              		.loc 1 458 1 is_stmt 1 view -0
  113              		.cfi_startproc
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 11
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 11
 
 
  114              		@ args = 0, pretend = 0, frame = 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  152              	.LVL8:
  153              	.L12:
  468:Core/Src/oled.c ****     } 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 12
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 12
 
 
  154              		.loc 1 468 9 is_stmt 1 view .LVU33
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  204 0004 4746     		mov	r7, r8
  205 0006 80B5     		push	{r7, lr}
  206              	.LCFI1:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 13
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 13
 
 
  207              		.cfi_def_cfa_offset 32
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  248 002e 5988     		ldrh	r1, [r3, #2]
  425:Core/Src/oled.c ****             }
  249              		.loc 1 425 17 view .LVU53
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 14
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 14
 
 
  250 0030 4346     		mov	r3, r8
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  292              	.LVL17:
  293 0068 ECE7     		b	.L20
  294              	.L25:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 15
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 15
 
 
  421:Core/Src/oled.c ****             } 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  431:Core/Src/oled.c **** 
  334              		.loc 1 431 5 is_stmt 1 view .LVU81
  431:Core/Src/oled.c **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 16
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 16
 
 
  335              		.loc 1 431 25 is_stmt 0 view .LVU82
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  382              	Print_TxBuffer:
  383              	.LFB44:
  125:Core/Src/oled.c ****     uint8 dummy;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 17
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 17
 
 
  384              		.loc 1 125 1 is_stmt 1 view -0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  426 001e 104B     		ldr	r3, .L35
  427 0020 585D     		ldrb	r0, [r3, r5]
  141:Core/Src/oled.c ****     }
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 18
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 18
 
 
  428              		.loc 1 141 17 discriminator 2 view .LVU105
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  470              	.LVL35:
  471 004c E7E7     		b	.L32
  472              	.L33:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 19
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 19
 
 
  139:Core/Src/oled.c ****         }
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  520              		.loc 1 148 5 view .LVU126
  521 0004 15E0     		b	.L38
  522              	.LVL38:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 20
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 20
 
 
  523              	.L41:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  564 0034 E7D9     		bls	.L41
  565              	.LBE10:
  160:Core/Src/oled.c **** static void OLED_Print_Run(void)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 21
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 21
 
 
  566              		.loc 1 160 1 view .LVU140
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  478:Core/Src/oled.c ****     uint16 length = 0;
  613              		.loc 1 478 5 view .LVU148
  479:Core/Src/oled.c ****     switch(submenu)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 22
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 22
 
 
  614              		.loc 1 479 5 view .LVU149
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  662 0018 9A71     		strb	r2, [r3, #6]
  486:Core/Src/oled.c ****             Tx_data_Korean[length+3] = 31;
  663              		.loc 1 486 13 is_stmt 1 view .LVU158
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 23
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 23
 
 
  664              		.loc 1 486 38 is_stmt 0 view .LVU159
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  535:Core/Src/oled.c ****         break;
  536:Core/Src/oled.c ****         case SWITCH_SUB_MODE_8 : 
  537:Core/Src/oled.c ****             length = 5;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 24
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 24
 
 
  538:Core/Src/oled.c ****             Tx_data_Korean[length] = 6;
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  592:Core/Src/oled.c ****             length = 3;
  593:Core/Src/oled.c ****             Tx_data_Korean[length] = 7;
  594:Core/Src/oled.c ****             Tx_data_Korean[length+1] = 0;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 25
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 25
 
 
  595:Core/Src/oled.c ****             Tx_data_Korean[length+2] = 21;
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  493:Core/Src/oled.c ****             Tx_data_Korean[length+3] = 33;
  690              		.loc 1 493 38 is_stmt 0 view .LVU170
  691 002e 0732     		adds	r2, r2, #7
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 26
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 26
 
 
  692 0030 9A71     		strb	r2, [r3, #6]
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  506:Core/Src/oled.c ****             Tx_data_Korean[length] = 11;
  729              		.loc 1 506 36 is_stmt 0 view .LVU188
  730 0050 524B     		ldr	r3, .L66+4
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 27
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 27
 
 
  731 0052 0B22     		movs	r2, #11
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  517:Core/Src/oled.c ****             Tx_data_Korean[length+3] = 27;
  768              		.loc 1 517 38 is_stmt 0 view .LVU206
  769 0076 0E3A     		subs	r2, r2, #14
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 28
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 28
 
 
  770 0078 9A71     		strb	r2, [r3, #6]
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  530:Core/Src/oled.c ****             Tx_data_Korean[length] = 20;
  807              		.loc 1 530 36 is_stmt 0 view .LVU224
  808 0098 404B     		ldr	r3, .L66+4
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 29
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 29
 
 
  809 009a 1422     		movs	r2, #20
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  846              		.loc 1 543 13 view .LVU241
  543:Core/Src/oled.c ****             Tx_data_Korean[length] = 40;
  847              		.loc 1 543 36 is_stmt 0 view .LVU242
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 30
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 30
 
 
  848 00bc 374B     		ldr	r3, .L66+4
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  886 00e0 5A71     		strb	r2, [r3, #5]
  556:Core/Src/oled.c ****             Tx_data_Korean[length+2] = 31;
  887              		.loc 1 556 13 is_stmt 1 view .LVU259
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 31
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 31
 
 
  556:Core/Src/oled.c ****             Tx_data_Korean[length+2] = 31;
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  925 0102 0D32     		adds	r2, r2, #13
  926 0104 9A71     		strb	r2, [r3, #6]
  569:Core/Src/oled.c ****         break;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 32
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 32
 
 
  927              		.loc 1 569 9 is_stmt 1 view .LVU277
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  964              		.loc 1 581 38 is_stmt 0 view .LVU294
  965 0126 0532     		adds	r2, r2, #5
  966 0128 9A71     		strb	r2, [r3, #6]
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 33
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 33
 
 
  582:Core/Src/oled.c ****             Tx_data_Korean[length+3] = 31;
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  594:Core/Src/oled.c ****             Tx_data_Korean[length+1] = 0;
  1004              		.loc 1 594 38 is_stmt 0 view .LVU312
  1005 014a 0022     		movs	r2, #0
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 34
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 34
 
 
  1006 014c 1A71     		strb	r2, [r3, #4]
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1042              		.loc 1 605 38 is_stmt 0 view .LVU330
  1043 016e 0832     		adds	r2, r2, #8
  1044 0170 9A71     		strb	r2, [r3, #6]
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 35
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 35
 
 
  606:Core/Src/oled.c ****             Tx_data_Korean[length+4] = 37;
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1081 0192 223A     		subs	r2, r2, #34
  1082 0194 1A72     		strb	r2, [r3, #8]
  617:Core/Src/oled.c ****         break;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 36
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 36
 
 
  1083              		.loc 1 617 9 is_stmt 1 view .LVU349
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1132              	.LVL70:
  379:Core/Src/oled.c **** }
  1133              		.loc 1 379 1 view .LVU357
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 37
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 37
 
 
  1134 001e 05B0     		add	sp, sp, #20
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1183 0016 F7E7     		b	.L72
  1184              	.L75:
  1185              		.align	2
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 38
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 38
 
 
  1186              	.L74:
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1234              	.LVL79:
  395:Core/Src/oled.c ****         HAL_I2C_Mem_Write(&OLED_HW_MODULE,OLED_ADDRESS<<1,0x40,I2C_MEMADD_SIZE_8BIT,&OLED_Buffer[OL
  1235              		.loc 1 395 9 discriminator 3 view .LVU373
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 39
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 39
 
 
  395:Core/Src/oled.c ****         HAL_I2C_Mem_Write(&OLED_HW_MODULE,OLED_ADDRESS<<1,0x40,I2C_MEMADD_SIZE_8BIT,&OLED_Buffer[OL
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1281              		.section	.text.OLED_Print_Idle,"ax",%progbits
  1282              		.align	1
  1283              		.syntax unified
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 40
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 40
 
 
  1284              		.code	16
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1331 000c 54656D70 		.ascii	"Temp     :\000"
  1331      20202020 
  1331      203A00
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 41
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 41
 
 
  1332              		.global	__aeabi_idivmod
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1378              		.loc 1 168 5 view .LVU397
  1379 000a FFF7FEFF 		bl	Clear_TxBuffer
  1380              	.LVL89:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 42
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 42
 
 
  169:Core/Src/oled.c ****     sprintf(Tx_data,"Run Time : ");
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1427 0056 CBB2     		uxtb	r3, r1
  1428 0058 9846     		mov	r8, r3
  1429              	.LVL98:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 43
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 43
 
 
  173:Core/Src/oled.c ****     t100 = (Target_Run_Time/100/60)%10;
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1471              		.loc 1 177 5 is_stmt 1 view .LVU418
  177:Core/Src/oled.c ****     Tx_data[length+2] = ':';        
  1472              		.loc 1 177 19 is_stmt 0 view .LVU419
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 44
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 44
 
 
  1473 008c B31C     		adds	r3, r6, #2
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  182:Core/Src/oled.c ****     length = length+8; 
  1511              		.loc 1 182 12 view .LVU436
  1512 00b0 A4B2     		uxth	r4, r4
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 45
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 45
 
 
  1513              	.LVL112:
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1556 00e4 FFF7FEFF 		bl	__aeabi_idivmod
  1557              	.LVL120:
  1558 00e8 08B2     		sxth	r0, r1
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 46
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 46
 
 
  1559 00ea 6421     		movs	r1, #100
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1597              		.loc 1 201 27 view .LVU463
  1598 0110 D654     		strb	r6, [r2, r3]
  1599              	.LVL125:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 47
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 47
 
 
  1600              	.L87:
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1639 0136 FFF7FEFF 		bl	memcpy
  1640              	.LVL133:
  214:Core/Src/oled.c ****     length = length + 5;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 48
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 48
 
 
  1641              		.loc 1 214 5 is_stmt 1 view .LVU479
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  222:Core/Src/oled.c ****         Tx_data[length+1] = n1 + 16 + 32;
  1683              		.loc 1 222 9 is_stmt 1 view .LVU492
  222:Core/Src/oled.c ****         Tx_data[length+1] = n1 + 16 + 32;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 49
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 49
 
 
  1684              		.loc 1 222 23 is_stmt 0 view .LVU493
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1724              		.loc 1 234 5 is_stmt 1 view .LVU507
  234:Core/Src/oled.c ****     Tx_data[length] = ' ';
  1725              		.loc 1 234 21 is_stmt 0 view .LVU508
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 50
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 50
 
 
  1726 0192 2754     		strb	r7, [r4, r0]
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1770 01cc 4046     		mov	r0, r8
  1771 01ce FFF7FEFF 		bl	__aeabi_uidivmod
  1772              	.LVL159:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 51
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 51
 
 
  1773 01d2 88B2     		uxth	r0, r1
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1811 01f8 3034     		adds	r4, r4, #48
  1812              	.LVL164:
  244:Core/Src/oled.c ****         Tx_data[length+3] = n1 + 16 + 32;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 52
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 52
 
 
  1813              		.loc 1 244 27 view .LVU535
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1854 021a 3030     		adds	r0, r0, #48
  1855              	.LVL174:
  205:Core/Src/oled.c ****         Tx_data[length+3] = n100 + 16 + 32;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 53
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 53
 
 
  1856              		.loc 1 205 27 view .LVU549
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1895 023a 6A1C     		adds	r2, r5, #1
  248:Core/Src/oled.c ****         Tx_data[length+1] = n100 + 16 + 32;
  1896              		.loc 1 248 39 view .LVU565
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 54
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 54
 
 
  1897 023c 3037     		adds	r7, r7, #48
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1941      6374204D 
  1941      656E7520 
  1941      3E00
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 55
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 55
 
 
  1942              		.section	.text.OLED_Print_Select,"ax",%progbits
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  1987              		.loc 1 264 21 is_stmt 0 view .LVU584
  1988 0020 2023     		movs	r3, #32
  1989 0022 2B54     		strb	r3, [r5, r0]
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 56
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 56
 
 
  265:Core/Src/oled.c ****     length = length + 9;
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  270:Core/Src/oled.c ****     Tx_data[length+2] = n1 + 16 + 32;
  2031              		.loc 1 270 5 is_stmt 1 view .LVU598
  270:Core/Src/oled.c ****     Tx_data[length+2] = n1 + 16 + 32;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 57
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 57
 
 
  2032              		.loc 1 270 19 is_stmt 0 view .LVU599
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2073      5D00
  2074 001a 0000     		.align	2
  2075              	.LC42:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 58
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 58
 
 
  2076 001c 20203C20 		.ascii	"  < Target Time >\000"
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2115 000c 09D0     		beq	.L111
  310:Core/Src/oled.c ****     else if(switch_custom_mode == SWITCH_CUSTOM_TARGET_TIME_SET)
  2116              		.loc 1 310 10 is_stmt 1 view .LVU616
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 59
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 59
 
 
  310:Core/Src/oled.c ****     else if(switch_custom_mode == SWITCH_CUSTOM_TARGET_TIME_SET)
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2158              		.loc 1 286 25 is_stmt 0 view .LVU629
  2159 003c 2023     		movs	r3, #32
  2160 003e 2B54     		strb	r3, [r5, r0]
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 60
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 60
 
 
  287:Core/Src/oled.c ****         length = length + 5;
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  291:Core/Src/oled.c ****         if(n100>0)
  2205              		.loc 1 291 11 is_stmt 0 view .LVU640
  2206 007a 0028     		cmp	r0, #0
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 61
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 61
 
 
  2207 007c 16D0     		beq	.L101
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2244              		.loc 1 306 9 view .LVU657
  2245 0098 0622     		movs	r2, #6
  2246 009a 5849     		ldr	r1, .L114+16
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 62
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 62
 
 
  2247 009c FFF7FEFF 		bl	memcpy
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  304:Core/Src/oled.c ****             Tx_data[length+3] = n1 + 16 + 32;                     
  2287              		.loc 1 304 13 is_stmt 1 view .LVU672
  304:Core/Src/oled.c ****             Tx_data[length+3] = n1 + 16 + 32;                     
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 63
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 63
 
 
  2288              		.loc 1 304 27 is_stmt 0 view .LVU673
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2330              	.LVL233:
  316:Core/Src/oled.c ****         n1 = switch_trg_time % 10;
  2331              		.loc 1 316 9 is_stmt 1 view .LVU686
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 64
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 64
 
 
  316:Core/Src/oled.c ****         n1 = switch_trg_time % 10;
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2373              		.loc 1 321 31 view .LVU699
  2374 011e D654     		strb	r6, [r2, r3]
  2375              	.LVL241:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 65
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 65
 
 
  2376              	.L107:
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  325:Core/Src/oled.c ****             Tx_data[length+3] = n1 + 16 + 32;                     
  2417              		.loc 1 325 31 view .LVU713
  2418              	.LBE16:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 66
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 66
 
 
  2419              	.LBB17:
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  338:Core/Src/oled.c ****         n10 = (switch_idle_temp % 100) / 10;
  2461              		.loc 1 338 13 is_stmt 0 view .LVU726
  2462 0176 6421     		movs	r1, #100
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 67
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 67
 
 
  2463 0178 3800     		movs	r0, r7
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2505 01ac D654     		strb	r6, [r2, r3]
  344:Core/Src/oled.c ****             Tx_data[length+3] = n1 + 16 + 32;
  2506              		.loc 1 344 13 is_stmt 1 view .LVU739
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 68
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 68
 
 
  344:Core/Src/oled.c ****             Tx_data[length+3] = n1 + 16 + 32;
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2547 01d0 07D0     		beq	.L110
  348:Core/Src/oled.c ****             Tx_data[length+2] = n10 + 16 + 32;
  2548              		.loc 1 348 13 is_stmt 1 view .LVU754
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 69
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 69
 
 
  348:Core/Src/oled.c ****             Tx_data[length+2] = n10 + 16 + 32;
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2592              		.cfi_endproc
  2593              	.LFE48:
  2595              		.section	.text.OLED_FindAddress,"ax",%progbits
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 70
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 70
 
 
  2596              		.align	1
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2645              		.global	OLED_Init
  2646              		.syntax unified
  2647              		.code	16
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 71
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 71
 
 
  2648              		.thumb_func
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2693              	.LVL282:
   49:Core/Src/oled.c ****     OLED_Write_Command(0x81); // Set contrast control for BANK0
  2694              		.loc 1 49 5 view .LVU783
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 72
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 72
 
 
  2695 0032 8120     		movs	r0, #129
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2738              		.loc 1 61 5 view .LVU794
  2739 0074 DA20     		movs	r0, #218
  2740 0076 FFF7FEFF 		bl	OLED_Write_Command
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 73
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 73
 
 
  2741              	.LVL294:
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2784              	.LVL305:
   77:Core/Src/oled.c ****     Clear_TxBuffer();
  2785              		.loc 1 77 5 view .LVU806
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 74
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 74
 
 
  2786 00ba FFF7FEFF 		bl	Clear_TxBuffer
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
   95:Core/Src/oled.c ****     uint16 length;
  2832              		.loc 1 95 5 view .LVU817
   96:Core/Src/oled.c ****     sint16 Temp;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 75
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 75
 
 
  2833              		.loc 1 96 5 view .LVU818
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2875              		.cfi_endproc
  2876              	.LFE42:
  2878              		.global	Tx_data_Korean
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 76
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 76
 
 
  2879              		.global	Tx_data
@@ -4554,79 +4554,79 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 1
  2927              		.file 12 "Core/Inc/oled.h"
  2928              		.file 13 "<built-in>"
  2929              		.file 14 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\string.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 77
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 77
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 oled.c
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:18     .text.Clear_TxBuffer:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:23     .text.Clear_TxBuffer:00000000 Clear_TxBuffer
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:67     .text.Clear_TxBuffer:00000018 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:73     .text.OLED_Set_X_Y:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:78     .text.OLED_Set_X_Y:00000000 OLED_Set_X_Y
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:99     .text.OLED_Set_X_Y:00000008 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:104    .text.OLED_DrawPixel:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:109    .text.OLED_DrawPixel:00000000 OLED_DrawPixel
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:176    .text.OLED_DrawPixel:0000003c $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2899   .bss.OLED_Buffer:00000000 OLED_Buffer
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:181    .text.OLED_Set_Char:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:186    .text.OLED_Set_Char:00000000 OLED_Set_Char
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:372    .text.OLED_Set_Char:000000a0 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:377    .text.Print_TxBuffer:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:382    .text.Print_TxBuffer:00000000 Print_TxBuffer
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:488    .text.Print_TxBuffer:00000060 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:495    .text.Print_TxBufferKorean:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:500    .text.Print_TxBufferKorean:00000000 Print_TxBufferKorean
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:593    .text.Print_TxBufferKorean:00000050 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:600    .text.OLED_KoreanFonts:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:605    .text.OLED_KoreanFonts:00000000 OLED_KoreanFonts
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:624    .rodata.OLED_KoreanFonts:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1089   .text.OLED_KoreanFonts:00000198 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1095   .text.OLED_Write_Command:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1100   .text.OLED_Write_Command:00000000 OLED_Write_Command
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1140   .text.OLED_Write_Command:00000024 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1145   .text.OLED_Fill_Screen:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1150   .text.OLED_Fill_Screen:00000000 OLED_Fill_Screen
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1187   .text.OLED_Fill_Screen:00000018 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1192   .text.OLED_Update_Screen:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1197   .text.OLED_Update_Screen:00000000 OLED_Update_Screen
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1276   .text.OLED_Update_Screen:00000048 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1282   .text.OLED_Print_Idle:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1287   .text.OLED_Print_Idle:00000000 OLED_Print_Idle
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1319   .text.OLED_Print_Idle:00000018 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1324   .rodata.OLED_Print_Run.str1.4:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1344   .text.OLED_Print_Run:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1349   .text.OLED_Print_Run:00000000 OLED_Print_Run
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1922   .text.OLED_Print_Run:00000250 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1939   .rodata.OLED_Print_Select.str1.4:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1943   .text.OLED_Print_Select:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:1948   .text.OLED_Print_Select:00000000 OLED_Print_Select
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2061   .text.OLED_Print_Select:00000068 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2068   .rodata.OLED_Print_Custom.str1.4:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2084   .text.OLED_Print_Custom:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2089   .text.OLED_Print_Custom:00000000 OLED_Print_Custom
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2581   .text.OLED_Print_Custom:000001ec $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2596   .text.OLED_FindAddress:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2602   .text.OLED_FindAddress:00000000 OLED_FindAddress
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2638   .text.OLED_FindAddress:00000020 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2644   .text.OLED_Init:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2650   .text.OLED_Init:00000000 OLED_Init
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2805   .text.OLED_Init:000000d0 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2810   .text.OLED_Display:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2816   .text.OLED_Display:00000000 OLED_Display
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s 			page 78
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:18     .text.Clear_TxBuffer:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:23     .text.Clear_TxBuffer:00000000 Clear_TxBuffer
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:67     .text.Clear_TxBuffer:00000018 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:73     .text.OLED_Set_X_Y:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:78     .text.OLED_Set_X_Y:00000000 OLED_Set_X_Y
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:99     .text.OLED_Set_X_Y:00000008 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:104    .text.OLED_DrawPixel:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:109    .text.OLED_DrawPixel:00000000 OLED_DrawPixel
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:176    .text.OLED_DrawPixel:0000003c $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2899   .bss.OLED_Buffer:00000000 OLED_Buffer
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:181    .text.OLED_Set_Char:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:186    .text.OLED_Set_Char:00000000 OLED_Set_Char
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:372    .text.OLED_Set_Char:000000a0 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:377    .text.Print_TxBuffer:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:382    .text.Print_TxBuffer:00000000 Print_TxBuffer
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:488    .text.Print_TxBuffer:00000060 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:495    .text.Print_TxBufferKorean:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:500    .text.Print_TxBufferKorean:00000000 Print_TxBufferKorean
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:593    .text.Print_TxBufferKorean:00000050 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:600    .text.OLED_KoreanFonts:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:605    .text.OLED_KoreanFonts:00000000 OLED_KoreanFonts
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:624    .rodata.OLED_KoreanFonts:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1089   .text.OLED_KoreanFonts:00000198 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1095   .text.OLED_Write_Command:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1100   .text.OLED_Write_Command:00000000 OLED_Write_Command
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1140   .text.OLED_Write_Command:00000024 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1145   .text.OLED_Fill_Screen:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1150   .text.OLED_Fill_Screen:00000000 OLED_Fill_Screen
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1187   .text.OLED_Fill_Screen:00000018 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1192   .text.OLED_Update_Screen:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1197   .text.OLED_Update_Screen:00000000 OLED_Update_Screen
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1276   .text.OLED_Update_Screen:00000048 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1282   .text.OLED_Print_Idle:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1287   .text.OLED_Print_Idle:00000000 OLED_Print_Idle
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1319   .text.OLED_Print_Idle:00000018 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1324   .rodata.OLED_Print_Run.str1.4:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1344   .text.OLED_Print_Run:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1349   .text.OLED_Print_Run:00000000 OLED_Print_Run
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1922   .text.OLED_Print_Run:00000250 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1939   .rodata.OLED_Print_Select.str1.4:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1943   .text.OLED_Print_Select:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:1948   .text.OLED_Print_Select:00000000 OLED_Print_Select
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2061   .text.OLED_Print_Select:00000068 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2068   .rodata.OLED_Print_Custom.str1.4:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2084   .text.OLED_Print_Custom:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2089   .text.OLED_Print_Custom:00000000 OLED_Print_Custom
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2581   .text.OLED_Print_Custom:000001ec $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2596   .text.OLED_FindAddress:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2602   .text.OLED_FindAddress:00000000 OLED_FindAddress
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2638   .text.OLED_FindAddress:00000020 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2644   .text.OLED_Init:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2650   .text.OLED_Init:00000000 OLED_Init
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2805   .text.OLED_Init:000000d0 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2810   .text.OLED_Display:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2816   .text.OLED_Display:00000000 OLED_Display
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s 			page 78
 
 
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2874   .text.OLED_Display:0000002c $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2913   .bss.Tx_data_Korean:00000000 Tx_data_Korean
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2906   .bss.Tx_data:00000000 Tx_data
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2887   .bss.OLED:00000000 OLED
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2893   .bss.OLED_Address:00000000 OLED_Address
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2883   .bss.OLED:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2894   .bss.OLED_Address:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2896   .bss.OLED_Buffer:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2902   .bss.Tx_data:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\cc2BN9CW.s:2909   .bss.Tx_data_Korean:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2874   .text.OLED_Display:0000002c $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2913   .bss.Tx_data_Korean:00000000 Tx_data_Korean
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2906   .bss.Tx_data:00000000 Tx_data
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2887   .bss.OLED:00000000 OLED
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2893   .bss.OLED_Address:00000000 OLED_Address
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2883   .bss.OLED:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2894   .bss.OLED_Address:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2896   .bss.OLED_Buffer:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2902   .bss.Tx_data:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccK8UZ5N.s:2909   .bss.Tx_data_Korean:00000000 $d
 
 UNDEFINED SYMBOLS
 OLED_Font_7x10
