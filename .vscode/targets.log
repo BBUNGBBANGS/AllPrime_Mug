@@ -8,7 +8,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This program built for i386-pc-mingw32
  
 
-# ����ũ ����Ÿ���̽�, Tue Jul 19 09:46:01 2022
+# ����ũ ����Ÿ���̽�, Wed Aug 10 09:55:05 2022
 �� ǥ��
 # ����
 
@@ -48,7 +48,7 @@ BIN = $(CP) -O binary -S
 # ȯ��
 WINDIR = C:\Windows
 # ȯ��
-VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_translationsConfigFile":"C:\\Users\\jisu8\\AppData\\Roaming\\Code\\clp\\2dff5cff996ed6cbe8d8aa8740f86aa0.ko\\tcf.json","_cacheRoot":"C:\\Users\\jisu8\\AppData\\Roaming\\Code\\clp\\2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_resolvedLanguagePackCoreLocation":"C:\\Users\\jisu8\\AppData\\Roaming\\Code\\clp\\2dff5cff996ed6cbe8d8aa8740f86aa0.ko\\b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a","_corruptedFile":"C:\\Users\\jisu8\\AppData\\Roaming\\Code\\clp\\2dff5cff996ed6cbe8d8aa8740f86aa0.ko\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_translationsConfigFile":"C:\\Users\\jisu8\\AppData\\Roaming\\Code\\clp\\2dff5cff996ed6cbe8d8aa8740f86aa0.ko\\tcf.json","_cacheRoot":"C:\\Users\\jisu8\\AppData\\Roaming\\Code\\clp\\2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_resolvedLanguagePackCoreLocation":"C:\\Users\\jisu8\\AppData\\Roaming\\Code\\clp\\2dff5cff996ed6cbe8d8aa8740f86aa0.ko\\3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"C:\\Users\\jisu8\\AppData\\Roaming\\Code\\clp\\2dff5cff996ed6cbe8d8aa8740f86aa0.ko\\corrupted.info","_languagePackSupport":true}
 # ����ũ���� (from `makefile', line 91)
 SZ = $(PREFIX)size
 # ����ũ���� (from `makefile', line 144)
@@ -98,7 +98,7 @@ PICO_TOOLCHAIN_PATH = D:\3.tools\ARM_GCC_ToolChain\bin\
 # �ڵ�
 %F = $(notdir $%)
 # ȯ��
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11440_XDTRHIZVADJRHDJI
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_35356_YGISADJCIWPRUABE
 # ����ũ���� (from `makefile', line 73)
 ASM_SOURCES = 
 # ����ũ���� (from `makefile', line 25)
@@ -118,9 +118,9 @@ PUBLIC = C:\Users\Public
 # ȯ��
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # ȯ��
-VSCODE_CODE_CACHE_PATH = C:\Users\jisu8\AppData\Roaming\Code\CachedData\b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a
+VSCODE_CODE_CACHE_PATH = C:\Users\jisu8\AppData\Roaming\Code\CachedData\3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # ȯ��
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # ȯ��
 COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
 # ȯ��
@@ -180,7 +180,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD
 # ȯ��
 OS = Windows_NT
 # ȯ��
-VSCODE_IPC_HOOK = \\.\pipe\caa75e2a4979fa74b9bb9bb2cca010c5-1.69.1-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\caa75e2a4979fa74b9bb9bb2cca010c5-1.69.2-main-sock
 # ȯ��
 HOMEPATH = \Users\jisu8
 # ȯ��
@@ -188,6 +188,7 @@ COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # ȯ��
 PROMPT = $P$G
 # ȯ��
+ 
 MFLAGS = -Rrqp
 # �ڵ�
 *D = $(patsubst %/,%,$(dir $*))
@@ -199,6 +200,8 @@ SYSTEMROOT = C:\Windows
 +F = $(notdir $+)
 # ȯ��
 APPDATA = C:\Users\jisu8\AppData\Roaming
+# ȯ��
+__COMPAT_LAYER = DetectorsAppHealth
 # ȯ��
 TEMP = C:\Users\jisu8\AppData\Local\Temp
 # ȯ��
@@ -234,14 +237,13 @@ LANG = C
 # ȯ��
 PROCESSOR_LEVEL = 25
 # ȯ��
-F 
-PS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # ȯ��
-VSCODE_PID = 11440
+VSCODE_PID = 35356
 # ȯ��
 USERDOMAIN_ROAMINGPROFILE = DESKTOP-3B19SQP
 # variable set hash-table stats:
-# Load=113/1024=11%, Rehash=0, Collisions=16/254=6%
+# Load=114/1024=11%, Rehash=0, Collisions=16/255=6%
 
 # Pattern-specific Variable Values
 
@@ -250,13 +252,13 @@ USERDOMAIN_ROAMINGPROFILE = DESKTOP-3B19SQP
 # ���丮
 
 # C:\Users\jisu8\AppData\Local\Programs\Python\Python39\ (Ű C:/Users/jisu8/AppData/Local/Programs/Python/Python39/, ����ð� 1625390021): 18 ����, 0�� �Ұ���.
-# C:\Users\jisu8\AppData\Local\Microsoft\WindowsApps (Ű C:/Users/jisu8/AppData/Local/Microsoft/WindowsApps, ����ð� 1657837580): 17 ����, 0�� �Ұ���.
+# C:\Users\jisu8\AppData\Local\Microsoft\WindowsApps (Ű C:/Users/jisu8/AppData/Local/Microsoft/WindowsApps, ����ð� 1660019126): 17 ����, 0�� �Ұ���.
 # C:\Program Files\Bandizip\ (Ű C:/Program Files/Bandizip/, ����ð� 1657973545): 22 ����, 0�� �Ұ���.
 # C:\Users\jisu8\AppData\Local\Programs\Python\Python39\Scripts\ (Ű C:/Users/jisu8/AppData/Local/Programs/Python/Python39/Scripts/, ����ð� 1625641826): 18 ����, 0�� �Ұ���.
 # C:\Program Files\MATLAB\MATLAB Production Server\R2015a\runtime\win64 (Ű C:/Program Files/MATLAB/MATLAB Production Server/R2015a/runtime/win64, ����ð� 1639221848): 7 ����, 0�� �Ұ���.
 # C:\Windows\System32\WindowsPowerShell\v1.0\ (Ű C:/Windows/System32/WindowsPowerShell/v1.0/, ����ð� 1617976687): 31 ����, 0�� �Ұ���.
 # D:\3.tools\ARM_GCC_ToolChain\bin (Ű D:/3.tools/ARM_GCC_ToolChain/bin, ����ð� 1654489529): 35 ����, 0�� �Ұ���.
-# C:\Windows\System32\Wbem (Ű C:/Windows/System32/Wbem, ����ð� 1657926280): 170 ����, 0�� �Ұ���.
+# C:\Windows\System32\Wbem (Ű C:/Windows/System32/Wbem, ����ð� 1659105387): 170 ����, 0�� �Ұ���.
 # . (Ű d:/1.Project_workspace/AllPrime_Mug, ����ð� 1657972283): 17 ����, 0�� �Ұ���.
 # C:\Program Files\Microchip\xc8\v2.31\bin (Ű C:/Program Files/Microchip/xc8/v2.31/bin, ����ð� 1638598163): 11 ����, 0�� �Ұ���.
 # Core/Src (Ű d:/1.Project_workspace/AllPrime_Mug/Core/Src, ����ð� 1657980082): 0�� ����, 0�� �Ұ��� ���ݱ���.
@@ -267,20 +269,20 @@ USERDOMAIN_ROAMINGPROFILE = DESKTOP-3B19SQP
 # C:\Windows\System32\OpenSSH\: stat�� �� �� �������ϴ�.
 # C:\Program Files (x86)\Common Files\Oracle\Java\javapath (Ű C:/Program Files (x86)/Common Files/Oracle/Java/javapath, ����ð� 1651885355): 5 ����, 0�� �Ұ���.
 # C:\Program Files (x86)\NAT Service (Ű C:/Program Files (x86)/NAT Service, ����ð� 1644426961): 10 ����, 0�� �Ұ���.
-# C:\Windows (Ű C:/Windows, ����ð� 1657926280): 132 ����, 0�� �Ұ���.
+# C:\Windows (Ű C:/Windows, ����ð� 1659918009): 133 ����, 0�� �Ұ���.
 # C:\Program Files\MATLAB\MATLAB Production Server\R2015a\polyspace\bin (Ű C:/Program Files/MATLAB/MATLAB Production Server/R2015a/polyspace/bin, ����ð� 1639221888): 58 ����, 0�� �Ұ���.
 # Drivers/STM32F0xx_HAL_Driver/Src (Ű d:/1.Project_workspace/AllPrime_Mug/Drivers/STM32F0xx_HAL_Driver/Src, ����ð� 1654489219): 0�� ����, 0�� �Ұ��� ���ݱ���.
 # %ARMGCC_DIR%: stat�� �� �� �������ϴ�.
 # C:\Program Files\MATLAB\MATLAB Production Server\R2015a\bin (Ű C:/Program Files/MATLAB/MATLAB Production Server/R2015a/bin, ����ð� 1639221827): 21 ����, 0�� �Ұ���.
-# C:\Users\jisu8\AppData\Local\Programs\Microsoft VS Code\bin (Ű C:/Users/jisu8/AppData/Local/Programs/Microsoft VS Code/bin, ����ð� 1657972877): 4 ����, 0�� �Ұ���.
+# C:\Users\jisu8\AppData\Local\Programs\Microsoft VS Code\bin (Ű C:/Users/jisu8/AppData/Local/Programs/Microsoft VS Code/bin, ����ð� 1658191722): 4 ����, 0�� �Ұ���.
 # D:\3.tools\Git\bin (Ű D:/3.tools/Git/bin, ����ð� 1654489706): 5 ����, 0�� �Ұ��� ���ݱ���.
 # D:\3.tools\Git\cmd (Ű D:/3.tools/Git/cmd, ����ð� 1654489706): 8 ����, 0�� �Ұ���.
-# C:\Windows\system32 (Ű C:/Windows/system32, ����ð� 1658187806): 3171 ����, 0�� �Ұ���.
+# C:\Windows\system32 (Ű C:/Windows/system32, ����ð� 1660091280): 3171 ����, 0�� �Ұ���.
 # D:\3.tools\make-3.81\bin (Ű D:/3.tools/make-3.81/bin, ����ð� 1654489754): 5 ����, 0�� �Ұ���.
 # D:\3.tools\openocd-20210625\OpenOCD-20210625-0.11.0\bin (Ű D:/3.tools/openocd-20210625/OpenOCD-20210625-0.11.0/bin, ����ð� 1654489971): 7 ����, 0�� �Ұ���.
 # C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR (Ű C:/Program Files/NVIDIA Corporation/NVIDIA NvDLISR, ����ð� 1622523887): 5 ����, 0�� �Ұ���.
 
-# 3928 ����, 0�� impossibilities in 30 directories.
+# 3929 ����, 0�� impossibilities in 30 directories.
 
 # Implicit Rules
 
@@ -295,7 +297,8 @@ build/%.o: %.s Makefile | build
 	
 
 build/%.hex: build/%.elf | build
-#  ������ ���ɾ� (`makefile'����, 183��° ��):
+#  ������ ���ɾ� (`m 
+akefile'����, 183��° ��):
 	$(HEX) $< $@
 	
 
@@ -334,7 +337,6 @@ build/led.d:
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
 #  ������ ���� 2022-07-13 17:00:51
 #  ������ ���ŵǾ����ϴ�.
- 
 #  ���������� ���ŵ�.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
@@ -351,7 +353,8 @@ Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h:
 Core/Src/Os.c:
 #  ������ ��Ģ Ž���� �Ϸ���� �ʾҽ��ϴ�.
 #  ���� �ð��� ���� �˻���� �ʾ���.
-#  ������ ���ŵ��� �ʾҽ��ϴ�.
+#  ��� 
+��� ���ŵ��� �ʾҽ��ϴ�.
 
 # Ÿ���� �ƴ�:
 build/stm32f0xx_hal_uart_ex.d:
@@ -387,14 +390,30 @@ Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-build/main.o: Core/Src/main.c makefile Core/Src/main.c Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h Core/Inc/vardef.h Core/Inc/os.h | build
+build/main.o: Core/Src/main.c makefile Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h Core/Inc/vardef.h Core/Inc/os.h | build
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
 #  ������/���� ���� ����: `main'
 #  ������ ���� 2022-07-16 21:10:00
 #  ������ ���ŵǾ����ϴ�.
-#  ���������� ���ŵ�.
+#  ���ŵ� �ʿ䰡 ���� (-q ������).
+# �ڵ�
+# @ := build/main.o
+# �ڵ�
+# % := 
+# �ڵ�
+# * := main
+# �ڵ�
+# + := Core/Src/main.c makefile Core/Src/main.c Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h Core/Inc/vardef.h Core/Inc/os.h
+# �ڵ�
+# | := build
+# �ڵ�
+# < := Core/Src/main.c
+# �ڵ�
+# ^ := Core/Src/main.c makefile Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h Core/Inc/vardef.h Core/Inc/os.h
+# �ڵ�
+# ? := Core/Src/main.c
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=8/32=25%, Rehash=0, Collisions=1/25=4%
 #  ������ ���ɾ� (`makefile'����, 173��° ��):
 	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 	
@@ -468,9 +487,9 @@ build/pwm.d:
 #  ���������� ���ŵ�.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
- 
 
-Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h:
+Dri 
+vers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h:
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
 #  ������ ���� 2021-07-18 16:05:53
 #  ������ ���ŵǾ����ϴ�.
@@ -601,8 +620,7 @@ build/system_stm32f0xx.o: Core/Src/system_stm32f0xx.c Drivers/CMSIS/Device/ST/ST
 #  ���� �ð��� ���� �˻���� �ʾ���.
 #  ������ ���ŵ��� �ʾҽ��ϴ�.
 
-build/stm32f0xx_hal_adc.o: Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.c Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c 
-_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h
+build/stm32f0xx_hal_adc.o: Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.c Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h
 #  ������ ��Ģ Ž���� �Ϸ���� �ʾҽ��ϴ�.
 #  ���� �ð��� ���� �˻���� �ʾ���.
 #  ������ ���ŵ��� �ʾҽ��ϴ�.
@@ -640,7 +658,8 @@ startup_stm32f030x6.c:
 #  ���� �ð��� ���� �˻���� �ʾ���.
 #  ������ ���ŵ��� �ʾҽ��ϴ�.
 
-Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h:
+Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx 
+_hal_exti.h:
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
 #  ������ ���� 2021-07-18 16:05:53
 #  ������ ���ŵǾ����ϴ�.
@@ -714,8 +733,7 @@ makefile:
 #  ������ ���ŵǾ����ϴ�.
 #  ���������� ���ŵ�.
 # variable set hash-table stats:
-# 
- Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 build:
 #  ������ ��Ģ Ž���� �Ϸ���� �ʾҽ��ϴ�.
@@ -824,8 +842,8 @@ build/stm32f0xx_hal_tim_ex.o: Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim
 
 # Ÿ���� �ƴ�:
 build/stm32f0xx_hal.d:
-#  A default, MAKEFILES, or -include/sinclud 
-e makefile.
+#  A default, MAKEFILES, or -include/sinclude ma 
+kefile.
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
 #  ������ ���� 2022-07-13 17:00:55
 #  ������ ���ŵǾ����ϴ�.
@@ -899,12 +917,9 @@ build/temp.d:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 Core/Inc/stm32f0xx_it.h:
-#  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
-#  ������ ���� 2021-07-18 19:36:57
-#  ������ ���ŵǾ����ϴ�.
-#  ���������� ���ŵ�.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  ������ ��Ģ Ž���� �Ϸ���� �ʾҽ��ϴ�.
+#  ���� �ð��� ���� �˻���� �ʾ���.
+#  ������ ���ŵ��� �ʾҽ��ϴ�.
 
 # Ÿ���� �ƴ�:
 .SUFFIXES:
@@ -922,8 +937,7 @@ Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h:
 
 # Ÿ���� �ƴ�:
 build/stm32f0xx_hal_exti.d:
-#  A default, MAKEFILES, or -include/sinc 
-lude makefile.
+#  A default, MAKEFILES, or -include/sinclude makefile.
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
 #  ������ ���� 2022-07-13 17:00:58
 #  ������ ���ŵǾ����ϴ�.
@@ -934,7 +948,7 @@ lude makefile.
 # Ÿ���� �ƴ�:
 Core/Src/main.c:
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
-#  ������ ���� 2022-07-16 20:52:12
+#  ������ ���� 2022-07-19 09:48:33
 #  ������ ���ŵǾ����ϴ�.
 #  ���������� ���ŵ�.
 # variable set hash-table stats:
@@ -1005,15 +1019,15 @@ Core/Src/temp.c:
 #  ���� �ð��� ���� �˻���� �ʾ���.
 #  ������ ���ŵ��� �ʾҽ��ϴ�.
 
-build/stm32f0xx_hal_flash_ex.o: Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h
+build/stm32f0xx_hal_flash_ex.o: Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_p 
+wr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h
 #  ������ ��Ģ Ž���� �Ϸ���� �ʾҽ��ϴ�.
 #  ���� �ð��� ���� �˻���� �ʾ���.
 #  ������ ���ŵ��� �ʾҽ��ϴ�.
 
 # Ÿ���� �ƴ�:
 build/fonts.d:
-#  A default, MAKEFILES, or -include/sinclude makef 
-ile.
+#  A default, MAKEFILES, or -include/sinclude makefile.
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
 #  ������ ���� 2021-07-19 01:39:35
 #  ������ ���ŵǾ����ϴ�.
@@ -1112,8 +1126,7 @@ build/stm32f0xx_hal_rcc_ex.d:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-build/stm32f0xx_hal_msp.o: Core/Src/stm32f0xx_hal_msp.c Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc 
-/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h Core/Inc/vardef.h
+build/stm32f0xx_hal_msp.o: Core/Src/stm32f0xx_hal_msp.c Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h Core/Inc/vardef.h
 #  ������ ��Ģ Ž���� �Ϸ���� �ʾҽ��ϴ�.
 #  ���� �ð��� ���� �˻���� �ʾ���.
 #  ������ ���ŵ��� �ʾҽ��ϴ�.
@@ -1121,7 +1134,8 @@ build/stm32f0xx_hal_msp.o: Core/Src/stm32f0xx_hal_msp.c Core/Inc/main.h Drivers/
 # Ÿ���� �ƴ�:
 Core/Src/fonts.c:
 #  ������ ��Ģ Ž���� �Ϸ���� �ʾҽ��ϴ�.
-#  ���� �ð��� ���� �˻���� �ʾ���.
+#  �� 
+�� �ð��� ���� �˻���� �ʾ���.
 #  ������ ���ŵ��� �ʾҽ��ϴ�.
 
 Core/Inc/vardef.h:
@@ -1139,12 +1153,9 @@ build/stm32f0xx_hal_gpio.o: Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.
 
 # Ÿ���� �ƴ�:
 Core/Src/stm32f0xx_it.c:
-#  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
-#  ������ ���� 2022-07-16 23:01:22
-#  ������ ���ŵǾ����ϴ�.
-#  ���������� ���ŵ�.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  ������ ��Ģ Ž���� �Ϸ���� �ʾҽ��ϴ�.
+#  ���� �ð��� ���� �˻���� �ʾ���.
+#  ������ ���ŵ��� �ʾҽ��ϴ�.
 
 Drivers/CMSIS/Include/cmsis_gcc.h:
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
@@ -1183,8 +1194,7 @@ build/ssd1306.d:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 Core/Inc/co2.h:
-# 
-  ������ ��Ģ Ž���� �Ϸ���� �ʾҽ��ϴ�.
+#  ������ ��Ģ Ž���� �Ϸ���� �ʾҽ��ϴ�.
 #  ���� �ð��� ���� �˻���� �ʾ���.
 #  ������ ���ŵ��� �ʾҽ��ϴ�.
 
@@ -1224,7 +1234,8 @@ build/oled.d:
 #  ������ ���ŵǾ����ϴ�.
 #  ���������� ���ŵ�.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/3 
+2=0%, Rehash=0, Collisions=0/0=0%
 
 # Ÿ���� �ƴ�:
 build/main.d:
@@ -1249,8 +1260,7 @@ Core/Src/oled.c:
 
 Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h:
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
-#  ������ ���� 2021-09-14 1 
-6:24:36
+#  ������ ���� 2021-09-14 16:24:36
 #  ������ ���ŵǾ����ϴ�.
 #  ���������� ���ŵ�.
 # variable set hash-table stats:
@@ -1303,7 +1313,8 @@ Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h:
 #  ������ ���ŵǾ����ϴ�.
 #  ���������� ���ŵ�.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32= 
+0%, Rehash=0, Collisions=0/0=0%
 
 # Ÿ���� �ƴ�:
 Core/Src/ssd1306.c:
@@ -1315,8 +1326,7 @@ Core/Src/ssd1306.c:
 build/co2.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
-#  ������ ���� 2022-07-13 17:00: 
-53
+#  ������ ���� 2022-07-13 17:00:53
 #  ������ ���ŵǾ����ϴ�.
 #  ���������� ���ŵ�.
 # variable set hash-table stats:
@@ -1378,8 +1388,7 @@ Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
-#  ������ ��Ģ  
-Ž���� �Ϸ�Ǿ����ϴ�.
+#  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
 #  ������ ���� 2021-07-18 16:05:53
 #  ������ ���ŵǾ����ϴ�.
 #  ���������� ���ŵ�.
@@ -1433,7 +1442,8 @@ build/fonts.o: Core/Src/fonts.c Core/Inc/fonts.h Drivers/STM32F0xx_HAL_Driver/In
 
 # Ÿ���� �ƴ�:
 build/Os.d:
-#  A default, MAKEFILES, or -include/sinclude makefile.
+#  A default, MAKEFILES, or -includ 
+e/sinclude makefile.
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
 #  ������ ���� 2022-07-13 17:00:51
 #  ������ ���ŵǾ����ϴ�.
@@ -1441,34 +1451,10 @@ build/Os.d:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-build/stm32f0xx_it.o: Core/Src/stm32f0xx_it.c makefile Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h Core/Inc/vardef.h Core/Inc/stm32f0xx_it.h Core/Inc/os.h | build
-#  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
-#  ������/���� ���� ����: `stm32f0xx_it'
-#  ������ ���� 2022-07-16 21:10:00
-#  ������ ���ŵǾ����ϴ�.
-#  ���ŵ� �ʿ䰡 ���� (-q ������).
-# �ڵ�
-# @ := build/stm32f0xx_it.o
-# �ڵ�
-# % := 
-# �ڵ�
-# * := stm32f0xx_it
-# �ڵ�
-# + := Core/Src/stm32f0xx_it.c makefile Core/Src/stm32f0xx_it.c Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h Core/Inc/vardef.h Core/Inc/stm32f0xx_it.h Core/Inc/os.h
-# �ڵ�
-# | := build
-# �ڵ�
-# < := Core/Src/stm32f0xx_it.c
-# �ڵ�
-# ^ := Core/Src/stm32f0xx_it.c makefile Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_h 
-al_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h Core/Inc/vardef.h Core/Inc/stm32f0xx_it.h Core/Inc/os.h
-# �ڵ�
-# ? := Core/Src/stm32f0xx_it.c
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/25=4%
-#  ������ ���ɾ� (`makefile'����, 173��° ��):
-	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
-	
+build/stm32f0xx_it.o: Core/Src/stm32f0xx_it.c Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h Core/Inc/stm32f0xx_hal_conf.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h Drivers/CMSIS/Include/core_cm0.h Drivers/CMSIS/Include/cmsis_version.h Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_exti.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h Core/Inc/vardef.h Core/Inc/stm32f0xx_it.h Core/Inc/os.h
+#  ������ ��Ģ Ž���� �Ϸ���� �ʾҽ��ϴ�.
+#  ���� �ð��� ���� �˻���� �ʾ���.
+#  ������ ���ŵ��� �ʾҽ��ϴ�.
 
 # Ÿ���� �ƴ�:
 build/stm32f0xx_hal_adc.d:
@@ -1539,8 +1525,7 @@ Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart.c:
 #  ������ ���ŵ��� �ʾҽ��ϴ�.
 
 # Ÿ���� �ƴ�:
-buil 
-d/stm32f0xx_hal_i2c_ex.d:
+build/stm32f0xx_hal_i2c_ex.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  ������ ��Ģ Ž���� �Ϸ�Ǿ����ϴ�.
 #  ������ ���� 2022-07-13 17:01:05
@@ -1555,10 +1540,11 @@ Core/Inc/fonts.h:
 #  ������ ���ŵ��� �ʾҽ��ϴ�.
 
 # files hash-table stats:
-# Load=168/1024=16%, Rehash=0, Collisions=128/2634=5%
+# Load=168/1024=16%, Rehash=0, Collisions=128/2620=5%
 # VPATH Ž�� ���
 
-vpath %.c Core/Src;Drivers/STM32F0xx_HAL_Driver/Src
+vpath %.c Core/Src;D 
+rivers/STM32F0xx_HAL_Driver/Src
 
 # 1���� `vpath' Ž�� ���.
 
@@ -1569,6 +1555,6 @@ vpath %.c Core/Src;Drivers/STM32F0xx_HAL_Driver/Src
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 3261 / max = 3261 / min = 3261 / avg = 3261
 
-# ����ũ ����Ÿ ���̽� ��ħ, Tue Jul 19 09:46:01 2022
+# ����ũ ����Ÿ ���̽� ��ħ, Wed Aug 10 09:55:05 2022
 ����
  

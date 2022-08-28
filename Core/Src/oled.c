@@ -104,9 +104,6 @@ void OLED_Init(void)
     OLED_Update_Screen();
 
     Clear_TxBuffer();
-    //sprintf(Tx_data,"https://www.allprime.co.kr");
-    //length = strlen(Tx_data);
-    Tx_data[length] = ' ';
     Print_TxBuffer();
     
     OLED_Update_Screen();
@@ -392,9 +389,6 @@ static void OLED_Print_Custom(void)
 
 static void OLED_Print_Idle(void)
 {    
-    uint8 n1,n10;
-    //uint16 length;
-
     Clear_TxBuffer();
     OLED_KoreanFonts(switch_submode);
     Print_TxBufferKorean();  

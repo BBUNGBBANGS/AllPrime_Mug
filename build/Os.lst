@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
   29              		@ frame_needed = 0, uses_anonymous_args = 0
   30              		@ link register save eliminated.
   28:Core/Src/Os.c **** 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 2
 
 
   29:Core/Src/Os.c **** }
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
   69              	.L3:
   47:Core/Src/Os.c **** 	    ((switch_mode_old == SWITCH_MODE_CUSTOM)&&(switch_mode == SWITCH_MODE_RUN)))
   48:Core/Src/Os.c **** 	{
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 3
 
 
   49:Core/Src/Os.c **** 		//EEPROM_Erase();
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  102              		.loc 1 57 22 is_stmt 0 view .LVU19
  103 0038 094A     		ldr	r2, .L7+12
  104 003a 1378     		ldrb	r3, [r2]
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 4
 
 
  105 003c 0133     		adds	r3, r3, #1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
   34:Core/Src/Os.c **** 	Temp_Read();
  153              		.loc 1 34 2 view .LVU29
  154 0006 FFF7FEFF 		bl	Switch_Control
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 5
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 5
 
 
  155              	.LVL3:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  206              	.LFB45:
   65:Core/Src/Os.c **** 
   66:Core/Src/Os.c **** static void Os_Background_Task(void)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 6
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 6
 
 
   67:Core/Src/Os.c **** {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
   92:Core/Src/Os.c **** 		(void)Os_Background_Task();
   93:Core/Src/Os.c **** 		Os_Calc_Runtime_Stop(OS_TASK_INDEX_BG);
   94:Core/Src/Os.c **** 		Os_Calc_Period(OS_TASK_INDEX_BG);
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 7
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 7
 
 
   95:Core/Src/Os.c **** 	}
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  242              		@ link register save eliminated.
  145:Core/Src/Os.c **** 	return Os_Var.Os_Counter.Os_100us_Counter;
  243              		.loc 1 145 2 view .LVU43
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 8
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 8
 
 
  244              		.loc 1 145 26 is_stmt 0 view .LVU44
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  180:Core/Src/Os.c **** 			Os_Var.Os_Tick_Period.Os_10ms_Tick_Period = OS_TimeOldLoc;
  181:Core/Src/Os.c **** 		break;
  182:Core/Src/Os.c **** 		case OS_TASK_INDEX_100MS : 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 9
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 9
 
 
  183:Core/Src/Os.c **** 			Os_Var.Os_Period.Os_100ms_Period = Os_TimeDiffLoc;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  291              		.loc 1 211 1 is_stmt 0 view .LVU52
  292              		@ sp needed
  293 0014 10BD     		pop	{r4, pc}
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 10
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 10
 
 
  294              	.L21:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  337 0000 10B5     		push	{r4, lr}
  338              	.LCFI4:
  339              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 11
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 11
 
 
  340              		.cfi_offset 4, -8
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  372              	.L24:
  237:Core/Src/Os.c **** 	{
  238:Core/Src/Os.c **** 		case OS_TASK_INDEX_1MS : 
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 12
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 12
 
 
  239:Core/Src/Os.c **** 			Os_Var.Os_Runtime.Os_1ms_Runtime = Os_TimeDiffLoc;
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  403              	.LVL22:
  404              	.L33:
  239:Core/Src/Os.c **** 			Os_Var.Os_Runtime.Os_1ms_Runtime = Os_TimeDiffLoc;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 13
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 13
 
 
  405              		.loc 1 239 4 view .LVU84
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  445              		.code	16
  446              		.thumb_func
  448              	Os_Calc_Period:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 14
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 14
 
 
  449              	.LVL23:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  491 0022 09D0     		beq	.L45
  492              	.L36:
  189:Core/Src/Os.c **** }
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 15
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 15
 
 
  493              		.loc 1 189 1 is_stmt 0 view .LVU112
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  533 003e F1E7     		b	.L36
  534              	.L40:
  179:Core/Src/Os.c **** 			Os_Var.Os_Period.Os_10ms_Period = Os_TimeDiffLoc;
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 16
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 16
 
 
  535              		.loc 1 179 4 view .LVU127
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
   78:Core/Src/Os.c **** 	void(*fp)(void);
  580              		.loc 1 78 2 view .LVU139
   79:Core/Src/Os.c ****     if(Os_Var.Os_Task_Flag.Os_100ms_Flag == 1)
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 17
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 17
 
 
  581              		.loc 1 79 5 view .LVU140
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  621 002e FFF7FEFF 		bl	Os_Calc_Runtime_Start
  622              	.LVL38:
   85:Core/Src/Os.c **** 		(void)Os_100ms_Task();
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 18
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 18
 
 
  623              		.loc 1 85 3 view .LVU155
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  105:Core/Src/Os.c **** 		Os_Var.Os_Task_Flag.Os_1ms_Flag = 1;
  671              		.loc 1 105 35 is_stmt 0 view .LVU164
  672 000a 5422     		movs	r2, #84
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 19
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 19
 
 
  673 000c 0121     		movs	r1, #1
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  711 0036 FFF7FEFF 		bl	Os_Calc_Runtime_Start
  712              	.LVL43:
  120:Core/Src/Os.c **** 		(void)Os_1ms_Task();
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 20
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 20
 
 
  713              		.loc 1 120 3 view .LVU181
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  760 000a 5522     		movs	r2, #85
  761 000c 0121     		movs	r1, #1
  762 000e 9954     		strb	r1, [r3, r2]
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 21
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 21
 
 
  130:Core/Src/Os.c **** 	void(*fp)(void);
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  808              	EEPROM_Write_Req:
  809 0000 00       		.space	1
  810              		.section	.bss.EEPROM_Write_cntReq,"aw",%nobits
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 22
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 22
 
 
  811              		.set	.LANCHOR2,. + 0
@@ -1287,52 +1287,52 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 1
  836              		.file 7 "Core/Inc/pwm.h"
  837              		.file 8 "Core/Inc/temp.h"
  838              		.file 9 "Core/Inc/co2.h"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s 			page 23
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Os.c
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:18     .text.Os_1ms_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:23     .text.Os_1ms_Task:00000000 Os_1ms_Task
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:38     .text.Os_100ms_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:43     .text.Os_100ms_Task:00000000 Os_100ms_Task
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:126    .text.Os_100ms_Task:00000054 $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:134    .text.Os_10ms_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:139    .text.Os_10ms_Task:00000000 Os_10ms_Task
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:169    .text.Os_Init_Task:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:175    .text.Os_Init_Task:00000000 Os_Init_Task
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:199    .text.Os_Time_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:205    .text.Os_Time_Handler:00000000 Os_Time_Handler
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:225    .text.Os_Time_Handler:0000000c $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:230    .text.Os_Get_Tick_100us:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:236    .text.Os_Get_Tick_100us:00000000 Os_Get_Tick_100us
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:253    .text.Os_Get_Tick_100us:00000008 $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:258    .text.Os_Calc_Runtime_Start:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:263    .text.Os_Calc_Runtime_Start:00000000 Os_Calc_Runtime_Start
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:319    .text.Os_Calc_Runtime_Start:00000028 $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:324    .text.Os_Calc_Runtime_Stop:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:329    .text.Os_Calc_Runtime_Stop:00000000 Os_Calc_Runtime_Stop
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:438    .text.Os_Calc_Runtime_Stop:00000050 $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:443    .text.Os_Calc_Period:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:448    .text.Os_Calc_Period:00000000 Os_Calc_Period
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:558    .text.Os_Calc_Period:00000050 $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:563    .text.Os_Handler:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:569    .text.Os_Handler:00000000 Os_Handler
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:638    .text.Os_Handler:00000044 $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:645    .text.Os_Handler_1ms:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:651    .text.Os_Handler_1ms:00000000 Os_Handler_1ms
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:728    .text.Os_Handler_1ms:00000048 $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:734    .text.Os_Handler_10ms:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:740    .text.Os_Handler_10ms:00000000 Os_Handler_10ms
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:795    .text.Os_Handler_10ms:00000030 $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:814    .bss.EEPROM_Write_cntReq:00000000 EEPROM_Write_cntReq
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:808    .bss.EEPROM_Write_Req:00000000 EEPROM_Write_Req
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:827    .bss.switch_mode_old:00000000 switch_mode_old
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:821    .bss.Os_Var:00000000 Os_Var
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:809    .bss.EEPROM_Write_Req:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:815    .bss.EEPROM_Write_cntReq:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:817    .bss.Os_Var:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccdSnawk.s:828    .bss.switch_mode_old:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:18     .text.Os_1ms_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:23     .text.Os_1ms_Task:00000000 Os_1ms_Task
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:38     .text.Os_100ms_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:43     .text.Os_100ms_Task:00000000 Os_100ms_Task
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:126    .text.Os_100ms_Task:00000054 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:134    .text.Os_10ms_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:139    .text.Os_10ms_Task:00000000 Os_10ms_Task
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:169    .text.Os_Init_Task:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:175    .text.Os_Init_Task:00000000 Os_Init_Task
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:199    .text.Os_Time_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:205    .text.Os_Time_Handler:00000000 Os_Time_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:225    .text.Os_Time_Handler:0000000c $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:230    .text.Os_Get_Tick_100us:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:236    .text.Os_Get_Tick_100us:00000000 Os_Get_Tick_100us
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:253    .text.Os_Get_Tick_100us:00000008 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:258    .text.Os_Calc_Runtime_Start:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:263    .text.Os_Calc_Runtime_Start:00000000 Os_Calc_Runtime_Start
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:319    .text.Os_Calc_Runtime_Start:00000028 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:324    .text.Os_Calc_Runtime_Stop:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:329    .text.Os_Calc_Runtime_Stop:00000000 Os_Calc_Runtime_Stop
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:438    .text.Os_Calc_Runtime_Stop:00000050 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:443    .text.Os_Calc_Period:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:448    .text.Os_Calc_Period:00000000 Os_Calc_Period
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:558    .text.Os_Calc_Period:00000050 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:563    .text.Os_Handler:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:569    .text.Os_Handler:00000000 Os_Handler
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:638    .text.Os_Handler:00000044 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:645    .text.Os_Handler_1ms:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:651    .text.Os_Handler_1ms:00000000 Os_Handler_1ms
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:728    .text.Os_Handler_1ms:00000048 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:734    .text.Os_Handler_10ms:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:740    .text.Os_Handler_10ms:00000000 Os_Handler_10ms
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:795    .text.Os_Handler_10ms:00000030 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:814    .bss.EEPROM_Write_cntReq:00000000 EEPROM_Write_cntReq
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:808    .bss.EEPROM_Write_Req:00000000 EEPROM_Write_Req
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:827    .bss.switch_mode_old:00000000 switch_mode_old
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:821    .bss.Os_Var:00000000 Os_Var
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:809    .bss.EEPROM_Write_Req:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:815    .bss.EEPROM_Write_cntReq:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:817    .bss.Os_Var:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccLwlDIq.s:828    .bss.switch_mode_old:00000000 $d
 
 UNDEFINED SYMBOLS
 LED_Control

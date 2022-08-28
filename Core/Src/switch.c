@@ -6,7 +6,7 @@ uint8 switch1_status,switch2_status,switch3_status,switch4_status;
 uint8 switch1_status_old,switch2_status_old,switch3_status_old,switch4_status_old;
 uint8 switch_overtemp;
 uint8 switch_mode;
-uint8 switch_submode;
+uint8 switch_submode = 1;
 uint8 cup_in,cup_in_old;
 uint8 switch4_mode,switch4_mode_old;
 uint8 switch_custom_mode;
