@@ -1,4 +1,4 @@
-build/Os.o: Core/Src/Os.c Core/Inc/os.h Core/Inc/vardef.h Core/Inc/led.h \
+build/os.o: Core/Src/os.c Core/Inc/os.h Core/Inc/vardef.h Core/Inc/led.h \
  Core/Inc/main.h Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h \
  Core/Inc/stm32f0xx_hal_conf.h \
  Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h \
