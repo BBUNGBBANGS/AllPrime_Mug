@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -34,7 +34,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 1
    6:Core/Src/eeprom.c **** sint16 switch_trg_timeEEP = 0;
    7:Core/Src/eeprom.c **** sint16 switch_idle_tempEEP = 0;
    8:Core/Src/eeprom.c **** static uint8 EEPROM_Write_Counter = 0;
-   9:Core/Src/eeprom.c **** static uint32 EEPROM_Write_Address = EEPROM_PAGE127_START;
+   9:Core/Src/eeprom.c **** static uint32 EEPROM_Write_Address = EEPROM_PAGE31_START;
   10:Core/Src/eeprom.c **** 
   11:Core/Src/eeprom.c **** void EEPROM_Write(void)
   12:Core/Src/eeprom.c **** {
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 1
   43 0006 0021     		movs	r1, #0
   44 0008 6846     		mov	r0, sp
   45 000a FFF7FEFF 		bl	memset
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 2
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s 			page 2
 
 
   46              	.LVL0:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 1
   90              		.loc 1 23 26 is_stmt 0 view .LVU20
   91 0042 2B68     		ldr	r3, [r5]
   92 0044 0233     		adds	r3, r3, #2
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 3
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s 			page 3
 
 
   93 0046 2B60     		str	r3, [r5]
@@ -147,7 +147,7 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 1
  109 0058 074B     		ldr	r3, .L3+16
  110 005a 0022     		movs	r2, #0
  111 005c 1A70     		strb	r2, [r3]
-  31:Core/Src/eeprom.c ****         EEPROM_Write_Address = EEPROM_PAGE127_START;
+  31:Core/Src/eeprom.c ****         EEPROM_Write_Address = EEPROM_PAGE31_START;
  112              		.loc 1 31 9 is_stmt 1 view .LVU28
  113              		.loc 1 31 30 is_stmt 0 view .LVU29
  114 005e 074B     		ldr	r3, .L3+20
@@ -172,13 +172,13 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 1
  129 0074 00000000 		.word	switch_idle_temp
  130 0078 00000000 		.word	.LANCHOR0
  131 007c 00000000 		.word	.LANCHOR1
- 132 0080 00FC0108 		.word	134347776
+ 132 0080 007C0008 		.word	134249472
  133              		.cfi_endproc
  134              	.LFE40:
  136              		.section	.text.EEPROM_Read,"ax",%progbits
  137              		.align	1
  138              		.global	EEPROM_Read
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 4
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s 			page 4
 
 
  139              		.syntax unified
@@ -190,307 +190,314 @@ ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 1
   37:Core/Src/eeprom.c **** {
  145              		.loc 1 37 1 is_stmt 1 view -0
  146              		.cfi_startproc
- 147              		@ args = 0, pretend = 0, frame = 16
+ 147              		@ args = 0, pretend = 0, frame = 8
  148              		@ frame_needed = 0, uses_anonymous_args = 0
  149 0000 00B5     		push	{lr}
  150              	.LCFI2:
  151              		.cfi_def_cfa_offset 4
  152              		.cfi_offset 14, -4
- 153 0002 85B0     		sub	sp, sp, #20
+ 153 0002 83B0     		sub	sp, sp, #12
  154              	.LCFI3:
- 155              		.cfi_def_cfa_offset 24
-  38:Core/Src/eeprom.c ****     uint16 data[8] = {0,};
+ 155              		.cfi_def_cfa_offset 16
+  38:Core/Src/eeprom.c ****     uint16 data[4] = {0,};
  156              		.loc 1 38 5 view .LVU33
  157              		.loc 1 38 12 is_stmt 0 view .LVU34
- 158 0004 1022     		movs	r2, #16
+ 158 0004 0822     		movs	r2, #8
  159 0006 0021     		movs	r1, #0
  160 0008 6846     		mov	r0, sp
  161 000a FFF7FEFF 		bl	memset
  162              	.LVL4:
-  39:Core/Src/eeprom.c ****     for(uint8 i = 0; i<8;i++)
- 163              		.loc 1 39 5 is_stmt 1 view .LVU35
+  39:Core/Src/eeprom.c **** 
+  40:Core/Src/eeprom.c ****     for(uint8 i = 0; i<8;i++)
+ 163              		.loc 1 40 5 is_stmt 1 view .LVU35
  164              	.LBB2:
- 165              		.loc 1 39 9 view .LVU36
- 166              		.loc 1 39 15 is_stmt 0 view .LVU37
+ 165              		.loc 1 40 9 view .LVU36
+ 166              		.loc 1 40 15 is_stmt 0 view .LVU37
  167 000e 0023     		movs	r3, #0
- 168              		.loc 1 39 5 view .LVU38
- 169 0010 07E0     		b	.L6
+ 168              		.loc 1 40 5 view .LVU38
+ 169 0010 01E0     		b	.L6
  170              	.LVL5:
  171              	.L7:
-  40:Core/Src/eeprom.c ****     {
-  41:Core/Src/eeprom.c ****        data[i] = *(uint32*)(EEPROM_PAGE127_START+(i*2));
- 172              		.loc 1 41 8 is_stmt 1 discriminator 3 view .LVU39
- 173              		.loc 1 41 52 is_stmt 0 discriminator 3 view .LVU40
- 174 0012 5A00     		lsls	r2, r3, #1
- 175              		.loc 1 41 49 discriminator 3 view .LVU41
- 176 0014 0E49     		ldr	r1, .L8
- 177 0016 5118     		adds	r1, r2, r1
- 178              		.loc 1 41 18 discriminator 3 view .LVU42
- 179 0018 0968     		ldr	r1, [r1]
- 180              		.loc 1 41 16 discriminator 3 view .LVU43
- 181 001a 6846     		mov	r0, sp
- 182 001c 1152     		strh	r1, [r2, r0]
-  39:Core/Src/eeprom.c ****     for(uint8 i = 0; i<8;i++)
- 183              		.loc 1 39 26 is_stmt 1 discriminator 3 view .LVU44
-  39:Core/Src/eeprom.c ****     for(uint8 i = 0; i<8;i++)
- 184              		.loc 1 39 27 is_stmt 0 discriminator 3 view .LVU45
- 185 001e 0133     		adds	r3, r3, #1
- 186              	.LVL6:
-  39:Core/Src/eeprom.c ****     for(uint8 i = 0; i<8;i++)
- 187              		.loc 1 39 27 discriminator 3 view .LVU46
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 5
+ 172              		.loc 1 40 26 is_stmt 1 discriminator 2 view .LVU39
+ 173              		.loc 1 40 27 is_stmt 0 discriminator 2 view .LVU40
+ 174 0012 0133     		adds	r3, r3, #1
+ 175              	.LVL6:
+ 176              		.loc 1 40 27 discriminator 2 view .LVU41
+ 177 0014 DBB2     		uxtb	r3, r3
+ 178              	.LVL7:
+ 179              	.L6:
+ 180              		.loc 1 40 22 is_stmt 1 discriminator 1 view .LVU42
+ 181              		.loc 1 40 5 is_stmt 0 discriminator 1 view .LVU43
+ 182 0016 072B     		cmp	r3, #7
+ 183 0018 0AD8     		bhi	.L9
+  41:Core/Src/eeprom.c ****     {
+  42:Core/Src/eeprom.c ****         if((*(uint16*)(EEPROM_PAGE31_START+(i*2)) != 0))
+ 184              		.loc 1 42 9 is_stmt 1 view .LVU44
+ 185              		.loc 1 42 46 is_stmt 0 view .LVU45
+ 186 001a 5A00     		lsls	r2, r3, #1
+ 187              		.loc 1 42 43 view .LVU46
+ 188 001c 0F49     		ldr	r1, .L10
+ 189 001e 8C46     		mov	ip, r1
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s 			page 5
 
 
- 188 0020 DBB2     		uxtb	r3, r3
- 189              	.LVL7:
- 190              	.L6:
-  39:Core/Src/eeprom.c ****     for(uint8 i = 0; i<8;i++)
- 191              		.loc 1 39 22 is_stmt 1 discriminator 1 view .LVU47
-  39:Core/Src/eeprom.c ****     for(uint8 i = 0; i<8;i++)
- 192              		.loc 1 39 5 is_stmt 0 discriminator 1 view .LVU48
- 193 0022 072B     		cmp	r3, #7
- 194 0024 F5D9     		bls	.L7
- 195              	.LBE2:
-  42:Core/Src/eeprom.c ****     }
-  43:Core/Src/eeprom.c ****     
-  44:Core/Src/eeprom.c ****     switch_submodeEEP = (uint8)data[0];
- 196              		.loc 1 44 5 is_stmt 1 view .LVU49
- 197              		.loc 1 44 25 is_stmt 0 view .LVU50
- 198 0026 6B46     		mov	r3, sp
- 199              	.LVL8:
- 200              		.loc 1 44 25 view .LVU51
- 201 0028 1A78     		ldrb	r2, [r3]
- 202              		.loc 1 44 23 view .LVU52
- 203 002a 0A4B     		ldr	r3, .L8+4
- 204 002c 1A70     		strb	r2, [r3]
-  45:Core/Src/eeprom.c ****     switch_trg_tempEEP = (sint16)data[1]; 
- 205              		.loc 1 45 5 is_stmt 1 view .LVU53
- 206              		.loc 1 45 26 is_stmt 0 view .LVU54
- 207 002e 6B46     		mov	r3, sp
- 208 0030 0222     		movs	r2, #2
- 209 0032 9A5E     		ldrsh	r2, [r3, r2]
- 210              		.loc 1 45 24 view .LVU55
- 211 0034 084B     		ldr	r3, .L8+8
- 212 0036 1A80     		strh	r2, [r3]
-  46:Core/Src/eeprom.c ****     switch_trg_timeEEP = (sint16)data[2];
- 213              		.loc 1 46 5 is_stmt 1 view .LVU56
- 214              		.loc 1 46 26 is_stmt 0 view .LVU57
+ 190 0020 6244     		add	r2, r2, ip
+ 191              		.loc 1 42 13 view .LVU47
+ 192 0022 1288     		ldrh	r2, [r2]
+ 193              		.loc 1 42 11 view .LVU48
+ 194 0024 002A     		cmp	r2, #0
+ 195 0026 F4D0     		beq	.L7
+  43:Core/Src/eeprom.c ****         {
+  44:Core/Src/eeprom.c ****             data[i] = *(uint16*)(EEPROM_PAGE31_START+(i*2));
+ 196              		.loc 1 44 13 is_stmt 1 view .LVU49
+ 197              		.loc 1 44 21 is_stmt 0 view .LVU50
+ 198 0028 5900     		lsls	r1, r3, #1
+ 199 002a 6846     		mov	r0, sp
+ 200 002c 0A52     		strh	r2, [r1, r0]
+ 201 002e F0E7     		b	.L7
+ 202              	.L9:
+ 203              	.LBE2:
+  45:Core/Src/eeprom.c ****         }
+  46:Core/Src/eeprom.c ****     }
+  47:Core/Src/eeprom.c **** 
+  48:Core/Src/eeprom.c ****     switch_submodeEEP = (uint8)data[0];
+ 204              		.loc 1 48 5 is_stmt 1 view .LVU51
+ 205              		.loc 1 48 25 is_stmt 0 view .LVU52
+ 206 0030 6B46     		mov	r3, sp
+ 207              	.LVL8:
+ 208              		.loc 1 48 25 view .LVU53
+ 209 0032 1A78     		ldrb	r2, [r3]
+ 210              		.loc 1 48 23 view .LVU54
+ 211 0034 0A4B     		ldr	r3, .L10+4
+ 212 0036 1A70     		strb	r2, [r3]
+  49:Core/Src/eeprom.c ****     switch_trg_tempEEP = (sint16)data[1];
+ 213              		.loc 1 49 5 is_stmt 1 view .LVU55
+ 214              		.loc 1 49 26 is_stmt 0 view .LVU56
  215 0038 6B46     		mov	r3, sp
- 216 003a 0422     		movs	r2, #4
+ 216 003a 0222     		movs	r2, #2
  217 003c 9A5E     		ldrsh	r2, [r3, r2]
- 218              		.loc 1 46 24 view .LVU58
- 219 003e 074B     		ldr	r3, .L8+12
+ 218              		.loc 1 49 24 view .LVU57
+ 219 003e 094B     		ldr	r3, .L10+8
  220 0040 1A80     		strh	r2, [r3]
-  47:Core/Src/eeprom.c ****     switch_idle_tempEEP = (sint16)data[3]; 
- 221              		.loc 1 47 5 is_stmt 1 view .LVU59
- 222              		.loc 1 47 27 is_stmt 0 view .LVU60
+  50:Core/Src/eeprom.c ****     switch_trg_timeEEP = (sint16)data[2];
+ 221              		.loc 1 50 5 is_stmt 1 view .LVU58
+ 222              		.loc 1 50 26 is_stmt 0 view .LVU59
  223 0042 6B46     		mov	r3, sp
- 224 0044 0622     		movs	r2, #6
+ 224 0044 0422     		movs	r2, #4
  225 0046 9A5E     		ldrsh	r2, [r3, r2]
- 226              		.loc 1 47 25 view .LVU61
- 227 0048 054B     		ldr	r3, .L8+16
+ 226              		.loc 1 50 24 view .LVU60
+ 227 0048 074B     		ldr	r3, .L10+12
  228 004a 1A80     		strh	r2, [r3]
-  48:Core/Src/eeprom.c **** }
- 229              		.loc 1 48 1 view .LVU62
- 230 004c 05B0     		add	sp, sp, #20
- 231              		@ sp needed
- 232 004e 00BD     		pop	{pc}
- 233              	.L9:
- 234              		.align	2
- 235              	.L8:
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 6
+  51:Core/Src/eeprom.c ****     switch_idle_tempEEP = (sint16)data[3];
+ 229              		.loc 1 51 5 is_stmt 1 view .LVU61
+ 230              		.loc 1 51 27 is_stmt 0 view .LVU62
+ 231 004c 6B46     		mov	r3, sp
+ 232 004e 0622     		movs	r2, #6
+ 233 0050 9A5E     		ldrsh	r2, [r3, r2]
+ 234              		.loc 1 51 25 view .LVU63
+ 235 0052 064B     		ldr	r3, .L10+16
+ 236 0054 1A80     		strh	r2, [r3]
+  52:Core/Src/eeprom.c **** }
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s 			page 6
 
 
- 236 0050 00FC0108 		.word	134347776
- 237 0054 00000000 		.word	.LANCHOR2
- 238 0058 00000000 		.word	.LANCHOR3
- 239 005c 00000000 		.word	.LANCHOR4
- 240 0060 00000000 		.word	.LANCHOR5
- 241              		.cfi_endproc
- 242              	.LFE41:
- 244              		.section	.text.EEPROM_Erase,"ax",%progbits
- 245              		.align	1
- 246              		.global	EEPROM_Erase
- 247              		.syntax unified
- 248              		.code	16
- 249              		.thumb_func
- 251              	EEPROM_Erase:
- 252              	.LFB42:
-  49:Core/Src/eeprom.c **** 
-  50:Core/Src/eeprom.c **** void EEPROM_Erase(void)
-  51:Core/Src/eeprom.c **** {
- 253              		.loc 1 51 1 is_stmt 1 view -0
- 254              		.cfi_startproc
- 255              		@ args = 0, pretend = 0, frame = 16
- 256              		@ frame_needed = 0, uses_anonymous_args = 0
- 257 0000 10B5     		push	{r4, lr}
- 258              	.LCFI4:
- 259              		.cfi_def_cfa_offset 8
- 260              		.cfi_offset 4, -8
- 261              		.cfi_offset 14, -4
- 262 0002 84B0     		sub	sp, sp, #16
- 263              	.LCFI5:
- 264              		.cfi_def_cfa_offset 24
-  52:Core/Src/eeprom.c ****     uint32_t SectorError = 0;
- 265              		.loc 1 52 5 view .LVU64
- 266              		.loc 1 52 14 is_stmt 0 view .LVU65
- 267 0004 0024     		movs	r4, #0
- 268 0006 0394     		str	r4, [sp, #12]
-  53:Core/Src/eeprom.c ****     
-  54:Core/Src/eeprom.c ****     /* Unlock to control */
-  55:Core/Src/eeprom.c ****     HAL_FLASH_Unlock();
- 269              		.loc 1 55 5 is_stmt 1 view .LVU66
- 270 0008 FFF7FEFF 		bl	HAL_FLASH_Unlock
- 271              	.LVL9:
-  56:Core/Src/eeprom.c ****     
-  57:Core/Src/eeprom.c ****     /* Calculate sector index */
-  58:Core/Src/eeprom.c ****     uint32_t UserAddress = EEPROM_PAGE127_START;
- 272              		.loc 1 58 5 view .LVU67
-  59:Core/Src/eeprom.c ****     uint32_t NbOfSectors = 1;
- 273              		.loc 1 59 5 view .LVU68
+ 237              		.loc 1 52 1 view .LVU64
+ 238 0056 03B0     		add	sp, sp, #12
+ 239              		@ sp needed
+ 240 0058 00BD     		pop	{pc}
+ 241              	.L11:
+ 242 005a C046     		.align	2
+ 243              	.L10:
+ 244 005c 007C0008 		.word	134249472
+ 245 0060 00000000 		.word	.LANCHOR2
+ 246 0064 00000000 		.word	.LANCHOR3
+ 247 0068 00000000 		.word	.LANCHOR4
+ 248 006c 00000000 		.word	.LANCHOR5
+ 249              		.cfi_endproc
+ 250              	.LFE41:
+ 252              		.section	.text.EEPROM_Erase,"ax",%progbits
+ 253              		.align	1
+ 254              		.global	EEPROM_Erase
+ 255              		.syntax unified
+ 256              		.code	16
+ 257              		.thumb_func
+ 259              	EEPROM_Erase:
+ 260              	.LFB42:
+  53:Core/Src/eeprom.c **** 
+  54:Core/Src/eeprom.c **** void EEPROM_Erase(void)
+  55:Core/Src/eeprom.c **** {
+ 261              		.loc 1 55 1 is_stmt 1 view -0
+ 262              		.cfi_startproc
+ 263              		@ args = 0, pretend = 0, frame = 16
+ 264              		@ frame_needed = 0, uses_anonymous_args = 0
+ 265 0000 10B5     		push	{r4, lr}
+ 266              	.LCFI4:
+ 267              		.cfi_def_cfa_offset 8
+ 268              		.cfi_offset 4, -8
+ 269              		.cfi_offset 14, -4
+ 270 0002 84B0     		sub	sp, sp, #16
+ 271              	.LCFI5:
+ 272              		.cfi_def_cfa_offset 24
+  56:Core/Src/eeprom.c ****     uint32_t SectorError = 0;
+ 273              		.loc 1 56 5 view .LVU66
+ 274              		.loc 1 56 14 is_stmt 0 view .LVU67
+ 275 0004 0024     		movs	r4, #0
+ 276 0006 0394     		str	r4, [sp, #12]
+  57:Core/Src/eeprom.c ****     
+  58:Core/Src/eeprom.c ****     /* Unlock to control */
+  59:Core/Src/eeprom.c ****     HAL_FLASH_Unlock();
+ 277              		.loc 1 59 5 is_stmt 1 view .LVU68
+ 278 0008 FFF7FEFF 		bl	HAL_FLASH_Unlock
+ 279              	.LVL9:
   60:Core/Src/eeprom.c ****     
-  61:Core/Src/eeprom.c ****     /* Erase sectors */
-  62:Core/Src/eeprom.c ****     FLASH_EraseInitTypeDef EraseInitStruct;
- 274              		.loc 1 62 5 view .LVU69
-  63:Core/Src/eeprom.c ****     EraseInitStruct.TypeErase = FLASH_TYPEERASE_PAGES;
- 275              		.loc 1 63 5 view .LVU70
- 276              		.loc 1 63 31 is_stmt 0 view .LVU71
- 277 000c 0094     		str	r4, [sp]
-  64:Core/Src/eeprom.c ****     EraseInitStruct.PageAddress = UserAddress;
- 278              		.loc 1 64 5 is_stmt 1 view .LVU72
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 7
+  61:Core/Src/eeprom.c ****     /* Calculate sector index */
+  62:Core/Src/eeprom.c ****     uint32_t UserAddress = EEPROM_PAGE31_START;
+ 280              		.loc 1 62 5 view .LVU69
+  63:Core/Src/eeprom.c ****     uint32_t NbOfSectors = 1;
+ 281              		.loc 1 63 5 view .LVU70
+  64:Core/Src/eeprom.c ****     
+  65:Core/Src/eeprom.c ****     /* Erase sectors */
+  66:Core/Src/eeprom.c ****     FLASH_EraseInitTypeDef EraseInitStruct;
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s 			page 7
 
 
- 279              		.loc 1 64 33 is_stmt 0 view .LVU73
- 280 000e 084B     		ldr	r3, .L14
- 281 0010 0193     		str	r3, [sp, #4]
-  65:Core/Src/eeprom.c ****     EraseInitStruct.NbPages = NbOfSectors;
- 282              		.loc 1 65 5 is_stmt 1 view .LVU74
- 283              		.loc 1 65 29 is_stmt 0 view .LVU75
- 284 0012 0123     		movs	r3, #1
- 285 0014 0293     		str	r3, [sp, #8]
-  66:Core/Src/eeprom.c ****     
-  67:Core/Src/eeprom.c ****     if(HAL_FLASHEx_Erase(&EraseInitStruct, &SectorError) != HAL_OK)
- 286              		.loc 1 67 5 is_stmt 1 view .LVU76
- 287              		.loc 1 67 8 is_stmt 0 view .LVU77
- 288 0016 03A9     		add	r1, sp, #12
- 289 0018 6846     		mov	r0, sp
- 290 001a FFF7FEFF 		bl	HAL_FLASHEx_Erase
- 291              	.LVL10:
- 292              		.loc 1 67 7 view .LVU78
- 293 001e 0028     		cmp	r0, #0
- 294 0020 03D1     		bne	.L13
-  68:Core/Src/eeprom.c ****     { 
-  69:Core/Src/eeprom.c ****         uint32_t errorcode = HAL_FLASH_GetError();            
-  70:Core/Src/eeprom.c ****         return HAL_ERROR;
-  71:Core/Src/eeprom.c ****     }
-  72:Core/Src/eeprom.c ****     
-  73:Core/Src/eeprom.c ****     /* Lock flash control register */
-  74:Core/Src/eeprom.c ****     HAL_FLASH_Lock();
- 295              		.loc 1 74 5 is_stmt 1 view .LVU79
- 296 0022 FFF7FEFF 		bl	HAL_FLASH_Lock
- 297              	.LVL11:
-  75:Core/Src/eeprom.c ****     
-  76:Core/Src/eeprom.c ****     return HAL_OK;   
- 298              		.loc 1 76 5 view .LVU80
- 299              	.L10:
-  77:Core/Src/eeprom.c **** }
- 300              		.loc 1 77 1 is_stmt 0 view .LVU81
- 301 0026 04B0     		add	sp, sp, #16
- 302              		@ sp needed
- 303 0028 10BD     		pop	{r4, pc}
- 304              	.L13:
- 305              	.LBB3:
-  69:Core/Src/eeprom.c ****         return HAL_ERROR;
- 306              		.loc 1 69 9 is_stmt 1 view .LVU82
-  69:Core/Src/eeprom.c ****         return HAL_ERROR;
- 307              		.loc 1 69 30 is_stmt 0 view .LVU83
- 308 002a FFF7FEFF 		bl	HAL_FLASH_GetError
- 309              	.LVL12:
-  70:Core/Src/eeprom.c ****     }
- 310              		.loc 1 70 9 is_stmt 1 view .LVU84
-  70:Core/Src/eeprom.c ****     }
- 311              		.loc 1 70 16 is_stmt 0 view .LVU85
- 312 002e FAE7     		b	.L10
- 313              	.L15:
- 314              		.align	2
- 315              	.L14:
- 316 0030 00FC0108 		.word	134347776
- 317              	.LBE3:
- 318              		.cfi_endproc
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 8
+ 282              		.loc 1 66 5 view .LVU71
+  67:Core/Src/eeprom.c ****     EraseInitStruct.TypeErase = FLASH_TYPEERASE_PAGES;
+ 283              		.loc 1 67 5 view .LVU72
+ 284              		.loc 1 67 31 is_stmt 0 view .LVU73
+ 285 000c 0094     		str	r4, [sp]
+  68:Core/Src/eeprom.c ****     EraseInitStruct.PageAddress = UserAddress;
+ 286              		.loc 1 68 5 is_stmt 1 view .LVU74
+ 287              		.loc 1 68 33 is_stmt 0 view .LVU75
+ 288 000e 084B     		ldr	r3, .L16
+ 289 0010 0193     		str	r3, [sp, #4]
+  69:Core/Src/eeprom.c ****     EraseInitStruct.NbPages = NbOfSectors;
+ 290              		.loc 1 69 5 is_stmt 1 view .LVU76
+ 291              		.loc 1 69 29 is_stmt 0 view .LVU77
+ 292 0012 0123     		movs	r3, #1
+ 293 0014 0293     		str	r3, [sp, #8]
+  70:Core/Src/eeprom.c ****     
+  71:Core/Src/eeprom.c ****     if(HAL_FLASHEx_Erase(&EraseInitStruct, &SectorError) != HAL_OK)
+ 294              		.loc 1 71 5 is_stmt 1 view .LVU78
+ 295              		.loc 1 71 8 is_stmt 0 view .LVU79
+ 296 0016 03A9     		add	r1, sp, #12
+ 297 0018 6846     		mov	r0, sp
+ 298 001a FFF7FEFF 		bl	HAL_FLASHEx_Erase
+ 299              	.LVL10:
+ 300              		.loc 1 71 7 view .LVU80
+ 301 001e 0028     		cmp	r0, #0
+ 302 0020 03D1     		bne	.L15
+  72:Core/Src/eeprom.c ****     { 
+  73:Core/Src/eeprom.c ****         uint32_t errorcode = HAL_FLASH_GetError();            
+  74:Core/Src/eeprom.c ****         return HAL_ERROR;
+  75:Core/Src/eeprom.c ****     }
+  76:Core/Src/eeprom.c ****     
+  77:Core/Src/eeprom.c ****     /* Lock flash control register */
+  78:Core/Src/eeprom.c ****     HAL_FLASH_Lock();
+ 303              		.loc 1 78 5 is_stmt 1 view .LVU81
+ 304 0022 FFF7FEFF 		bl	HAL_FLASH_Lock
+ 305              	.LVL11:
+  79:Core/Src/eeprom.c ****     
+  80:Core/Src/eeprom.c ****     return HAL_OK;   
+ 306              		.loc 1 80 5 view .LVU82
+ 307              	.L12:
+  81:Core/Src/eeprom.c **** }
+ 308              		.loc 1 81 1 is_stmt 0 view .LVU83
+ 309 0026 04B0     		add	sp, sp, #16
+ 310              		@ sp needed
+ 311 0028 10BD     		pop	{r4, pc}
+ 312              	.L15:
+ 313              	.LBB3:
+  73:Core/Src/eeprom.c ****         return HAL_ERROR;
+ 314              		.loc 1 73 9 is_stmt 1 view .LVU84
+  73:Core/Src/eeprom.c ****         return HAL_ERROR;
+ 315              		.loc 1 73 30 is_stmt 0 view .LVU85
+ 316 002a FFF7FEFF 		bl	HAL_FLASH_GetError
+ 317              	.LVL12:
+  74:Core/Src/eeprom.c ****     }
+ 318              		.loc 1 74 9 is_stmt 1 view .LVU86
+  74:Core/Src/eeprom.c ****     }
+ 319              		.loc 1 74 16 is_stmt 0 view .LVU87
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s 			page 8
 
 
- 319              	.LFE42:
- 321              		.global	switch_idle_tempEEP
- 322              		.global	switch_trg_timeEEP
- 323              		.global	switch_trg_tempEEP
- 324              		.global	switch_submodeEEP
- 325              		.section	.bss.EEPROM_Write_Counter,"aw",%nobits
- 326              		.set	.LANCHOR0,. + 0
- 329              	EEPROM_Write_Counter:
- 330 0000 00       		.space	1
- 331              		.section	.bss.switch_idle_tempEEP,"aw",%nobits
- 332              		.align	1
- 333              		.set	.LANCHOR5,. + 0
- 336              	switch_idle_tempEEP:
- 337 0000 0000     		.space	2
- 338              		.section	.bss.switch_submodeEEP,"aw",%nobits
- 339              		.set	.LANCHOR2,. + 0
- 342              	switch_submodeEEP:
- 343 0000 00       		.space	1
- 344              		.section	.bss.switch_trg_tempEEP,"aw",%nobits
- 345              		.align	1
- 346              		.set	.LANCHOR3,. + 0
- 349              	switch_trg_tempEEP:
- 350 0000 0000     		.space	2
- 351              		.section	.bss.switch_trg_timeEEP,"aw",%nobits
- 352              		.align	1
- 353              		.set	.LANCHOR4,. + 0
- 356              	switch_trg_timeEEP:
- 357 0000 0000     		.space	2
- 358              		.section	.data.EEPROM_Write_Address,"aw"
- 359              		.align	2
- 360              		.set	.LANCHOR1,. + 0
- 363              	EEPROM_Write_Address:
- 364 0000 00FC0108 		.word	134347776
- 365              		.text
- 366              	.Letext0:
- 367              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
- 368              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
- 369              		.file 4 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h"
- 370              		.file 5 "Core/Inc/vardef.h"
- 371              		.file 6 "Core/Inc/eeprom.h"
- 372              		.file 7 "Core/Inc/switch.h"
- 373              		.file 8 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h"
- 374              		.file 9 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h"
- 375              		.file 10 "<built-in>"
-ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s 			page 9
+ 320 002e FAE7     		b	.L12
+ 321              	.L17:
+ 322              		.align	2
+ 323              	.L16:
+ 324 0030 007C0008 		.word	134249472
+ 325              	.LBE3:
+ 326              		.cfi_endproc
+ 327              	.LFE42:
+ 329              		.global	switch_idle_tempEEP
+ 330              		.global	switch_trg_timeEEP
+ 331              		.global	switch_trg_tempEEP
+ 332              		.global	switch_submodeEEP
+ 333              		.section	.bss.EEPROM_Write_Counter,"aw",%nobits
+ 334              		.set	.LANCHOR0,. + 0
+ 337              	EEPROM_Write_Counter:
+ 338 0000 00       		.space	1
+ 339              		.section	.bss.switch_idle_tempEEP,"aw",%nobits
+ 340              		.align	1
+ 341              		.set	.LANCHOR5,. + 0
+ 344              	switch_idle_tempEEP:
+ 345 0000 0000     		.space	2
+ 346              		.section	.bss.switch_submodeEEP,"aw",%nobits
+ 347              		.set	.LANCHOR2,. + 0
+ 350              	switch_submodeEEP:
+ 351 0000 00       		.space	1
+ 352              		.section	.bss.switch_trg_tempEEP,"aw",%nobits
+ 353              		.align	1
+ 354              		.set	.LANCHOR3,. + 0
+ 357              	switch_trg_tempEEP:
+ 358 0000 0000     		.space	2
+ 359              		.section	.bss.switch_trg_timeEEP,"aw",%nobits
+ 360              		.align	1
+ 361              		.set	.LANCHOR4,. + 0
+ 364              	switch_trg_timeEEP:
+ 365 0000 0000     		.space	2
+ 366              		.section	.data.EEPROM_Write_Address,"aw"
+ 367              		.align	2
+ 368              		.set	.LANCHOR1,. + 0
+ 371              	EEPROM_Write_Address:
+ 372 0000 007C0008 		.word	134249472
+ 373              		.text
+ 374              	.Letext0:
+ 375              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 376              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 377              		.file 4 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h"
+ 378              		.file 5 "Core/Inc/vardef.h"
+ 379              		.file 6 "Core/Inc/eeprom.h"
+ 380              		.file 7 "Core/Inc/switch.h"
+ 381              		.file 8 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h"
+ 382              		.file 9 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h"
+ 383              		.file 10 "<built-in>"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 eeprom.c
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:18     .text.EEPROM_Write:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:24     .text.EEPROM_Write:00000000 EEPROM_Write
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:126    .text.EEPROM_Write:00000068 $d
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:137    .text.EEPROM_Read:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:143    .text.EEPROM_Read:00000000 EEPROM_Read
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:236    .text.EEPROM_Read:00000050 $d
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:245    .text.EEPROM_Erase:00000000 $t
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:251    .text.EEPROM_Erase:00000000 EEPROM_Erase
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:316    .text.EEPROM_Erase:00000030 $d
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:336    .bss.switch_idle_tempEEP:00000000 switch_idle_tempEEP
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:356    .bss.switch_trg_timeEEP:00000000 switch_trg_timeEEP
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:349    .bss.switch_trg_tempEEP:00000000 switch_trg_tempEEP
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:342    .bss.switch_submodeEEP:00000000 switch_submodeEEP
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:329    .bss.EEPROM_Write_Counter:00000000 EEPROM_Write_Counter
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:330    .bss.EEPROM_Write_Counter:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:332    .bss.switch_idle_tempEEP:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:343    .bss.switch_submodeEEP:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:345    .bss.switch_trg_tempEEP:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:352    .bss.switch_trg_timeEEP:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:359    .data.EEPROM_Write_Address:00000000 $d
-C:\Users\jisu8\AppData\Local\Temp\ccaFTnzd.s:363    .data.EEPROM_Write_Address:00000000 EEPROM_Write_Address
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:18     .text.EEPROM_Write:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:24     .text.EEPROM_Write:00000000 EEPROM_Write
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:126    .text.EEPROM_Write:00000068 $d
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:137    .text.EEPROM_Read:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:143    .text.EEPROM_Read:00000000 EEPROM_Read
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:244    .text.EEPROM_Read:0000005c $d
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:253    .text.EEPROM_Erase:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:259    .text.EEPROM_Erase:00000000 EEPROM_Erase
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:324    .text.EEPROM_Erase:00000030 $d
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:344    .bss.switch_idle_tempEEP:00000000 switch_idle_tempEEP
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:364    .bss.switch_trg_timeEEP:00000000 switch_trg_timeEEP
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:357    .bss.switch_trg_tempEEP:00000000 switch_trg_tempEEP
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:350    .bss.switch_submodeEEP:00000000 switch_submodeEEP
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:337    .bss.EEPROM_Write_Counter:00000000 EEPROM_Write_Counter
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:338    .bss.EEPROM_Write_Counter:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:340    .bss.switch_idle_tempEEP:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:351    .bss.switch_submodeEEP:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:353    .bss.switch_trg_tempEEP:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:360    .bss.switch_trg_timeEEP:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:367    .data.EEPROM_Write_Address:00000000 $d
+C:\Users\jisu8\AppData\Local\Temp\ccjTxW96.s:371    .data.EEPROM_Write_Address:00000000 EEPROM_Write_Address
 
 UNDEFINED SYMBOLS
 memset

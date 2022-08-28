@@ -1,6 +1,6 @@
 #include "main.h"
 
-#define EEPROM_PAGE127_START ((uint32)(0x0801FC00))
+#define EEPROM_PAGE31_START ((uint32)(0x08007C00))
 
 extern uint8 switch_submodeEEP;
 extern sint16 switch_trg_tempEEP; 

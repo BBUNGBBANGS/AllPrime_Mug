@@ -6,7 +6,7 @@ sint16 switch_trg_tempEEP = 0;
 sint16 switch_trg_timeEEP = 0;
 sint16 switch_idle_tempEEP = 0;
 static uint8 EEPROM_Write_Counter = 0;
-static uint32 EEPROM_Write_Address = EEPROM_PAGE127_START;
+static uint32 EEPROM_Write_Address = EEPROM_PAGE31_START;
 
 void EEPROM_Write(void)
 {
@@ -28,23 +28,27 @@ void EEPROM_Write(void)
     if(EEPROM_Write_Counter>7)
     {
         EEPROM_Write_Counter = 0;
-        EEPROM_Write_Address = EEPROM_PAGE127_START;
+        EEPROM_Write_Address = EEPROM_PAGE31_START;
     }
 
     return HAL_OK;
 }
 void EEPROM_Read(void)
 {
-    uint16 data[8] = {0,};
+    uint16 data[4] = {0,};
+
     for(uint8 i = 0; i<8;i++)
     {
-       data[i] = *(uint32*)(EEPROM_PAGE127_START+(i*2));
+        if((*(uint16*)(EEPROM_PAGE31_START+(i*2)) != 0))
+        {
+            data[i] = *(uint16*)(EEPROM_PAGE31_START+(i*2));
+        }
     }
-    
+
     switch_submodeEEP = (uint8)data[0];
-    switch_trg_tempEEP = (sint16)data[1]; 
+    switch_trg_tempEEP = (sint16)data[1];
     switch_trg_timeEEP = (sint16)data[2];
-    switch_idle_tempEEP = (sint16)data[3]; 
+    switch_idle_tempEEP = (sint16)data[3];
 }
 
 void EEPROM_Erase(void)
@@ -55,7 +59,7 @@ void EEPROM_Erase(void)
     HAL_FLASH_Unlock();
     
     /* Calculate sector index */
-    uint32_t UserAddress = EEPROM_PAGE127_START;
+    uint32_t UserAddress = EEPROM_PAGE31_START;
     uint32_t NbOfSectors = 1;
     
     /* Erase sectors */

@@ -6,7 +6,7 @@ uint8 switch1_status,switch2_status,switch3_status,switch4_status;
 uint8 switch1_status_old,switch2_status_old,switch3_status_old,switch4_status_old;
 uint8 switch_overtemp;
 uint8 switch_mode;
-uint8 switch_submode = 1;
+uint8 switch_submode;
 uint8 cup_in,cup_in_old;
 uint8 switch4_mode,switch4_mode_old;
 uint8 switch_custom_mode;
@@ -19,7 +19,7 @@ uint16 switch_timer1,switch_timer2,switch_timer3;
 extern uint16 Servo_timer;
 void Switch_Val_Init(void)
 {
-    if((*(uint16*)(EEPROM_PAGE127_START+(0*2))) != 0xFFFF)
+    if((*(uint16*)(EEPROM_PAGE31_START+(0*2))) != 0xFFFF)
     {
         switch_submode = switch_submodeEEP;
     }
@@ -27,7 +27,7 @@ void Switch_Val_Init(void)
     {
         switch_submode = SWITCH_SUB_MODE_1;
     }
-    if((*(uint16*)(EEPROM_PAGE127_START+(1*2))) != 0xFFFF)
+    if((*(uint16*)(EEPROM_PAGE31_START+(1*2))) != 0xFFFF)
     {
         switch_trg_temp = (sint16)switch_trg_tempEEP;
     }
@@ -35,7 +35,7 @@ void Switch_Val_Init(void)
     {
         switch_trg_temp = 0;
     }    
-    if((*(uint16*)(EEPROM_PAGE127_START+(2*2))) != 0xFFFF)
+    if((*(uint16*)(EEPROM_PAGE31_START+(2*2))) != 0xFFFF)
     {
         switch_trg_time = (sint16)switch_trg_timeEEP;
     }
@@ -43,7 +43,7 @@ void Switch_Val_Init(void)
     {
         switch_trg_time = 0;
     }    
-    if((*(uint16*)(EEPROM_PAGE127_START+(3*2))) != 0xFFFF)
+    if((*(uint16*)(EEPROM_PAGE31_START+(3*2))) != 0xFFFF)
     {
         switch_idle_temp = (sint16)switch_idle_tempEEP;
     }
