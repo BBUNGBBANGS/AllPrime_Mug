@@ -21,7 +21,14 @@ void Switch_Val_Init(void)
 {
     if((*(uint16*)(EEPROM_PAGE31_START+(0*2))) != 0xFFFF)
     {
-        switch_submode = switch_submodeEEP;
+        if(switch_submodeEEP == 0)
+        {
+            switch_submode = SWITCH_SUB_MODE_1;
+        }
+        else
+        {
+            switch_submode = switch_submodeEEP;
+        }
     }
     else
     {
