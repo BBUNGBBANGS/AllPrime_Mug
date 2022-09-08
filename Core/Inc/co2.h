@@ -1,7 +1,7 @@
 #include "main.h"
 
 #define CO2_HW_MODULE                   (hi2c1)
-#define CO2_ADDRESS                     (0x5A)
+#define CO2_ADDRESS                     (0x58)
 
 #define CO2_ADDRESS_STATUS              (0x00)          
 #define CO2_ADDRESS_MEAS_MODE           (0x01)

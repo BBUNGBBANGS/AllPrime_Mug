@@ -1,0 +1,8 @@
+#settings
+.vscode/
+
+#build folders
+build/
+
+#Makefile
+Makefile
